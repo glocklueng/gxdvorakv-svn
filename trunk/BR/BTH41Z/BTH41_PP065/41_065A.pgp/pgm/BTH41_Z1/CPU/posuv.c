@@ -24,7 +24,10 @@ _LOCAL INT 		incrementPosValue;
 _LOCAL BOOL 	incrementPosRefOld;	/* polarity of reference bit*/
 /*_LOCAL INT incrementAngle;  moved to system variables */
 
-#define  LENGTH_CONSTANT  2.59;
+int counter;
+
+
+#define  LENGTH_CONSTANT  0.20735
 
 /**
  *  initialisation
@@ -40,23 +43,35 @@ _INIT void initPosIncrement(void) {
  *		cyclic task
  */
 _CYCLIC void checkSlideIncrement(void) {
-	incrementLength = incrementPosValue/ LENGTH_CONSTANT;
+	
+	incrementLength = (int)(incrementPosValue * (float)LENGTH_CONSTANT);
 
 	switch (posuvSM){
-		case PSM_READY : /* ready to go */
+		case PSM_READY : /* 0  ready to go */
 		default:
 			/* do nothing */
-			o_resetInkrementPosuvu =0;
+			o_resetInkrementPosuvu =1;
+			counter = 0;
 		break;
-		case PSM_START: /* started */
-			o_resetInkrementPosuvu =1;		
-			if (incrementPosValue == 0)	posuvSM = PSM_RUN;
+		case PSM_RESTART:
+			o_resetInkrementPosuvu =1;
+			posuvSM =PSM_START; 
 		break;
-		case PSM_RUN: /*running */
-			o_releKA2_posuvFolie = 0;
-			o_resetInkrementPosuvu =0;
+		case PSM_START: /* 1 started */
+			o_resetInkrementPosuvu =0;		
+			if (incrementPosValue == 0)	{
+				posuvSM = PSM_RUN;
+				counter = 0;
+			}else{
+				++counter;
+				if (counter >10) posuvSM = PSM_RESTART;
+			}
+				
+		break;
+		case PSM_RUN: /* 2 running */
+			o_releKA2_posuvFolie = 1;
 			
-			ao_posuv = nastaveni.posuv_folie.rychlost * 32767/100;
+			ao_posuv = nastaveni.posuv_folie.rychlost * 32767/100.0;
 			
 			if (fotonka_St && (incrementLength > nastaveni.posuv_folie.FOT_start)){							
 				posuvSM = PSM_FOT;								

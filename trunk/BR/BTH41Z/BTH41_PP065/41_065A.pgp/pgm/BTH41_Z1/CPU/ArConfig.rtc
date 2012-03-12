@@ -13,7 +13,7 @@
         <Parameter ID="PresetABR01" Value="0" />
       </Group>
       <Group ID="Counter02">
-        <Parameter ID="RefpulsEdge02" Value="RposEdge" />
+        <Parameter ID="RefpulsEdge02" Value="RnegEdge" />
         <Parameter ID="HomingInput02" Value="off" />
         <Parameter ID="PresetABR02" Value="0" />
       </Group>

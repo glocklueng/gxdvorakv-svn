@@ -1,14 +1,16 @@
 WATCH Ver=2.00 PLCName=BTH41_Z1 CPUName=CPU TaskName=io_ctrl 
-Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=61 Scope=60 Force=60 Index=11 ASCIIString=0
+Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=61 Scope=60 Force=60 Index=13 ASCIIString=0
                                     name                                     type force                                                            value level type len format place expand specs
-                            stateMachine                                     SINT    0 "                                                               5"    0    2    1   10    0    0         
+                            stateMachine                                     SINT    0 "                                                               2"    0    2    1   10    0    0         
                          davkovaniActive                                     BOOL    0 "                                                           FALSE"    0    1    1    2    0    0         
-                                testMode                                     UINT    0 "                                           2#0000_0000_0000_0010"    0    6    1    2    0    0         
                              davka1_done                                     BOOL    0 "                                                           FALSE"    0    1    1    2    1    0         
                              davka2_done                                     BOOL    0 "                                                           FALSE"    0    1    1    2    1    0         
-                                ao_menic                                      INT    0 "                                                           14679"    0    3    1   10    0    0         
-                                ao_posuv                                      INT    0 "                                                               0"    0    3    1   10    0    0         
-                         incrementLength                                      INT    0 "                                                             518"    0    3    1   10    0    0         
-                            i_davkaReady                                     BOOL    0 "                                                           FALSE"    0    1    1    2    0    0         
+                                ao_menic                                      INT    3 "                                                               0"    0    3    1   10    0    0         
+                                ao_posuv                                      INT    3 "                                                               0"    0    3    1   10    0    0         
+                         incrementLength                                      INT    0 "                                                             235"    0    3    1   10    0    0         
+                            i_davkaReady                                     BOOL    1 "                                                           FALSE"    0    1    1    2    0    0         
                         zpomalCekamDavku                                    USINT    0 "                                                               0"    0    5    1   10    0    0         
                                  posuvSM                                     UINT    0 "                                                               0"    0    6    1   10    0    0         
+                          incrementAngle                                      INT    0 "                                                               9"    0    3    1   10    0    0         
+                               davka1_St                                     BOOL    0 "                                                           FALSE"    0    1    1    2    0    0         
+                               davka2_St                                     BOOL    0 "                                                            TRUE"    0    1    1    2    0    0         

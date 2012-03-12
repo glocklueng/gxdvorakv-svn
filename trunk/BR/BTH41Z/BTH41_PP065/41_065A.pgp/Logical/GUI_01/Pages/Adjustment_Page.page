@@ -222,7 +222,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="25"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="134"/>
+          <Property Name="Left" Value="135"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
@@ -231,7 +231,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="59"/>
+          <Property Name="Top" Value="58"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_NAST_ZAP1]"/>
           <Property Name="Width" Value="50"/>
         </Control>
@@ -252,7 +252,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="60"/>
+          <Property Name="Top" Value="58"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_NAST_VYP1]"/>
           <Property Name="Width" Value="50"/>
         </Control>

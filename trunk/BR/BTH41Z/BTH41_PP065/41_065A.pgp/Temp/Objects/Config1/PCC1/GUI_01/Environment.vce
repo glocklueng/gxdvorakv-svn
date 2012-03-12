@@ -4,7 +4,7 @@
   <EditorMainFrame>
     <Property Name="DockingWindowReg" Value="1"/>
     <PagePallete>
-      <Property Name="PaletteIcons" Value="0"/>
+      <Property Name="PaletteIcons" Value="1"/>
     </PagePallete>
     <PropertyEditor>
       <Property Name="ColumnHandling" Value="3"/>
@@ -20,8 +20,8 @@
     <Property Name="GetTouchGrid" Value="0"/>
     <Property Name="GridAutoColor" Value="1"/>
     <Property Name="GridColor" Value="15658734"/>
-    <Property Name="GridSizeX" Value="2"/>
-    <Property Name="GridSizeY" Value="2"/>
+    <Property Name="GridSizeX" Value="10"/>
+    <Property Name="GridSizeY" Value="10"/>
     <Property Name="GridVisible" Value="0"/>
     <Property Name="ShowGridAtZoom" Value="0"/>
     <Property Name="SnapToGrid" Value="0"/>

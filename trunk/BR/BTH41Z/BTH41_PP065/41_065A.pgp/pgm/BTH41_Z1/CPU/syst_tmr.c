@@ -117,6 +117,7 @@ _CYCLIC void checkIncrement(void) {
 		case SM_IO_TEST:
 		case SM_RUN_TEST: 
 		case SM_READY_NO_PREPARE:
+		case SM_WAIT_STOP:
 		default:
 			ao_menic = 0;
 		break;
@@ -140,9 +141,10 @@ _CYCLIC void checkIncrement(void) {
 			/* prisel referenci impuls */
 				setGUIPage = 1;	
 				actualGUIPage = 1;									
-				stateMachine = SM_ON ;
+				stateMachine = SM_WAIT_STOP;
 				break;
 			}
+			zpomalCekamDavku = 0;
 		
 		/* NO BREAK !!!!!!!*/
 		case SM_RUN:
@@ -156,12 +158,13 @@ _CYCLIC void checkIncrement(void) {
 			}else{
 				ao_menic = (786.4 * otacky_nast + 1311)* (100-nastaveni.brzda.value)/100.0 *(100-zpomalCekamDavku)/100.0;
 			}
-			break;
+		break;
 			
-		}
+	}
 
 	incrementRefOld = (incrementStatus & 0x08);
 	
+	if ( ao_menic  < 400 ) 	ao_menic = 0; /*omezeni pasma kdy motor jeste nebezi */
 		
 	
 		

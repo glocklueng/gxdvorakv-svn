@@ -16,7 +16,7 @@ VAR_CONFIG
 	i_totalStop AT %IX.IF4.ST3.DigitalInput07;
 	i_kryty AT %IX.IF4.ST3.DigitalInput08;
 	i_zavzdusneni AT %IX.IF4.ST3.DigitalInput09;
-	i_poruchaMenice AT %IX.IF4.ST3.DigitalInput10;
+	i_poruchaMenice AT %IX.IF4.ST3.DigitalInput10 INVERSE;
 	i_odvijeniFolieStop AT %IX.IF4.ST3.DigitalInput12;
 	syst_tmr.incrementMode AT %QB.IF4.ST2.ReferenceModeEncoder01;
 	syst_tmr.incrementStatus AT %IB.IF4.ST2.StatusInput01;
