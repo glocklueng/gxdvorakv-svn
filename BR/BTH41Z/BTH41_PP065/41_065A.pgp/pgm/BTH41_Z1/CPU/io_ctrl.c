@@ -25,6 +25,7 @@ unsigned int localTimer;
 unsigned int podrazeniTimer;
 unsigned int vystrkavaniTimer;
 unsigned int dopravnikTimer;
+unsigned int timer_folie;
 
 
 _LOCAL BOOL odvijeniStartOld;
@@ -33,6 +34,7 @@ _LOCAL BOOL odvijeniStopOld;
 _LOCAL BOOL testModeStatus;
 _LOCAL BOOL davka1_done;
 _LOCAL BOOL davka2_done;
+_LOCAL BOOL posuvNotFinished;
 
 unsigned long VC_HANDLE;
 /* end of definition */
@@ -41,6 +43,7 @@ _INIT void InitInputs(void) {
 	testModeStatus = 0;
 	pocetDavek = 0;
 	zpomalCekamDavku = 0;
+	posuvNotFinished = 0;
 /*	otacky_nast = 15;*/
 	stateMachine = SM_ON;
 	localTimer = 0;
@@ -140,6 +143,9 @@ double difAngle;
 		 	o_ventilCO2 = 0;
 			o_odvijeniFolie = 0;
 			o_impulsniTopeni = 0;
+			posuvSM = PSM_READY;
+			ao_posuv = 0;
+
 								
 			if (checkReady()){		/* ready*/
 				if (actualGUIPage != 12) setGUIPage = 2; /* neprepinej pri testovani*/
@@ -182,6 +188,7 @@ double difAngle;
 				resetIncrementNow = 1;
 				stateMachine = SM_PRE_START;	/* motor se automaticky zapne*/
 			}
+			posuvNotFinished = 0;
 			
 			/* dopravnik */
 			if (dopravnik_St){
@@ -342,15 +349,19 @@ double difAngle;
 			/* posuv folie */
 			if (posuv_St){
 				tmpOn = nastaveni.posuv_folie.ON_angle;	
-
+				timer_folie = 0;
 				/* zapnuti podle inkrementu*/
 				if (incrementAngle >= tmpOn && incrementAngle < tmpOn+3 ){
-					if	(posuvSM == PSM_READY ){
+					if	(posuvSM == PSM_FINISHED || posuvSM == PSM_READY ){
 						posuvSM = PSM_START;
+						posuvNotFinished = 0;
+					}else if(posuvSM == PSM_RUN){
+						posuvNotFinished = 1;
 					}
+					
 				}else{
 					if (posuvSM == PSM_FINISHED){	
-						posuvSM = PSM_READY;
+					/*	posuvSM = PSM_READY;*/
 					}
 				}
 			}					
@@ -496,6 +507,12 @@ double difAngle;
 			}								
 			
 		break;	
+		case SM_WAIT_STOP:
+			++timer_folie;
+			if ((timer_folie > 150 )|| (posuvSM == PSM_FINISHED)){				
+				stateMachine = SM_ON;
+			}
+		break;		
 		case SM_SOFT_ERR_NO_START:
 		/* tento stav ovlada inkrement- prepne  na 0 po 1. nulovacim impulsu*/		
 
@@ -505,6 +522,9 @@ double difAngle;
 				ao_menic = 0;
 				localTimer = 1000;
 			}
+			posuvSM = PSM_READY;
+			ao_posuv = 0;
+
 
 		break;
 		case SM_CRITICAL_ERROR:
@@ -523,6 +543,8 @@ double difAngle;
 		 	o_ventilCO2 = 0;
 			o_odvijeniFolie = 0;
 			o_impulsniTopeni = 0;
+			posuvSM = PSM_READY;
+			ao_posuv = 0;
 
 			if (--localTimer < 1){
 				setGUIPage = 1;										
@@ -567,7 +589,7 @@ double difAngle;
 		}
 
 	/* odvijeni folie*/
-		if (!odvijeniStartOld && i_odvijeniFolieStart){ /* nabezna hrana*/
+		if (/*!odvijeniStartOld &&*/ i_odvijeniFolieStart){ /* nabezna hrana*/
 			o_odvijeniFolie = 1;
 		}
 		if(!odvijeniStopOld && i_odvijeniFolieStop){/* nabezna hrana*/

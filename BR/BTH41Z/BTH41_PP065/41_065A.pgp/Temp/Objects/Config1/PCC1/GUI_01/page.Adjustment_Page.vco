@@ -347,10 +347,10 @@
             </Group>
           </Object>
           <Object Name="Button_5" ClsId="0x1002" Version="1" Type="CTRL" RefString="Source[local].Page[Adjustment_Page].Layer[Default].Control[Button_5]">
-            <UInt32 Name="Left">134</UInt32>
-            <UInt32 Name="Top">59</UInt32>
-            <UInt32 Name="Right">183</UInt32>
-            <UInt32 Name="Bottom">83</UInt32>
+            <UInt32 Name="Left">135</UInt32>
+            <UInt32 Name="Top">58</UInt32>
+            <UInt32 Name="Right">184</UInt32>
+            <UInt32 Name="Bottom">82</UInt32>
             <UInt16 Name="KeyMatrixOffset">65535</UInt16>
             <UInt16 Name="Reserved">0</UInt16>
             <Reference Name="VirtualKey" Type="VKEY">Source[local].VirtualKey[VD_NAST_ZAP1]</Reference>
@@ -424,9 +424,9 @@
           </Object>
           <Object Name="Button_6" ClsId="0x1002" Version="1" Type="CTRL" RefString="Source[local].Page[Adjustment_Page].Layer[Default].Control[Button_6]">
             <UInt32 Name="Left">190</UInt32>
-            <UInt32 Name="Top">60</UInt32>
+            <UInt32 Name="Top">58</UInt32>
             <UInt32 Name="Right">239</UInt32>
-            <UInt32 Name="Bottom">84</UInt32>
+            <UInt32 Name="Bottom">82</UInt32>
             <UInt16 Name="KeyMatrixOffset">65535</UInt16>
             <UInt16 Name="Reserved">0</UInt16>
             <Reference Name="VirtualKey" Type="VKEY">Source[local].VirtualKey[VD_NAST_VYP1]</Reference>

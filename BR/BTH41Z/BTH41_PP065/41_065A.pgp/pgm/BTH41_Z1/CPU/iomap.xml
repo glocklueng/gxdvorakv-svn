@@ -80,7 +80,7 @@
 </LN>
 <LN ID="%IX.IF4.ST3.DigitalInput10" Type="BOOL">
 <Prod Device="IF4.ST3" DPName="DigitalInput10" Kind="io"/>
-<Cons Device="TC#1-CPYDEV" DPName="i_poruchaMenice" Kind="pv"/>
+<Cons Device="TC#1-CPYDEV" DPName="i_poruchaMenice" Kind="pv" Inverted="1"/>
 </LN>
 <LN ID="%IX.IF4.ST3.DigitalInput11" Type="BOOL">
 <Prod Device="IF4.ST3" DPName="DigitalInput11" Kind="io"/>

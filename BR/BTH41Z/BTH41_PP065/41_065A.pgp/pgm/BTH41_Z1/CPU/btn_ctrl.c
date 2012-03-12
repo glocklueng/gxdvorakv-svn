@@ -594,6 +594,7 @@ _CYCLIC void RunBtnControl(void) {
 		case SM_RUN:
 			if (davkovaniBtnPressed && !davkovaniActive){
 				davkovaniActive = 1;	/* vypinani davkovani je v ovladani inkrementu*/
+				zpomalCekamDavku = 0;
 				davkovaniBtnPressed = 0;
 			}
 			

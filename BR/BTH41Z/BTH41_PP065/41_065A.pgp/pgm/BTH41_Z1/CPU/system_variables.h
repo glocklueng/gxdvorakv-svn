@@ -157,6 +157,7 @@ _GLOBAL UINT timerDavka;	/* casovac impuls davky */
 
 _GLOBAL UINT posuvSM;	/* SM proPSM_READY posuv folie */
 #define PSM_READY 		0 	/* 0 - stop - ready*/
+#define PSM_RESTART		5	/* 5 - opakovany reset */
 #define PSM_START		1	/* 1 - start    */
 #define PSM_RUN			2	/* 2 - posun probiha    */
 #define PSM_FOT			3	/* 3 - cekam na fotonku nebo delku    */
@@ -201,6 +202,8 @@ STATE_MACHINE stateMachineNew ;*/
 				 	
 #define	SM_IO_TEST  10 			/*	testovani - ignoruje se vse ostatni*/
 #define	SM_RUN_TEST  11 		/* 	testovani behu stroje */
+
+#define SM_WAIT_STOP	12		/* dekam na odvinuti folie pred zastavenim */
 
 /**
 *	stavova masina stroje - podle toho se ridi cinnost
