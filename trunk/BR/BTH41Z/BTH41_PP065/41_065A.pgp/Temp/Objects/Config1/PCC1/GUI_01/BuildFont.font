@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version = "2.7"?>
+<FontFiles>
+  <LastBuildFont>
+    <Property Name="File" Value="ARIAL" />
+  </LastBuildFont>
+  <LastBuildFont>
+    <Property Name="File" Value="ARIALBD" />
+  </LastBuildFont>
+  <LastBuildFont>
+    <Property Name="File" Value="TIMES" />
+  </LastBuildFont>
+</FontFiles>
