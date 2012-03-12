@@ -1,0 +1,726 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=2.7?>
+<Intermediate xmlns="http://br.automation.co.at/AS/VC/Intermediate">
+  <Folder Name="DPV">
+    <Folder Name="Drivers">
+      <Folder Name="POBJ">
+        <Object Name="Local" ClsId="0x200" Version="1" Type="DS" RefString="Source[global].DataSource[Local]">
+          <Reference Name="DriverID" Type="DS">Source[global].DataSource[Local]</Reference>
+          <Reference Name="TextGroup" Type="TG">None</Reference>
+          <UInt32 Name="PVCount">100</UInt32>
+          <UInt32 Name="ImageSize">154</UInt32>
+          <Table Name="Variables" Cols="5">
+            <TableHeader>
+              <Column Name="PVID" />
+              <Column Name="PVType" />
+              <Column Name="PVOffset" />
+              <Column Name="PVDim" />
+              <Column Name="PVName" />
+            </TableHeader>
+            <Group Name="CO2_St">
+              <UInt16 Name="ID">0</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">0</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">0</Int32>
+            </Group>
+            <Group Name="actualGUIPage">
+              <UInt16 Name="ID">1</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">1</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">7</Int32>
+            </Group>
+            <Group Name="ao_menic">
+              <UInt16 Name="ID">2</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">3</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">21</Int32>
+            </Group>
+            <Group Name="ao_posuv">
+              <UInt16 Name="ID">3</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">5</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">30</Int32>
+            </Group>
+            <Group Name="brzda_St">
+              <UInt16 Name="ID">4</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">7</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">39</Int32>
+            </Group>
+            <Group Name="datovani_St">
+              <UInt16 Name="ID">5</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">8</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">48</Int32>
+            </Group>
+            <Group Name="davka1_St">
+              <UInt16 Name="ID">6</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">9</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">60</Int32>
+            </Group>
+            <Group Name="davka2_St">
+              <UInt16 Name="ID">7</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">10</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">70</Int32>
+            </Group>
+            <Group Name="davkovacV_St">
+              <UInt16 Name="ID">8</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">11</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">80</Int32>
+            </Group>
+            <Group Name="davkovacZ_St">
+              <UInt16 Name="ID">9</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">12</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">93</Int32>
+            </Group>
+            <Group Name="davkovaniBtnPressed">
+              <UInt16 Name="ID">10</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">13</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">106</Int32>
+            </Group>
+            <Group Name="dopravnik_St">
+              <UInt16 Name="ID">11</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">14</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">126</Int32>
+            </Group>
+            <Group Name="fotonka_St">
+              <UInt16 Name="ID">12</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">15</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">139</Int32>
+            </Group>
+            <Group Name="i_datovaniKoncak">
+              <UInt16 Name="ID">13</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">16</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">150</Int32>
+            </Group>
+            <Group Name="i_davkaReady">
+              <UInt16 Name="ID">14</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">17</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">167</Int32>
+            </Group>
+            <Group Name="i_fotonka">
+              <UInt16 Name="ID">15</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">18</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">180</Int32>
+            </Group>
+            <Group Name="i_konecFolie">
+              <UInt16 Name="ID">16</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">19</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">190</Int32>
+            </Group>
+            <Group Name="i_kryty">
+              <UInt16 Name="ID">17</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">20</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">203</Int32>
+            </Group>
+            <Group Name="i_odvijeniFolieStart">
+              <UInt16 Name="ID">18</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">21</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">211</Int32>
+            </Group>
+            <Group Name="i_odvijeniFolieStop">
+              <UInt16 Name="ID">19</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">22</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">232</Int32>
+            </Group>
+            <Group Name="i_poruchaMenice">
+              <UInt16 Name="ID">20</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">23</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">252</Int32>
+            </Group>
+            <Group Name="i_pritomnostCO2">
+              <UInt16 Name="ID">21</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">24</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">268</Int32>
+            </Group>
+            <Group Name="i_teplotaDosazena">
+              <UInt16 Name="ID">22</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">25</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">284</Int32>
+            </Group>
+            <Group Name="i_tlakuVzduchu">
+              <UInt16 Name="ID">23</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">26</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">302</Int32>
+            </Group>
+            <Group Name="i_totalStop">
+              <UInt16 Name="ID">24</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">27</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">317</Int32>
+            </Group>
+            <Group Name="i_zavzdusneni">
+              <UInt16 Name="ID">25</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">28</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">329</Int32>
+            </Group>
+            <Group Name="incrementAngle">
+              <UInt16 Name="ID">26</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">29</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">343</Int32>
+            </Group>
+            <Group Name="incrementLength">
+              <UInt16 Name="ID">27</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">31</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">358</Int32>
+            </Group>
+            <Group Name="infoTextPointer">
+              <UInt16 Name="ID">28</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">33</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">374</Int32>
+            </Group>
+            <Group Name="nastaveniOFF">
+              <UInt16 Name="ID">29</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">35</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">390</Int32>
+            </Group>
+            <Group Name="nastaveniOFF_Time">
+              <UInt16 Name="ID">30</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">37</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">403</Int32>
+            </Group>
+            <Group Name="nastaveniON">
+              <UInt16 Name="ID">31</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">39</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">421</Int32>
+            </Group>
+            <Group Name="nastaveniON_2">
+              <UInt16 Name="ID">32</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">41</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">433</Int32>
+            </Group>
+            <Group Name="nastaveniValue">
+              <UInt16 Name="ID">33</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">43</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">447</Int32>
+            </Group>
+            <Group Name="o_odvijeniFolie">
+              <UInt16 Name="ID">34</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">45</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">462</Int32>
+            </Group>
+            <Group Name="o_releKA1_topeni">
+              <UInt16 Name="ID">35</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">46</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">478</Int32>
+            </Group>
+            <Group Name="o_releKA2_posuvFolie">
+              <UInt16 Name="ID">36</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">47</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">495</Int32>
+            </Group>
+            <Group Name="o_releKA3_davkovacStart">
+              <UInt16 Name="ID">37</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">48</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">516</Int32>
+            </Group>
+            <Group Name="o_releKA4_davkovacVody">
+              <UInt16 Name="ID">38</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">49</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">540</Int32>
+            </Group>
+            <Group Name="o_resetInkrementPosuvu">
+              <UInt16 Name="ID">39</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">50</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">563</Int32>
+            </Group>
+            <Group Name="o_stykacOdsDopravniku">
+              <UInt16 Name="ID">40</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">51</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">586</Int32>
+            </Group>
+            <Group Name="o_ventilCO2">
+              <UInt16 Name="ID">41</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">52</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">608</Int32>
+            </Group>
+            <Group Name="o_ventilDatum">
+              <UInt16 Name="ID">42</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">53</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">620</Int32>
+            </Group>
+            <Group Name="o_ventilPodrazeni">
+              <UInt16 Name="ID">43</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">54</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">634</Int32>
+            </Group>
+            <Group Name="o_ventilSevreniPosuvRem">
+              <UInt16 Name="ID">44</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">55</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">652</Int32>
+            </Group>
+            <Group Name="o_ventilStrihani">
+              <UInt16 Name="ID">45</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">56</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">676</Int32>
+            </Group>
+            <Group Name="o_ventilTrojuhSkladani">
+              <UInt16 Name="ID">46</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">57</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">693</Int32>
+            </Group>
+            <Group Name="o_ventilVystrkSacku">
+              <UInt16 Name="ID">47</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">58</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">716</Int32>
+            </Group>
+            <Group Name="o_zavzdusneni">
+              <UInt16 Name="ID">48</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">59</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">736</Int32>
+            </Group>
+            <Group Name="otacky_mer">
+              <UInt16 Name="ID">49</UInt16>
+              <UInt16 Name="PVType">6</UInt16>
+              <UInt32 Name="PVOffset">60</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">750</Int32>
+            </Group>
+            <Group Name="otacky_nast">
+              <UInt16 Name="ID">50</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">64</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">761</Int32>
+            </Group>
+            <Group Name="pocetDavek">
+              <UInt16 Name="ID">51</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">66</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">773</Int32>
+            </Group>
+            <Group Name="podrazeni_St">
+              <UInt16 Name="ID">52</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">68</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">784</Int32>
+            </Group>
+            <Group Name="posuvSM">
+              <UInt16 Name="ID">53</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">69</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">797</Int32>
+            </Group>
+            <Group Name="posuv_St">
+              <UInt16 Name="ID">54</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">71</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">805</Int32>
+            </Group>
+            <Group Name="redraw1">
+              <UInt16 Name="ID">55</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">72</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">814</Int32>
+            </Group>
+            <Group Name="setGUIPage">
+              <UInt16 Name="ID">56</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">74</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">822</Int32>
+            </Group>
+            <Group Name="skladani_St">
+              <UInt16 Name="ID">57</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">76</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">833</Int32>
+            </Group>
+            <Group Name="startActive">
+              <UInt16 Name="ID">58</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">77</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">845</Int32>
+            </Group>
+            <Group Name="stateMachine">
+              <UInt16 Name="ID">59</UInt16>
+              <UInt16 Name="PVType">0</UInt16>
+              <UInt32 Name="PVOffset">78</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">857</Int32>
+            </Group>
+            <Group Name="stopActive">
+              <UInt16 Name="ID">60</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">79</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">870</Int32>
+            </Group>
+            <Group Name="strihani_St">
+              <UInt16 Name="ID">61</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">80</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">881</Int32>
+            </Group>
+            <Group Name="testMode">
+              <UInt16 Name="ID">62</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">81</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">893</Int32>
+            </Group>
+            <Group Name="tmp">
+              <UInt16 Name="ID">63</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">83</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">902</Int32>
+            </Group>
+            <Group Name="topeniImpuls_St">
+              <UInt16 Name="ID">64</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">85</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">906</Int32>
+            </Group>
+            <Group Name="topeni_St">
+              <UInt16 Name="ID">65</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">86</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">922</Int32>
+            </Group>
+            <Group Name="vystrkavani_St">
+              <UInt16 Name="ID">66</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">87</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">932</Int32>
+            </Group>
+            <Group Name="gui_ctr:CO2_VYP_Btn">
+              <UInt16 Name="ID">67</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">88</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">947</Int32>
+            </Group>
+            <Group Name="gui_ctr:CO2_ZAP_Btn">
+              <UInt16 Name="ID">68</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">90</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">967</Int32>
+            </Group>
+            <Group Name="gui_ctr:brzda_VYP_Btn">
+              <UInt16 Name="ID">69</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">92</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">987</Int32>
+            </Group>
+            <Group Name="gui_ctr:brzda_ZAP_Btn">
+              <UInt16 Name="ID">70</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">94</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1009</Int32>
+            </Group>
+            <Group Name="gui_ctr:datovani_VYP_Btn">
+              <UInt16 Name="ID">71</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">96</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1031</Int32>
+            </Group>
+            <Group Name="gui_ctr:datovani_ZAP_Btn">
+              <UInt16 Name="ID">72</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">98</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1056</Int32>
+            </Group>
+            <Group Name="gui_ctr:davkovacV_VYP_Btn">
+              <UInt16 Name="ID">73</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">100</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1081</Int32>
+            </Group>
+            <Group Name="gui_ctr:davkovacV_ZAP_Btn">
+              <UInt16 Name="ID">74</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">102</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1107</Int32>
+            </Group>
+            <Group Name="gui_ctr:davkovacZ_VYP_Btn">
+              <UInt16 Name="ID">75</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">104</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1133</Int32>
+            </Group>
+            <Group Name="gui_ctr:davkovacZ_ZAP_Btn">
+              <UInt16 Name="ID">76</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">106</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1159</Int32>
+            </Group>
+            <Group Name="gui_ctr:davkovani_Btn_col">
+              <UInt16 Name="ID">77</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">108</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1185</Int32>
+            </Group>
+            <Group Name="gui_ctr:dopravnik_VYP_Btn">
+              <UInt16 Name="ID">78</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">110</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1211</Int32>
+            </Group>
+            <Group Name="gui_ctr:dopravnik_ZAP_Btn">
+              <UInt16 Name="ID">79</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">112</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1237</Int32>
+            </Group>
+            <Group Name="gui_ctr:fotonka_VYP_Btn">
+              <UInt16 Name="ID">80</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">114</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1263</Int32>
+            </Group>
+            <Group Name="gui_ctr:fotonka_ZAP_Btn">
+              <UInt16 Name="ID">81</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">116</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1287</Int32>
+            </Group>
+            <Group Name="gui_ctr:nastBtnPressed">
+              <UInt16 Name="ID">82</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">118</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1311</Int32>
+            </Group>
+            <Group Name="gui_ctr:nastaveniLabelIndex">
+              <UInt16 Name="ID">83</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">120</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1334</Int32>
+            </Group>
+            <Group Name="gui_ctr:podrazeni_VYP_Btn">
+              <UInt16 Name="ID">84</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">122</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1362</Int32>
+            </Group>
+            <Group Name="gui_ctr:podrazeni_ZAP_Btn">
+              <UInt16 Name="ID">85</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">124</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1388</Int32>
+            </Group>
+            <Group Name="gui_ctr:posuv_VYP_Btn">
+              <UInt16 Name="ID">86</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">126</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1414</Int32>
+            </Group>
+            <Group Name="gui_ctr:posuv_ZAP_Btn">
+              <UInt16 Name="ID">87</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">128</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1436</Int32>
+            </Group>
+            <Group Name="gui_ctr:skladani_VYP_Btn">
+              <UInt16 Name="ID">88</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">130</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1458</Int32>
+            </Group>
+            <Group Name="gui_ctr:skladani_ZAP_Btn">
+              <UInt16 Name="ID">89</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">132</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1483</Int32>
+            </Group>
+            <Group Name="gui_ctr:start_Btn_col">
+              <UInt16 Name="ID">90</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">134</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1508</Int32>
+            </Group>
+            <Group Name="gui_ctr:stop_Btn_col">
+              <UInt16 Name="ID">91</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">136</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1530</Int32>
+            </Group>
+            <Group Name="gui_ctr:strihani_VYP_Btn">
+              <UInt16 Name="ID">92</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">138</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1551</Int32>
+            </Group>
+            <Group Name="gui_ctr:strihani_ZAP_Btn">
+              <UInt16 Name="ID">93</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">140</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1576</Int32>
+            </Group>
+            <Group Name="gui_ctr:topeni_VYP_Btn">
+              <UInt16 Name="ID">94</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">142</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1601</Int32>
+            </Group>
+            <Group Name="gui_ctr:topeni_ZAP_Btn">
+              <UInt16 Name="ID">95</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">144</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1624</Int32>
+            </Group>
+            <Group Name="gui_ctr:ulozBtnPressed">
+              <UInt16 Name="ID">96</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">146</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1647</Int32>
+            </Group>
+            <Group Name="gui_ctr:vystrkavani_VYP_Btn">
+              <UInt16 Name="ID">97</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">148</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1670</Int32>
+            </Group>
+            <Group Name="gui_ctr:vystrkavani_ZAP_Btn">
+              <UInt16 Name="ID">98</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">150</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1698</Int32>
+            </Group>
+            <Group Name="syst_tmr:incrementValue">
+              <UInt16 Name="ID">99</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">152</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Int32 Name="Offset">1726</Int32>
+            </Group>
+          </Table>
+          <Binary Name="Name" Encoding="Base64">Q08yX1N0AGFjdHVhbEdVSVBhZ2UAYW9fbWVuaWMAYW9fcG9zdXYAYnJ6ZGFfU3QAZGF0b3ZhbmlfU3QAZGF2a2ExX1N0AGRhdmthMl9TdABkYXZrb3ZhY1ZfU3QAZGF2a292YWNaX1N0AGRhdmtvdmFuaUJ0blByZXNzZWQAZG9wcmF2bmlrX1N0AGZvdG9ua2FfU3QAaV9kYXRvdmFuaUtvbmNhawBpX2RhdmthUmVhZHkAaV9mb3RvbmthAGlfa29uZWNGb2xpZQBpX2tyeXR5AGlfb2R2aWplbmlGb2xpZVN0YXJ0AGlfb2R2aWplbmlGb2xpZVN0b3AAaV9wb3J1Y2hhTWVuaWNlAGlfcHJpdG9tbm9zdENPMgBpX3RlcGxvdGFEb3NhemVuYQBpX3RsYWt1VnpkdWNodQBpX3RvdGFsU3RvcABpX3phdnpkdXNuZW5pAGluY3JlbWVudEFuZ2xlAGluY3JlbWVudExlbmd0aABpbmZvVGV4dFBvaW50ZXIAbmFzdGF2ZW5pT0ZGAG5hc3RhdmVuaU9GRl9UaW1lAG5hc3RhdmVuaU9OAG5hc3RhdmVuaU9OXzIAbmFzdGF2ZW5pVmFsdWUAb19vZHZpamVuaUZvbGllAG9fcmVsZUtBMV90b3BlbmkAb19yZWxlS0EyX3Bvc3V2Rm9saWUAb19yZWxlS0EzX2RhdmtvdmFjU3RhcnQAb19yZWxlS0E0X2RhdmtvdmFjVm9keQBvX3Jlc2V0SW5rcmVtZW50UG9zdXZ1AG9fc3R5a2FjT2RzRG9wcmF2bmlrdQBvX3ZlbnRpbENPMgBvX3ZlbnRpbERhdHVtAG9fdmVudGlsUG9kcmF6ZW5pAG9fdmVudGlsU2V2cmVuaVBvc3V2UmVtAG9fdmVudGlsU3RyaWhhbmkAb192ZW50aWxUcm9qdWhTa2xhZGFuaQBvX3ZlbnRpbFZ5c3Rya1NhY2t1AG9femF2emR1c25lbmkAb3RhY2t5X21lcgBvdGFja3lfbmFzdABwb2NldERhdmVrAHBvZHJhemVuaV9TdABwb3N1dlNNAHBvc3V2X1N0AHJlZHJhdzEAc2V0R1VJUGFnZQBza2xhZGFuaV9TdABzdGFydEFjdGl2ZQBzdGF0ZU1hY2hpbmUAc3RvcEFjdGl2ZQBzdHJpaGFuaV9TdAB0ZXN0TW9kZQB0bXAAdG9wZW5pSW1wdWxzX1N0AHRvcGVuaV9TdAB2eXN0cmthdmFuaV9TdABndWlfY3RyOkNPMl9WWVBfQnRuAGd1aV9jdHI6Q08yX1pBUF9CdG4AZ3VpX2N0cjpicnpkYV9WWVBfQnRuAGd1aV9jdHI6YnJ6ZGFfWkFQX0J0bgBndWlfY3RyOmRhdG92YW5pX1ZZUF9CdG4AZ3VpX2N0cjpkYXRvdmFuaV9aQVBfQnRuAGd1aV9jdHI6ZGF2a292YWNWX1ZZUF9CdG4AZ3VpX2N0cjpkYXZrb3ZhY1ZfWkFQX0J0bgBndWlfY3RyOmRhdmtvdmFjWl9WWVBfQnRuAGd1aV9jdHI6ZGF2a292YWNaX1pBUF9CdG4AZ3VpX2N0cjpkYXZrb3ZhbmlfQnRuX2NvbABndWlfY3RyOmRvcHJhdm5pa19WWVBfQnRuAGd1aV9jdHI6ZG9wcmF2bmlrX1pBUF9CdG4AZ3VpX2N0cjpmb3RvbmthX1ZZUF9CdG4AZ3VpX2N0cjpmb3RvbmthX1pBUF9CdG4AZ3VpX2N0cjpuYXN0QnRuUHJlc3NlZABndWlfY3RyOm5hc3RhdmVuaUxhYmVsSW5kZXgAZ3VpX2N0cjpwb2RyYXplbmlfVllQX0J0bgBndWlfY3RyOnBvZHJhemVuaV9aQVBfQnRuAGd1aV9jdHI6cG9zdXZfVllQX0J0bgBndWlfY3RyOnBvc3V2X1pBUF9CdG4AZ3VpX2N0cjpza2xhZGFuaV9WWVBfQnRuAGd1aV9jdHI6c2tsYWRhbmlfWkFQX0J0bgBndWlfY3RyOnN0YXJ0X0J0bl9jb2wAZ3VpX2N0cjpzdG9wX0J0bl9jb2wAZ3VpX2N0cjpzdHJpaGFuaV9WWVBfQnRuAGd1aV9jdHI6c3RyaWhhbmlfWkFQX0J0bgBndWlfY3RyOnRvcGVuaV9WWVBfQnRuAGd1aV9jdHI6dG9wZW5pX1pBUF9CdG4AZ3VpX2N0cjp1bG96QnRuUHJlc3NlZABndWlfY3RyOnZ5c3Rya2F2YW5pX1ZZUF9CdG4AZ3VpX2N0cjp2eXN0cmthdmFuaV9aQVBfQnRuAHN5c3RfdG1yOmluY3JlbWVudFZhbHVlAA==</Binary>
+        </Object>
+      </Folder>
+    </Folder>
+  </Folder>
+</Intermediate>

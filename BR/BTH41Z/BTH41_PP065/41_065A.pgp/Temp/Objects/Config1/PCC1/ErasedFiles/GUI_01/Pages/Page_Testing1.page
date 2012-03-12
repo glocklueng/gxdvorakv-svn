@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="2.4"?>
+<Page xmlns="http://br-automation.co.at/AS/VC/Project" Name="Page_Testing1">
+  <Property Name="Description" Value=""/>
+  <Property Name="Height" Value="240"/>
+  <Property Name="Index" Value="7"/>
+  <Property Name="MoveFocus" Value="Circular"/>
+  <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[default]"/>
+  <Property Name="Width" Value="320"/>
+  <Layers>
+    <LayerRef Source="Source[local].Layer[CommonLayer_1]">
+      <Property Name="Description" Value=""/>
+      <Property Name="EditingMode" Value="Frozen"/>
+      <Property Name="Left" Value="0"/>
+      <Property Name="Name" Value="CommonLayer_1"/>
+      <Property Name="OutlineColor" Value="0"/>
+      <Property Name="OutlineDisplayControl" Value="False"/>
+      <Property Name="OutlineDisplayName" Value="True"/>
+      <Property Name="OutlineHatched" Value="False"/>
+      <Property Name="Top" Value="0"/>
+      <Property Name="VisibilityMode" Value="Normal"/>
+      <Property Name="Z-Order" Value="0"/>
+    </LayerRef>
+    <Layer Name="Default">
+      <Property Name="BackColor" Value="9"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="EditingMode" Value="Normal"/>
+      <Property Name="Height" Value="240"/>
+      <Property Name="Left" Value="0"/>
+      <Property Name="OutlineColor" Value="0"/>
+      <Property Name="OutlineDisplayControl" Value="False"/>
+      <Property Name="OutlineDisplayName" Value="True"/>
+      <Property Name="OutlineHatched" Value="False"/>
+      <Property Name="StatusDatapoint" Value="None"/>
+      <Property Name="Top" Value="0"/>
+      <Property Name="VisibilityMode" Value="Normal"/>
+      <Property Name="Width" Value="320"/>
+      <Property Name="Z-Order" Value="1"/>
+      <TextGroup>
+        <TextLayer LanguageId="cs-CZ">
+          <Text ID="90167" Value="Testování"/>
+          <Text ID="90168" Value="Test Vstupů"/>
+          <Text ID="90170" Value="Test Výstupů"/>
+          <Text ID="90172" Value="Test funkce stroje"/>
+          <Text ID="90174" Value=""/>
+        </TextLayer>
+        <IndexMap>
+          <Index ID="90167" Value="8"/>
+          <Index ID="90168" Value="9"/>
+          <Index ID="90170" Value="11"/>
+          <Index ID="90172" Value="13"/>
+          <Index ID="90174" Value="15"/>
+        </IndexMap>
+      </TextGroup>
+      <Controls>
+        <Control ClassId="0x00001004" Name="Text_7">
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Font_1]"/>
+          <Property Name="Height" Value="20"/>
+          <Property Name="IndexDatapoint" Value="None"/>
+          <Property Name="Left" Value="100"/>
+          <Property Name="SimulationValue" Value="0"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="8"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="4"/>
+          <Property Name="Width" Value="95"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_1">
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="IndexDatapoint" Value="None"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="SimulationValue" Value="0"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="15"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="35"/>
+          <Property Name="Width" Value="30"/>
+        </Control>
+      </Controls>
+      <KeyMapping/>
+    </Layer>
+  </Layers>
+  <MovementOrder/>
+  <TabSequence/>
+</Page>

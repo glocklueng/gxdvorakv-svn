@@ -1,0 +1,14 @@
+[FileList]
+\pgm\bth41_z1\cpu\btn_ctrl.c
+\pgm\bth41_z1\cpu\gui_variables.h
+\pgm\bth41_z1\cpu\system_variables.h
+\pgm\bth41_z1\cpu\visapi.h
+\pgm\bth41_z1\cpu\libvisapi.a
+\pgm\bth41_z1\cpu\operator.h
+\pgm\bth41_z1\cpu\liboperator.a
+\pgm\bth41_z1\cpu\libdataobj.a
+\pgm\bth41_z1\cpu\dataobj.h
+
+[IncludeList]
+c:\br_as_251_l001\as\library\j0283\operator\i386
+\pgm\bth41_z1\cpu

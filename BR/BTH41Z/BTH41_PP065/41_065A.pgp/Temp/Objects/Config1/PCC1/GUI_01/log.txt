@@ -1,0 +1,34 @@
+Buildfile: file:///C:/Projects/BR/BTH41Z23.pgp/info.build.xml
+Target(s) specified: Init HwPP link 
+
+
+Init:
+
+Path and Values initalized... Ok
+
+HwPP:
+
+Starting Hardware Analyser... Ok
+
+link:
+
+Starting Hardware Analyser... Ok
+Compiling PanelMaps from Temp\Objects\Config1\Pcc1\GUI_01\dis.VC4PP220_0571_65.vci... Ok
+Compiling TextGroup from Logical\GUI_01\TextGroups\TextGroup_InfoText.txtgrp... Ok
+Compiling Page from Logical\GUI_01\Pages\OK_Page.page... Ok
+Adding Link List File Temp\Objects\Config1\Pcc1\GUI_01\GUI_0101.ccf.lfl
+Linking local objects... 
+Writing Output File Temp\Objects\Config1\Pcc1\GUI_01\GUI_0101.ccf
+Writing Library Temp\Objects\Config1\Pcc1\GUI_01\localobj.vca
+Linking local objects done.
+Generate BR-Module GUI_0101.br...
+Generate BR-Module GUI_0101.br done.
+Starting VCDepend... Ok
+Starting Project Loader... Ok
+Generate BR-Module GUI_01.br...
+Generate BR-Module GUI_01.br done.
+
+BUILD SUCCEEDED
+
+Total time: 6 seconds.
+

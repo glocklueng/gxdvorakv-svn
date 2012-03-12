@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version="2.7"?>
+<Firmware>
+  <Controls>
+    <File Name="vccalarm.br" />
+    <File Name="vccbar.br" />
+    <File Name="vccbmp.br" />
+    <File Name="vccbtn.br" />
+    <File Name="vccdbox.br" />
+    <File Name="vccddbox.br" />
+    <File Name="vccdt.br" />
+    <File Name="vccedit.br" />
+    <File Name="vcclbox.br" />
+    <File Name="vccline.br" />
+    <File Name="vccnum.br" />
+    <File Name="vccovl.br" />
+    <File Name="vccpopup.br" />
+    <File Name="vccpwd.br" />
+    <File Name="vccscale.br" />
+    <File Name="vccshape.br" />
+    <File Name="vccstr.br" />
+    <File Name="vcctext.br" />
+    <File Name="vcctrend.br" />
+  </Controls>
+  <Core>
+    <File Name="vcalarm.br" />
+    <File Name="vcbclass.br" />
+    <File Name="vcchspot.br" />
+    <File Name="vcchtml.br" />
+    <File Name="vcdsint.br" />
+    <File Name="vcdsloc.br" />
+    <File Name="vcfile.br" />
+    <File Name="vcfntttf.br" />
+    <File Name="vcgclass.br" />
+    <File Name="vcjsint.br" />
+    <File Name="vclpt.br" />
+    <File Name="vcmgr.br" />
+    <File Name="vcnet.br" />
+    <File Name="vcpdar00.br" />
+    <File Name="vcpdct.br" />
+    <File Name="vcpdcx55.br" />
+    <File Name="vcpdi815.br" />
+    <File Name="vcpdi855.br" />
+    <File Name="vcpdpp30.br" />
+    <File Name="vcpdpp45.br" />
+    <File Name="vcpdrage.br" />
+    <File Name="vcpdsw.br" />
+    <File Name="vcpdvnc.br" />
+    <File Name="vcpf2k.br" />
+    <File Name="vcpf5k.br" />
+    <File Name="vcpfac.br" />
+    <File Name="vcpfapc.br" />
+    <File Name="vcpfar00.br" />
+    <File Name="vcpfar10.br" />
+    <File Name="vcpfcp.br" />
+    <File Name="vcpfmtcx.br" />
+    <File Name="vcpfpp.br" />
+    <File Name="vcpfpp30.br" />
+    <File Name="vcpfpp45.br" />
+    <File Name="vcpfx20.br" />
+    <File Name="vcpk.br" />
+    <File Name="vcpkat.br" />
+    <File Name="vcpkppx.br" />
+    <File Name="vcpkusb.br" />
+    <File Name="vcptelo.br" />
+    <File Name="vcptgze.br" />
+    <File Name="vcptham.br" />
+    <File Name="vcptpp45.br" />
+    <File Name="vcresman.br" />
+    <File Name="vcrsmsrv.br" />
+    <File Name="vcrt.br" />
+    <File Name="vcstart.br" />
+    <File Name="vcstpost.br" />
+    <File Name="vctcal.br" />
+    <File Name="vcvisapi.br" />
+    <File Name="vcxml.br" />
+    <File Name="viscomp.br" />
+    <File Name="visvc.br" />
+  </Core>
+</Firmware>

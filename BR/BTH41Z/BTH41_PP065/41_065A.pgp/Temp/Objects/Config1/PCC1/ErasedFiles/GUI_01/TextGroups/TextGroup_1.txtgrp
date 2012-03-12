@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="2.4"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="TextGroup_1">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="14"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="cs-CZ">
+    <Text ID="87564" Value="Není CO2"/>
+    <Text ID="87565" Value="CO2 v pořádku"/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="87564" Value="0"/>
+    <Index ID="87565" Value="1"/>
+  </IndexMap>
+</TextGroup>

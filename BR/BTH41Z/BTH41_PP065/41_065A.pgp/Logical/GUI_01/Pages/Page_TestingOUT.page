@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="2.4"?>
+<Page xmlns="http://br-automation.co.at/AS/VC/Project" Name="Page_TestingOUT">
+  <Property Name="Description" Value=""/>
+  <Property Name="Height" Value="240"/>
+  <Property Name="Index" Value="13"/>
+  <Property Name="MoveFocus" Value="Circular"/>
+  <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[default]"/>
+  <Property Name="Width" Value="320"/>
+  <Layers>
+    <Layer Name="Default">
+      <Property Name="BackColor" Value="9"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="EditingMode" Value="Normal"/>
+      <Property Name="Height" Value="240"/>
+      <Property Name="Left" Value="0"/>
+      <Property Name="OutlineColor" Value="0"/>
+      <Property Name="OutlineDisplayControl" Value="False"/>
+      <Property Name="OutlineDisplayName" Value="True"/>
+      <Property Name="OutlineHatched" Value="False"/>
+      <Property Name="StatusDatapoint" Value="None"/>
+      <Property Name="Top" Value="0"/>
+      <Property Name="VisibilityMode" Value="Normal"/>
+      <Property Name="Width" Value="320"/>
+      <Property Name="Z-Order" Value="0"/>
+      <TextGroup>
+        <TextLayer LanguageId="cs-CZ">
+          <Text ID="90243" Value="Testování Výstupů"/>
+          <Text ID="90261" Value="Zpět"/>
+          <Text ID="90263" Value="Q1 - Zavzdušnění"/>
+          <Text ID="90265" Value="Q2 - Stříhání"/>
+          <Text ID="90267" Value="Q3 - Datumování"/>
+          <Text ID="90269" Value="Q5 - Řemínky"/>
+          <Text ID="90271" Value="Q4 - CO2"/>
+          <Text ID="90273" Value="Q6 - Odv. folie"/>
+          <Text ID="90275" Value="Q7 - Reset Inkr."/>
+          <Text ID="90277" Value="Q8 - Topení"/>
+          <Text ID="90279" Value="Q9 - Posuv folie"/>
+          <Text ID="90281" Value="Q10 - Dopravník"/>
+          <Text ID="90283" Value="Q11 - Dávkovač"/>
+          <Text ID="90285" Value="Q12 - Voda"/>
+        </TextLayer>
+        <IndexMap>
+          <Index ID="90243" Value="37"/>
+          <Index ID="90261" Value="55"/>
+          <Index ID="90263" Value="57"/>
+          <Index ID="90265" Value="59"/>
+          <Index ID="90267" Value="61"/>
+          <Index ID="90269" Value="63"/>
+          <Index ID="90271" Value="65"/>
+          <Index ID="90273" Value="67"/>
+          <Index ID="90275" Value="69"/>
+          <Index ID="90277" Value="71"/>
+          <Index ID="90279" Value="73"/>
+          <Index ID="90281" Value="75"/>
+          <Index ID="90283" Value="77"/>
+          <Index ID="90285" Value="79"/>
+        </IndexMap>
+      </TextGroup>
+      <Controls>
+        <Control ClassId="0x00001004" Name="Text_7">
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Font_1]"/>
+          <Property Name="Height" Value="20"/>
+          <Property Name="IndexDatapoint" Value="None"/>
+          <Property Name="Left" Value="75"/>
+          <Property Name="SimulationValue" Value="0"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="37"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="4"/>
+          <Property Name="Width" Value="150"/>
+        </Control>
+        <Control ClassId="0x0000100D" Name="Line_1">
+          <Property Name="Description" Value=""/>
+          <Property Name="EndX" Value="315"/>
+          <Property Name="EndY" Value="25"/>
+          <Property Name="StartX" Value="5"/>
+          <Property Name="StartY" Value="25"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Line]"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_4">
+          <Property Name="BackColor" Value="42"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="KeyMode" Value="Confirmed"/>
+          <Property Name="Left" Value="110"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="55"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="209"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Back]"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_1">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="57"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="32"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q1_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_2">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="59"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="57"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q2_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_3">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="61"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="82"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q3_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_5">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="63"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="132"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q5_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_6">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="65"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="107"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q4_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_7">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="67"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="157"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q6_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_8">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="185"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="69"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="32"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q7_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_9">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="184"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="71"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="57"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q8_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_10">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="184"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="73"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="82"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q9_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_11">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="184"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="75"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="107"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q10_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_12">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="184"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="77"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="132"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q11_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_13">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="BackColor" Value="65"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[DefaultFont1]"/>
+          <Property Name="Height" Value="23"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="184"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="79"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="157"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_Q12_TEST]"/>
+          <Property Name="Width" Value="115"/>
+        </Control>
+      </Controls>
+      <KeyMapping>
+        <VirtualKey Name="VD_Back">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_odvijeniFolie]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_1"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_odvijeniFolie]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_2"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_releKA1_topeni]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_3"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_releKA2_posuvFolie]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_4"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_releKA3_davkovacStart]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_5"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_releKA4_davkovacVody]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_6"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_stykacOdsDopravniku]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_7"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilCO2]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_8"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilDatum]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_9"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilPodrazeni]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_10"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilSevreniPosuvRem]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_11"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilStrihani]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_12"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilTrojuhSkladani]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_13"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilVystrkSacku]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_14"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_zavzdusneni]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000160">
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_15"/>
+              <Property Name="Target" Value="Back"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q1_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_zavzdusneni]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q2_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilStrihani]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q3_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilDatum]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q4_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilCO2]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q5_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilSevreniPosuvRem]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q6_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_odvijeniFolie]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q7_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_resetInkrementPosuvu]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q8_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_releKA1_topeni]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q9_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_releKA2_posuvFolie]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q10_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_stykacOdsDopravniku]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q11_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_releKA3_davkovacStart]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q12_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_releKA4_davkovacVody]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q13_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_ventilCO2]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_Q14_TEST">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.o_odvijeniFolie]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+      </KeyMapping>
+    </Layer>
+  </Layers>
+  <MovementOrder/>
+  <TabSequence/>
+</Page>
