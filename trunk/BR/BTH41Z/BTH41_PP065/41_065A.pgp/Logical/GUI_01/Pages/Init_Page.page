@@ -35,7 +35,7 @@
           <Text ID="87238" Value="Stroj není připraven k provozu !"/>
           <Text ID="87239" Value="Seřízení"/>
           <Text ID="87253" Value="Detailní Infomace"/>
-          <Text ID="90402" Value="sw  rev. 2.0  12 / 2011"/>
+          <Text ID="90402" Value="sw  rev. 2.1  2 / 2012"/>
           <Text ID="94327" Value="(c) Václav Dvořák"/>
           <Text ID="100237" Value="Test"/>
         </TextLayer>
@@ -315,19 +315,6 @@
         </Control>
       </Controls>
       <KeyMapping>
-        <VirtualKey Name="VD_TMP_STARTUP">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000160">
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="Source[local].Page[OK_Page]"/>
-              <Property Name="Target" Value="Page"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
         <VirtualKey Name="VD_DETAIL_INFO">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
@@ -337,6 +324,19 @@
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
               <Property Name="Page" Value="Source[local].Page[ErrorStatus_Page]"/>
+              <Property Name="Target" Value="Page"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_TMP_STARTUP">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000160">
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="Page" Value="Source[local].Page[OK_Page]"/>
               <Property Name="Target" Value="Page"/>
             </KeyAction>
           </KeyActions>
