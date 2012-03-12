@@ -702,27 +702,6 @@
       </Folder>
       <Folder Name="VKeys">
         <Folder Name="Common" TargetIndex="4294967294">
-          <Object Name="VD_TMP_STARTUP" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_TMP_STARTUP]">
-            <Group Name="LedMapping">
-              <UInt32 Name="Datapoint">4294967295</UInt32>
-              <Byte Name="Mode">0</Byte>
-              <Byte Name="Active">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-            </Group>
-            <Group Name="KeyMapping">
-              <UInt32 Name="KeyActionCount">1</UInt32>
-              <UInt32 Name="ActionID">352</UInt32>
-              <UInt32 Name="ActionDataSize">8</UInt32>
-              <Byte Name="Locking">0</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
-              <UInt32 Name="LockingLevel">0</UInt32>
-              <Reference Name="Page" Type="PAGE">Source[local].Page[OK_Page]</Reference>
-              <UInt16 Name="Target">2</UInt16>
-              <UInt16 Name="Reserved">0</UInt16>
-            </Group>
-          </Object>
           <Object Name="VD_DETAIL_INFO" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_DETAIL_INFO]">
             <Group Name="LedMapping">
               <UInt32 Name="Datapoint">4294967295</UInt32>
@@ -740,6 +719,27 @@
               <UInt32 Name="LockingDatapoint">4294967295</UInt32>
               <UInt32 Name="LockingLevel">0</UInt32>
               <Reference Name="Page" Type="PAGE">Source[local].Page[ErrorStatus_Page]</Reference>
+              <UInt16 Name="Target">2</UInt16>
+              <UInt16 Name="Reserved">0</UInt16>
+            </Group>
+          </Object>
+          <Object Name="VD_TMP_STARTUP" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_TMP_STARTUP]">
+            <Group Name="LedMapping">
+              <UInt32 Name="Datapoint">4294967295</UInt32>
+              <Byte Name="Mode">0</Byte>
+              <Byte Name="Active">0</Byte>
+              <UInt16 Name="Reserved">0</UInt16>
+            </Group>
+            <Group Name="KeyMapping">
+              <UInt32 Name="KeyActionCount">1</UInt32>
+              <UInt32 Name="ActionID">352</UInt32>
+              <UInt32 Name="ActionDataSize">8</UInt32>
+              <Byte Name="Locking">0</Byte>
+              <Byte Name="Reserved">0</Byte>
+              <UInt16 Name="Reserved">0</UInt16>
+              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
+              <UInt32 Name="LockingLevel">0</UInt32>
+              <Reference Name="Page" Type="PAGE">Source[local].Page[OK_Page]</Reference>
               <UInt16 Name="Target">2</UInt16>
               <UInt16 Name="Reserved">0</UInt16>
             </Group>
@@ -929,14 +929,14 @@
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">94327</UInt32>
-                <UInt32 Name="TextOffset">464</UInt32>
+                <UInt32 Name="TextOffset">462</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">100237</UInt32>
-                <UInt32 Name="TextOffset">500</UInt32>
+                <UInt32 Name="TextOffset">498</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
@@ -953,7 +953,7 @@
               <String Name="Text" Encoding="Unicode">"Stroj není připraven k provozu !"</String>
               <String Name="Text" Encoding="Unicode">"Seřízení"</String>
               <String Name="Text" Encoding="Unicode">"Detailní Infomace"</String>
-              <String Name="Text" Encoding="Unicode">"sw  rev. 2.0  12 / 2011"</String>
+              <String Name="Text" Encoding="Unicode">"sw  rev. 2.1  2 / 2012"</String>
               <String Name="Text" Encoding="Unicode">"(c) Václav Dvořák"</String>
               <String Name="Text" Encoding="Unicode">"Test"</String>
             </Group>

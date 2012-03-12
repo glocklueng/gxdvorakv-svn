@@ -2,40 +2,20 @@
 <?AutomationStudio Version="2.4"?>
 <EnvironmentSettings xmlns="http://br-automation.co.at/AS/VC/Project">
   <Visual_Components_Frames>
-    <Property Name="ActiveFrame" Value="2"/>
+    <Property Name="ActiveFrame" Value="0"/>
     <Property Name="SaveFrameLimit" Value="4"/>
     <Property Name="ShowCmd" Value="1"/>
     <Frame>
       <Property Name="ActiveView" Value="0"/>
       <Property Name="FrameMinPtX" Value="-1"/>
       <Property Name="FrameMinPtY" Value="-1"/>
-      <Property Name="ParentObjectName" Value="VirtualKeyMngr_1"/>
-      <Property Name="ParentObjectType" Value="VirtualKeyMngr"/>
-      <Property Name="ShowCmd" Value="1"/>
-      <Property Name="WndPosBottom" Value="380"/>
-      <Property Name="WndPosLeft" Value="44"/>
-      <Property Name="WndPosRight" Value="1184"/>
-      <Property Name="WndPosTop" Value="58"/>
-      <Views>
-        <View>
-          <Property Name="ID" Value="4096"/>
-        </View>
-        <View>
-          <Property Name="ID" Value="0"/>
-        </View>
-      </Views>
-    </Frame>
-    <Frame>
-      <Property Name="ActiveView" Value="0"/>
-      <Property Name="FrameMinPtX" Value="-1"/>
-      <Property Name="FrameMinPtY" Value="-1"/>
-      <Property Name="ParentObjectName" Value="OK_Page"/>
+      <Property Name="ParentObjectName" Value="Page_Testing"/>
       <Property Name="ParentObjectType" Value="Page"/>
       <Property Name="ShowCmd" Value="1"/>
-      <Property Name="WndPosBottom" Value="351"/>
-      <Property Name="WndPosLeft" Value="22"/>
-      <Property Name="WndPosRight" Value="1162"/>
-      <Property Name="WndPosTop" Value="29"/>
+      <Property Name="WndPosBottom" Value="491"/>
+      <Property Name="WndPosLeft" Value="48"/>
+      <Property Name="WndPosRight" Value="441"/>
+      <Property Name="WndPosTop" Value="175"/>
       <Views>
         <View>
           <Property Name="ID" Value="32"/>
@@ -66,13 +46,13 @@
       <Property Name="ActiveView" Value="0"/>
       <Property Name="FrameMinPtX" Value="-1"/>
       <Property Name="FrameMinPtY" Value="-1"/>
-      <Property Name="ParentObjectName" Value="Page_TestingOUT"/>
+      <Property Name="ParentObjectName" Value="OK_Page"/>
       <Property Name="ParentObjectType" Value="Page"/>
       <Property Name="ShowCmd" Value="1"/>
-      <Property Name="WndPosBottom" Value="322"/>
-      <Property Name="WndPosLeft" Value="0"/>
-      <Property Name="WndPosRight" Value="1140"/>
-      <Property Name="WndPosTop" Value="0"/>
+      <Property Name="WndPosBottom" Value="320"/>
+      <Property Name="WndPosLeft" Value="36"/>
+      <Property Name="WndPosRight" Value="429"/>
+      <Property Name="WndPosTop" Value="2"/>
       <Views>
         <View>
           <Property Name="ID" Value="32"/>

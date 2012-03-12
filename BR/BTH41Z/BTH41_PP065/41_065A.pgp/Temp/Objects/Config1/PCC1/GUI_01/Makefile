@@ -1,10 +1,10 @@
 export ASBINARY=C:\Program Files\BrAutomation\As27000en\Bin
 export VCCBuildAll=1
-export VCCASPROJECTPATH='c:\projects\google~1\trunk\br\bth41z\bth41_~1\41_065a.pgp'
+export VCCASPROJECTPATH='c:\projects\google~1\trunk\br\bth41z\bth41_~1\tmp.pgp'
 export CPUNAME=BTH41_Z1
-export VCINI=C:\projects\GOOGLE~1\trunk\br\bth41z\BTH41_~1\41_065a.pgp\pgm\BTH41_Z1\CPU\VISUAL~1\VC.ini
+export VCINI=C:\projects\GOOGLE~1\trunk\br\bth41z\BTH41_~1\tmp.pgp\pgm\BTH41_Z1\CPU\VISUAL~1\VC.ini
 export VCPATH=c:\program files\brautomation\as27000en\as\vc
-export VCPROJECTPATH='C:\projects\ googlesvn\trunk\br\bth41z\bth41_pp065\41_065a.pgp\pgm\BTH41_Z1\CPU'
+export VCPROJECTPATH='C:\projects\ googlesvn\trunk\br\bth41z\bth41_pp065\tmp.pgp\pgm\BTH41_Z1\CPU'
 export VCOBJECT=GUI_01
 ROOTMAKE='$(VCPATH)\make\makefile'
 export MAKE='C:/Program Files/BrAutomation/As27000en/as/gnuinst/bin/make.exe'

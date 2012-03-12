@@ -58,6 +58,18 @@ _INIT void InitInputs(void) {
 /**
  *		testuje vsechny chybove stavy potrebne pro rozbeh
  */
+BOOL checkReady_bezFolie(void){
+	
+	return ( i_totalStop && 
+			 i_kryty && 
+			 i_datovaniKoncak && 
+			 /*i_tlakuVzduchu && */
+			 i_tlakVzduchu_Filtered &&
+			 (!topeni_St || i_teplotaDosazena || topeniImpuls_St) && 
+			 i_pritomnostCO2
+			  );	
+}
+
 BOOL checkReady(void){
 	
 	return ( i_totalStop && 
@@ -66,10 +78,12 @@ BOOL checkReady(void){
 			 /*i_tlakuVzduchu && */
 			 i_tlakVzduchu_Filtered &&
 			 (!topeni_St || i_teplotaDosazena || topeniImpuls_St) && 
-			 i_pritomnostCO2 &&
-			 !i_konecFolie
+			 i_pritomnostCO2
+ 		  	 && !i_konecFolie 
+		  
 			  );	
 }
+
 
 /**
 *	vraci 1 pokud je  SOFT ERROR, 0 = OK
@@ -150,6 +164,8 @@ double difAngle;
 			if (checkReady()){		/* ready*/
 				if (actualGUIPage != 12) setGUIPage = 2; /* neprepinej pri testovani*/
 				stateMachine = SM_READY_NO_PREPARE;
+			}else if (checkReady_bezFolie()){
+				/*  do nothing */
 			}else{
 				o_zavzdusneni = 0;
 			}
@@ -166,8 +182,7 @@ double difAngle;
 			if (actualGUIPage ==0) setGUIPage = 2;
 			if (!checkReady()){		
 				stateMachine = SM_ON;
-				setGUIPage = 0;
-				o_zavzdusneni = 0;
+				setGUIPage = 0;	
 				
 			}else  if (startActive){
 			
@@ -511,6 +526,7 @@ double difAngle;
 			++timer_folie;
 			if ((timer_folie > 150 )|| (posuvSM == PSM_FINISHED)){				
 				stateMachine = SM_ON;
+  			    o_zavzdusneni = 0;
 			}
 		break;		
 		case SM_SOFT_ERR_NO_START:

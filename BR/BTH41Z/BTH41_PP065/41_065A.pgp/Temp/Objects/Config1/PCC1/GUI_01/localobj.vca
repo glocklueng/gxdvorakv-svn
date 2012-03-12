@@ -653,8 +653,8 @@
   <Symbol Name="\Projects\GUI_01" Index="1073741863" Type="REF" RefString="Source[local].StyleGroup[0x00001017].StyleClass[StyleClass_1]" />
   <Symbol Name="\Projects\GUI_01" Index="1073741864" Type="REF" RefString="Source[local].StyleGroup[0x00001019].StyleClass[StyleClass_1]" />
   <Symbol Name="\Projects\GUI_01" Index="1073741865" Type="REF" RefString="Source[local].StyleGroup[0x0000101A].StyleClass[StyleClass_1]" />
-  <Symbol Name="\Projects\GUI_01\Layers\Init_PageDefault\VKeys\Common" Index="1073741948" Type="VKEY" RefString="Source[local].VirtualKey[VD_TMP_STARTUP]#\Projects\GUI_01\Layers\Init_PageDefault\VKeys\Common" />
   <Symbol Name="\Projects\GUI_01\Layers\Init_PageDefault\VKeys\Common" Index="1073741947" Type="VKEY" RefString="Source[local].VirtualKey[VD_DETAIL_INFO]#\Projects\GUI_01\Layers\Init_PageDefault\VKeys\Common" />
+  <Symbol Name="\Projects\GUI_01\Layers\Init_PageDefault\VKeys\Common" Index="1073741948" Type="VKEY" RefString="Source[local].VirtualKey[VD_TMP_STARTUP]#\Projects\GUI_01\Layers\Init_PageDefault\VKeys\Common" />
   <Symbol Name="\Projects\GUI_01\Layers\ErrorStatus_PageDefault\VKeys\Common" Index="1073741941" Type="VKEY" RefString="Source[local].VirtualKey[VD_Back]#\Projects\GUI_01\Layers\ErrorStatus_PageDefault\VKeys\Common" />
   <Symbol Name="\Projects\GUI_01\Layers\OK_PageDefault\VKeys\Common" Index="1073741997" Type="VKEY" RefString="Source[local].VirtualKey[VD_CLEAR_POCET_DAVEK]#\Projects\GUI_01\Layers\OK_PageDefault\VKeys\Common" />
   <Symbol Name="\Projects\GUI_01\Layers\OK_PageDefault\VKeys\Common" Index="1073741944" Type="VKEY" RefString="Source[local].VirtualKey[VD_DAVKA]#\Projects\GUI_01\Layers\OK_PageDefault\VKeys\Common" />
