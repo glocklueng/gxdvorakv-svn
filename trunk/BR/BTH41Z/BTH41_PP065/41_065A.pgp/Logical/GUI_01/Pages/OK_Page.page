@@ -26,8 +26,6 @@
       <TextGroup>
         <TextLayer LanguageId="cs-CZ">
           <Text ID="87256" Value="Dávkování"/>
-          <Text ID="87258" Value="Seřízení"/>
-          <Text ID="87260" Value="Testování"/>
           <Text ID="87262" Value="START"/>
           <Text ID="87264" Value="STOP"/>
           <Text ID="88864" Value="Změřené otáčky [n / min]"/>
@@ -37,11 +35,11 @@
           <Text ID="90137" Value="..."/>
           <Text ID="99155" Value="Odvinutá folie [mm]"/>
           <Text ID="99156" Value="Analog 2 (posuv)"/>
+          <Text ID="102136" Value="Servisní Menu"/>
+          <Text ID="103392" Value="Technologie:"/>
         </TextLayer>
         <IndexMap>
           <Index ID="87256" Value="1"/>
-          <Index ID="87258" Value="3"/>
-          <Index ID="87260" Value="5"/>
           <Index ID="87262" Value="7"/>
           <Index ID="87264" Value="9"/>
           <Index ID="88864" Value="11"/>
@@ -51,6 +49,8 @@
           <Index ID="90137" Value="2"/>
           <Index ID="99155" Value="15"/>
           <Index ID="99156" Value="16"/>
+          <Index ID="102136" Value="17"/>
+          <Index ID="103392" Value="6"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -75,7 +75,7 @@
           <Property Name="Width" Value="300"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_1">
-          <Property Name="BackColor" Value="44"/>
+          <Property Name="BackColor" Value="48"/>
           <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="ColorDatapoint" Value="Source[global].Variable[Local.gui_ctr.davkovani_Btn_col]"/>
@@ -98,49 +98,6 @@
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="15"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_DAVKA]"/>
-          <Property Name="Width" Value="90"/>
-        </Control>
-        <Control ClassId="0x00001002" Name="Button_2">
-          <Property Name="BackColor" Value="76"/>
-          <Property Name="BitmapIndexDatapoint" Value="None"/>
-          <Property Name="BitmapSource" Value="None"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Height" Value="40"/>
-          <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="115"/>
-          <Property Name="PressedBitmapSource" Value="None"/>
-          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
-          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
-          <Property Name="TextIndex" Value="3"/>
-          <Property Name="TextIndexDatapoint" Value="None"/>
-          <Property Name="TextSimulationValue" Value="0"/>
-          <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="15"/>
-          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_SERIZENI]"/>
-          <Property Name="Width" Value="90"/>
-        </Control>
-        <Control ClassId="0x00001002" Name="Button_3">
-          <Property Name="BackColor" Value="76"/>
-          <Property Name="BitmapIndexDatapoint" Value="None"/>
-          <Property Name="BitmapSource" Value="None"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Height" Value="40"/>
-          <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="220"/>
-          <Property Name="Locking" Value="Datapoint &gt;= Level"/>
-          <Property Name="LockingDatapoint" Value="None"/>
-          <Property Name="LockingLevel" Value="0"/>
-          <Property Name="PressedBitmapSource" Value="None"/>
-          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
-          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
-          <Property Name="TextIndex" Value="5"/>
-          <Property Name="TextIndexDatapoint" Value="None"/>
-          <Property Name="TextSimulationValue" Value="0"/>
-          <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="15"/>
-          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_TEST]"/>
           <Property Name="Width" Value="90"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_4">
@@ -444,7 +401,7 @@
           <Property Name="Border" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[smallFont]"/>
-          <Property Name="ForeColor" Value="7"/>
+          <Property Name="ForeColor" Value="59"/>
           <Property Name="Height" Value="16"/>
           <Property Name="Left" Value="155"/>
           <Property Name="MaxDatapoint" Value="None"/>
@@ -459,38 +416,61 @@
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="15"/>
         </Control>
+        <Control ClassId="0x00001002" Name="Button_6">
+          <Property Name="BackColor" Value="76"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="40"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="199"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="17"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="14"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_MENU]"/>
+          <Property Name="Width" Value="110"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_1">
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[smallFont]"/>
+          <Property Name="Height" Value="22"/>
+          <Property Name="IndexDatapoint" Value="None"/>
+          <Property Name="Left" Value="121"/>
+          <Property Name="SimulationValue" Value="0"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="6"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="15"/>
+          <Property Name="Width" Value="64"/>
+        </Control>
+        <Control ClassId="0x00001007" Name="Numeric_10">
+          <Property Name="BackColor" Value="15"/>
+          <Property Name="Border" Value="None"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="ForeColor" Value="1"/>
+          <Property Name="Height" Value="19"/>
+          <Property Name="Left" Value="141"/>
+          <Property Name="MaxDatapoint" Value="None"/>
+          <Property Name="MaxValue" Value="None"/>
+          <Property Name="MinDatapoint" Value="None"/>
+          <Property Name="MinValue" Value="None"/>
+          <Property Name="SimulationValue" Value="0"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
+          <Property Name="TeachDatapoint" Value="None"/>
+          <Property Name="Top" Value="31"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.technologieNumber]"/>
+          <Property Name="ValueMode" Value="Standard"/>
+          <Property Name="Width" Value="16"/>
+        </Control>
       </Controls>
       <KeyMapping>
-        <VirtualKey Name="VD_CLEAR_POCET_DAVEK">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000161">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="SetValue" Value="0"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.pocetDavek]"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
-        <VirtualKey Name="VD_DAVKA">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000161">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.davkovaniBtnPressed]"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
         <VirtualKey Name="VD_START">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
@@ -521,6 +501,49 @@
             </KeyAction>
           </KeyActions>
         </VirtualKey>
+        <VirtualKey Name="VD_DAVKA">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.davkovaniBtnPressed]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_CLEAR_POCET_DAVEK">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.pocetDavek]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_MENU">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000160">
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="Page" Value="Source[local].Page[Page_Menu]"/>
+              <Property Name="Target" Value="Page"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
       </KeyMapping>
     </Layer>
   </Layers>
@@ -534,5 +557,6 @@
     <TabSeqItem Index="5" Value="Source[embedded].Layer[Default].Control[Numeric_6]"/>
     <TabSeqItem Index="6" Value="Source[embedded].Layer[Default].Control[Numeric_7]"/>
     <TabSeqItem Index="7" Value="Source[embedded].Layer[Default].Control[Numeric_8]"/>
+    <TabSeqItem Index="8" Value="Source[embedded].Layer[Default].Control[Numeric_10]"/>
   </TabSequence>
 </Page>

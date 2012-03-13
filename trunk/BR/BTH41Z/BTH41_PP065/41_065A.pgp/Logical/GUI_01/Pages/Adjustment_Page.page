@@ -8,11 +8,11 @@
   <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[default]"/>
   <Property Name="Width" Value="320"/>
   <Layers>
-    <LayerRef Source="Source[local].Layer[CommonLayer_1]">
+    <LayerRef Source="Source[local].Layer[CommonLayer_2]">
       <Property Name="Description" Value=""/>
       <Property Name="EditingMode" Value="Frozen"/>
       <Property Name="Left" Value="0"/>
-      <Property Name="Name" Value="CommonLayer_1"/>
+      <Property Name="Name" Value="CommonLayer_2"/>
       <Property Name="OutlineColor" Value="0"/>
       <Property Name="OutlineDisplayControl" Value="False"/>
       <Property Name="OutlineDisplayName" Value="True"/>
@@ -768,7 +768,7 @@
       <Property Name="Z-Order" Value="2"/>
       <TextGroup>
         <TextLayer LanguageId="cs-CZ">
-          <Text ID="87574" Value="Další  2/2 ..."/>
+          <Text ID="87574" Value="Další &gt;"/>
         </TextLayer>
         <IndexMap>
           <Index ID="87574" Value="0"/>
@@ -782,7 +782,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="30"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="244"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
@@ -793,7 +793,7 @@
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="205"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_NEXT]"/>
-          <Property Name="Width" Value="90"/>
+          <Property Name="Width" Value="70"/>
         </Control>
       </Controls>
       <KeyMapping>

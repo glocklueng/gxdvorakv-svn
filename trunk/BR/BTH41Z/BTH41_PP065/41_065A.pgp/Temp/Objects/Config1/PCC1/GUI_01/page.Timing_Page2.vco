@@ -906,10 +906,10 @@
               <UInt16 Name="Reserved">0</UInt16>
               <UInt32 Name="LockingDatapoint">4294967295</UInt32>
               <UInt32 Name="LockingLevel">0</UInt32>
-              <Double Name="SetValue">3</Double>
+              <Double Name="SetValue">1</Double>
               <Double Name="ResetValue">0</Double>
               <Double Name="CompletionValue">0</Double>
-              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.gui_ctr.ulozBtnPressed]</Reference>
+              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.gui_ctr.pouzitBtnPressed]</Reference>
               <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
               <Byte Name="Mode">0</Byte>
               <Byte Name="Reserved">0</Byte>
@@ -964,6 +964,33 @@
               <UInt32 Name="LockingDatapoint">4294967295</UInt32>
               <UInt32 Name="LockingLevel">0</UInt32>
               <Double Name="StepValue">-2</Double>
+              <Double Name="MinValue">0</Double>
+              <Double Name="MaxValue">3000</Double>
+              <Double Name="CompletionValue">0</Double>
+              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.nastaveniOFF_Time]</Reference>
+              <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
+              <Byte Name="Repeat">1</Byte>
+              <Byte Name="Reserved">0</Byte>
+              <UInt16 Name="Reserved1">0</UInt16>
+            </Group>
+          </Object>
+          <Object Name="VD_NAST_OFF_UP" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_OFF_UP]">
+            <Group Name="LedMapping">
+              <UInt32 Name="Datapoint">4294967295</UInt32>
+              <Byte Name="Mode">0</Byte>
+              <Byte Name="Active">0</Byte>
+              <UInt16 Name="Reserved">0</UInt16>
+            </Group>
+            <Group Name="KeyMapping">
+              <UInt32 Name="KeyActionCount">1</UInt32>
+              <UInt32 Name="ActionID">354</UInt32>
+              <UInt32 Name="ActionDataSize">44</UInt32>
+              <Byte Name="Locking">0</Byte>
+              <Byte Name="Reserved">0</Byte>
+              <UInt16 Name="Reserved">0</UInt16>
+              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
+              <UInt32 Name="LockingLevel">0</UInt32>
+              <Double Name="StepValue">2</Double>
               <Double Name="MinValue">0</Double>
               <Double Name="MaxValue">3000</Double>
               <Double Name="CompletionValue">0</Double>
@@ -1054,33 +1081,6 @@
               <Double Name="MaxValue">1</Double>
               <Double Name="CompletionValue">1</Double>
               <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.redraw1]</Reference>
-              <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
-              <Byte Name="Repeat">1</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved1">0</UInt16>
-            </Group>
-          </Object>
-          <Object Name="VD_NAST_OFF_UP" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_OFF_UP]">
-            <Group Name="LedMapping">
-              <UInt32 Name="Datapoint">4294967295</UInt32>
-              <Byte Name="Mode">0</Byte>
-              <Byte Name="Active">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-            </Group>
-            <Group Name="KeyMapping">
-              <UInt32 Name="KeyActionCount">1</UInt32>
-              <UInt32 Name="ActionID">354</UInt32>
-              <UInt32 Name="ActionDataSize">44</UInt32>
-              <Byte Name="Locking">0</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
-              <UInt32 Name="LockingLevel">0</UInt32>
-              <Double Name="StepValue">2</Double>
-              <Double Name="MinValue">0</Double>
-              <Double Name="MaxValue">3000</Double>
-              <Double Name="CompletionValue">0</Double>
-              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.nastaveniOFF_Time]</Reference>
               <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
               <Byte Name="Repeat">1</Byte>
               <Byte Name="Reserved">0</Byte>
@@ -1303,7 +1303,7 @@
               <String Name="Text" Encoding="Unicode">"Doba zapnutí  [ms]"</String>
               <String Name="Text" Encoding="Unicode">"Aktuální pozice"</String>
               <String Name="Text" Encoding="Unicode">"stroje  [°]"</String>
-              <String Name="Text" Encoding="Unicode">"Uložit"</String>
+              <String Name="Text" Encoding="Unicode">"Použít"</String>
               <String Name="Text" Encoding="Unicode">"Uloženo"</String>
               <String Name="Text" Encoding="Unicode">"Storno"</String>
               <String Name="Text" Encoding="Unicode">"Uloženo"</String>

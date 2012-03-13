@@ -34,7 +34,7 @@
           <Text ID="89123" Value="Doba zapnutí  [ms]"/>
           <Text ID="89124" Value="Aktuální pozice"/>
           <Text ID="89125" Value="stroje  [°]"/>
-          <Text ID="89127" Value="Uložit"/>
+          <Text ID="89127" Value="Použít"/>
           <Text ID="89128" Value="Uloženo"/>
           <Text ID="89129" Value="Storno"/>
           <Text ID="89130" Value="Uloženo"/>
@@ -410,8 +410,8 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="SetValue" Value="3"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.gui_ctr.ulozBtnPressed]"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.gui_ctr.pouzitBtnPressed]"/>
             </KeyAction>
             <KeyAction ClassId="0x00000160">
               <Property Name="Description" Value=""/>
@@ -447,6 +447,24 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="Repeat" Value="True"/>
               <Property Name="StepValue" Value="-2"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniOFF_Time]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_NAST_OFF_UP">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000162">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="MaxValue" Value="3000"/>
+              <Property Name="MinValue" Value="0"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="Repeat" Value="True"/>
+              <Property Name="StepValue" Value="2"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniOFF_Time]"/>
             </KeyAction>
           </KeyActions>
@@ -508,24 +526,6 @@
               <Property Name="Repeat" Value="True"/>
               <Property Name="StepValue" Value="1"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.redraw1]"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
-        <VirtualKey Name="VD_NAST_OFF_UP">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000162">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="3000"/>
-              <Property Name="MinValue" Value="0"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="Repeat" Value="True"/>
-              <Property Name="StepValue" Value="2"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniOFF_Time]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

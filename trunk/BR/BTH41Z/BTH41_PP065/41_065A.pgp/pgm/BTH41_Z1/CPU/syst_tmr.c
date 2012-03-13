@@ -139,8 +139,8 @@ _CYCLIC void checkIncrement(void) {
 		case SM_SOFT_ERROR :
 			if (incrementRefOld != (incrementStatus & 0x08)){
 			/* prisel referenci impuls */
-				setGUIPage = 1;	
-				actualGUIPage = 1;									
+				setGUIPage = 2;	
+				actualGUIPage = 2;									
 				stateMachine = SM_WAIT_STOP;
 				break;
 			}

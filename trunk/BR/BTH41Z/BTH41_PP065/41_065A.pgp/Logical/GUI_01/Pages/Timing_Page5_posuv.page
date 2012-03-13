@@ -32,7 +32,7 @@
           <Text ID="98128" Value="+"/>
           <Text ID="98130" Value="Úhel zapnutí  [°]"/>
           <Text ID="98131" Value="Délka sáčku [mm]"/>
-          <Text ID="98135" Value="Uložit"/>
+          <Text ID="98135" Value="Použít"/>
           <Text ID="98136" Value="Uloženo"/>
           <Text ID="98137" Value="Storno"/>
           <Text ID="98138" Value="Uloženo"/>
@@ -559,37 +559,40 @@
         </Control>
       </Controls>
       <KeyMapping>
-        <VirtualKey Name="VD_NAST_FOT_UP">
+        <VirtualKey Name="VD_ULOZ_CASOVANI">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
-            <KeyAction ClassId="0x00000162">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="1"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="360"/>
-              <Property Name="MinValue" Value="0"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="Repeat" Value="True"/>
-              <Property Name="StepValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniON_2]"/>
-            </KeyAction>
-            <KeyAction ClassId="0x00000162">
+            <KeyAction ClassId="0x00000161">
               <Property Name="CompletionDatapoint" Value="None"/>
               <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="1"/>
-              <Property Name="MinValue" Value="0"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.gui_ctr.pouzitBtnPressed]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000160">
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_1"/>
-              <Property Name="Repeat" Value="True"/>
-              <Property Name="StepValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.redraw1]"/>
+              <Property Name="Target" Value="Back"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
-        <VirtualKey Name="VD_NAST_FOT_DOWN">
+        <VirtualKey Name="VD_STORNO_CASOVANI">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000160">
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="Target" Value="Back"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_NAST_OFF_DOWN">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
@@ -603,67 +606,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="Repeat" Value="True"/>
               <Property Name="StepValue" Value="-1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniON_2]"/>
-            </KeyAction>
-            <KeyAction ClassId="0x00000162">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="1"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="1"/>
-              <Property Name="MinValue" Value="0"/>
-              <Property Name="Name" Value="Action_1"/>
-              <Property Name="Repeat" Value="True"/>
-              <Property Name="StepValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.redraw1]"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
-        <VirtualKey Name="VD_NAST_ON_UP">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000162">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="1"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="360"/>
-              <Property Name="MinValue" Value="0"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="Repeat" Value="True"/>
-              <Property Name="StepValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniON]"/>
-            </KeyAction>
-            <KeyAction ClassId="0x00000162">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="1"/>
-              <Property Name="MinValue" Value="0"/>
-              <Property Name="Name" Value="Action_1"/>
-              <Property Name="Repeat" Value="True"/>
-              <Property Name="StepValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.redraw1]"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
-        <VirtualKey Name="VD_NAST_ON_DOWN">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000162">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="359"/>
-              <Property Name="MinValue" Value="-1"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="Repeat" Value="True"/>
-              <Property Name="StepValue" Value="-1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniON]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniOFF]"/>
             </KeyAction>
             <KeyAction ClassId="0x00000162">
               <Property Name="CompletionDatapoint" Value="None"/>
@@ -709,7 +652,7 @@
             </KeyAction>
           </KeyActions>
         </VirtualKey>
-        <VirtualKey Name="VD_NAST_OFF_DOWN">
+        <VirtualKey Name="VD_NAST_ON_DOWN">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
@@ -723,7 +666,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="Repeat" Value="True"/>
               <Property Name="StepValue" Value="-1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniOFF]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniON]"/>
             </KeyAction>
             <KeyAction ClassId="0x00000162">
               <Property Name="CompletionDatapoint" Value="None"/>
@@ -739,36 +682,93 @@
             </KeyAction>
           </KeyActions>
         </VirtualKey>
-        <VirtualKey Name="VD_STORNO_CASOVANI">
+        <VirtualKey Name="VD_NAST_ON_UP">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
-            <KeyAction ClassId="0x00000160">
+            <KeyAction ClassId="0x00000162">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="1"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
+              <Property Name="MaxValue" Value="360"/>
+              <Property Name="MinValue" Value="0"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Target" Value="Back"/>
+              <Property Name="Repeat" Value="True"/>
+              <Property Name="StepValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniON]"/>
             </KeyAction>
-          </KeyActions>
-        </VirtualKey>
-        <VirtualKey Name="VD_ULOZ_CASOVANI">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000161">
+            <KeyAction ClassId="0x00000162">
               <Property Name="CompletionDatapoint" Value="None"/>
               <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.gui_ctr.ulozBtnPressed]"/>
+              <Property Name="MaxValue" Value="1"/>
+              <Property Name="MinValue" Value="0"/>
+              <Property Name="Name" Value="Action_1"/>
+              <Property Name="Repeat" Value="True"/>
+              <Property Name="StepValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.redraw1]"/>
             </KeyAction>
-            <KeyAction ClassId="0x00000160">
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_NAST_FOT_DOWN">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000162">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
+              <Property Name="MaxValue" Value="359"/>
+              <Property Name="MinValue" Value="-1"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="Repeat" Value="True"/>
+              <Property Name="StepValue" Value="-1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniON_2]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000162">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="1"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="MaxValue" Value="1"/>
+              <Property Name="MinValue" Value="0"/>
               <Property Name="Name" Value="Action_1"/>
-              <Property Name="Target" Value="Back"/>
+              <Property Name="Repeat" Value="True"/>
+              <Property Name="StepValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.redraw1]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_NAST_FOT_UP">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000162">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="1"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="MaxValue" Value="360"/>
+              <Property Name="MinValue" Value="0"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="Repeat" Value="True"/>
+              <Property Name="StepValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniON_2]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000162">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="MaxValue" Value="1"/>
+              <Property Name="MinValue" Value="0"/>
+              <Property Name="Name" Value="Action_1"/>
+              <Property Name="Repeat" Value="True"/>
+              <Property Name="StepValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.redraw1]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

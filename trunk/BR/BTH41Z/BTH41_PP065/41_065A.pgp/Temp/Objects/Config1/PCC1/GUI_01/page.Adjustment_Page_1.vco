@@ -1087,9 +1087,9 @@
             </Group>
           </Object>
           <Object Name="Button_1" ClsId="0x1002" Version="1" Type="CTRL" RefString="Source[local].Page[Adjustment_Page_1].Layer[Default].Control[Button_1]">
-            <UInt32 Name="Left">220</UInt32>
+            <UInt32 Name="Left">244</UInt32>
             <UInt32 Name="Top">205</UInt32>
-            <UInt32 Name="Right">309</UInt32>
+            <UInt32 Name="Right">313</UInt32>
             <UInt32 Name="Bottom">234</UInt32>
             <UInt16 Name="KeyMatrixOffset">65535</UInt16>
             <UInt16 Name="Reserved">0</UInt16>
@@ -2285,42 +2285,42 @@
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">89027</UInt32>
-                <UInt32 Name="TextOffset">592</UInt32>
+                <UInt32 Name="TextOffset">596</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">89028</UInt32>
-                <UInt32 Name="TextOffset">610</UInt32>
+                <UInt32 Name="TextOffset">614</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">89030</UInt32>
-                <UInt32 Name="TextOffset">620</UInt32>
+                <UInt32 Name="TextOffset">624</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">89032</UInt32>
-                <UInt32 Name="TextOffset">630</UInt32>
+                <UInt32 Name="TextOffset">634</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">94076</UInt32>
-                <UInt32 Name="TextOffset">644</UInt32>
+                <UInt32 Name="TextOffset">648</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">94079</UInt32>
-                <UInt32 Name="TextOffset">658</UInt32>
+                <UInt32 Name="TextOffset">662</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
@@ -2345,7 +2345,7 @@
               <String Name="Text" Encoding="Unicode">"Zap."</String>
               <String Name="Text" Encoding="Unicode">"Zap."</String>
               <String Name="Text" Encoding="Unicode">"Nastavení            2/3"</String>
-              <String Name="Text" Encoding="Unicode">"Další"</String>
+              <String Name="Text" Encoding="Unicode">"Další &gt;"</String>
               <String Name="Text" Encoding="Unicode">"Datování"</String>
               <String Name="Text" Encoding="Unicode">"Zap."</String>
               <String Name="Text" Encoding="Unicode">"Vyp."</String>
@@ -2363,9 +2363,9 @@
       <Folder Name="Controls">
         <Folder Name="POBJ">
           <Object Name="Button_1" ClsId="0x1002" Version="1" Type="CTRL" RefString="Source[local].Page[Adjustment_Page_1].Layer[Layer_1].Control[Button_1]">
-            <UInt32 Name="Left">110</UInt32>
+            <UInt32 Name="Left">166</UInt32>
             <UInt32 Name="Top">205</UInt32>
-            <UInt32 Name="Right">199</UInt32>
+            <UInt32 Name="Right">235</UInt32>
             <UInt32 Name="Bottom">234</UInt32>
             <UInt16 Name="KeyMatrixOffset">65535</UInt16>
             <UInt16 Name="Reserved">0</UInt16>
@@ -2531,7 +2531,7 @@
               </TableRow>
             </Table>
             <Group Name="Texts">
-              <String Name="Text" Encoding="Unicode">"Předchozí"</String>
+              <String Name="Text" Encoding="Unicode">" &lt; Zpět"</String>
             </Group>
           </Object>
         </Folder>
@@ -2554,7 +2554,7 @@
             <UInt16 Name="Size">0</UInt16>
           </Group>
         </Group>
-        <Reference Name="FormLayer0" Type="LAY">Source[local].Layer[CommonLayer_1]</Reference>
+        <Reference Name="FormLayer0" Type="LAY">Source[local].Layer[CommonLayer_2]</Reference>
         <Reference Name="FormLayer1" Type="LAY">Source[local].Page[Adjustment_Page_1].Layer[Default]</Reference>
         <Reference Name="FormLayer2" Type="LAY">Source[local].Page[Adjustment_Page_1].Layer[Layer_1]</Reference>
         <Group Name="MovementOrder">

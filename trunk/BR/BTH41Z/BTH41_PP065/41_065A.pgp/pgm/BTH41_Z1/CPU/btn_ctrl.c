@@ -12,9 +12,8 @@
 
 #include <bur/plc.h> 
 #include <bur/plctypes.h>
-#include <visapi.h>
-#include <operator.h>
-#include <dataobj.h>
+/*#include <visapi.h>*/
+/*#include <operator.h>*/
 #include <gui_variables.h>
 #include <system_variables.h>
 #include "stdio.h"
@@ -22,19 +21,7 @@
 _LOCAL UINT 				nastaveniLabelIndex; /* urcuje poradi popisku z textGoup AdjLabels*/
 _LOCAL UINT 				nastBtnPressed;
 _LOCAL UINT					nastAktivniIndex;	/* index aktivniho paremetru pro editaci */
-_LOCAL UINT					ulozBtnPressed;
-
-
-/* variables for dataobject handling*/
-_LOCAL UINT       		 	wStatus;
-_LOCAL UDINT       			dwIdent;
-_LOCAL DatObjCreate_typ    	DOCreate;
-_LOCAL DatObjWrite_typ 		DOWrite;
-_LOCAL DatObjRead_typ  		DORead;
-_LOCAL DatObjCopy_typ  		DOCopy;
-_LOCAL DatObjInfo_typ  		DOInfo;
-_LOCAL DatObjDelete_typ    	DODelete;
-
+_LOCAL UINT					pouzitBtnPressed;
 
 
 /*****************************************************************************************
@@ -52,9 +39,11 @@ _LOCAL DatObjDelete_typ    	DODelete;
 /*#define NASTAV_ON	46			/* colors of vypnout btn in on state*/
 
 
-#define DAVKA_DIS	0x083B		/* davkovani btn disabled*/
-#define DAVKA_ON	0x009B		/* davkovani btn ON - zelena*/
-#define DAVKA_OFF	0x002c		/* davkovani btn OFF - cervena*/
+#define DAVKA_DIS		0x083B		/* davkovani btn disabled*/
+#define DAVKA_ON		0x009B		/* davkovani btn ON - zelena*/
+#define DAVKA_OFF		0x002c		/* davkovani btn OFF - cervena*/
+#define DAVKA_CHANGE	0x0030		/* davkovani btn CHANGE - oranzova*/
+
 
 
 
@@ -215,140 +204,6 @@ void SetAdjustmentButtons(){
 
 
 /**
-*	procedure pro nastaveni vychozich parametru podle hodnot ve staticke pameti
-*/
-void nastaveniInit(){
-
-	/* Initialize info structure */
-	DOInfo.enable   = 1;
-    DOInfo.pName    = (UDINT) "Nastaveni";
-  
-	/* Call  FUB  */
-	DatObjInfo(&DOInfo);
-  
-	/* Get status */
-	wStatus = DOInfo.status;
-	if (wStatus == doERR_MODULNOTFOUND){                /* Data object not found -> create a new one */
-	 	
-	 	/* create new */
-	 	/* Initialize create structure */
-      	DOCreate.enable     = 1;
-		DOCreate.grp        = 0;
-
-        DOCreate.pName      = (UDINT) "config";
-        DOCreate.len        = sizeof (nastaveni);
-        DOCreate.MemType    = doUSRROM;
-        DOCreate.Option     = 0;
-        DOCreate.pCpyData   = (UDINT) &nastaveni;
-  
-       	/* Call FUB */
-       	DatObjCreate(&DOCreate);
-  
-       	/* Get FUB output information */
-       	wStatus = DOCreate.status;
-        dwIdent = DOCreate.ident;
-          
-       	/* Verify status */
-       	if (wStatus == 0){
-       	
-        }else if (wStatus != 0xFFFF){
-        
-
-      	}
-	} else {
-		/* read old one */
-		
-       	/* Get ident */
-       	dwIdent = DOInfo.ident;
-               
-       	/* Initialize read structure */
-       	DORead.enable       = 1;
-       	DORead.ident        = dwIdent;
-       	DORead.Offset       = 0;
-       	DORead.pDestination = (UDINT) &nastaveni;
-       	DORead.len      = sizeof (nastaveni);
-  
-       	/* Call FUB */
-       	DatObjRead(&DORead);
-  
-	   	/* Get status */
-       	wStatus = DORead.status;
-  
-       	/* Verify status */
-		if (wStatus == 0){      
-
-		}
-	}
-}
-
-/**
-*	procedure pro ulozeni nastaveni parametru do staticke pameti
-*/
-void UlozNastaveni(){
-	/* Initialize info structure */
-	DOInfo.enable   = 1;
-    DOInfo.pName    = (UDINT) "config";
-  
-	/* Call  FUB  */
-	DatObjInfo(&DOInfo);
-  
-	/* Get status */
-	wStatus = DOInfo.status;
-	if (wStatus == doERR_MODULNOTFOUND){                /* Data object not found -> create a new one */
-	 	
-	 	/* create new */
-	 	/* Initialize create structure */
-      	DOCreate.enable     = 1;
-		DOCreate.grp        = 0;
-
-        DOCreate.pName      = (UDINT) "config";
-        DOCreate.len        = sizeof (nastaveni);
-        DOCreate.MemType    = doUSRROM;
-        DOCreate.Option     = 0;
-        DOCreate.pCpyData   = (UDINT) &nastaveni;
-  
-       	/* Call FUB */
-       	DatObjCreate(&DOCreate);
-  
-       	/* Get FUB output information */
-       	wStatus = DOCreate.status;
-        dwIdent = DOCreate.ident;
-          
-       	/* Verify status */
-       	if (wStatus == 0){
-       	
-        }else if (wStatus != 0xFFFF){
-        
-
-      	}
-	} else {
-		/* store new one */
-		
-       	/* Get ident */
-       	dwIdent = DOInfo.ident;
-       	      	
-       	/* Initialize write structure */
-       	DOWrite.enable  = 1;
-        DOWrite.ident   = dwIdent;
-        DOWrite.Offset  = 0;
-        DOWrite.pSource = (UDINT) &nastaveni;
-        DOWrite.len     = sizeof (nastaveni);
-  
-       	/* Call FUB */
-       	DatObjWrite(&DOWrite);
-  
-   		/* Get status */
-       	wStatus = DOWrite.status;
-  
-       /* Verify status */
-		if (wStatus == 0){      
-
-		}
-	}    
-}
-
-
-/**
  *	procedure for initialization of variables
  */
 
@@ -466,51 +321,23 @@ _CYCLIC void RunBtnControl(void) {
 			nastAktivniIndex = nastBtnPressed;
 			nastBtnPressed = 0;
 		break;
-
-#ifdef 0    /* removed 4.12.2011 */
-	 	case 1:	/* standard on/off*/
-			nastaveniON = nastaveni[nastaveniLabelIndex].ON_angle;
-			nastaveniOFF = nastaveni[nastaveniLabelIndex].OFF_angle;
-			nastBtnPressed = 0;
-			redraw1 = 4;
-		break;
-		case 2:		/* standard s ON uhlem pouze*/
-			nastaveniON = nastaveni[nastaveniLabelIndex].ON_angle;
-			nastaveniOFF = nastaveniON;
-			nastBtnPressed = 0;
-			redraw2 = 4;
-		break;
-		case 3:		/* on uhel / off-time*/
-			nastaveniON = nastaveni[nastaveniLabelIndex].ON_angle;
-			nastaveniOFF_Time = nastaveni[nastaveniLabelIndex].OFF_angle;
-			nastBtnPressed = 0;
-			redraw2 = 4;	/* 4x ceka nez prekresli obrazovku*/
-		break;
-		case 4:
-			nastaveniON = nastBrzda.ON_angle;
-			nastaveniOFF = nastBrzda.OFF_angle;	
-			nastaveniValue = nastBrzda.value;	
-			nastBtnPressed = 0;
-			redraw3 = 4;
-		break;
-#endif
 	}
 	
-	if (ulozBtnPressed){
+	if (pouzitBtnPressed){
 		switch (nastAktivniIndex){
 			case DAVK_Z_IDX:
 				nastaveni.davkovani_zeli.ON1_angle= nastaveniON ;
 				nastaveni.davkovani_zeli.ON2_angle=nastaveniON_2;
 				nastaveni.davkovani_zeli.OFF_angle = nastaveniOFF;
 				nastAktivniIndex = 0;
-				ulozBtnPressed = 0;
+				pouzitBtnPressed = 0;
 				/*	UlozNastaveni();   neni nutne pri pouzite permanentni RAM, tohle uklada na FLASH*/
 			break;
 			case DAVK_V_IDX:
 				nastaveni.davkovani_vody.ON_angle = nastaveniON;
 				nastaveni.davkovani_vody.OFF_time = nastaveniOFF_Time ;
 				nastAktivniIndex = 0;
-				ulozBtnPressed = 0;
+				pouzitBtnPressed = 0;
 			break;
 			case POSUV_IDX:
 				nastaveni.posuv_folie.ON_angle = nastaveniON;
@@ -518,47 +345,47 @@ _CYCLIC void RunBtnControl(void) {
 				nastaveni.posuv_folie.FOT_start = nastaveniON_2;
 				nastaveni.posuv_folie.rychlost = nastaveniValue;
 				nastAktivniIndex = 0;
-				ulozBtnPressed = 0;
+				pouzitBtnPressed = 0;
 			break;				
 			case STRIH_IDX:
 				nastaveni.strihani.ON_angle = nastaveniON;
 				nastaveni.strihani.OFF_angle = nastaveniOFF;
 				nastAktivniIndex = 0;
-				ulozBtnPressed = 0;
+				pouzitBtnPressed = 0;
 			break;
 			case SKLADANI_IDX:
 				nastaveni.skladani.ON_angle = nastaveniON;
 				nastaveni.skladani.OFF_angle = nastaveniOFF;
 				nastAktivniIndex = 0;
-				ulozBtnPressed = 0;
+				pouzitBtnPressed = 0;
 			break;
 			case PODRAZENI_IDX:
 				nastaveni.podrazeni.ON_angle = nastaveniON;
 				nastAktivniIndex = 0;
-				ulozBtnPressed = 0;
+				pouzitBtnPressed = 0;
 			break;
 			case VYSTRKAVANI_IDX:
 				nastaveni.vystrkavani.ON_angle = nastaveniON;
-				ulozBtnPressed = 0;
+				pouzitBtnPressed = 0;
 			break;
 			case DATOVANI_IDX:
 				nastaveni.datovani.ON_angle = nastaveniON;
 				nastaveni.datovani.OFF_angle = nastaveniOFF;
 				nastAktivniIndex = 0;
-				ulozBtnPressed = 0;
+				pouzitBtnPressed = 0;
 			break;
 			case TOPENI_IDX:
 				nastaveni.topeni.ON_angle = nastaveniON;
 				nastaveni.topeni.OFF_angle = nastaveniOFF;
 				nastAktivniIndex = 0;
-				ulozBtnPressed = 0;
+				pouzitBtnPressed = 0;
 			break;
 			case BRZDA_IDX:
 				nastaveni.brzda.ON_angle = nastaveniON;
 				nastaveni.brzda.OFF_angle = nastaveniOFF;
 				nastaveni.brzda.value = nastaveniValue;
 				nastAktivniIndex = 0;
-				ulozBtnPressed = 0;
+				pouzitBtnPressed = 0;
 			break;
 		}
 	}
@@ -592,7 +419,7 @@ _CYCLIC void RunBtnControl(void) {
 		case SM_START_PRESSED:
 		case SM_PRE_START:
 		case SM_RUN:
-			if (davkovaniBtnPressed && !davkovaniActive){
+			if (davkovaniBtnPressed && !davkovaniActive){/* zapinani davkovani*/
 				davkovaniActive = 1;	/* vypinani davkovani je v ovladani inkrementu*/
 				zpomalCekamDavku = 0;
 				davkovaniBtnPressed = 0;
@@ -602,7 +429,11 @@ _CYCLIC void RunBtnControl(void) {
 				davkovani_Btn_col=DAVKA_ON; 
 				infoTextPointer = 1;
 			}else{
-				davkovani_Btn_col=DAVKA_OFF; 
+				if (davkovaniBtnPressed	){
+					davkovani_Btn_col=DAVKA_CHANGE;
+				}else{
+					davkovani_Btn_col=DAVKA_OFF; 
+				}
 				if (zpomalCekamDavku >0 )infoTextPointer = 7;
 				else infoTextPointer = 2;
 
@@ -610,7 +441,8 @@ _CYCLIC void RunBtnControl(void) {
 			start_Btn_col = ZAP_OFF;
 			stop_Btn_col = VYP_ON;
 			break;
-		case SM_STOP_PRESSED:		
+		case SM_STOP_PRESSED:	
+		case SM_WAIT_STOP:	
 			davkovani_Btn_col=DAVKA_DIS;
 			zpomalCekamDavku = 0; 
 			davkovaniBtnPressed = 0;

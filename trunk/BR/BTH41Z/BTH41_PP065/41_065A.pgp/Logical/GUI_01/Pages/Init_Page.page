@@ -33,11 +33,10 @@
           <Text ID="87236" Value="603 879975"/>
           <Text ID="87237" Value="605 148214"/>
           <Text ID="87238" Value="Stroj není připraven k provozu !"/>
-          <Text ID="87239" Value="Seřízení"/>
+          <Text ID="87239" Value="Servisní menu"/>
           <Text ID="87253" Value="Detailní Infomace"/>
           <Text ID="90402" Value="sw  rev. 2.1  2 / 2012"/>
           <Text ID="94327" Value="(c) Václav Dvořák"/>
-          <Text ID="100237" Value="Test"/>
         </TextLayer>
         <IndexMap>
           <Index ID="87231" Value="0"/>
@@ -52,7 +51,6 @@
           <Index ID="87253" Value="14"/>
           <Index ID="90402" Value="11"/>
           <Index ID="94327" Value="12"/>
-          <Index ID="100237" Value="13"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -200,7 +198,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="45"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="154"/>
+          <Property Name="Left" Value="167"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
@@ -210,8 +208,8 @@
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="167"/>
-          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_SERIZENI]"/>
-          <Property Name="Width" Value="70"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_MENU]"/>
+          <Property Name="Width" Value="128"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_2">
           <Property Name="BackColor" Value="167"/>
@@ -220,7 +218,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="45"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="14"/>
+          <Property Name="Left" Value="25"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
@@ -290,29 +288,6 @@
           <Property Name="Top" Value="225"/>
           <Property Name="Width" Value="150"/>
         </Control>
-        <Control ClassId="0x00001002" Name="Button_3">
-          <Property Name="BackColor" Value="76"/>
-          <Property Name="BitmapIndexDatapoint" Value="None"/>
-          <Property Name="BitmapSource" Value="None"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Height" Value="45"/>
-          <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="235"/>
-          <Property Name="Locking" Value="Datapoint &gt;= Level"/>
-          <Property Name="LockingDatapoint" Value="Source[global].Variable[Local.GLOBAL.stateMachine]"/>
-          <Property Name="LockingLevel" Value="3"/>
-          <Property Name="PressedBitmapSource" Value="None"/>
-          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
-          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
-          <Property Name="TextIndex" Value="13"/>
-          <Property Name="TextIndexDatapoint" Value="None"/>
-          <Property Name="TextSimulationValue" Value="0"/>
-          <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="167"/>
-          <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_TEST]"/>
-          <Property Name="Width" Value="70"/>
-        </Control>
       </Controls>
       <KeyMapping>
         <VirtualKey Name="VD_DETAIL_INFO">
@@ -337,6 +312,19 @@
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
               <Property Name="Page" Value="Source[local].Page[OK_Page]"/>
+              <Property Name="Target" Value="Page"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_MENU">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000160">
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="Page" Value="Source[local].Page[Page_Menu]"/>
               <Property Name="Target" Value="Page"/>
             </KeyAction>
           </KeyActions>

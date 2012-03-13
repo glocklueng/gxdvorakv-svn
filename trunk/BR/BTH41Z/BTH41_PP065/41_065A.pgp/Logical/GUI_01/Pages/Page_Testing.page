@@ -136,7 +136,7 @@
           <Property Name="Height" Value="60"/>
           <Property Name="KeyMatrixOffset" Value="0"/>
           <Property Name="KeyMode" Value="Confirmed"/>
-          <Property Name="Left" Value="185"/>
+          <Property Name="Left" Value="187"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="PressedTextIndex" Value="5"/>
@@ -147,7 +147,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="140"/>
+          <Property Name="Top" Value="141"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_TEST_END]"/>
           <Property Name="Width" Value="100"/>
         </Control>

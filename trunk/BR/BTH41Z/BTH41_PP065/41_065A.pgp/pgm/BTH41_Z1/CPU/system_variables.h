@@ -80,7 +80,7 @@ typedef struct{
 	INT rychlost;
 }NAST_PAR_POSUV;
 
-_GLOBAL struct {
+typedef struct {
 	NAST_PAR_DAVKOVANI 		davkovani_zeli;
 	NAST_PAR_ON_OFF_TIME	davkovani_vody;
 	NAST_PAR_POSUV			posuv_folie;
@@ -91,14 +91,14 @@ _GLOBAL struct {
 	NAST_PAR_ON_OFF			datovani;
 	NAST_PAR_ON_OFF			topeni;
 	NAST_PAR_BRZDA			brzda;	
-} nastaveni;
+} TECHNOLOGIE;
 
-/*NAST_PAR 	nastaveni[10];    /* promena pro ulozeni nastaveni uhlu*/
+_GLOBAL TECHNOLOGIE nastaveni; 	/* aktualni nastaveni*/
 
-
-
-
-/*_GLOBAL NAST_BRZDA nastBrzda;		 /* promena pro ulozeni nastaveni uhlu*/
+/**
+*	 cislo aktualni technologie 
+*/
+_GLOBAL USINT 	technologieNumber;
 
 
 /* index identifikace buttonu "Nastav" v GUI */

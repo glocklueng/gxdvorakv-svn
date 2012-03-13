@@ -266,10 +266,10 @@
             </Group>
           </Object>
           <Object Name="Button_4" ClsId="0x1002" Version="1" Type="CTRL" RefString="Source[local].Page[Page_Testing].Layer[Default].Control[Button_4]">
-            <UInt32 Name="Left">185</UInt32>
-            <UInt32 Name="Top">140</UInt32>
-            <UInt32 Name="Right">284</UInt32>
-            <UInt32 Name="Bottom">199</UInt32>
+            <UInt32 Name="Left">187</UInt32>
+            <UInt32 Name="Top">141</UInt32>
+            <UInt32 Name="Right">286</UInt32>
+            <UInt32 Name="Bottom">200</UInt32>
             <UInt16 Name="KeyMatrixOffset">0</UInt16>
             <UInt16 Name="Reserved">0</UInt16>
             <Reference Name="VirtualKey" Type="VKEY">Source[local].VirtualKey[VD_TEST_END]</Reference>
