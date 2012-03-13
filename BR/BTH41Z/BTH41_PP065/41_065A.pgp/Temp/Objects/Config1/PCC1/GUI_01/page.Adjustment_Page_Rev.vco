@@ -69,9 +69,9 @@
             </Group>
           </Object>
           <Object Name="Button_1" ClsId="0x1002" Version="1" Type="CTRL" RefString="Source[local].Page[Adjustment_Page_Rev].Layer[Default].Control[Button_1]">
-            <UInt32 Name="Left">110</UInt32>
+            <UInt32 Name="Left">166</UInt32>
             <UInt32 Name="Top">205</UInt32>
-            <UInt32 Name="Right">239</UInt32>
+            <UInt32 Name="Right">235</UInt32>
             <UInt32 Name="Bottom">234</UInt32>
             <UInt16 Name="KeyMatrixOffset">65535</UInt16>
             <UInt16 Name="Reserved">0</UInt16>
@@ -725,7 +725,7 @@
       </Folder>
       <Folder Name="VKeys">
         <Folder Name="Common" TargetIndex="4294967294">
-          <Object Name="VD_NAST_VYP_BRZ" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_VYP_BRZ]">
+          <Object Name="VD_PREVIOUS" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_PREVIOUS]">
             <Group Name="LedMapping">
               <UInt32 Name="Datapoint">4294967295</UInt32>
               <Byte Name="Mode">0</Byte>
@@ -734,101 +734,16 @@
             </Group>
             <Group Name="KeyMapping">
               <UInt32 Name="KeyActionCount">1</UInt32>
-              <Int32 Name="ActionID">353</Int32>
-              <UInt32 Name="ActionDataSize">36</UInt32>
+              <UInt32 Name="ActionID">352</UInt32>
+              <UInt32 Name="ActionDataSize">8</UInt32>
               <Byte Name="Locking">0</Byte>
               <Byte Name="Reserved">0</Byte>
               <UInt16 Name="Reserved">0</UInt16>
               <UInt32 Name="LockingDatapoint">4294967295</UInt32>
               <UInt32 Name="LockingLevel">0</UInt32>
-              <Double Name="SetValue">0</Double>
-              <Double Name="ResetValue">0</Double>
-              <Double Name="CompletionValue">0</Double>
-              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.brzda_St]</Reference>
-              <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
-              <Byte Name="Mode">0</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved1">0</UInt16>
-            </Group>
-          </Object>
-          <Object Name="VD_NAST_ZAP_BRZ" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_ZAP_BRZ]">
-            <Group Name="LedMapping">
-              <UInt32 Name="Datapoint">4294967295</UInt32>
-              <Byte Name="Mode">0</Byte>
-              <Byte Name="Active">0</Byte>
+              <Reference Name="Page" Type="PAGE">Source[local].Page[Adjustment_Page_1]</Reference>
+              <UInt16 Name="Target">2</UInt16>
               <UInt16 Name="Reserved">0</UInt16>
-            </Group>
-            <Group Name="KeyMapping">
-              <UInt32 Name="KeyActionCount">1</UInt32>
-              <Int32 Name="ActionID">353</Int32>
-              <UInt32 Name="ActionDataSize">36</UInt32>
-              <Byte Name="Locking">0</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
-              <UInt32 Name="LockingLevel">0</UInt32>
-              <Double Name="SetValue">1</Double>
-              <Double Name="ResetValue">0</Double>
-              <Double Name="CompletionValue">0</Double>
-              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.brzda_St]</Reference>
-              <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
-              <Byte Name="Mode">0</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved1">0</UInt16>
-            </Group>
-          </Object>
-          <Object Name="VD_OTACKY_DOWN" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_OTACKY_DOWN]">
-            <Group Name="LedMapping">
-              <UInt32 Name="Datapoint">4294967295</UInt32>
-              <Byte Name="Mode">0</Byte>
-              <Byte Name="Active">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-            </Group>
-            <Group Name="KeyMapping">
-              <UInt32 Name="KeyActionCount">1</UInt32>
-              <UInt32 Name="ActionID">354</UInt32>
-              <UInt32 Name="ActionDataSize">44</UInt32>
-              <Byte Name="Locking">0</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
-              <UInt32 Name="LockingLevel">0</UInt32>
-              <Double Name="StepValue">-1</Double>
-              <Double Name="MinValue">10</Double>
-              <Double Name="MaxValue">40</Double>
-              <Double Name="CompletionValue">0</Double>
-              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.otacky_nast]</Reference>
-              <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
-              <Byte Name="Repeat">1</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved1">0</UInt16>
-            </Group>
-          </Object>
-          <Object Name="VD_OTACKY_UP" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_OTACKY_UP]">
-            <Group Name="LedMapping">
-              <UInt32 Name="Datapoint">4294967295</UInt32>
-              <Byte Name="Mode">0</Byte>
-              <Byte Name="Active">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-            </Group>
-            <Group Name="KeyMapping">
-              <UInt32 Name="KeyActionCount">1</UInt32>
-              <UInt32 Name="ActionID">354</UInt32>
-              <UInt32 Name="ActionDataSize">44</UInt32>
-              <Byte Name="Locking">0</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
-              <UInt32 Name="LockingLevel">0</UInt32>
-              <Double Name="StepValue">1</Double>
-              <Double Name="MinValue">10</Double>
-              <Double Name="MaxValue">40</Double>
-              <Double Name="CompletionValue">0</Double>
-              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.otacky_nast]</Reference>
-              <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
-              <Byte Name="Repeat">1</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved1">0</UInt16>
             </Group>
           </Object>
           <Object Name="VD_NAST_ZAP" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_ZAP]">
@@ -883,7 +798,7 @@
               <UInt16 Name="Reserved1">0</UInt16>
             </Group>
           </Object>
-          <Object Name="VD_PREVIOUS" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_PREVIOUS]">
+          <Object Name="VD_OTACKY_UP" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_OTACKY_UP]">
             <Group Name="LedMapping">
               <UInt32 Name="Datapoint">4294967295</UInt32>
               <Byte Name="Mode">0</Byte>
@@ -892,16 +807,101 @@
             </Group>
             <Group Name="KeyMapping">
               <UInt32 Name="KeyActionCount">1</UInt32>
-              <UInt32 Name="ActionID">352</UInt32>
-              <UInt32 Name="ActionDataSize">8</UInt32>
+              <UInt32 Name="ActionID">354</UInt32>
+              <UInt32 Name="ActionDataSize">44</UInt32>
               <Byte Name="Locking">0</Byte>
               <Byte Name="Reserved">0</Byte>
               <UInt16 Name="Reserved">0</UInt16>
               <UInt32 Name="LockingDatapoint">4294967295</UInt32>
               <UInt32 Name="LockingLevel">0</UInt32>
-              <Reference Name="Page" Type="PAGE">Source[local].Page[Adjustment_Page_1]</Reference>
-              <UInt16 Name="Target">2</UInt16>
+              <Double Name="StepValue">1</Double>
+              <Double Name="MinValue">10</Double>
+              <Double Name="MaxValue">40</Double>
+              <Double Name="CompletionValue">0</Double>
+              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.otacky_nast]</Reference>
+              <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
+              <Byte Name="Repeat">1</Byte>
+              <Byte Name="Reserved">0</Byte>
+              <UInt16 Name="Reserved1">0</UInt16>
+            </Group>
+          </Object>
+          <Object Name="VD_OTACKY_DOWN" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_OTACKY_DOWN]">
+            <Group Name="LedMapping">
+              <UInt32 Name="Datapoint">4294967295</UInt32>
+              <Byte Name="Mode">0</Byte>
+              <Byte Name="Active">0</Byte>
               <UInt16 Name="Reserved">0</UInt16>
+            </Group>
+            <Group Name="KeyMapping">
+              <UInt32 Name="KeyActionCount">1</UInt32>
+              <UInt32 Name="ActionID">354</UInt32>
+              <UInt32 Name="ActionDataSize">44</UInt32>
+              <Byte Name="Locking">0</Byte>
+              <Byte Name="Reserved">0</Byte>
+              <UInt16 Name="Reserved">0</UInt16>
+              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
+              <UInt32 Name="LockingLevel">0</UInt32>
+              <Double Name="StepValue">-1</Double>
+              <Double Name="MinValue">10</Double>
+              <Double Name="MaxValue">40</Double>
+              <Double Name="CompletionValue">0</Double>
+              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.otacky_nast]</Reference>
+              <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
+              <Byte Name="Repeat">1</Byte>
+              <Byte Name="Reserved">0</Byte>
+              <UInt16 Name="Reserved1">0</UInt16>
+            </Group>
+          </Object>
+          <Object Name="VD_NAST_ZAP_BRZ" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_ZAP_BRZ]">
+            <Group Name="LedMapping">
+              <UInt32 Name="Datapoint">4294967295</UInt32>
+              <Byte Name="Mode">0</Byte>
+              <Byte Name="Active">0</Byte>
+              <UInt16 Name="Reserved">0</UInt16>
+            </Group>
+            <Group Name="KeyMapping">
+              <UInt32 Name="KeyActionCount">1</UInt32>
+              <Int32 Name="ActionID">353</Int32>
+              <UInt32 Name="ActionDataSize">36</UInt32>
+              <Byte Name="Locking">0</Byte>
+              <Byte Name="Reserved">0</Byte>
+              <UInt16 Name="Reserved">0</UInt16>
+              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
+              <UInt32 Name="LockingLevel">0</UInt32>
+              <Double Name="SetValue">1</Double>
+              <Double Name="ResetValue">0</Double>
+              <Double Name="CompletionValue">0</Double>
+              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.brzda_St]</Reference>
+              <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
+              <Byte Name="Mode">0</Byte>
+              <Byte Name="Reserved">0</Byte>
+              <UInt16 Name="Reserved1">0</UInt16>
+            </Group>
+          </Object>
+          <Object Name="VD_NAST_VYP_BRZ" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_VYP_BRZ]">
+            <Group Name="LedMapping">
+              <UInt32 Name="Datapoint">4294967295</UInt32>
+              <Byte Name="Mode">0</Byte>
+              <Byte Name="Active">0</Byte>
+              <UInt16 Name="Reserved">0</UInt16>
+            </Group>
+            <Group Name="KeyMapping">
+              <UInt32 Name="KeyActionCount">1</UInt32>
+              <Int32 Name="ActionID">353</Int32>
+              <UInt32 Name="ActionDataSize">36</UInt32>
+              <Byte Name="Locking">0</Byte>
+              <Byte Name="Reserved">0</Byte>
+              <UInt16 Name="Reserved">0</UInt16>
+              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
+              <UInt32 Name="LockingLevel">0</UInt32>
+              <Double Name="SetValue">0</Double>
+              <Double Name="ResetValue">0</Double>
+              <Double Name="CompletionValue">0</Double>
+              <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.GLOBAL.brzda_St]</Reference>
+              <UInt32 Name="CompletionDatapoint">4294967295</UInt32>
+              <Byte Name="Mode">0</Byte>
+              <Byte Name="Reserved">0</Byte>
+              <UInt16 Name="Reserved1">0</UInt16>
             </Group>
           </Object>
         </Folder>
@@ -1018,49 +1018,49 @@
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">88591</UInt32>
-                <UInt32 Name="TextOffset">266</UInt32>
+                <UInt32 Name="TextOffset">246</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">88593</UInt32>
-                <UInt32 Name="TextOffset">270</UInt32>
+                <UInt32 Name="TextOffset">250</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">88595</UInt32>
-                <UInt32 Name="TextOffset">274</UInt32>
+                <UInt32 Name="TextOffset">254</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">88959</UInt32>
-                <UInt32 Name="TextOffset">324</UInt32>
+                <UInt32 Name="TextOffset">304</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">88979</UInt32>
-                <UInt32 Name="TextOffset">350</UInt32>
+                <UInt32 Name="TextOffset">330</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">88981</UInt32>
-                <UInt32 Name="TextOffset">360</UInt32>
+                <UInt32 Name="TextOffset">340</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">88983</UInt32>
-                <UInt32 Name="TextOffset">370</UInt32>
+                <UInt32 Name="TextOffset">350</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
@@ -1069,7 +1069,7 @@
             <Group Name="Texts">
               <String Name="Text" Encoding="Unicode">"Nastavené otáčky [n / min]"</String>
               <String Name="Text" Encoding="Unicode">"Nastavení  otáček     3/3"</String>
-              <String Name="Text" Encoding="Unicode">"Předchozí 2/3 ..."</String>
+              <String Name="Text" Encoding="Unicode">"&lt; Zpět "</String>
               <String Name="Text" Encoding="Unicode">"-"</String>
               <String Name="Text" Encoding="Unicode">"+"</String>
               <String Name="Text" Encoding="Unicode">"Změřené otáčky [n / min]"</String>
@@ -1083,71 +1083,12 @@
       </Folder>
     </Folder>
   </Folder>
-  <Folder Name="Layers">
-    <Folder Name="Adjustment_Page_RevLayer_CursorKeys" TargetIndex="Source[local].Page[Adjustment_Page_Rev].Layer[Layer_CursorKeys]">
-      <Folder Name="Controls">
-        <Folder Name="POBJ" />
-      </Folder>
-      <Folder Name="VKeys">
-        <Folder Name="Common" TargetIndex="4294967294">
-          <Object Name="VD_NEXT" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_NEXT]">
-            <Group Name="LedMapping">
-              <UInt32 Name="Datapoint">4294967295</UInt32>
-              <Byte Name="Mode">0</Byte>
-              <Byte Name="Active">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-            </Group>
-            <Group Name="KeyMapping">
-              <UInt32 Name="KeyActionCount">1</UInt32>
-              <UInt32 Name="ActionID">352</UInt32>
-              <UInt32 Name="ActionDataSize">8</UInt32>
-              <Byte Name="Locking">0</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
-              <UInt32 Name="LockingLevel">0</UInt32>
-              <Reference Name="Page" Type="PAGE">Source[local].Page[Adjustment_Page_1]</Reference>
-              <UInt16 Name="Target">2</UInt16>
-              <UInt16 Name="Reserved">0</UInt16>
-            </Group>
-          </Object>
-          <Object Name="VD_Back" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_Back]">
-            <Group Name="LedMapping">
-              <UInt32 Name="Datapoint">4294967295</UInt32>
-              <Byte Name="Mode">0</Byte>
-              <Byte Name="Active">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-            </Group>
-            <Group Name="KeyMapping">
-              <UInt32 Name="KeyActionCount">1</UInt32>
-              <UInt32 Name="ActionID">352</UInt32>
-              <UInt32 Name="ActionDataSize">8</UInt32>
-              <Byte Name="Locking">0</Byte>
-              <Byte Name="Reserved">0</Byte>
-              <UInt16 Name="Reserved">0</UInt16>
-              <UInt32 Name="LockingDatapoint">4294967295</UInt32>
-              <UInt32 Name="LockingLevel">0</UInt32>
-              <Reference Name="Page" Type="PAGE">Source[local].Page[Init_Page]</Reference>
-              <UInt16 Name="Target">2</UInt16>
-              <UInt16 Name="Reserved">0</UInt16>
-            </Group>
-          </Object>
-        </Folder>
-      </Folder>
-      <Folder Name="POBJ">
-        <Object Name="Layer_CursorKeys" ClsId="0x401" Version="1" Type="LAY" RefString="Source[local].Page[Adjustment_Page_Rev].Layer[Layer_CursorKeys]">
-          <Reference Name="StatusDP" Type="DP">None</Reference>
-          <UInt32 Name="CtrlCount">0</UInt32>
-        </Object>
-      </Folder>
-    </Folder>
-  </Folder>
   <Folder Name="Forms">
     <Folder Name="POBJ">
       <Object Name="Adjustment_Page_Rev" ClsId="0x400" Version="1" TargetIndex="6" Type="PAGE" RefString="Source[local].Page[Adjustment_Page_Rev]">
         <UInt32 Name="FormLanguage">0</UInt32>
         <Reference Name="StartControl" Type="CTRL">None</Reference>
-        <UInt32 Name="LayerCount">3</UInt32>
+        <UInt32 Name="LayerCount">2</UInt32>
         <UInt32 Name="MoveFocus">1</UInt32>
         <Group Name="Styleable Properties">
           <Reference Name="StyleClass" Type="SC">Source[local].StyleGroup[0x00000400].StyleClass[default]</Reference>
@@ -1158,9 +1099,8 @@
             <UInt16 Name="Size">0</UInt16>
           </Group>
         </Group>
-        <Reference Name="FormLayer0" Type="LAY">Source[local].Layer[CommonLayer_1]</Reference>
+        <Reference Name="FormLayer0" Type="LAY">Source[local].Layer[CommonLayer_2]</Reference>
         <Reference Name="FormLayer1" Type="LAY">Source[local].Page[Adjustment_Page_Rev].Layer[Default]</Reference>
-        <Reference Name="FormLayer2" Type="LAY">Source[local].Page[Adjustment_Page_Rev].Layer[Layer_CursorKeys]</Reference>
         <Group Name="MovementOrder">
           <UInt32 Name="Count">0</UInt32>
         </Group>

@@ -65,7 +65,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Locking" Value="Never"/>
           <Property Name="Name" Value="Action_1"/>
-          <Property Name="Page" Value="Source[local].Page[Init_Page]"/>
+          <Property Name="Page" Value="Source[local].Page[OK_Page]"/>
           <Property Name="Target" Value="Page"/>
         </KeyAction>
       </KeyActions>

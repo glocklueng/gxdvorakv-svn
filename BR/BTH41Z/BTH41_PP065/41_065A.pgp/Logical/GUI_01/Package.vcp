@@ -109,7 +109,10 @@
     <Source File="Pages\Page_TestingOUT.page"/>
     <Source File="Pages\Timing_Page4_2Davky.page"/>
     <Source File="Pages\Timing_Page5_posuv.page"/>
+    <Source File="Pages\Page_Menu.page"/>
+    <Source File="Pages\Page_Technologie.page"/>
     <Source File="Layers\CommonLayer_1.layer"/>
+    <Source File="Layers\CommonLayer_2.layer"/>
     <Source File="StyleSheets\Gray.vcs"/>
     <Source File="StyleSheets\Color.vcs"/>
     <Source File="Borders\Raised.bdr"/>

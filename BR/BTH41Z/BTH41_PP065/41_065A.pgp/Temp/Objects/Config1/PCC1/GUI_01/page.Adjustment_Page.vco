@@ -2221,9 +2221,9 @@
       <Folder Name="Controls">
         <Folder Name="POBJ">
           <Object Name="Button_1" ClsId="0x1002" Version="1" Type="CTRL" RefString="Source[local].Page[Adjustment_Page].Layer[Layer_CursorKeys].Control[Button_1]">
-            <UInt32 Name="Left">220</UInt32>
+            <UInt32 Name="Left">244</UInt32>
             <UInt32 Name="Top">205</UInt32>
-            <UInt32 Name="Right">309</UInt32>
+            <UInt32 Name="Right">313</UInt32>
             <UInt32 Name="Bottom">234</UInt32>
             <UInt16 Name="KeyMatrixOffset">65535</UInt16>
             <UInt16 Name="Reserved">0</UInt16>
@@ -2429,7 +2429,7 @@
               </TableRow>
             </Table>
             <Group Name="Texts">
-              <String Name="Text" Encoding="Unicode">"Další  2/2 ..."</String>
+              <String Name="Text" Encoding="Unicode">"Další &gt;"</String>
             </Group>
           </Object>
         </Folder>
@@ -2452,7 +2452,7 @@
             <UInt16 Name="Size">0</UInt16>
           </Group>
         </Group>
-        <Reference Name="FormLayer0" Type="LAY">Source[local].Layer[CommonLayer_1]</Reference>
+        <Reference Name="FormLayer0" Type="LAY">Source[local].Layer[CommonLayer_2]</Reference>
         <Reference Name="FormLayer1" Type="LAY">Source[local].Page[Adjustment_Page].Layer[Default]</Reference>
         <Reference Name="FormLayer2" Type="LAY">Source[local].Page[Adjustment_Page].Layer[Layer_CursorKeys]</Reference>
         <Group Name="MovementOrder">

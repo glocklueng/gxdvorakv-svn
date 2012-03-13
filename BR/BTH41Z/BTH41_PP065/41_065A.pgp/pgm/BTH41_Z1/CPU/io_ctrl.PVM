@@ -7,10 +7,11 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=61 Scope=60 Force=60 In
                              davka2_done                                     BOOL    0 "                                                           FALSE"    0    1    1    2    1    0         
                                 ao_menic                                      INT    3 "                                                               0"    0    3    1   10    0    0         
                                 ao_posuv                                      INT    3 "                                                               0"    0    3    1   10    0    0         
-                         incrementLength                                      INT    0 "                                                             235"    0    3    1   10    0    0         
+                         incrementLength                                      INT    0 "                                                               0"    0    3    1   10    0    0         
                             i_davkaReady                                     BOOL    1 "                                                           FALSE"    0    1    1    2    0    0         
                         zpomalCekamDavku                                    USINT    0 "                                                               0"    0    5    1   10    0    0         
                                  posuvSM                                     UINT    0 "                                                               0"    0    6    1   10    0    0         
-                          incrementAngle                                      INT    0 "                                                               9"    0    3    1   10    0    0         
+                          incrementAngle                                      INT    0 "                                                              91"    0    3    1   10    0    0         
                                davka1_St                                     BOOL    0 "                                                           FALSE"    0    1    1    2    0    0         
-                               davka2_St                                     BOOL    0 "                                                            TRUE"    0    1    1    2    0    0         
+                               davka2_St                                     BOOL    0 "                                                           FALSE"    0    1    1    2    0    0         
+                           o_zavzdusneni                                     BOOL    3 "                                                            TRUE"    0    1    1    2    0    0         

@@ -3017,6 +3017,20 @@
       <Object Name="Source[local].VirtualKey[VD_NAST_FOT_UP]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_FOT_UP]" />
       <Object Name="Source[local].VirtualKey[VD_NAST_POS_DOWN]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_POS_DOWN]" />
       <Object Name="Source[local].VirtualKey[VD_NAST_POS_UP]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_POS_UP]" />
+      <Object Name="Source[local].VirtualKey[VD_MENU]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_MENU]" />
+      <Object Name="Source[local].VirtualKey[VD_TECHNOLOGIE_VOLBA]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_TECHNOLOGIE_VOLBA]" />
+      <Object Name="Source[local].VirtualKey[VD_ULOZ_TECHN]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_ULOZ_TECHN]" />
+      <Object Name="Source[local].VirtualKey[VD_NAST_KONEC]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_NAST_KONEC]" />
+      <Object Name="Source[local].VirtualKey[VD_Techn_1]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_Techn_1]" />
+      <Object Name="Source[local].VirtualKey[VD_Techn_2]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_Techn_2]" />
+      <Object Name="Source[local].VirtualKey[VD_Techn_3]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_Techn_3]" />
+      <Object Name="Source[local].VirtualKey[VD_Techn_4]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_Techn_4]" />
+      <Object Name="Source[local].VirtualKey[VD_Techn_5]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_Techn_5]" />
+      <Object Name="Source[local].VirtualKey[VD_Techn_6]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_Techn_6]" />
+      <Object Name="Source[local].VirtualKey[VD_Techn_7]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_Techn_7]" />
+      <Object Name="Source[local].VirtualKey[VD_Techn_8]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_Techn_8]" />
+      <Object Name="Source[local].VirtualKey[VD_Techn_Cancel]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_Techn_Cancel]" />
+      <Object Name="Source[local].VirtualKey[VD_TECHN_SELECTED]" ClsId="0x0" Version="1" TargetIndex="4294967295" Type="VKEY" RefString="Source[local].VirtualKey[VD_TECHN_SELECTED]" />
     </Folder>
   </Folder>
 </Intermediate>

@@ -129,7 +129,7 @@
               <UInt16 Name="Reserved">0</UInt16>
               <UInt32 Name="LockingDatapoint">4294967295</UInt32>
               <UInt32 Name="LockingLevel">0</UInt32>
-              <Reference Name="Page" Type="PAGE">Source[local].Page[Init_Page]</Reference>
+              <Reference Name="Page" Type="PAGE">Source[local].Page[OK_Page]</Reference>
               <UInt16 Name="Target">2</UInt16>
               <UInt16 Name="Reserved">0</UInt16>
             </Group>

@@ -444,6 +444,13 @@
       <Property Name="UpdateTime" Value="Default"/>
       <Property Name="UserID" Value="None"/>
     </DataPoint>
+    <DataPoint Name="technologieNumber">
+      <Property Name="DataType" Value="INTEGER"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="TargetType" Value="USINT"/>
+      <Property Name="UpdateTime" Value="Default"/>
+      <Property Name="UserID" Value="None"/>
+    </DataPoint>
     <DataPoint Name="testMode">
       <Property Name="DataType" Value="INTEGER"/>
       <Property Name="Description" Value=""/>
@@ -630,6 +637,13 @@
       <Property Name="UpdateTime" Value="Default"/>
       <Property Name="UserID" Value="None"/>
     </DataPoint>
+    <DataPoint Name="pouzitBtnPressed">
+      <Property Name="DataType" Value="INTEGER"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="TargetType" Value="UINT"/>
+      <Property Name="UpdateTime" Value="Default"/>
+      <Property Name="UserID" Value="None"/>
+    </DataPoint>
     <DataPoint Name="skladani_VYP_Btn">
       <Property Name="DataType" Value="INTEGER"/>
       <Property Name="Description" Value=""/>
@@ -686,13 +700,6 @@
       <Property Name="UpdateTime" Value="Default"/>
       <Property Name="UserID" Value="None"/>
     </DataPoint>
-    <DataPoint Name="ulozBtnPressed">
-      <Property Name="DataType" Value="INTEGER"/>
-      <Property Name="Description" Value=""/>
-      <Property Name="TargetType" Value="UINT"/>
-      <Property Name="UpdateTime" Value="Default"/>
-      <Property Name="UserID" Value="None"/>
-    </DataPoint>
     <DataPoint Name="vystrkavani_VYP_Btn">
       <Property Name="DataType" Value="INTEGER"/>
       <Property Name="Description" Value=""/>
@@ -715,6 +722,38 @@
       <Property Name="DataType" Value="INTEGER"/>
       <Property Name="Description" Value=""/>
       <Property Name="TargetType" Value="INT"/>
+      <Property Name="UpdateTime" Value="Default"/>
+      <Property Name="UserID" Value="None"/>
+    </DataPoint>
+  </Folder>
+  <Folder Name="technolg">
+    <Property Name="Description" Value=""/>
+    <Property Name="FolderType" Value="Task"/>
+    <DataPoint Name="storeActualTechnology">
+      <Property Name="DataType" Value="BOOL"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="TargetType" Value="BOOL"/>
+      <Property Name="UpdateTime" Value="Default"/>
+      <Property Name="UserID" Value="None"/>
+    </DataPoint>
+    <DataPoint Name="technologyGUISelected">
+      <Property Name="DataType" Value="INTEGER"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="TargetType" Value="USINT"/>
+      <Property Name="UpdateTime" Value="Default"/>
+      <Property Name="UserID" Value="None"/>
+    </DataPoint>
+    <DataPoint Name="technologyGUIStorno">
+      <Property Name="DataType" Value="INTEGER"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="TargetType" Value="USINT"/>
+      <Property Name="UpdateTime" Value="Default"/>
+      <Property Name="UserID" Value="None"/>
+    </DataPoint>
+    <DataPoint Name="technologySelect">
+      <Property Name="DataType" Value="BOOL"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="TargetType" Value="BOOL"/>
       <Property Name="UpdateTime" Value="Default"/>
       <Property Name="UserID" Value="None"/>
     </DataPoint>

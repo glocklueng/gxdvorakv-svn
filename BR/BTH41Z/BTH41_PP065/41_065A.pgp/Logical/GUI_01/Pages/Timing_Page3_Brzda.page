@@ -33,7 +33,7 @@
           <Text ID="89230" Value="Úhel zapnutí  [°]"/>
           <Text ID="89231" Value="Úhel vypnutí  [°]"/>
           <Text ID="89233" Value="Pozice stroje  [°]"/>
-          <Text ID="89235" Value="Uložit"/>
+          <Text ID="89235" Value="Použít"/>
           <Text ID="89236" Value="Uloženo"/>
           <Text ID="89237" Value="Storno"/>
           <Text ID="89238" Value="Uloženo"/>
@@ -293,7 +293,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="30"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="21"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="PressedTextIndex" Value="33"/>
@@ -304,7 +304,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="200"/>
+          <Property Name="Top" Value="201"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_ULOZ_CASOVANI]"/>
           <Property Name="Width" Value="75"/>
         </Control>
@@ -475,8 +475,8 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="SetValue" Value="4"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.gui_ctr.ulozBtnPressed]"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.gui_ctr.pouzitBtnPressed]"/>
             </KeyAction>
             <KeyAction ClassId="0x00000160">
               <Property Name="Description" Value=""/>
@@ -614,7 +614,7 @@
               <Property Name="Name" Value="Action_1"/>
               <Property Name="Repeat" Value="True"/>
               <Property Name="StepValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="None"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.redraw1]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

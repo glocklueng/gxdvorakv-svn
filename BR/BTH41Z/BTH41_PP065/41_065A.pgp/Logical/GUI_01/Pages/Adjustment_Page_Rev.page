@@ -8,11 +8,11 @@
   <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[default]"/>
   <Property Name="Width" Value="320"/>
   <Layers>
-    <LayerRef Source="Source[local].Layer[CommonLayer_1]">
+    <LayerRef Source="Source[local].Layer[CommonLayer_2]">
       <Property Name="Description" Value=""/>
       <Property Name="EditingMode" Value="Frozen"/>
       <Property Name="Left" Value="0"/>
-      <Property Name="Name" Value="CommonLayer_1"/>
+      <Property Name="Name" Value="CommonLayer_2"/>
       <Property Name="OutlineColor" Value="0"/>
       <Property Name="OutlineDisplayControl" Value="False"/>
       <Property Name="OutlineDisplayName" Value="True"/>
@@ -40,7 +40,7 @@
         <TextLayer LanguageId="cs-CZ">
           <Text ID="88220" Value="Nastavené otáčky [n / min]"/>
           <Text ID="88221" Value="Nastavení  otáček     3/3"/>
-          <Text ID="88589" Value="Předchozí 2/3 ..."/>
+          <Text ID="88589" Value="&lt; Zpět "/>
           <Text ID="88591" Value="-"/>
           <Text ID="88593" Value="+"/>
           <Text ID="88595" Value="Změřené otáčky [n / min]"/>
@@ -97,7 +97,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="30"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="110"/>
+          <Property Name="Left" Value="166"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
@@ -108,7 +108,7 @@
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="205"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_PREVIOUS]"/>
-          <Property Name="Width" Value="130"/>
+          <Property Name="Width" Value="70"/>
         </Control>
         <Control ClassId="0x00001006" Name="BarGraph_1">
           <Property Name="BackColor" Value="122"/>
@@ -304,69 +304,16 @@
         </Control>
       </Controls>
       <KeyMapping>
-        <VirtualKey Name="VD_NAST_VYP_BRZ">
+        <VirtualKey Name="VD_PREVIOUS">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
-            <KeyAction ClassId="0x00000161">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
+            <KeyAction ClassId="0x00000160">
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="SetValue" Value="0"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.brzda_St]"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
-        <VirtualKey Name="VD_NAST_ZAP_BRZ">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000161">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.brzda_St]"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
-        <VirtualKey Name="VD_OTACKY_DOWN">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000162">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="40"/>
-              <Property Name="MinValue" Value="10"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="Repeat" Value="True"/>
-              <Property Name="StepValue" Value="-1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.otacky_nast]"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
-        <VirtualKey Name="VD_OTACKY_UP">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000162">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="40"/>
-              <Property Name="MinValue" Value="10"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="Repeat" Value="True"/>
-              <Property Name="StepValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.otacky_nast]"/>
+              <Property Name="Page" Value="Source[local].Page[Adjustment_Page_1]"/>
+              <Property Name="Target" Value="Page"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -400,65 +347,69 @@
             </KeyAction>
           </KeyActions>
         </VirtualKey>
-        <VirtualKey Name="VD_PREVIOUS">
+        <VirtualKey Name="VD_OTACKY_UP">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
-            <KeyAction ClassId="0x00000160">
+            <KeyAction ClassId="0x00000162">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
+              <Property Name="MaxValue" Value="40"/>
+              <Property Name="MinValue" Value="10"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="Source[local].Page[Adjustment_Page_1]"/>
-              <Property Name="Target" Value="Page"/>
+              <Property Name="Repeat" Value="True"/>
+              <Property Name="StepValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.otacky_nast]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
-      </KeyMapping>
-    </Layer>
-    <Layer Name="Layer_CursorKeys">
-      <Property Name="BackColor" Value="9"/>
-      <Property Name="Description" Value=""/>
-      <Property Name="EditingMode" Value="Normal"/>
-      <Property Name="Height" Value="240"/>
-      <Property Name="Left" Value="0"/>
-      <Property Name="OutlineColor" Value="0"/>
-      <Property Name="OutlineDisplayControl" Value="False"/>
-      <Property Name="OutlineDisplayName" Value="True"/>
-      <Property Name="OutlineHatched" Value="False"/>
-      <Property Name="StatusDatapoint" Value="None"/>
-      <Property Name="Top" Value="0"/>
-      <Property Name="VisibilityMode" Value="Normal"/>
-      <Property Name="Width" Value="320"/>
-      <Property Name="Z-Order" Value="2"/>
-      <TextGroup>
-        <TextLayer LanguageId="cs-CZ"/>
-        <IndexMap/>
-      </TextGroup>
-      <Controls/>
-      <KeyMapping>
-        <VirtualKey Name="VD_NEXT">
+        <VirtualKey Name="VD_OTACKY_DOWN">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
-            <KeyAction ClassId="0x00000160">
+            <KeyAction ClassId="0x00000162">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
+              <Property Name="MaxValue" Value="40"/>
+              <Property Name="MinValue" Value="10"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="Source[local].Page[Adjustment_Page_1]"/>
-              <Property Name="Target" Value="Page"/>
+              <Property Name="Repeat" Value="True"/>
+              <Property Name="StepValue" Value="-1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.otacky_nast]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
-        <VirtualKey Name="VD_Back">
+        <VirtualKey Name="VD_NAST_ZAP_BRZ">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
-            <KeyAction ClassId="0x00000160">
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="Source[local].Page[Init_Page]"/>
-              <Property Name="Target" Value="Page"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.brzda_St]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_NAST_VYP_BRZ">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="SetValue" Value="0"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.brzda_St]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

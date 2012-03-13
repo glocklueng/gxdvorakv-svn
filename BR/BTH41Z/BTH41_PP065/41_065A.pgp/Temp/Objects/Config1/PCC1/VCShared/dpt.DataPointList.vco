@@ -65,49 +65,54 @@
       <Object Name="Local.GLOBAL.stateMachine" ClsId="0x0" Version="0" TargetIndex="59" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.stateMachine]" />
       <Object Name="Local.GLOBAL.stopActive" ClsId="0x0" Version="0" TargetIndex="60" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.stopActive]" />
       <Object Name="Local.GLOBAL.strihani_St" ClsId="0x0" Version="0" TargetIndex="61" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.strihani_St]" />
-      <Object Name="Local.GLOBAL.testMode" ClsId="0x0" Version="0" TargetIndex="62" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.testMode]" />
-      <Object Name="Local.GLOBAL.tmp" ClsId="0x0" Version="0" TargetIndex="63" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.tmp]" />
-      <Object Name="Local.GLOBAL.topeniImpuls_St" ClsId="0x0" Version="0" TargetIndex="64" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.topeniImpuls_St]" />
-      <Object Name="Local.GLOBAL.topeni_St" ClsId="0x0" Version="0" TargetIndex="65" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.topeni_St]" />
-      <Object Name="Local.GLOBAL.vystrkavani_St" ClsId="0x0" Version="0" TargetIndex="66" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.vystrkavani_St]" />
-      <Object Name="Local.gui_ctr.CO2_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="67" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.CO2_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.CO2_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="68" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.CO2_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.brzda_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="69" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.brzda_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.brzda_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="70" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.brzda_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.datovani_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="71" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.datovani_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.datovani_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="72" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.datovani_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.davkovacV_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="73" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.davkovacV_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.davkovacV_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="74" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.davkovacV_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.davkovacZ_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="75" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.davkovacZ_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.davkovacZ_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="76" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.davkovacZ_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.davkovani_Btn_col" ClsId="0x0" Version="0" TargetIndex="77" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.davkovani_Btn_col]" />
-      <Object Name="Local.gui_ctr.dopravnik_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="78" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.dopravnik_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.dopravnik_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="79" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.dopravnik_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.fotonka_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="80" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.fotonka_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.fotonka_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="81" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.fotonka_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.nastBtnPressed" ClsId="0x0" Version="0" TargetIndex="82" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.nastBtnPressed]" />
-      <Object Name="Local.gui_ctr.nastaveniLabelIndex" ClsId="0x0" Version="0" TargetIndex="83" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.nastaveniLabelIndex]" />
-      <Object Name="Local.gui_ctr.podrazeni_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="84" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.podrazeni_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.podrazeni_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="85" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.podrazeni_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.posuv_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="86" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.posuv_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.posuv_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="87" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.posuv_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.skladani_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="88" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.skladani_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.skladani_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="89" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.skladani_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.start_Btn_col" ClsId="0x0" Version="0" TargetIndex="90" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.start_Btn_col]" />
-      <Object Name="Local.gui_ctr.stop_Btn_col" ClsId="0x0" Version="0" TargetIndex="91" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.stop_Btn_col]" />
-      <Object Name="Local.gui_ctr.strihani_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="92" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.strihani_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.strihani_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="93" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.strihani_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.topeni_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="94" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.topeni_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.topeni_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="95" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.topeni_ZAP_Btn]" />
-      <Object Name="Local.gui_ctr.ulozBtnPressed" ClsId="0x0" Version="0" TargetIndex="96" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.ulozBtnPressed]" />
-      <Object Name="Local.gui_ctr.vystrkavani_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="97" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.vystrkavani_VYP_Btn]" />
-      <Object Name="Local.gui_ctr.vystrkavani_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="98" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.vystrkavani_ZAP_Btn]" />
-      <Object Name="Local.syst_tmr.incrementValue" ClsId="0x0" Version="0" TargetIndex="99" Type="DP" RefString="Source[global].Variable[Local.syst_tmr.incrementValue]" />
+      <Object Name="Local.GLOBAL.technologieNumber" ClsId="0x0" Version="0" TargetIndex="62" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.technologieNumber]" />
+      <Object Name="Local.GLOBAL.testMode" ClsId="0x0" Version="0" TargetIndex="63" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.testMode]" />
+      <Object Name="Local.GLOBAL.tmp" ClsId="0x0" Version="0" TargetIndex="64" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.tmp]" />
+      <Object Name="Local.GLOBAL.topeniImpuls_St" ClsId="0x0" Version="0" TargetIndex="65" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.topeniImpuls_St]" />
+      <Object Name="Local.GLOBAL.topeni_St" ClsId="0x0" Version="0" TargetIndex="66" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.topeni_St]" />
+      <Object Name="Local.GLOBAL.vystrkavani_St" ClsId="0x0" Version="0" TargetIndex="67" Type="DP" RefString="Source[global].Variable[Local.GLOBAL.vystrkavani_St]" />
+      <Object Name="Local.gui_ctr.CO2_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="68" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.CO2_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.CO2_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="69" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.CO2_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.brzda_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="70" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.brzda_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.brzda_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="71" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.brzda_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.datovani_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="72" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.datovani_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.datovani_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="73" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.datovani_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.davkovacV_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="74" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.davkovacV_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.davkovacV_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="75" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.davkovacV_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.davkovacZ_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="76" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.davkovacZ_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.davkovacZ_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="77" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.davkovacZ_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.davkovani_Btn_col" ClsId="0x0" Version="0" TargetIndex="78" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.davkovani_Btn_col]" />
+      <Object Name="Local.gui_ctr.dopravnik_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="79" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.dopravnik_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.dopravnik_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="80" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.dopravnik_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.fotonka_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="81" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.fotonka_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.fotonka_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="82" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.fotonka_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.nastBtnPressed" ClsId="0x0" Version="0" TargetIndex="83" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.nastBtnPressed]" />
+      <Object Name="Local.gui_ctr.nastaveniLabelIndex" ClsId="0x0" Version="0" TargetIndex="84" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.nastaveniLabelIndex]" />
+      <Object Name="Local.gui_ctr.podrazeni_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="85" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.podrazeni_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.podrazeni_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="86" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.podrazeni_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.posuv_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="87" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.posuv_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.posuv_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="88" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.posuv_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.pouzitBtnPressed" ClsId="0x0" Version="0" TargetIndex="89" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.pouzitBtnPressed]" />
+      <Object Name="Local.gui_ctr.skladani_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="90" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.skladani_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.skladani_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="91" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.skladani_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.start_Btn_col" ClsId="0x0" Version="0" TargetIndex="92" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.start_Btn_col]" />
+      <Object Name="Local.gui_ctr.stop_Btn_col" ClsId="0x0" Version="0" TargetIndex="93" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.stop_Btn_col]" />
+      <Object Name="Local.gui_ctr.strihani_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="94" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.strihani_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.strihani_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="95" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.strihani_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.topeni_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="96" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.topeni_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.topeni_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="97" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.topeni_ZAP_Btn]" />
+      <Object Name="Local.gui_ctr.vystrkavani_VYP_Btn" ClsId="0x0" Version="0" TargetIndex="98" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.vystrkavani_VYP_Btn]" />
+      <Object Name="Local.gui_ctr.vystrkavani_ZAP_Btn" ClsId="0x0" Version="0" TargetIndex="99" Type="DP" RefString="Source[global].Variable[Local.gui_ctr.vystrkavani_ZAP_Btn]" />
+      <Object Name="Local.syst_tmr.incrementValue" ClsId="0x0" Version="0" TargetIndex="100" Type="DP" RefString="Source[global].Variable[Local.syst_tmr.incrementValue]" />
+      <Object Name="Local.technolg.storeActualTechnology" ClsId="0x0" Version="0" TargetIndex="101" Type="DP" RefString="Source[global].Variable[Local.technolg.storeActualTechnology]" />
+      <Object Name="Local.technolg.technologyGUISelected" ClsId="0x0" Version="0" TargetIndex="102" Type="DP" RefString="Source[global].Variable[Local.technolg.technologyGUISelected]" />
+      <Object Name="Local.technolg.technologyGUIStorno" ClsId="0x0" Version="0" TargetIndex="103" Type="DP" RefString="Source[global].Variable[Local.technolg.technologyGUIStorno]" />
+      <Object Name="Local.technolg.technologySelect" ClsId="0x0" Version="0" TargetIndex="104" Type="DP" RefString="Source[global].Variable[Local.technolg.technologySelect]" />
       <Object Name="DPV" ClsId="0x100" Version="1" Type="DPM" RefString="Source[global].DPV[]">
         <Byte Name="TaskPrior">200</Byte>
         <Byte Name="Reserved">0</Byte>
         <UInt16 Name="Reserved">0</UInt16>
-        <UInt32 Name="DPCount">100</UInt32>
+        <UInt32 Name="DPCount">105</UInt32>
         <Group Name="Local.GLOBAL.CO2_St">
           <UInt32 Name="DPID">0</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
@@ -790,7 +795,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.GLOBAL.testMode">
+        <Group Name="Local.GLOBAL.technologieNumber">
           <UInt32 Name="DPID">62</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -801,7 +806,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.GLOBAL.tmp">
+        <Group Name="Local.GLOBAL.testMode">
           <UInt32 Name="DPID">63</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -812,7 +817,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.GLOBAL.topeniImpuls_St">
+        <Group Name="Local.GLOBAL.tmp">
           <UInt32 Name="DPID">64</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -823,7 +828,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.GLOBAL.topeni_St">
+        <Group Name="Local.GLOBAL.topeniImpuls_St">
           <UInt32 Name="DPID">65</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -834,7 +839,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.GLOBAL.vystrkavani_St">
+        <Group Name="Local.GLOBAL.topeni_St">
           <UInt32 Name="DPID">66</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -845,7 +850,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.CO2_VYP_Btn">
+        <Group Name="Local.GLOBAL.vystrkavani_St">
           <UInt32 Name="DPID">67</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -856,7 +861,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.CO2_ZAP_Btn">
+        <Group Name="Local.gui_ctr.CO2_VYP_Btn">
           <UInt32 Name="DPID">68</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -867,7 +872,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.brzda_VYP_Btn">
+        <Group Name="Local.gui_ctr.CO2_ZAP_Btn">
           <UInt32 Name="DPID">69</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -878,7 +883,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.brzda_ZAP_Btn">
+        <Group Name="Local.gui_ctr.brzda_VYP_Btn">
           <UInt32 Name="DPID">70</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -889,7 +894,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.datovani_VYP_Btn">
+        <Group Name="Local.gui_ctr.brzda_ZAP_Btn">
           <UInt32 Name="DPID">71</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -900,7 +905,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.datovani_ZAP_Btn">
+        <Group Name="Local.gui_ctr.datovani_VYP_Btn">
           <UInt32 Name="DPID">72</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -911,7 +916,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.davkovacV_VYP_Btn">
+        <Group Name="Local.gui_ctr.datovani_ZAP_Btn">
           <UInt32 Name="DPID">73</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -922,7 +927,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.davkovacV_ZAP_Btn">
+        <Group Name="Local.gui_ctr.davkovacV_VYP_Btn">
           <UInt32 Name="DPID">74</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -933,7 +938,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.davkovacZ_VYP_Btn">
+        <Group Name="Local.gui_ctr.davkovacV_ZAP_Btn">
           <UInt32 Name="DPID">75</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -944,7 +949,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.davkovacZ_ZAP_Btn">
+        <Group Name="Local.gui_ctr.davkovacZ_VYP_Btn">
           <UInt32 Name="DPID">76</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -955,7 +960,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.davkovani_Btn_col">
+        <Group Name="Local.gui_ctr.davkovacZ_ZAP_Btn">
           <UInt32 Name="DPID">77</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -966,7 +971,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.dopravnik_VYP_Btn">
+        <Group Name="Local.gui_ctr.davkovani_Btn_col">
           <UInt32 Name="DPID">78</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -977,7 +982,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.dopravnik_ZAP_Btn">
+        <Group Name="Local.gui_ctr.dopravnik_VYP_Btn">
           <UInt32 Name="DPID">79</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -988,7 +993,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.fotonka_VYP_Btn">
+        <Group Name="Local.gui_ctr.dopravnik_ZAP_Btn">
           <UInt32 Name="DPID">80</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -999,7 +1004,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.fotonka_ZAP_Btn">
+        <Group Name="Local.gui_ctr.fotonka_VYP_Btn">
           <UInt32 Name="DPID">81</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1010,7 +1015,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.nastBtnPressed">
+        <Group Name="Local.gui_ctr.fotonka_ZAP_Btn">
           <UInt32 Name="DPID">82</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1021,7 +1026,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.nastaveniLabelIndex">
+        <Group Name="Local.gui_ctr.nastBtnPressed">
           <UInt32 Name="DPID">83</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1032,7 +1037,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.podrazeni_VYP_Btn">
+        <Group Name="Local.gui_ctr.nastaveniLabelIndex">
           <UInt32 Name="DPID">84</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1043,7 +1048,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.podrazeni_ZAP_Btn">
+        <Group Name="Local.gui_ctr.podrazeni_VYP_Btn">
           <UInt32 Name="DPID">85</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1054,7 +1059,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.posuv_VYP_Btn">
+        <Group Name="Local.gui_ctr.podrazeni_ZAP_Btn">
           <UInt32 Name="DPID">86</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1065,7 +1070,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.posuv_ZAP_Btn">
+        <Group Name="Local.gui_ctr.posuv_VYP_Btn">
           <UInt32 Name="DPID">87</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1076,7 +1081,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.skladani_VYP_Btn">
+        <Group Name="Local.gui_ctr.posuv_ZAP_Btn">
           <UInt32 Name="DPID">88</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1087,7 +1092,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.skladani_ZAP_Btn">
+        <Group Name="Local.gui_ctr.pouzitBtnPressed">
           <UInt32 Name="DPID">89</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1098,7 +1103,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.start_Btn_col">
+        <Group Name="Local.gui_ctr.skladani_VYP_Btn">
           <UInt32 Name="DPID">90</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1109,7 +1114,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.stop_Btn_col">
+        <Group Name="Local.gui_ctr.skladani_ZAP_Btn">
           <UInt32 Name="DPID">91</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1120,7 +1125,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.strihani_VYP_Btn">
+        <Group Name="Local.gui_ctr.start_Btn_col">
           <UInt32 Name="DPID">92</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1131,7 +1136,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.strihani_ZAP_Btn">
+        <Group Name="Local.gui_ctr.stop_Btn_col">
           <UInt32 Name="DPID">93</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1142,7 +1147,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.topeni_VYP_Btn">
+        <Group Name="Local.gui_ctr.strihani_VYP_Btn">
           <UInt32 Name="DPID">94</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1153,7 +1158,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.topeni_ZAP_Btn">
+        <Group Name="Local.gui_ctr.strihani_ZAP_Btn">
           <UInt32 Name="DPID">95</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1164,7 +1169,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.ulozBtnPressed">
+        <Group Name="Local.gui_ctr.topeni_VYP_Btn">
           <UInt32 Name="DPID">96</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1175,7 +1180,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.vystrkavani_VYP_Btn">
+        <Group Name="Local.gui_ctr.topeni_ZAP_Btn">
           <UInt32 Name="DPID">97</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1186,7 +1191,7 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.gui_ctr.vystrkavani_ZAP_Btn">
+        <Group Name="Local.gui_ctr.vystrkavani_VYP_Btn">
           <UInt32 Name="DPID">98</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
@@ -1197,11 +1202,66 @@
           <UInt16 Name="UserID">65535</UInt16>
           <UInt16 Name="Reserved">0</UInt16>
         </Group>
-        <Group Name="Local.syst_tmr.incrementValue">
+        <Group Name="Local.gui_ctr.vystrkavani_ZAP_Btn">
           <UInt32 Name="DPID">99</UInt32>
           <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
           <UInt16 Name="UpdtTime">200</UInt16>
           <UInt16 Name="PVID">99</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="Reserved">0</UInt16>
+        </Group>
+        <Group Name="Local.syst_tmr.incrementValue">
+          <UInt32 Name="DPID">100</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">100</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="Reserved">0</UInt16>
+        </Group>
+        <Group Name="Local.technolg.storeActualTechnology">
+          <UInt32 Name="DPID">101</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">101</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="Reserved">0</UInt16>
+        </Group>
+        <Group Name="Local.technolg.technologyGUISelected">
+          <UInt32 Name="DPID">102</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">102</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="Reserved">0</UInt16>
+        </Group>
+        <Group Name="Local.technolg.technologyGUIStorno">
+          <UInt32 Name="DPID">103</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">103</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="Reserved">0</UInt16>
+        </Group>
+        <Group Name="Local.technolg.technologySelect">
+          <UInt32 Name="DPID">104</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Local]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">104</UInt16>
           <Reference Name="UG" Type="UG">none</Reference>
           <Reference Name="UGPLC" Type="UNIT">none</Reference>
           <UInt32 Name="Limit">4294967295</UInt32>

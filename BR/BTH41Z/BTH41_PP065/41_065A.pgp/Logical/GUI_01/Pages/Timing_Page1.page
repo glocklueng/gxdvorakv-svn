@@ -31,7 +31,7 @@
           <Text ID="89158" Value="Úhel zapnutí  [°]"/>
           <Text ID="89160" Value="Aktuální pozice"/>
           <Text ID="89161" Value="stroje  [°]"/>
-          <Text ID="89163" Value="Uložit"/>
+          <Text ID="89163" Value="Použít"/>
           <Text ID="89164" Value="Uloženo"/>
           <Text ID="89165" Value="Storno"/>
           <Text ID="89166" Value="Uloženo"/>
@@ -329,8 +329,8 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="SetValue" Value="2"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.gui_ctr.ulozBtnPressed]"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.gui_ctr.pouzitBtnPressed]"/>
             </KeyAction>
             <KeyAction ClassId="0x00000160">
               <Property Name="Description" Value=""/>
