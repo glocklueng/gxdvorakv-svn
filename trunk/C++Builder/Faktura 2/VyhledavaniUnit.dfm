@@ -3,7 +3,7 @@ object VyhledavaniForm: TVyhledavaniForm
   Top = 265
   Width = 721
   Height = 450
-  Caption = 'VyhledavaniForm'
+  Caption = 'Vyhled'#225'v'#225'n'#237
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -45,7 +45,7 @@ object VyhledavaniForm: TVyhledavaniForm
       item
         Expanded = False
         FieldName = 'Firma2'
-        Title.Caption = 'Firma - rozšíøení'
+        Title.Caption = 'Firma - roz'#353#237#345'en'#237
         Width = 143
         Visible = True
       end
@@ -59,7 +59,7 @@ object VyhledavaniForm: TVyhledavaniForm
         Alignment = taRightJustify
         Expanded = False
         FieldName = 'ICO'
-        Title.Caption = 'IÈO'
+        Title.Caption = 'I'#268'O'
         Width = 59
         Visible = True
       end
@@ -67,7 +67,7 @@ object VyhledavaniForm: TVyhledavaniForm
         Alignment = taRightJustify
         Expanded = False
         FieldName = 'DIC'
-        Title.Caption = 'DIÈ'
+        Title.Caption = 'DI'#268
         Width = 77
         Visible = True
       end
@@ -101,7 +101,7 @@ object VyhledavaniForm: TVyhledavaniForm
         Expanded = False
         FieldName = 'Cislo'
         ReadOnly = True
-        Title.Caption = 'Èíslo Faktury'
+        Title.Caption = #268#237'slo Faktury'
         Width = 66
         Visible = True
       end
@@ -109,14 +109,14 @@ object VyhledavaniForm: TVyhledavaniForm
         Expanded = False
         FieldName = 'IdOdberatele'
         ReadOnly = True
-        Title.Caption = 'È. Odbìratele'
+        Title.Caption = #268'. Odb'#283'ratele'
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'OdbratelName'
         ReadOnly = True
-        Title.Caption = 'Odbìratel'
+        Title.Caption = 'Odb'#283'ratel'
         Visible = False
       end
       item
@@ -133,7 +133,7 @@ object VyhledavaniForm: TVyhledavaniForm
         Expanded = False
         FieldName = 'Vystaveni'
         ReadOnly = True
-        Title.Caption = 'Datum Vystavení'
+        Title.Caption = 'Datum Vystaven'#237
         Width = 88
         Visible = True
       end
@@ -142,7 +142,7 @@ object VyhledavaniForm: TVyhledavaniForm
         Expanded = False
         FieldName = 'Zdaneni'
         ReadOnly = True
-        Title.Caption = 'Daum Zdanìní'
+        Title.Caption = 'Daum Zdan'#283'n'#237
         Width = 82
         Visible = True
       end>
@@ -159,7 +159,7 @@ object VyhledavaniForm: TVyhledavaniForm
       Top = 75
       Width = 86
       Height = 25
-      Caption = 'Zpìt'
+      Caption = 'Zp'#283't'
       TabOrder = 0
       OnClick = StornoBtnClick
     end
@@ -168,7 +168,7 @@ object VyhledavaniForm: TVyhledavaniForm
       Top = 75
       Width = 90
       Height = 25
-      Caption = 'Zobrazit položky'
+      Caption = 'Zobrazit polo'#382'ky'
       TabOrder = 1
       OnClick = ZobrazitBtnClick
     end
@@ -187,7 +187,7 @@ object VyhledavaniForm: TVyhledavaniForm
     Top = 220
     Width = 251
     Height = 71
-    Caption = 'Odbìratel'
+    Caption = 'Odb'#283'ratel'
     TabOrder = 3
     object DBNavigator1: TDBNavigator
       Left = 31

@@ -62,6 +62,7 @@ __published:	// IDE-managed Components
         void __fastcall TablePolAfterCancel(TDataSet *DataSet);
         void __fastcall TablePolBeforeInsert(TDataSet *DataSet);
    void __fastcall TablePolAfterEdit(TDataSet *DataSet);
+   void __fastcall TableFaktAfterScroll(TDataSet *DataSet);
       
 private:	// User declarations
 public:		// User declarations

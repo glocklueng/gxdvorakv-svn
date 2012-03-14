@@ -37,8 +37,10 @@ void __fastcall TPolozkyForm::FormShow(TObject *Sender)
    Databaze->TableFakt->Active=false;
    Databaze->TablePol->Active=true;
    Databaze->TablePol->IndexName ="" ;
+   Databaze->TablePol->MasterSource = NULL;
    Databaze->TablePol->Last();
    lastIdPolozky = Databaze->TablePol->FieldByName("IdPolozky")->AsInteger;
+   Databaze->TablePol->MasterSource = Databaze->DataSourceFakt;
    Databaze->TablePol->IndexName ="FakturaCislo" ;
    Databaze->TableFakt->Active=true;
    Databaze->TableFakt->Locate("Cislo", CisloFaktury,Opts);
@@ -135,8 +137,10 @@ void __fastcall TPolozkyForm::EditBtnClick(TObject *Sender)
 
    Databaze->TablePol->Last();
 
+
    cisloPolozky=Databaze->TablePol->FieldByName("CisloPolozky")->AsInteger;
-   cisloPolozky++;
+   CisloFaktury=Databaze->TableFakt->FieldByName("Cislo")->AsInteger;
+  // cisloPolozky++;
 
    DBGridPolozky->Enabled=true;
    DBGridFaktury->Enabled=false;
@@ -145,8 +149,14 @@ void __fastcall TPolozkyForm::EditBtnClick(TObject *Sender)
    PolozkyForm->Paint();
    DBGridPolozky->SetFocus();
    Databaze->TablePol->Edit();
-   Databaze->TablePolNazev->Value="";
+   if(Databaze->TablePolNazev->Value==NULL){
+      Databaze->TablePolNazev->Value="";
+   }
 
+/*   Databaze->TablePol->MasterSource = NULL;
+   Databaze-> TablePol->Last();
+   PolozkyForm->lastIdPolozky = Databaze->TablePol->FieldByName("IdPolozky")->AsInteger;
+   Databaze->TablePol->MasterSource = Databaze->DataSourceFakt;*/
 
 }
 //---------------------------------------------------------------------------
