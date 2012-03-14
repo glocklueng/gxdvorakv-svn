@@ -21,7 +21,7 @@ __fastcall TDatabaze::TDatabaze(TComponent* Owner)
 void __fastcall TDatabaze::TablePolCalcFields(TDataSet *DataSet)
 {
 
-  float dph= PolozkyForm->SAZBA_DPH;
+  float dph= TablePol->FieldByName("SazbaDPH")->AsFloat; //PolozkyForm->SAZBA_DPH;
   TablePolCenaCelkem->Value=TablePolPocetJednotek->Value * TablePolCenaJednotky->Value;
   TablePolDPHCelkem->Value=TablePolCenaCelkem->Value * dph/(100+dph);
 }
@@ -107,14 +107,15 @@ void __fastcall TDatabaze::TableFaktAfterScroll(TDataSet *DataSet)
    TLocateOptions Opts;
    Opts.Clear();
    Opts << loPartialKey;
-   int i = 1;
+   int i = 0;
 
    long cislo = TableFakt->FieldByName("Cislo")->AsInteger;
    TablePol->Active=true;
    TablePol->Locate("CisloFaktury",cislo,Opts);
-   while (TablePol->FindNext()){
-      i++;
-   }
+   do {
+    i++;
+   }  while (TablePol->FindNext());
+
    PolozkyForm->pocetPolozek->Caption = IntToStr(i);
    PolozkyForm->cenaCelkem->Caption= "---";
    PolozkyForm->CisloFaktury=TableFakt->FieldByName("Cislo")->AsInteger;
@@ -122,4 +123,5 @@ void __fastcall TDatabaze::TableFaktAfterScroll(TDataSet *DataSet)
 
   }
 //---------------------------------------------------------------------------
+
 

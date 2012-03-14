@@ -246,16 +246,23 @@ void __fastcall TMainForm::PokracovatBtnClick(TObject *Sender)
 
    Databaze->TableFakt->Edit();
    Databaze->TableFakt->Post();
+   PolozkyForm->EditBtn->Visible=false;
+   PolozkyForm->Position=poScreenCenter;
+   PolozkyForm->Visible=true;
+   Databaze->TableFakt->Last();
 
    PolozkyForm->CisloFaktury=StrToInt(CisloFakturyEdit->Text);
    PolozkyForm->GroupBoxFaktury->Visible=false;
    PolozkyForm->DBGridPolozky->Align=alClient;
    PolozkyForm->DBGridPolozky->Enabled=true;
-   PolozkyForm->EditBtn->Visible=false;
-   PolozkyForm->Position=poScreenCenter;
-   PolozkyForm->Visible=true;
+   //PolozkyForm->DBGridPolozky->Columns->Items[3]->ReadOnly =true;
+
+   PolozkyForm->cisloPolozky = 0;
+
    Databaze->TablePol->Active=true;
    Databaze->TablePol->Edit();
+
+
    MainForm->Visible=false;
 
 }
@@ -447,5 +454,6 @@ void __fastcall TMainForm::DateVystaveniChange(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
 
 

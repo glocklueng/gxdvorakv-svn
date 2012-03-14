@@ -1,79 +1,47 @@
 [Closed Files]
-File_0=SourceModule,'c:\program files\borland\cbuilder6\include\vcl\sysvari.h',0,1,1,1,329,0,0
-File_1=SourceModule,'C:\Program Files\Borland\CBuilder6\Projects\Faktura2\polozkyUnit.dfm',0,1,1,1,1,0,0
+File_0=SourceModule,'c:\program files\borland\cbuilder6\include\vcl\sysopen.h',0,1,291,1,310,0,0
+File_1=SourceModule,'c:\program files\borland\cbuilder6\include\vcl\systvar.h',0,1,159,1,165,0,0
+File_2=SourceModule,'c:\program files\borland\cbuilder6\include\vcl\dstring.h',0,1,145,1,164,0,0
+File_3=SourceModule,'c:\program files\borland\cbuilder6\include\vcl\sysset.h',0,1,19,1,36,0,0
+File_4=SourceModule,'c:\program files\borland\cbuilder6\include\vcl\sysvari.h',0,1,1,1,329,0,0
+File_5=SourceModule,'C:\Program Files\Borland\CBuilder6\Projects\Faktura2\polozkyUnit.dfm',0,1,1,1,1,0,0
 
 [Modules]
-Module0=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\VyhledavaniUnit.cpp
-Module1=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\mainUnit.cpp
-Module2=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\tiskDialogUnit.cpp
-Module3=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\poznamkaUnit.cpp
-Module4=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\polozkyUnit.cpp
-Module5=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\passUnit.cpp
-Module6=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\dodavatelUnit.cpp
-Module7=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\fakturaTisk.cpp
-Module8=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\data.cpp
-Module9=c:\program files\borland\cbuilder6\include\vcl\dstring.h
-Module10=c:\program files\borland\cbuilder6\include\vcl\sysset.h
-Module11=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\Faktura2.bpr
-Count=12
+Module0=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\fakturaTisk.cpp
+Module1=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\mainUnit.cpp
+Module2=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\polozkyUnit.cpp
+Module3=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\data.cpp
+Module4=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\VyhledavaniUnit.cpp
+Module5=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\Faktura2.bpr
+Count=6
 EditWindowCount=1
 
-[C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\VyhledavaniUnit.cpp]
+[C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\fakturaTisk.cpp]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\mainUnit.cpp]
+[C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\mainUnit.cpp]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=1
+
+[C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\polozkyUnit.cpp]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=1
 
-[C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\tiskDialogUnit.cpp]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=1
-
-[C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\poznamkaUnit.cpp]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=1
-
-[C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\polozkyUnit.cpp]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=1
-
-[C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\passUnit.cpp]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=1
-
-[C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\dodavatelUnit.cpp]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=1
-
-[C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\fakturaTisk.cpp]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\data.cpp]
+[C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\data.cpp]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
-[c:\program files\borland\cbuilder6\include\vcl\dstring.h]
+[C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\VyhledavaniUnit.cpp]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[c:\program files\borland\cbuilder6\include\vcl\sysset.h]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\Faktura2.bpr]
+[C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\Faktura2.bpr]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -83,28 +51,22 @@ FormState=0
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=12
-CurrentView=2
+ViewCount=6
+CurrentView=5
 View0=0
 View1=1
 View2=2
 View3=3
 View4=4
 View5=5
-View6=6
-View7=7
-View8=8
-View9=9
-View10=10
-View11=11
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 ClassHierarchy=ClassHierarchy@EditWindow0
 Create=1
 Visible=1
 State=0
-Left=496
-Top=131
+Left=227
+Top=337
 Width=881
 Height=773
 MaxLeft=-1
@@ -120,98 +82,63 @@ BottomPanelClients=MessageView@EditWindow0
 BottomPanelData=0000040000000000690300000000000002550000000000000001000000000000000000000000010000000069030000000000000100000000690300000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
-Module=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\data.cpp
-CursorX=71
-CursorY=121
-TopLine=94
+Module=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\VyhledavaniUnit.cpp
+CursorX=1
+CursorY=65
+TopLine=29
 LeftCol=1
 
 [View1]
-Module=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\tiskDialogUnit.cpp
+Module=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\mainUnit.cpp
 CursorX=1
-CursorY=1
-TopLine=10
+CursorY=434
+TopLine=415
 LeftCol=1
 
 [View2]
-Module=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\VyhledavaniUnit.cpp
+Module=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\data.cpp
 CursorX=1
-CursorY=1
-TopLine=1
+CursorY=96
+TopLine=63
 LeftCol=1
 
 [View3]
-Module=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\fakturaTisk.cpp
-CursorX=23
-CursorY=305
-TopLine=181
-LeftCol=1
-
-[View4]
-Module=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\dodavatelUnit.cpp
-CursorX=1
-CursorY=1
-TopLine=1
-LeftCol=1
-
-[View5]
-Module=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\passUnit.cpp
-CursorX=1
-CursorY=1
-TopLine=1
-LeftCol=1
-
-[View6]
-Module=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\Faktura2.cpp
+Module=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\Faktura2.cpp
 CursorX=1
 CursorY=31
 TopLine=1
 LeftCol=1
 
-[View7]
-Module=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\mainUnit.cpp
+[View4]
+Module=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\polozkyUnit.cpp
 CursorX=1
-CursorY=310
-TopLine=296
+CursorY=99
+TopLine=74
 LeftCol=1
 
-[View8]
-Module=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\polozkyUnit.cpp
+[View5]
+Module=C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\fakturaTisk.cpp
 CursorX=1
-CursorY=141
-TopLine=131
-LeftCol=1
-
-[View9]
-Module=C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\poznamkaUnit.cpp
-CursorX=1
-CursorY=1
+CursorY=28
 TopLine=1
 LeftCol=1
 
-[View10]
-Module=c:\program files\borland\cbuilder6\include\vcl\sysset.h
-CursorX=1
-CursorY=36
-TopLine=19
-LeftCol=1
-
-[View11]
-Module=c:\program files\borland\cbuilder6\include\vcl\dstring.h
-CursorX=1
-CursorY=68
-TopLine=47
-LeftCol=1
-
 [Watches]
-Count=3
+Count=1
 Watch0='zbytekPol',256,0,18,1,0,'Watches'
 
 [Breakpoints]
-Count=3
+Count=10
 Breakpoint0='C:\Program Files\Borland\CBuilder6\Projects\Faktura2\poznamkaUnit.cpp',20,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint1='C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\polozkyUnit.cpp',156,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint2='C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\fakturaTisk.cpp',28,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint1='C:\Program Files\Borland\CBuilder6\Projects\Faktura2-realdata\polozkyUnit.cpp',162,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint2='C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\data.cpp',54,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint3='C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\mainUnit.cpp',434,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint4='C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\VyhledavaniUnit.cpp',24,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint5='C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\VyhledavaniUnit.cpp',34,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint6='C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\VyhledavaniUnit.cpp',48,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint7='C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\VyhledavaniUnit.cpp',65,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint8='C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\VyhledavaniUnit.cpp',64,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint9='C:\projects\C++ Builder\Faktura\newSource\Faktura2.0.3\polozkyUnit.cpp',99,'',0,1,'',1,0,0,'',1,'','',''
 
 [AddressBreakpoints]
 Count=0
@@ -293,7 +220,7 @@ Dockable=1
 
 [WatchWindow]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=532
 Top=24
@@ -441,7 +368,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=170
 ClientHeight=639
-TBDockHeight=388
+TBDockHeight=639
 LRDockWidth=170
 Dockable=1
 ClassViewDisplayMode=0
