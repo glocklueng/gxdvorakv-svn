@@ -5,7 +5,6 @@ object Databaze: TDatabaze
   Height = 269
   Width = 671
   object TableDod: TTable
-    Active = True
     TableName = 'dodavatel.DB'
     Left = 28
     Top = 12
@@ -14,8 +13,9 @@ object Databaze: TDatabaze
       Required = True
     end
     object TableDodNazev: TStringField
+      DisplayWidth = 30
       FieldName = 'Nazev'
-      Size = 25
+      Size = 30
     end
     object TableDodAdresa: TStringField
       FieldName = 'Adresa'
@@ -138,7 +138,6 @@ object Databaze: TDatabaze
     end
   end
   object TableFakt: TTable
-    Active = True
     FieldDefs = <
       item
         Name = 'Cislo'
@@ -153,7 +152,7 @@ object Databaze: TDatabaze
       item
         Name = 'CisloObjednavky'
         DataType = ftString
-        Size = 15
+        Size = 20
       end
       item
         Name = 'Splatnost'
@@ -186,8 +185,8 @@ object Databaze: TDatabaze
       Required = True
     end
     object TableFaktCisloObjednavky: TStringField
+      DisplayWidth = 20
       FieldName = 'CisloObjednavky'
-      Size = 15
     end
     object TableFaktSplatnost: TDateField
       FieldName = 'Splatnost'

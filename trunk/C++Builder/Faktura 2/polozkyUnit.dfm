@@ -100,6 +100,7 @@ object PolozkyForm: TPolozkyForm
         Expanded = False
         FieldName = 'CenaCelkem'
         Title.Caption = 'Cena Celkem'
+        Width = 64
         Visible = True
       end
       item
@@ -112,9 +113,9 @@ object PolozkyForm: TPolozkyForm
   end
   object GroupBoxFaktury: TGroupBox
     Left = 0
-    Top = 80
+    Top = 76
     Width = 698
-    Height = 124
+    Height = 128
     Anchors = [akLeft, akTop, akRight]
     Caption = 'Faktury'
     TabOrder = 2
@@ -122,7 +123,7 @@ object PolozkyForm: TPolozkyForm
       Left = 2
       Top = 15
       Width = 694
-      Height = 107
+      Height = 111
       Align = alClient
       DataSource = Databaze.DataSourceFakt
       TabOrder = 0
@@ -150,7 +151,7 @@ object PolozkyForm: TPolozkyForm
           Expanded = False
           FieldName = 'IdOdberatele'
           ReadOnly = True
-          Title.Caption = #268'. Odb'
+          Title.Caption = #268'. Odb.'
           Width = 42
           Visible = True
         end

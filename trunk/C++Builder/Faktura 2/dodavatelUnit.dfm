@@ -1,6 +1,6 @@
 object DodavatelForm: TDodavatelForm
-  Left = 656
-  Top = 479
+  Left = 462
+  Top = 421
   Width = 359
   Height = 261
   Anchors = [akLeft, akTop, akRight, akBottom]
