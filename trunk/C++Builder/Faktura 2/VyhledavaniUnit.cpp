@@ -43,7 +43,7 @@ void __fastcall TVyhledavaniForm::StornoBtnClick(TObject *Sender)
 void __fastcall TVyhledavaniForm::ZobrazitBtnClick(TObject *Sender)
 {
 
-   PolozkyForm->CisloFaktury=Databaze->TableFakt->FieldByName("Cislo")->AsInteger;
+
 //   StrToInt(CisloFakturyEdit->Text);
    PolozkyForm->GroupBoxFaktury->Visible=true;
    PolozkyForm->DBGridPolozky->Align=alNone;
@@ -51,10 +51,13 @@ void __fastcall TVyhledavaniForm::ZobrazitBtnClick(TObject *Sender)
    PolozkyForm->DBGridPolozky->Height= ((PolozkyForm->Height)-235);
    PolozkyForm->DBGridPolozky->Anchors << akTop << akBottom << akLeft << akRight;
 
-   PolozkyForm->DBGridPolozky->Enabled=false;
-   PolozkyForm->DBGridFaktury->Enabled=true;
+   PolozkyForm->CisloFaktury=Databaze->TableFakt->FieldByName("Cislo")->AsInteger;
    PolozkyForm->Position=poScreenCenter;
    PolozkyForm->Visible=true;
+   PolozkyForm->CisloFaktury=Databaze->TableFakt->FieldByName("Cislo")->AsInteger;
+  
+   PolozkyForm->DBGridPolozky->Enabled=false;
+   PolozkyForm->DBGridFaktury->Enabled=true;
    PolozkyForm->DBGridFaktury->SetFocus();
    PolozkyForm->DBNavigator1->DataSource=Databaze->DataSourceFakt;
    PolozkyForm->EditBtn->Visible=true;
@@ -65,4 +68,5 @@ void __fastcall TVyhledavaniForm::ZobrazitBtnClick(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
 

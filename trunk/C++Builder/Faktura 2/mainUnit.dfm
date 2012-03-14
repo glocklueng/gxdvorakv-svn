@@ -1,10 +1,10 @@
 object MainForm: TMainForm
-  Left = 384
-  Top = 464
+  Left = 311
+  Top = 216
   Width = 738
   Height = 488
   Anchors = []
-  Caption = 'Faktura 2.0.2'
+  Caption = 'Faktura 2010 (rev.2.0.3)'
   Color = clBtnFace
   Constraints.MinHeight = 400
   Constraints.MinWidth = 730

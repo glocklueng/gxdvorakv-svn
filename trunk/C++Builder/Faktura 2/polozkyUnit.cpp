@@ -22,7 +22,7 @@ __fastcall TPolozkyForm::TPolozkyForm(TComponent* Owner)
 
 void __fastcall TPolozkyForm::FormCreate(TObject *Sender)
 {
-    SAZBA_DPH = 19.0;
+    SAZBA_DPH = 20.0;
 }
 //---------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ void __fastcall TPolozkyForm::FormShow(TObject *Sender)
    TLocateOptions Opts;
    Opts.Clear();
    Opts << loPartialKey;
-
+   int LocalCisloFaktury = CisloFaktury;
    Databaze->TableFakt->Active=false;
    Databaze->TablePol->Active=true;
    Databaze->TablePol->IndexName ="" ;
@@ -43,7 +43,7 @@ void __fastcall TPolozkyForm::FormShow(TObject *Sender)
    Databaze->TablePol->MasterSource = Databaze->DataSourceFakt;
    Databaze->TablePol->IndexName ="FakturaCislo" ;
    Databaze->TableFakt->Active=true;
-   Databaze->TableFakt->Locate("Cislo", CisloFaktury,Opts);
+   Databaze->TableFakt->Locate("Cislo", LocalCisloFaktury,Opts);
    CisloFakturyLabel->Caption=Databaze->TableFakt->FieldByName("Cislo")->Value;
 
    cisloPolozky=1;
@@ -89,12 +89,18 @@ void __fastcall TPolozkyForm::KonecBtnClick(TObject *Sender)
    PolozkyForm->Visible=false;
    MainForm->Visible=true;
 
+
    MainForm->DBNavigatorOdb->Visible=false;
    MainForm->GroupBoxF->Visible=false;
    MainForm->GroupBoxOdb->Visible=false;
    MainForm->DBGridOdb->Visible=false;
    MainForm->GroupBoxOdberatelHledani->Visible=false;
-   
+
+   Databaze->TableFakt->IndexName="";
+   Databaze->TableFakt->MasterSource= NULL;
+   Databaze->TableFakt->MasterFields="";
+   Databaze->TableFakt->Active=false;
+
 }
 //---------------------------------------------------------------------------
 
@@ -146,6 +152,7 @@ void __fastcall TPolozkyForm::EditBtnClick(TObject *Sender)
    DBGridFaktury->Enabled=false;
    DBGridFaktury->Repaint();
    PolozkyForm->DBNavigator1->DataSource=Databaze->DataSourcePol;
+   PolozkyForm->DBGridPolozky->Columns->Items[3]->ReadOnly =false;
    PolozkyForm->Paint();
    DBGridPolozky->SetFocus();
    Databaze->TablePol->Edit();

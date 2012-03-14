@@ -1,6 +1,6 @@
 object PolozkyForm: TPolozkyForm
-  Left = 391
-  Top = 106
+  Left = 327
+  Top = 209
   Width = 706
   Height = 636
   HorzScrollBar.Visible = False
@@ -63,7 +63,8 @@ object PolozkyForm: TPolozkyForm
       item
         Expanded = False
         FieldName = 'SazbaDPH'
-        ReadOnly = True
+        PickList.Strings = (
+          '20')
         Title.Caption = 'Sazba DPH'
         Width = 61
         Visible = True
@@ -100,7 +101,6 @@ object PolozkyForm: TPolozkyForm
         Expanded = False
         FieldName = 'CenaCelkem'
         Title.Caption = 'Cena Celkem'
-        Width = 64
         Visible = True
       end
       item
