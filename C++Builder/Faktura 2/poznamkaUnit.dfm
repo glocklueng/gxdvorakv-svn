@@ -6,7 +6,7 @@ object PoznamkaForm: TPoznamkaForm
   ActiveControl = OKBtn
   Anchors = [akLeft, akTop, akRight, akBottom]
   BorderIcons = [biMinimize]
-  Caption = 'PoznamkaForm'
+  Caption = 'Pozn'#225'mka'
   Color = clBtnFace
   Constraints.MaxHeight = 155
   Font.Charset = DEFAULT_CHARSET

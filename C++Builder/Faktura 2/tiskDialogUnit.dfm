@@ -1,6 +1,6 @@
 object TiskDialogForm: TTiskDialogForm
-  Left = 674
-  Top = 800
+  Left = 825
+  Top = 720
   BorderStyle = bsDialog
   Caption = 'Tisk'
   ClientHeight = 151

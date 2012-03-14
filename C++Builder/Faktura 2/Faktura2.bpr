@@ -37,8 +37,8 @@
   </MACROS>
   <OPTIONS>
     <IDLCFLAGS value="-I.. -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
-    <CFLAG1 value="-O2 -H=c:\PROGRA~1\borland\CBUILD~1\lib\vcl60.csm -Hc -Vx -Ve -X- -a8 -4 
-      -b- -k- -vi -c -tW -tWM"/>
+    <CFLAG1 value="-O2 -H=c:\PROGRA~1\borland\CBUILD~1\lib\vcl60.csm -Hc -w -Vx -Ve -X- -a8 
+      -4 -b- -k- -vi -c -tW -tWM"/>
     <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zn"/>
@@ -69,12 +69,12 @@
 
   <IDEOPTIONS>
 [Version Info]
-IncludeVerInfo=0
+IncludeVerInfo=1
 AutoIncBuild=0
-MajorVer=1
+MajorVer=2
 MinorVer=0
-Release=0
-Build=0
+Release=2
+Build=2
 Debug=0
 PreRelease=0
 Special=0
@@ -86,7 +86,7 @@ CodePage=1250
 [Version Info Keys]
 CompanyName=
 FileDescription=
-FileVersion=1.0.0.0
+FileVersion=2.0.2.2
 InternalName=
 LegalCopyright=
 LegalTrademarks=
@@ -94,6 +94,9 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
+
+[Excluded Packages]
+c:\program files\borland\cbuilder6\Projects\Bpl\dclusr60.bpl=Borland User Components
 
 [HistoryLists\hlIncludePath]
 Count=3

@@ -101,7 +101,7 @@ void __fastcall tisk(long aCisloFaktury)
 
    canvas->Font->Size=10;
    canvas->Font->Style =TFontStyles();
-   canvas->TextOut(99*zoomx,8*zoomy,"Obj. èíslo: "+objednavkaCislo);
+   canvas->TextOut(96*zoomx,8*zoomy,"Obj. èíslo: "+objednavkaCislo);
    canvas->TextOut(157*zoomx,8*zoomy,"Faktura èíslo:");
    canvas->TextOut(25*zoomx,29*zoomy,dodavatel_adresa);
    canvas->TextOut(25*zoomx,38*zoomy,dodavatel_telefon);
@@ -148,7 +148,7 @@ void __fastcall tisk(long aCisloFaktury)
    canvas->TextOut(192*zoomx,70*zoomy,"DPH");
 
    canvas->TextOut(75*zoomx,8*zoomy,"strana 1");
-   int pocetStran;
+ // int pocetStran;
    int pocetPolozek = Databaze->TablePol->RecordCount;
    int zbytekPol = pocetPolozek;
 
@@ -167,11 +167,11 @@ void __fastcall tisk(long aCisloFaktury)
 
    bool eot;
    do {
-
+      zbytekPol = pocetPolozek-i;
       if (pageNumber==1){
          switch (i){
             case pol_1_min:
-               if (zbytekPol < 10){
+               if (zbytekPol <= 10){
                   // rovnou skocit na dalsi stranu
                   i=0;
                   pageNumber++;
@@ -193,7 +193,7 @@ void __fastcall tisk(long aCisloFaktury)
       }else {
             switch (i){
             case pol_x_min:
-               if (zbytekPol < 10){
+               if (zbytekPol <= 10){
                   // rovnou skocit na dalsi stranu
                   i=0;
                   pageNumber++;
@@ -303,17 +303,17 @@ void __fastcall tisk(long aCisloFaktury)
    canvas->Font->Style =TFontStyles()<<fsBold;
    String poznamka=Databaze->TableDod->FieldByName("Poznamka")->AsString;
    String tmpPoznamka;
-   int pos1,pos2;
+   int pos1;
    tmpPoznamka = poznamka.SubString(0,(pos1=poznamka.AnsiPos("\n"))-2);
    canvas->TextOut(17*zoomx,274*zoomy,tmpPoznamka);
    poznamka=poznamka.SubString(pos1+1,poznamka.Length()-pos1);
 
    tmpPoznamka = poznamka.SubString(0,(pos1=poznamka.AnsiPos("\n"))-2);
    poznamka=poznamka.SubString(pos1+1,poznamka.Length()-pos1);
-   canvas->TextOut(17*zoomx,276.5*zoomy,tmpPoznamka);
+   canvas->TextOut(17*zoomx,277.5*zoomy,tmpPoznamka);
 
    tmpPoznamka = poznamka.SubString(0,poznamka.Length()-pos1);
-   canvas->TextOut(17*zoomx,280*zoomy,tmpPoznamka);
+   canvas->TextOut(17*zoomx,281*zoomy,tmpPoznamka);
 
    Prntr->EndDoc();
 }

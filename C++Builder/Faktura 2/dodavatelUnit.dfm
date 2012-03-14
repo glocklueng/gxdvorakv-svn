@@ -4,7 +4,7 @@ object DodavatelForm: TDodavatelForm
   Width = 359
   Height = 261
   Anchors = [akLeft, akTop, akRight, akBottom]
-  Caption = 'DodavatelForm'
+  Caption = 'Dodavatel'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

@@ -31,11 +31,13 @@ void __fastcall TDatabaze::TablePolCalcFields(TDataSet *DataSet)
 void __fastcall TDatabaze::TablePolNewRecord(TDataSet *DataSet)
 {
   int id,cislo;
-  PolozkyForm->lastIdPolozky++;
-  PolozkyForm->pocetPolozek->Caption=IntToStr(PolozkyForm->cisloPolozky);
 
-  id = PolozkyForm->lastIdPolozky;
-  cislo = PolozkyForm->cisloPolozky++;
+
+  PolozkyForm->lastIdPolozky++;
+  PolozkyForm->pocetPolozek->Caption=IntToStr(PolozkyForm->cisloPolozky++);
+
+  id = PolozkyForm->lastIdPolozky;         
+  cislo = PolozkyForm->cisloPolozky;
   TablePol->FieldByName("IdPolozky")->AsInteger=id;
   TablePol->FieldByName("SazbaDPH")->AsFloat=PolozkyForm->SAZBA_DPH;
   TablePol->FieldByName("CisloPolozky")->AsInteger=cislo;
@@ -68,8 +70,8 @@ void __fastcall TDatabaze::TablePolTypJednotkyChange(TField *Sender)
 
 void __fastcall TDatabaze::TablePolAfterCancel(TDataSet *DataSet)
 {
-    PolozkyForm->lastIdPolozky--;
-    PolozkyForm->cisloPolozky--;
+  //  PolozkyForm->lastIdPolozky--;
+   // PolozkyForm->cisloPolozky--;
 }
 //---------------------------------------------------------------------------
 
@@ -98,4 +100,26 @@ void __fastcall TDatabaze::TablePolAfterEdit(TDataSet *DataSet)
 //---------------------------------------------------------------------------
 
 
+
+
+void __fastcall TDatabaze::TableFaktAfterScroll(TDataSet *DataSet)
+{
+   TLocateOptions Opts;
+   Opts.Clear();
+   Opts << loPartialKey;
+   int i = 1;
+
+   long cislo = TableFakt->FieldByName("Cislo")->AsInteger;
+   TablePol->Active=true;
+   TablePol->Locate("CisloFaktury",cislo,Opts);
+   while (TablePol->FindNext()){
+      i++;
+   }
+   PolozkyForm->pocetPolozek->Caption = IntToStr(i);
+   PolozkyForm->cenaCelkem->Caption= "---";
+   PolozkyForm->CisloFaktury=TableFakt->FieldByName("Cislo")->AsInteger;
+   PolozkyForm->CisloFakturyLabel->Caption = PolozkyForm->CisloFaktury;
+
+  }
+//---------------------------------------------------------------------------
 

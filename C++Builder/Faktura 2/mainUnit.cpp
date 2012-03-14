@@ -284,6 +284,7 @@ void __fastcall TMainForm::menuTiskClick(TObject *Sender)
 
 void __fastcall TMainForm::menuEditaceUlozenychClick(TObject *Sender)
 {
+   Databaze->TableFakt->Active = true;
    if (Databaze->TableFakt->IsEmpty()){
       return;
    }    
@@ -446,4 +447,5 @@ void __fastcall TMainForm::DateVystaveniChange(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
 

@@ -1,9 +1,9 @@
 object Databaze: TDatabaze
   OldCreateOrder = False
-  Left = 64800
-  Top = 447
-  Height = 269
-  Width = 671
+  Left = 144
+  Top = 788
+  Height = 187
+  Width = 453
   object TableDod: TTable
     TableName = 'dodavatel.DB'
     Left = 28
@@ -47,7 +47,6 @@ object Databaze: TDatabaze
     end
   end
   object TableOdb: TTable
-    Active = True
     FieldDefs = <
       item
         Name = 'Id'
@@ -118,7 +117,7 @@ object Databaze: TDatabaze
     end
     object TableOdbAdresa: TStringField
       FieldName = 'Adresa'
-      Size = 30
+      Size = 60
     end
     object TableOdbICO: TStringField
       FieldName = 'ICO'
@@ -138,6 +137,7 @@ object Databaze: TDatabaze
     end
   end
   object TableFakt: TTable
+    AfterScroll = TableFaktAfterScroll
     FieldDefs = <
       item
         Name = 'Cislo'

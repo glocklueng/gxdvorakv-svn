@@ -1,6 +1,6 @@
 object PolozkyForm: TPolozkyForm
-  Left = 240
-  Top = 109
+  Left = 391
+  Top = 106
   Width = 706
   Height = 636
   HorzScrollBar.Visible = False
