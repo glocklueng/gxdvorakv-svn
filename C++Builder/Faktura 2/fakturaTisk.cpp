@@ -296,8 +296,8 @@ void __fastcall tisk(long aCisloFaktury)
 
    canvas->Font->Style=TFontStyles();
    canvas->Font->Size=10;
-   canvas->TextOut(132*zoomx,270*zoomy,"Razítko a podpis dodavatele");
-   canvas->TextOut(17*zoomx,270*zoomy,"Vystavil:  Josef ŠTOLBA");
+   canvas->TextOut(132*zoomx,269*zoomy,"Razítko a podpis dodavatele");
+   canvas->TextOut(17*zoomx,269*zoomy,"Vystavil:  Josef ŠTOLBA");
 
    canvas->Font->Size=8;
    canvas->Font->Style =TFontStyles()<<fsBold;
@@ -305,15 +305,15 @@ void __fastcall tisk(long aCisloFaktury)
    String tmpPoznamka;
    int pos1,pos2;
    tmpPoznamka = poznamka.SubString(0,(pos1=poznamka.AnsiPos("\n"))-2);
-   canvas->TextOut(17*zoomx,276*zoomy,tmpPoznamka);
+   canvas->TextOut(17*zoomx,274*zoomy,tmpPoznamka);
    poznamka=poznamka.SubString(pos1+1,poznamka.Length()-pos1);
 
    tmpPoznamka = poznamka.SubString(0,(pos1=poznamka.AnsiPos("\n"))-2);
    poznamka=poznamka.SubString(pos1+1,poznamka.Length()-pos1);
-   canvas->TextOut(17*zoomx,279*zoomy,tmpPoznamka);
+   canvas->TextOut(17*zoomx,276.5*zoomy,tmpPoznamka);
 
    tmpPoznamka = poznamka.SubString(0,poznamka.Length()-pos1);
-   canvas->TextOut(17*zoomx,282*zoomy,tmpPoznamka);
+   canvas->TextOut(17*zoomx,280*zoomy,tmpPoznamka);
 
    Prntr->EndDoc();
 }
