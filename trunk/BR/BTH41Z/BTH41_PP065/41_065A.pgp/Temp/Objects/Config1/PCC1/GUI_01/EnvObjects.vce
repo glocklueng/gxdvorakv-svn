@@ -9,26 +9,6 @@
       <Property Name="ActiveView" Value="0"/>
       <Property Name="FrameMinPtX" Value="-1"/>
       <Property Name="FrameMinPtY" Value="-1"/>
-      <Property Name="ParentObjectName" Value="TextGroup_InfoText"/>
-      <Property Name="ParentObjectType" Value="TextGroup"/>
-      <Property Name="ShowCmd" Value="1"/>
-      <Property Name="WndPosBottom" Value="504"/>
-      <Property Name="WndPosLeft" Value="88"/>
-      <Property Name="WndPosRight" Value="559"/>
-      <Property Name="WndPosTop" Value="116"/>
-      <Views>
-        <View>
-          <Property Name="ID" Value="512"/>
-        </View>
-        <View>
-          <Property Name="ID" Value="134217728"/>
-        </View>
-      </Views>
-    </Frame>
-    <Frame>
-      <Property Name="ActiveView" Value="0"/>
-      <Property Name="FrameMinPtX" Value="-1"/>
-      <Property Name="FrameMinPtY" Value="-1"/>
       <Property Name="ParentObjectName" Value="Init_Page"/>
       <Property Name="ParentObjectType" Value="Page"/>
       <Property Name="ShowCmd" Value="1"/>
@@ -59,6 +39,26 @@
           <Property Name="Scalecy" Value="1"/>
           <Property Name="ScrollPositionX" Value="0"/>
           <Property Name="ScrollPositionY" Value="0"/>
+        </View>
+      </Views>
+    </Frame>
+    <Frame>
+      <Property Name="ActiveView" Value="0"/>
+      <Property Name="FrameMinPtX" Value="-1"/>
+      <Property Name="FrameMinPtY" Value="-1"/>
+      <Property Name="ParentObjectName" Value="TextGroup_InfoText"/>
+      <Property Name="ParentObjectType" Value="TextGroup"/>
+      <Property Name="ShowCmd" Value="1"/>
+      <Property Name="WndPosBottom" Value="504"/>
+      <Property Name="WndPosLeft" Value="88"/>
+      <Property Name="WndPosRight" Value="559"/>
+      <Property Name="WndPosTop" Value="116"/>
+      <Views>
+        <View>
+          <Property Name="ID" Value="512"/>
+        </View>
+        <View>
+          <Property Name="ID" Value="134217728"/>
         </View>
       </Views>
     </Frame>
