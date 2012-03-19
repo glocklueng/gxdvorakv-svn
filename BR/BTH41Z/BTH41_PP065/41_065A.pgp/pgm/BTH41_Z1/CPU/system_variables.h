@@ -90,7 +90,23 @@ typedef struct {
 	NAST_PAR_ON				vystrkavani;
 	NAST_PAR_ON_OFF			datovani;
 	NAST_PAR_ON_OFF			topeni;
-	NAST_PAR_BRZDA			brzda;	
+	NAST_PAR_BRZDA			brzda;		
+	BOOL 					davkovacZ_St;
+	BOOL 					davkovacV_St;
+	BOOL 					podrazeni_St;
+	BOOL 					posuv_St;
+	BOOL					datovani_St;
+	BOOL 					strihani_St;
+	BOOL 					skladani_St;
+	BOOL 					vystrkavani_St;
+	BOOL 					dopravnik_St;
+	BOOL 					fotonka_St;
+	BOOL 					CO2_St;
+	BOOL 					topeni_St;
+	BOOL 					brzda_St;
+	BOOL 					topeniImpuls_St;
+	BOOL 					davka1_St;
+	BOOL 					davka2_St;	
 } TECHNOLOGIE;
 
 _GLOBAL TECHNOLOGIE nastaveni; 	/* aktualni nastaveni*/

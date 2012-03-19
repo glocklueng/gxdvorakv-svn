@@ -45,7 +45,7 @@ _CYCLIC void fastTimer(void){
 		--timerDavka;
 		o_releKA3_davkovacStart = 1;
 	}else{
-		o_releKA3_davkovacStart = 0;
+		if (stateMachine != SM_IO_TEST)	o_releKA3_davkovacStart = 0;
 	}
 
 

@@ -245,7 +245,22 @@ _CYCLIC void setTechnology (void){
 		technologies[technologieNumber-1].brzda.ON_angle			= nastaveni.brzda.ON_angle;
 		technologies[technologieNumber-1].brzda.OFF_angle			= nastaveni.brzda.OFF_angle;
 		technologies[technologieNumber-1].brzda.value				= nastaveni.brzda.value;
-
+		technologies[technologieNumber-1].davkovacZ_St				= davkovacZ_St;
+		technologies[technologieNumber-1].davkovacV_St				= davkovacV_St;
+		technologies[technologieNumber-1].podrazeni_St				= podrazeni_St;
+		technologies[technologieNumber-1].posuv_St					= posuv_St;
+		technologies[technologieNumber-1].datovani_St				= datovani_St;
+		technologies[technologieNumber-1].strihani_St				= strihani_St;
+		technologies[technologieNumber-1].skladani_St				= skladani_St;
+		technologies[technologieNumber-1].vystrkavani_St			= vystrkavani_St;
+		technologies[technologieNumber-1].dopravnik_St				= dopravnik_St;
+		technologies[technologieNumber-1].fotonka_St				= fotonka_St;
+		technologies[technologieNumber-1].CO2_St					= CO2_St;
+		technologies[technologieNumber-1].topeni_St					= topeni_St;
+		technologies[technologieNumber-1].brzda_St					= brzda_St;
+		technologies[technologieNumber-1].topeniImpuls_St			= topeniImpuls_St;
+		technologies[technologieNumber-1].davka1_St					= davka1_St;
+		technologies[technologieNumber-1].davka2_St					= davka2_St;
 		if (StoreTechnology()){
 		
 		}else {
@@ -281,7 +296,23 @@ _CYCLIC void setTechnology (void){
 				nastaveni.topeni.OFF_angle			=	technologies[technologieNumber-1].topeni.OFF_angle;
 				nastaveni.brzda.ON_angle			=	technologies[technologieNumber-1].brzda.ON_angle;
 				nastaveni.brzda.OFF_angle			=	technologies[technologieNumber-1].brzda.OFF_angle;
-				nastaveni.brzda.value				=	technologies[technologieNumber-1].brzda.value;				
+				nastaveni.brzda.value				=	technologies[technologieNumber-1].brzda.value;
+	 			davkovacZ_St 						=	technologies[technologieNumber-1].davkovacZ_St;
+	 			davkovacV_St						=	technologies[technologieNumber-1].davkovacV_St;
+				podrazeni_St						=	technologies[technologieNumber-1].podrazeni_St;
+				posuv_St							=	technologies[technologieNumber-1].posuv_St;
+				datovani_St							=	technologies[technologieNumber-1].datovani_St;
+				strihani_St							=	technologies[technologieNumber-1].strihani_St;
+				skladani_St							=	technologies[technologieNumber-1].skladani_St;
+				vystrkavani_St						=	technologies[technologieNumber-1].vystrkavani_St;
+				dopravnik_St						=	technologies[technologieNumber-1].dopravnik_St;
+				fotonka_St							=	technologies[technologieNumber-1].fotonka_St; 
+				CO2_St								=	technologies[technologieNumber-1].CO2_St;
+				topeni_St							=	technologies[technologieNumber-1].topeni_St;
+				brzda_St							=	technologies[technologieNumber-1].brzda_St;
+				topeniImpuls_St						=	technologies[technologieNumber-1].topeniImpuls_St;
+				davka1_St							=	technologies[technologieNumber-1].davka1_St;
+				davka2_St							=	technologies[technologieNumber-1].davka2_St;				
 			}else {
 			/** error **/					
 			}
@@ -313,6 +344,22 @@ _CYCLIC void setTechnology (void){
 			nastaveni.brzda.ON_angle			=	technologies[technologieNumber-1].brzda.ON_angle;
 			nastaveni.brzda.OFF_angle			=	technologies[technologieNumber-1].brzda.OFF_angle;
 			nastaveni.brzda.value				=	technologies[technologieNumber-1].brzda.value;				
+			davkovacZ_St 						=	technologies[technologieNumber-1].davkovacZ_St;
+ 			davkovacV_St						=	technologies[technologieNumber-1].davkovacV_St;
+			podrazeni_St						=	technologies[technologieNumber-1].podrazeni_St;
+			posuv_St							=	technologies[technologieNumber-1].posuv_St;
+			datovani_St							=	technologies[technologieNumber-1].datovani_St;
+			strihani_St							=	technologies[technologieNumber-1].strihani_St;
+			skladani_St							=	technologies[technologieNumber-1].skladani_St;
+			vystrkavani_St						=	technologies[technologieNumber-1].vystrkavani_St;
+			dopravnik_St						=	technologies[technologieNumber-1].dopravnik_St;
+			fotonka_St							=	technologies[technologieNumber-1].fotonka_St; 
+			CO2_St								=	technologies[technologieNumber-1].CO2_St;
+			topeni_St							=	technologies[technologieNumber-1].topeni_St;
+			brzda_St							=	technologies[technologieNumber-1].brzda_St;
+			topeniImpuls_St						=	technologies[technologieNumber-1].topeniImpuls_St;
+			davka1_St							=	technologies[technologieNumber-1].davka1_St;
+			davka2_St							=	technologies[technologieNumber-1].davka2_St;
 		}else {
 			/** error **/			
 		}
