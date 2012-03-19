@@ -859,7 +859,7 @@
               </TableRow>
               <TableRow>
                 <UInt32 Name="TextIndex">94327</UInt32>
-                <UInt32 Name="TextOffset">460</UInt32>
+                <UInt32 Name="TextOffset">458</UInt32>
                 <Byte Name="SnippetCount">0</Byte>
                 <Byte Name="Reserved">0</Byte>
                 <UInt16 Name="Reserved">0</UInt16>
@@ -876,7 +876,7 @@
               <String Name="Text" Encoding="Unicode">"Stroj není připraven k provozu !"</String>
               <String Name="Text" Encoding="Unicode">"Servisní menu"</String>
               <String Name="Text" Encoding="Unicode">"Detailní Infomace"</String>
-              <String Name="Text" Encoding="Unicode">"sw  rev. 2.1  2 / 2012"</String>
+              <String Name="Text" Encoding="Unicode">"sw  rev. 3.0 3 / 2012"</String>
               <String Name="Text" Encoding="Unicode">"(c) Václav Dvořák"</String>
             </Group>
           </Object>
