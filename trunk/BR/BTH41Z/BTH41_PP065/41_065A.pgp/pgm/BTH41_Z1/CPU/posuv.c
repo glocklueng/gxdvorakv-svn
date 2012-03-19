@@ -35,6 +35,7 @@ int counter;
 _INIT void initPosIncrement(void) {	
 	incrementPosMode = 0x00;				/* 1100 0011 */	
 	incrementPosMode = 0xC3;				/* 1100 0011 */	
+ 	o_resetInkrementPosuvu =1;
 }
 
 
@@ -50,7 +51,7 @@ _CYCLIC void checkSlideIncrement(void) {
 		case PSM_READY : /* 0  ready to go */
 		default:
 			/* do nothing */
-			o_resetInkrementPosuvu =1;
+			if (stateMachine != SM_IO_TEST)	o_resetInkrementPosuvu =1;
 			counter = 0;
 		break;
 		case PSM_RESTART:
