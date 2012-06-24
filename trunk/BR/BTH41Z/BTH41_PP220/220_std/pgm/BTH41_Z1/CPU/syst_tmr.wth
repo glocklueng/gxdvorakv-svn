@@ -1,7 +1,5 @@
 [Watch]
-0=new
-1=132.4 * otacky_nast - 186
-2=(132.4 * otacky_nast - 186)* 0.9
-3=oldValue
-4=(incrementStatus & 0x04)
-5=incrementStatus
+0=stateMachine
+1=oldValue
+2=(incrementStatus & 0x04)
+3=incrementStatus

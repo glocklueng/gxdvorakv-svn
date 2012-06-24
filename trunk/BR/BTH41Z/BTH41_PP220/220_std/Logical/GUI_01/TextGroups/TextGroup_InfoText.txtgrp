@@ -12,6 +12,7 @@
     <Text ID="89771" Value="Chybový stav - zastavení ve vých. poloze"/>
     <Text ID="89772" Value="Kritická chyba - stroj zastaven"/>
     <Text ID="91980" Value="Stiskněte PŘÍPRAVU"/>
+    <Text ID="94864" Value="Čekám na DÁVKU !"/>
   </TextLayer>
   <IndexMap>
     <Index ID="89765" Value="0"/>
@@ -21,5 +22,6 @@
     <Index ID="89771" Value="4"/>
     <Index ID="89772" Value="5"/>
     <Index ID="91980" Value="6"/>
+    <Index ID="94864" Value="7"/>
   </IndexMap>
 </TextGroup>

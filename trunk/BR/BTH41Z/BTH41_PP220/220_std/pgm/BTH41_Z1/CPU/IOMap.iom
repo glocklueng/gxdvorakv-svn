@@ -40,7 +40,7 @@ VAR_CONFIG
 	i_odvijeniFolieStop AT %IX.SL1.SS1.IF1.ST4.DigitalInput02;
 	i_konecFolie AT %IX.SL1.SS1.IF1.ST4.DigitalInput03;
 	i_11 AT %IX.SL1.SS1.IF1.ST3.DigitalInput11;
-	i_16 AT %IX.SL1.SS1.IF1.ST4.DigitalInput04;
 	ao_menic AT %QW.SL1.SS1.IF1.ST7.AnalogOutput01;
 	o_impulsniTopeni AT %QX.SL1.SS1.IF1.ST6.DigitalOutput03;
+	i_blokovaniDavky AT %IX.SL1.SS1.IF1.ST4.DigitalInput04;
 END_VAR

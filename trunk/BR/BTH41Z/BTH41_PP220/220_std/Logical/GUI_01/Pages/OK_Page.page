@@ -155,7 +155,7 @@
           <Property Name="Left" Value="40"/>
           <Property Name="Locking" Value="Datapoint &gt;= Level"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[Local.GLOBAL.stateMachine]"/>
-          <Property Name="LockingLevel" Value="6"/>
+          <Property Name="LockingLevel" Value="7"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
@@ -183,7 +183,7 @@
           <Property Name="Left" Value="200"/>
           <Property Name="Locking" Value="Datapoint &gt;= Level"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[Local.GLOBAL.stateMachine]"/>
-          <Property Name="LockingLevel" Value="6"/>
+          <Property Name="LockingLevel" Value="7"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
@@ -346,21 +346,6 @@
         </Control>
       </Controls>
       <KeyMapping>
-        <VirtualKey Name="VD_START">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000161">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.startActive]"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
         <VirtualKey Name="VD_STOP">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
@@ -376,7 +361,7 @@
             </KeyAction>
           </KeyActions>
         </VirtualKey>
-        <VirtualKey Name="VD_DAVKA">
+        <VirtualKey Name="VD_START">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
@@ -387,7 +372,7 @@
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.davkovaniBtnPressed]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.startActive]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -410,6 +395,21 @@
               <Property Name="Name" Value="Action_1"/>
               <Property Name="SetValue" Value="10"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.stateMachine]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_DAVKA">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.davkovaniBtnPressed]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

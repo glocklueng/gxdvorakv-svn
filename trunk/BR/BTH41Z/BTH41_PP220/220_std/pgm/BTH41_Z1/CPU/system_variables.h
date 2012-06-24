@@ -22,7 +22,7 @@ _GLOBAL BOOL 	i_konecFolie;
 _GLOBAL BOOL 	i_odvijeniFolieStart;
 _GLOBAL BOOL 	i_vysouvaniSacku;
 _GLOBAL BOOL	i_11;
-_GLOBAL BOOL	i_16;
+_GLOBAL BOOL	i_blokovaniDavky;
 
 
 
@@ -147,17 +147,20 @@ STATE_MACHINE stateMachineNew ;*/
 #define	SM_START_PRESSED  3 /*	start stisknuto, rozbeh reminku 1s*/
 #define	SM_PRE_START  4 	/*	tocim a cekam na prvni signal z inkrementu */
 #define	SM_RUN  5 			/* 	v behu - normalni stav po nabehnuti a spusteni*/
-#define	SM_STOP_PRESSED  6 	/*	stop stisknuto behem provozu - cekam na dojeti do vychozi polohy, ale
+
+#define SM_PAUSE	6			/*  cekam na davkovac */
+
+#define	SM_STOP_PRESSED  7 	/*	stop stisknuto behem provozu - cekam na dojeti do vychozi polohy, ale
 								normalne pokracuju v cinnosti*/
-#define	SM_SOFT_ERROR  7 	/*	nehavarijni chyba behem provozu - cekam na dojeti do vychozi polohy, ale
+#define	SM_SOFT_ERROR  8 	/*	nehavarijni chyba behem provozu - cekam na dojeti do vychozi polohy, ale
 								normalne pokracuju v cinnosti*/
-#define	SM_SOFT_ERR_NO_START  8	/*	ne-havarijni chybovy stav - cekam na dojeti do vychozi polohy
+#define	SM_SOFT_ERR_NO_START  9	/*	ne-havarijni chybovy stav - cekam na dojeti do vychozi polohy
 									ale neprovadim zadne akce, pouze zastavim ve vychozi poloze
 									- pokud vynikla chyba pred stavem 4*/
-#define	SM_CRITICAL_ERROR  9 	/*	kriticka chyba - okamzite zastaveni stroje*/
+#define	SM_CRITICAL_ERROR  10 	/*	kriticka chyba - okamzite zastaveni stroje*/
 				 	
-#define	SM_IO_TEST  10 			/*	testovani - ignoruje se vse ostatni*/
-#define	SM_RUN_TEST  11 		/* 	testovani behu stroje */
+#define	SM_IO_TEST  11 			/*	testovani - ignoruje se vse ostatni*/
+#define	SM_RUN_TEST  12 		/* 	testovani behu stroje */
 
 /**
 *	stavova masina stroje - podle toho se ridi cinnost

@@ -42,7 +42,7 @@
           <Text ID="90191" Value="I13 - Odv. folie Start"/>
           <Text ID="90192" Value="I14 - Odv. folie Stop"/>
           <Text ID="90193" Value="I15 - Konec folie"/>
-          <Text ID="90194" Value="I16 - n.c."/>
+          <Text ID="90194" Value="I16 - Blokování Dávk."/>
           <Text ID="90195" Value="Zpět"/>
         </TextLayer>
         <IndexMap>
@@ -342,7 +342,7 @@
           <Property Name="TextIndexOffset" Value="31"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="175"/>
-          <Property Name="Width" Value="105"/>
+          <Property Name="Width" Value="130"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_4">
           <Property Name="BackColor" Value="42"/>
@@ -567,7 +567,7 @@
           <Property Name="BitmapSource" Value="MultipleBitmaps"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="15"/>
-          <Property Name="IndexDatapoint" Value="Source[global].Variable[Local.GLOBAL.i_16]"/>
+          <Property Name="IndexDatapoint" Value="Source[global].Variable[Local.GLOBAL.i_blokovaniDavky]"/>
           <Property Name="Left" Value="163"/>
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Bitmap]"/>
