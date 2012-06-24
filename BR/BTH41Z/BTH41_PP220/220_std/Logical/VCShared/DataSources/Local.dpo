@@ -91,6 +91,13 @@
       <Property Name="UpdateTime" Value="Default"/>
       <Property Name="UserID" Value="None"/>
     </DataPoint>
+    <DataPoint Name="i_blokovaniDavky">
+      <Property Name="DataType" Value="BOOL"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="TargetType" Value="BOOL"/>
+      <Property Name="UpdateTime" Value="Default"/>
+      <Property Name="UserID" Value="None"/>
+    </DataPoint>
     <DataPoint Name="i_datovaniKoncak">
       <Property Name="DataType" Value="BOOL"/>
       <Property Name="Description" Value=""/>

@@ -481,6 +481,7 @@ _CYCLIC void RunBtnControl(void) {
 			break;
 		case SM_START_PRESSED:
 		case SM_PRE_START:
+		case SM_PAUSE:
 		case SM_RUN:
 			if (davkovaniBtnPressed && !davkovaniActive){
 				davkovaniActive = 1;	/* vypinani davkovani je v ovladani inkrementu*/

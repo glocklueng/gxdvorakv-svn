@@ -61,7 +61,7 @@ BOOL checkReady(void){
 			 /*i_tlakuVzduchu && */
 			 i_tlakVzduchu_Filtered &&
 			 (!topeni_St || i_teplotaDosazena || topeniImpuls_St) && 
-			 i_pritomnostCO2 &&
+			 (!CO2_St || i_pritomnostCO2) &&
 			 !i_konecFolie
 			  );	
 }
@@ -78,7 +78,7 @@ BOOL checkError(void){
 */
 BOOL checkCriticalError(void){
 /*	return (!(i_tlakuVzduchu && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && i_pritomnostCO2  ));*/
-	return (!(i_tlakVzduchu_Filtered && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && i_pritomnostCO2  ));
+	return (!(i_tlakVzduchu_Filtered && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && (!CO2_St || i_pritomnostCO2) ));
 
 }
 
@@ -216,6 +216,18 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 		break;
 		case SM_RUN :	/* beh stroje, vsechny funkce dle nastaveneho casovani*/
 			if (actualGUIPage ==0) setGUIPage = 2;
+			
+		/* NO BREAK  pokracuje na case  */				
+ 		case SM_PAUSE:
+ 		
+			if (davkovaniActive){
+				if (!i_blokovaniDavky){
+					stateMachine = SM_PAUSE;
+				}else{
+					stateMachine = SM_RUN;
+				}
+			}					
+			
 			if (stopActive){				
 				dopravnikTimer	= 1000;
 				stateMachine = SM_STOP_PRESSED;
@@ -228,6 +240,8 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 				stateMachine = SM_SOFT_ERROR;
 				dopravnikTimer	= 1000;
 			}
+			
+		
 		
 		/* NO BREAK  pokracuje na case 5 */			
 		case SM_STOP_PRESSED: /* prepnuti do 0 po prichodu nuloveho impulsu - ovladano inkrementem*/
@@ -311,9 +325,15 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 					tmpFotOff = nastaveni[fotonka].OFF_angle;
 					
 					/* zapnuti podle inkrementu*/
-					if (incrementAngle > tmpOn && incrementAngle < tmpOn+3 ){
-						o_releKA2_posuvFolie = 1;
-					}				
+					if (tmpOn < tmpFotOn){
+						if (incrementAngle > tmpOn && incrementAngle < tmpFotOn ){
+							o_releKA2_posuvFolie = 1;
+						}				
+					}else{  /*jedu pres nulu */
+						if (incrementAngle > tmpOn || incrementAngle < tmpFotOn ){
+							o_releKA2_posuvFolie = 1;
+						}				
+					}
 					/* vypnuti podle inkrementu  kdyz neprijde fotonka */		
 					if (tmpOn > tmpOff){
 						if (incrementAngle > tmpOff && incrementAngle < tmpOn){

@@ -298,7 +298,7 @@
 </LN>
 <LN ID="%IX.SL1.SS1.IF1.ST4.DigitalInput04" Type="BOOL">
 <Prod Device="SL1.SS1.IF1.ST4" DPName="DigitalInput04" Kind="io"/>
-<Cons Device="TC#1-CPYDEV" DPName="i_16" Kind="pv"/>
+<Cons Device="TC#1-CPYDEV" DPName="i_blokovaniDavky" Kind="pv"/>
 </LN>
 <LN ID="%IX.SL1.SS1.IF1.ST4.DigitalInput05" Type="BOOL">
 <Prod Device="SL1.SS1.IF1.ST4" DPName="DigitalInput05" Kind="io"/>

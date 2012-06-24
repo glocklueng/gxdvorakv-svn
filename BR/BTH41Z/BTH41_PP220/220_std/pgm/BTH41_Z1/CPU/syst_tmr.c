@@ -35,6 +35,7 @@ unsigned char 	roundCount;
 
 unsigned int 	tmpOn,tmpOff;
 unsigned char	brzdaAktivni;
+unsigned char 	pause;
 
 /**
  *  initialisation
@@ -43,7 +44,7 @@ _INIT void initIncrement(void) {
 	incrementRefOld = incrementStatus & 0x08;
 	incrementMode = 0x00;				/* 1100 0011 */	
 	incrementMode = 0xC3;				/* 1100 0011 */	
-
+	pause = 0;
 }
 
 /**
@@ -53,14 +54,28 @@ void resetIncrement(void) {
 	incrementMode = 0x00;					
 	incrementMode = 0xC3;				/* 1100 0011 */
 }
+/**
+*  tohle se vola v case sm_RUN
+*/
+void runCaseCode(void){
+	if (davkovaniBtnPressed && davkovaniActive && (incrementRefOld != (incrementStatus & 0x08))){				
+				davkovaniActive = 0;
+				davkovaniBtnPressed = 0;
+	}
+	if (brzdaAktivni == 0){
+				ao_menic = 786.4 * otacky_nast +1311;
+	}else{
+				ao_menic = (786.4 * otacky_nast + 1311)* (100-nastBrzda.value)/100.0;
+	}
+}
 
 
 /**
  *		cyclic task
  */
 _CYCLIC void checkIncrement(void) {
-/*	incrementAngle = incrementValue/4;*/
-	incrementAngle = incrementValue*7.2/4;   /* pro novy inkrement. senzor*/
+	incrementAngle = incrementValue/4;
+	/*incrementAngle = incrementValue*7.2/4;   /* pro novy inkrement. senzor*/
 
 	if (incrementAngle <0){
 		incrementAngle += 360;			
@@ -143,22 +158,26 @@ _CYCLIC void checkIncrement(void) {
 				stateMachine = SM_ON ;
 				break;
 			}
-		
-		/* NO BREAK !!!!!!!*/
-		case SM_RUN:
-			if (davkovaniBtnPressed && davkovaniActive && (incrementRefOld != (incrementStatus & 0x08))){				
-				davkovaniActive = 0;
-				davkovaniBtnPressed = 0;
+			runCaseCode();						
+		break;
+		case SM_PAUSE:
+			if (incrementRefOld != (incrementStatus & 0x08)){
+			/* prisel referenci impuls */
+				ao_menic = 0;
+				pause = 1;
+				break;
 			}
-
-			if (brzdaAktivni == 0){
-				ao_menic = 786.4 * otacky_nast +1311;
+			if (!pause){
+				runCaseCode();
 			}else{
-				ao_menic = (786.4 * otacky_nast + 1311)* (100-nastBrzda.value)/100.0;
+				infoTextPointer = 7;
 			}
-			break;
-			
-		}
+		break;
+		case SM_RUN:
+			pause = 0;
+			runCaseCode();	
+		break;			
+	}
 
 	incrementRefOld = (incrementStatus & 0x08);
 	
@@ -187,5 +206,4 @@ _CYCLIC void checkIncrement(void) {
 		
 				
 }
-
 
