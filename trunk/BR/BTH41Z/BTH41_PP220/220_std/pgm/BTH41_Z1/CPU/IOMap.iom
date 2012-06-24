@@ -1,0 +1,46 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker & Rainer
+ ********************************************************************
+ * File: IOMap.iom
+ * Author: vaclav dvorak
+ * Created: 15.06.2006
+ ********************************************************************
+ * IO mapping file
+ ********************************************************************)
+VAR_CONFIG
+	syst_tmr.incrementMode AT %QB.SL1.SS1.IF1.ST2.ReferenceModeEncoder01;
+	syst_tmr.incrementStatus AT %IB.SL1.SS1.IF1.ST2.StatusInput01;
+	syst_tmr.incrementValue AT %IW.SL1.SS1.IF1.ST2.Encoder01;
+	o_zavzdusneni AT %QX.SL1.SS1.IF1.ST5.DigitalOutput01;
+	o_ventilStrihani AT %QX.SL1.SS1.IF1.ST5.DigitalOutput02;
+	o_ventilDatum AT %QX.SL1.SS1.IF1.ST5.DigitalOutput03;
+	o_ventilPodrazeni AT %QX.SL1.SS1.IF1.ST5.DigitalOutput04;
+	o_ventilSevreniPosuvRem AT %QX.SL1.SS1.IF1.ST5.DigitalOutput05;
+	o_ventilTrojuhSkladani AT %QX.SL1.SS1.IF1.ST5.DigitalOutput06;
+	o_ventilVystrkSacku AT %QX.SL1.SS1.IF1.ST5.DigitalOutput07;
+	o_releKA1_topeni AT %QX.SL1.SS1.IF1.ST5.DigitalOutput08;
+	o_releKA2_posuvFolie AT %QX.SL1.SS1.IF1.ST5.DigitalOutput09;
+	o_stykacOdsDopravniku AT %QX.SL1.SS1.IF1.ST5.DigitalOutput10;
+	o_releKA3_davkovacStart AT %QX.SL1.SS1.IF1.ST5.DigitalOutput11;
+	o_releKA4_davkovacVody AT %QX.SL1.SS1.IF1.ST5.DigitalOutput12;
+	o_ventilCO2 AT %QX.SL1.SS1.IF1.ST6.DigitalOutput01;
+	o_odvijeniFolie AT %QX.SL1.SS1.IF1.ST6.DigitalOutput02;
+	i_fotonka AT %IX.SL1.SS1.IF1.ST3.DigitalInput01;
+	i_podrazeniSacku AT %IX.SL1.SS1.IF1.ST3.DigitalInput02;
+	i_datovaniKoncak AT %IX.SL1.SS1.IF1.ST3.DigitalInput03;
+	i_tlakuVzduchu AT %IX.SL1.SS1.IF1.ST3.DigitalInput04;
+	i_pritomnostCO2 AT %IX.SL1.SS1.IF1.ST3.DigitalInput05;
+	i_teplotaDosazena AT %IX.SL1.SS1.IF1.ST3.DigitalInput06;
+	i_totalStop AT %IX.SL1.SS1.IF1.ST3.DigitalInput07;
+	i_kryty AT %IX.SL1.SS1.IF1.ST3.DigitalInput08;
+	i_zavzdusneni AT %IX.SL1.SS1.IF1.ST3.DigitalInput09;
+	i_poruchaMenice AT %IX.SL1.SS1.IF1.ST3.DigitalInput10;
+	i_vysouvaniSacku AT %IX.SL1.SS1.IF1.ST3.DigitalInput12;
+	i_odvijeniFolieStart AT %IX.SL1.SS1.IF1.ST4.DigitalInput01;
+	i_odvijeniFolieStop AT %IX.SL1.SS1.IF1.ST4.DigitalInput02;
+	i_konecFolie AT %IX.SL1.SS1.IF1.ST4.DigitalInput03;
+	i_11 AT %IX.SL1.SS1.IF1.ST3.DigitalInput11;
+	i_16 AT %IX.SL1.SS1.IF1.ST4.DigitalInput04;
+	ao_menic AT %QW.SL1.SS1.IF1.ST7.AnalogOutput01;
+	o_impulsniTopeni AT %QX.SL1.SS1.IF1.ST6.DigitalOutput03;
+END_VAR

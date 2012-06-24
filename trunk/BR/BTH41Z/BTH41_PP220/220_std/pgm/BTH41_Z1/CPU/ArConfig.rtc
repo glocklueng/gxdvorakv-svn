@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=?>
+<RuntimeConfiguration Version="V2.92">
+  <Module ID="SL1.SS1.IF1.ST1" Hardware="X20BR9300">
+    <Selector ID="FunctionModel" Value="Standard">
+      <Parameter ID="FunctionModelNumber" Value="0" />
+      <Group ID="General">
+        <Parameter ID="Supervision" Value="on" />
+        <Parameter ID="ModuleInfo" Value="on" />
+        <Parameter ID="StatusInfo" Value="on" />
+      </Group>
+    </Selector>
+  </Module>
+  <Module ID="SL1.SS1.IF1.ST2" Hardware="X20DC1396">
+    <Selector ID="FunctionModel" Value="Standard">
+      <Parameter ID="FunctionModelNumber" Value="0" />
+      <Group ID="General">
+        <Parameter ID="Supervision" Value="on" />
+        <Parameter ID="ModuleInfo" Value="on" />
+      </Group>
+      <Group ID="Counter01">
+        <Parameter ID="RefpulsEdge01" Value="RnegEdge" />
+        <Parameter ID="HomingInput01" Value="off" />
+        <Parameter ID="PresetABR01" Value="0" />
+      </Group>
+    </Selector>
+  </Module>
+  <Module ID="SL1.SS1.IF1.ST5" Hardware="X20DO9322">
+    <Selector ID="FunctionModel" Value="Standard">
+      <Parameter ID="FunctionModelNumber" Value="0" />
+      <Group ID="General">
+        <Parameter ID="Supervision" Value="on" />
+        <Parameter ID="ModuleInfo" Value="off" />
+        <Parameter ID="StatusInfo" Value="on" />
+      </Group>
+    </Selector>
+  </Module>
+  <Module ID="SL1.SS1.IF1.ST6" Hardware="X20DO9322">
+    <Selector ID="FunctionModel" Value="Standard">
+      <Parameter ID="FunctionModelNumber" Value="0" />
+      <Group ID="General">
+        <Parameter ID="Supervision" Value="on" />
+        <Parameter ID="ModuleInfo" Value="off" />
+        <Parameter ID="StatusInfo" Value="on" />
+      </Group>
+    </Selector>
+  </Module>
+  <Module ID="SL1.SS1.IF1.ST4" Hardware="X20DI9371">
+    <Selector ID="FunctionModel" Value="Standard">
+      <Parameter ID="FunctionModelNumber" Value="0" />
+      <Group ID="General">
+        <Parameter ID="Supervision" Value="on" />
+        <Parameter ID="ModuleInfo" Value="on" />
+        <Parameter ID="InputFilter" Value="10" />
+      </Group>
+    </Selector>
+  </Module>
+  <Module ID="SL1.SS1.IF1.ST3" Hardware="X20DI9371">
+    <Selector ID="FunctionModel" Value="Standard">
+      <Group ID="General">
+        <Parameter ID="Supervision" Value="on" />
+        <Parameter ID="ModuleInfo" Value="on" />
+        <Parameter ID="InputFilter" Value="10" />
+      </Group>
+      <Group ID="Simulation">
+        <Parameter ID="SimSlave" />
+      </Group>
+    </Selector>
+  </Module>
+  <Module ID="SL1.SS1.IF1.ST7" Hardware="X20AO2622">
+    <Selector ID="FunctionModel" Value="Standard">
+      <Parameter ID="FunctionModelNumber" Value="0" />
+      <Group ID="General">
+        <Parameter ID="Supervision" Value="off" />
+        <Parameter ID="ModuleInfo" Value="off" />
+      </Group>
+      <Group ID="Channel01">
+        <Parameter ID="ChannelType01" Value="-10V to +10V" />
+      </Group>
+      <Group ID="Channel02">
+        <Parameter ID="ChannelType02" Value="-10V to +10V" />
+      </Group>
+    </Selector>
+  </Module>
+</RuntimeConfiguration>
