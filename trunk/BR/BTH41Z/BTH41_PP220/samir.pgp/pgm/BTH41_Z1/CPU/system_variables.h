@@ -167,7 +167,8 @@ STATE_MACHINE stateMachineNew ;*/
 */
 _GLOBAL SINT stateMachine;
 _GLOBAL UINT testMode;		/* nastaven do 1 kdyz se testuje beh stroje, 2 - ukoncuje beh, jinak 0*/
-	
+
+_GLOBAL UINT pause;		/*  cekani na davkovac */
 	
 
 /* analog output */

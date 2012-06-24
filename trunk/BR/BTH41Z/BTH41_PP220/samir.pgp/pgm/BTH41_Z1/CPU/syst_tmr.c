@@ -35,7 +35,7 @@ unsigned char 	roundCount;
 
 unsigned int 	tmpOn,tmpOff;
 unsigned char	brzdaAktivni;
-unsigned char 	pause;
+
 
 /**
  *  initialisation
@@ -169,8 +169,6 @@ _CYCLIC void checkIncrement(void) {
 			}
 			if (!pause){
 				runCaseCode();
-			}else{
-				infoTextPointer = 7;
 			}
 		break;
 		case SM_RUN:

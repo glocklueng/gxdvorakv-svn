@@ -128,7 +128,7 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 		 	o_ventilSevreniPosuvRem = 0;
 		  	o_ventilTrojuhSkladani = 0;
 		  	o_ventilVystrkSacku = 0;
-		 	o_releKA1_topeni = 0;
+		 /*	o_releKA1_topeni = 0;*/
 		 	o_releKA2_posuvFolie = 0;
 		 	o_stykacOdsDopravniku = 0;
 		 	o_releKA3_davkovacStart = 0;
@@ -214,12 +214,10 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 			}		
 
 		break;
-		case SM_RUN :	/* beh stroje, vsechny funkce dle nastaveneho casovani*/
-			if (actualGUIPage ==0) setGUIPage = 2;
-			
-		/* NO BREAK  pokracuje na case  */				
+		case SM_RUN :	/* beh stroje, vsechny funkce dle nastaveneho casovani*/							
  		case SM_PAUSE:
- 		
+ 			if (actualGUIPage ==0) setGUIPage = 2;
+ 		 			
 			if (davkovaniActive){
 				if (!i_blokovaniDavky){
 					stateMachine = SM_PAUSE;
@@ -246,6 +244,8 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 		/* NO BREAK  pokracuje na case 5 */			
 		case SM_STOP_PRESSED: /* prepnuti do 0 po prichodu nuloveho impulsu - ovladano inkrementem*/
 		case SM_SOFT_ERROR :
+		/*	if (actualGUIPage ==0) setGUIPage = 2;*/
+
 			/* kriticke ERROR stavy */
 			if (checkCriticalError()){
 				stateMachine = SM_CRITICAL_ERROR ;
@@ -540,8 +540,8 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 		 	o_ventilSevreniPosuvRem = 0;
 		  	o_ventilTrojuhSkladani = 0;
 		  	o_ventilVystrkSacku = 0;
-		 	o_releKA1_topeni = 0;
-		 	o_releKA2_posuvFolie = 0;
+		 /*	o_releKA1_topeni = 0; nevypinat */
+		 	o_releKA2_posuvFolie = 0; 
 		 	o_stykacOdsDopravniku = 0;
 		 	o_releKA3_davkovacStart = 0;
 		 	o_releKA4_davkovacVody = 0;
