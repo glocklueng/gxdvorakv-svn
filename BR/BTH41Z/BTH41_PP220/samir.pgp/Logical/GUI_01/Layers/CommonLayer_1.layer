@@ -20,6 +20,7 @@
     <Control ClassId="0x00001002" Name="Button_2">
       <Property Name="BackColor" Value="42"/>
       <Property Name="BitmapIndexDatapoint" Value="None"/>
+      <Property Name="BitmapSimulationValue" Value="0"/>
       <Property Name="BitmapSource" Value="None"/>
       <Property Name="Description" Value=""/>
       <Property Name="Height" Value="30"/>

@@ -120,6 +120,7 @@
       <Property Name="RecordBypass" Value="All"/>
       <Property Name="RecordReset" Value="All"/>
       <Property Name="RecordTrigger" Value="False"/>
+      <Property Name="TriggerGroupAlarm" Value="False"/>
     </Alarm>
   </Alarms>
   <TextGroup>

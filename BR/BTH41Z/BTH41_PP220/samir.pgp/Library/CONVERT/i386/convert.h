@@ -36,7 +36,6 @@ signed short swapINT(signed short IN);
 unsigned short swapUINT(unsigned short IN);
 signed long swapDINT(signed long IN);
 unsigned long swapUDINT(unsigned long IN);
-float swapREAL(float IN);
 
 
 

@@ -4,7 +4,6 @@
   <Property Name="Default" Value="cs-CZ"/>
   <Property Name="FallBackLanguage" Value="None"/>
   <Language ID="cs-CZ">
-    <Property Name="BidiMode" Value="False"/>
     <Property Name="Compile" Value="True"/>
     <Property Name="Description" Value=""/>
     <Property Name="Index" Value="0"/>

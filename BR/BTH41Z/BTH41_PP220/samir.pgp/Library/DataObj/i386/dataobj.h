@@ -6,8 +6,6 @@
 
 #include <bur/plctypes.h>
 
-#include <runtime.h>
-
 #ifndef _IEC_CONST
 #define _IEC_CONST _WEAK const
 #endif

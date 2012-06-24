@@ -85,7 +85,7 @@ unsigned short VA_ExchangeFont(plcbit enable, unsigned long VCHandle, unsigned c
 unsigned short VA_NGetContrast(plcbit enable, unsigned long VCHandle, unsigned long pValue);
 unsigned short VA_GetAlCurPos(plcbit enable, unsigned long VCHandle, signed long pGroupNumber, signed long pAlarmNumber);
 unsigned short VA_SetPaletteColor(plcbit enable, unsigned long VCHandle, unsigned char index, unsigned long color);
-unsigned short VA_NGetPaletteColor(plcbit enable, unsigned long VCHandle, unsigned char uiIndex, unsigned long pValue);
+unsigned short VA_NGetPaletteColor(plcbit enable, unsigned long VCHandle, unsigned long uiIndex, unsigned long pValue);
 unsigned short VA_StopProject(plcbit enable, unsigned long VCHandle);
 unsigned short VA_StartProject(plcbit enable, unsigned long VCHandle);
 unsigned short VA_NGetCalStatus(plcbit enable, unsigned long VCHandle, unsigned long pValue);
