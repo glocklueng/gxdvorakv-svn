@@ -1,0 +1,5 @@
+[Watch]
+0=stateMachine
+1=oldValue
+2=(incrementStatus & 0x04)
+3=incrementStatus
