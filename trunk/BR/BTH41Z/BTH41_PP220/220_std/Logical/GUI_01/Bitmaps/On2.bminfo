@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?AutomationStudio Version="2.4"?>
-<Bitmap xmlns="http://br-automation.co.at/AS/VC/Project" Name="On2">
-  <Property Name="Compressed" Value="False"/>
-  <Property Name="Description" Value=""/>
-  <Property Name="File" Value="On2.bmp"/>
-  <Property Name="Index" Value="28"/>
-  <Property Name="Transparent" Value="False"/>
-</Bitmap>
