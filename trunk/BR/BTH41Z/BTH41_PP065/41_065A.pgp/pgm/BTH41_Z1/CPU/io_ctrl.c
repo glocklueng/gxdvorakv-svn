@@ -524,9 +524,9 @@ double difAngle;
 		break;	
 		case SM_WAIT_STOP:
 			++timer_folie;
-			if ((timer_folie > 150 )|| (posuvSM == PSM_FINISHED)){				
+			if ((timer_folie > 400 )|| (posuvSM == PSM_FINISHED)){				
 				stateMachine = SM_ON;
-  			    o_zavzdusneni = 0;
+  			    /*o_zavzdusneni = 0;*/
 			}
 		break;		
 		case SM_SOFT_ERR_NO_START:
