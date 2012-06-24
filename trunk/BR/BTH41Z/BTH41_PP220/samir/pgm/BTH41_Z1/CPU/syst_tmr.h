@@ -1,0 +1,1 @@
+void resetIncrement(void);
