@@ -30,8 +30,6 @@
 		</Channel>
 		<Channel ID="IF1.AsyncPendingErrorCount" Position="117" FromVersion="I2.85" Description-de="Anzahl der asynchronen Frames, die nicht versendet werden konnten, weil gerade ein anderer empfangen wurde" Description-en="Number of asynchronous frames which could not be sent because of receiving a frame" Ext="/INFO" Direction="IN" Type="DINT">
 		</Channel>
-		<Channel ID="IF1.DMALateOutputErrorCount" Position="118" FromVersion="G2.93" Description-de="Anzahl der Zyklen in denen der Output-DMA-Zugriff zu spät gestartet wurde" Description-en="Number of cycles when DMA for cyclic outputs was too late" Ext="/INFO" Direction="IN" Type="DINT">
-		</Channel>
 	</Module><Module ID="SL1.SS1.IF1.ST1" Hardware="X20BR9300"><LegacyAddressInfo><Parameter ID="PLCFamily" Value="10" Type="UDINT"/><Parameter ID="ModuleAddress" Value="0" Type="UDINT"/><Parameter ID="BusType" Value="X2X"/></LegacyAddressInfo><Channel ID="ModuleOk" Position="1" Description-de="Modul Status (1 = Modul gesteckt)" Description-en="Module status (1 = module present)" Description-fr="Etat module (1 = module présent)" Ext="/OK" Address="0" Direction="IN" Type="BOOL">
 		</Channel>
 		<Channel ID="SerialNumber" Position="2" Description-de="Seriennummer" Description-en="Serial number" Ext="/INFO" Address="4" Direction="IN" Type="UDINT">
@@ -70,103 +68,103 @@
 		</Channel>
 	</Module><Module ID="SL1.SS1.IF1.ST5" Hardware="X20DO9322"><LegacyAddressInfo><Parameter ID="PLCFamily" Value="10" Type="UDINT"/><Parameter ID="ModuleAddress" Value="0" Type="UDINT"/><Parameter ID="BusType" Value="X2X"/></LegacyAddressInfo><Channel ID="ModuleOk" Position="1" Description-de="Modul Status (1 = Modul gesteckt)" Description-en="Module status (1 = module present)" Description-fr="Etat module (1 = module présent)" Ext="/OK" Address="0" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput01" Position="20" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="0" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput01" Position="6" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="0" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput02" Position="21" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="1" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput02" Position="7" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="1" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput03" Position="22" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="2" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput03" Position="8" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="2" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput04" Position="23" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="3" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput04" Position="9" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="3" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput05" Position="24" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="4" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput05" Position="10" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="4" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput06" Position="25" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="5" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput06" Position="11" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="5" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput07" Position="26" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="6" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput07" Position="12" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="6" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput08" Position="27" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="7" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput08" Position="13" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="7" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput09" Position="28" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="0" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput09" Position="14" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="0" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput10" Position="29" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="1" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput10" Position="15" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="1" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput11" Position="30" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="2" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput11" Position="16" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="2" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput12" Position="31" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="3" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput12" Position="17" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="3" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput01" Position="40" FromVersion="A2.83" Description-de="Status digitaler Ausgang 01 (0 = OK)" Description-en="Status digital output 01 (0 = OK)" Description-fr="Etat sortie digitale 01 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="0" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput01" Position="18" FromVersion="A2.83" Description-de="Status digitaler Ausgang 01 (0 = OK)" Description-en="Status digital output 01 (0 = OK)" Description-fr="Etat sortie digitale 01 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="0" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput02" Position="41" FromVersion="A2.83" Description-de="Status digitaler Ausgang 02 (0 = OK)" Description-en="Status digital output 02 (0 = OK)" Description-fr="Etat sortie digitale 02 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="1" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput02" Position="20" FromVersion="A2.83" Description-de="Status digitaler Ausgang 02 (0 = OK)" Description-en="Status digital output 02 (0 = OK)" Description-fr="Etat sortie digitale 02 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="1" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput03" Position="42" FromVersion="A2.83" Description-de="Status digitaler Ausgang 03 (0 = OK)" Description-en="Status digital output 03 (0 = OK)" Description-fr="Etat sortie digitale 03 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="2" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput03" Position="22" FromVersion="A2.83" Description-de="Status digitaler Ausgang 03 (0 = OK)" Description-en="Status digital output 03 (0 = OK)" Description-fr="Etat sortie digitale 03 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="2" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput04" Position="43" FromVersion="A2.83" Description-de="Status digitaler Ausgang 04 (0 = OK)" Description-en="Status digital output 04 (0 = OK)" Description-fr="Etat sortie digitale 04 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="3" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput04" Position="24" FromVersion="A2.83" Description-de="Status digitaler Ausgang 04 (0 = OK)" Description-en="Status digital output 04 (0 = OK)" Description-fr="Etat sortie digitale 04 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="3" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput05" Position="44" FromVersion="A2.83" Description-de="Status digitaler Ausgang 05 (0 = OK)" Description-en="Status digital output 05 (0 = OK)" Description-fr="Etat sortie digitale 05 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="4" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput05" Position="26" FromVersion="A2.83" Description-de="Status digitaler Ausgang 05 (0 = OK)" Description-en="Status digital output 05 (0 = OK)" Description-fr="Etat sortie digitale 05 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="4" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput06" Position="45" FromVersion="A2.83" Description-de="Status digitaler Ausgang 06 (0 = OK)" Description-en="Status digital output 06 (0 = OK)" Description-fr="Etat sortie digitale 06 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="5" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput06" Position="28" FromVersion="A2.83" Description-de="Status digitaler Ausgang 06 (0 = OK)" Description-en="Status digital output 06 (0 = OK)" Description-fr="Etat sortie digitale 06 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="5" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput07" Position="46" FromVersion="A2.83" Description-de="Status digitaler Ausgang 07 (0 = OK)" Description-en="Status digital output 07 (0 = OK)" Description-fr="Etat sortie digitale 07 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="6" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput07" Position="30" FromVersion="A2.83" Description-de="Status digitaler Ausgang 07 (0 = OK)" Description-en="Status digital output 07 (0 = OK)" Description-fr="Etat sortie digitale 07 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="6" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput08" Position="47" FromVersion="A2.83" Description-de="Status digitaler Ausgang 08 (0 = OK)" Description-en="Status digital output 08 (0 = OK)" Description-fr="Etat sortie digitale 08 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="7" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput08" Position="32" FromVersion="A2.83" Description-de="Status digitaler Ausgang 08 (0 = OK)" Description-en="Status digital output 08 (0 = OK)" Description-fr="Etat sortie digitale 08 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="7" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput09" Position="48" FromVersion="A2.83" Description-de="Status digitaler Ausgang 09 (0 = OK)" Description-en="Status digital output 09 (0 = OK)" Description-fr="Etat sortie digitale 09 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="0" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput09" Position="34" FromVersion="A2.83" Description-de="Status digitaler Ausgang 09 (0 = OK)" Description-en="Status digital output 09 (0 = OK)" Description-fr="Etat sortie digitale 09 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="0" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput10" Position="49" FromVersion="A2.83" Description-de="Status digitaler Ausgang 10 (0 = OK)" Description-en="Status digital output 10 (0 = OK)" Description-fr="Etat sortie digitale 10 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="1" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput10" Position="36" FromVersion="A2.83" Description-de="Status digitaler Ausgang 10 (0 = OK)" Description-en="Status digital output 10 (0 = OK)" Description-fr="Etat sortie digitale 10 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="1" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput11" Position="50" FromVersion="A2.83" Description-de="Status digitaler Ausgang 11 (0 = OK)" Description-en="Status digital output 11 (0 = OK)" Description-fr="Etat sortie digitale 11 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="2" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput11" Position="38" FromVersion="A2.83" Description-de="Status digitaler Ausgang 11 (0 = OK)" Description-en="Status digital output 11 (0 = OK)" Description-fr="Etat sortie digitale 11 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="2" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput12" Position="51" FromVersion="A2.83" Description-de="Status digitaler Ausgang 12 (0 = OK)" Description-en="Status digital output 12 (0 = OK)" Description-fr="Etat sortie digitale 12 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="3" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput12" Position="40" FromVersion="A2.83" Description-de="Status digitaler Ausgang 12 (0 = OK)" Description-en="Status digital output 12 (0 = OK)" Description-fr="Etat sortie digitale 12 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="3" Direction="IN" Type="BOOL">
 		</Channel>
 	</Module><Module ID="SL1.SS1.IF1.ST6" Hardware="X20DO9322"><LegacyAddressInfo><Parameter ID="PLCFamily" Value="10" Type="UDINT"/><Parameter ID="ModuleAddress" Value="0" Type="UDINT"/><Parameter ID="BusType" Value="X2X"/></LegacyAddressInfo><Channel ID="ModuleOk" Position="1" Description-de="Modul Status (1 = Modul gesteckt)" Description-en="Module status (1 = module present)" Description-fr="Etat module (1 = module présent)" Ext="/OK" Address="0" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput01" Position="20" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="0" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput01" Position="6" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="0" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput02" Position="21" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="1" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput02" Position="7" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="1" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput03" Position="22" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="2" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput03" Position="8" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="2" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput04" Position="23" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="3" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput04" Position="9" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="3" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput05" Position="24" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="4" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput05" Position="10" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="4" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput06" Position="25" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="5" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput06" Position="11" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="5" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput07" Position="26" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="6" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput07" Position="12" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="6" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput08" Position="27" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="7" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput08" Position="13" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="0" BitOffset="7" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput09" Position="28" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="0" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput09" Position="14" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="0" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput10" Position="29" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="1" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput10" Position="15" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="1" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput11" Position="30" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="2" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput11" Position="16" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="2" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="DigitalOutput12" Position="31" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="3" Direction="OUT" Type="BOOL">
+		<Channel ID="DigitalOutput12" Position="17" Description-de="24 VDC / 0,5 A, Source" Description-en="24 VDC / 0.5 A, source" Description-fr="FET, 24 VDC" Ext="/FIXED" Address="1" BitOffset="3" Direction="OUT" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput01" Position="40" FromVersion="A2.83" Description-de="Status digitaler Ausgang 01 (0 = OK)" Description-en="Status digital output 01 (0 = OK)" Description-fr="Etat sortie digitale 01 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="0" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput01" Position="18" FromVersion="A2.83" Description-de="Status digitaler Ausgang 01 (0 = OK)" Description-en="Status digital output 01 (0 = OK)" Description-fr="Etat sortie digitale 01 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="0" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput02" Position="41" FromVersion="A2.83" Description-de="Status digitaler Ausgang 02 (0 = OK)" Description-en="Status digital output 02 (0 = OK)" Description-fr="Etat sortie digitale 02 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="1" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput02" Position="20" FromVersion="A2.83" Description-de="Status digitaler Ausgang 02 (0 = OK)" Description-en="Status digital output 02 (0 = OK)" Description-fr="Etat sortie digitale 02 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="1" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput03" Position="42" FromVersion="A2.83" Description-de="Status digitaler Ausgang 03 (0 = OK)" Description-en="Status digital output 03 (0 = OK)" Description-fr="Etat sortie digitale 03 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="2" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput03" Position="22" FromVersion="A2.83" Description-de="Status digitaler Ausgang 03 (0 = OK)" Description-en="Status digital output 03 (0 = OK)" Description-fr="Etat sortie digitale 03 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="2" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput04" Position="43" FromVersion="A2.83" Description-de="Status digitaler Ausgang 04 (0 = OK)" Description-en="Status digital output 04 (0 = OK)" Description-fr="Etat sortie digitale 04 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="3" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput04" Position="24" FromVersion="A2.83" Description-de="Status digitaler Ausgang 04 (0 = OK)" Description-en="Status digital output 04 (0 = OK)" Description-fr="Etat sortie digitale 04 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="3" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput05" Position="44" FromVersion="A2.83" Description-de="Status digitaler Ausgang 05 (0 = OK)" Description-en="Status digital output 05 (0 = OK)" Description-fr="Etat sortie digitale 05 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="4" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput05" Position="26" FromVersion="A2.83" Description-de="Status digitaler Ausgang 05 (0 = OK)" Description-en="Status digital output 05 (0 = OK)" Description-fr="Etat sortie digitale 05 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="4" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput06" Position="45" FromVersion="A2.83" Description-de="Status digitaler Ausgang 06 (0 = OK)" Description-en="Status digital output 06 (0 = OK)" Description-fr="Etat sortie digitale 06 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="5" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput06" Position="28" FromVersion="A2.83" Description-de="Status digitaler Ausgang 06 (0 = OK)" Description-en="Status digital output 06 (0 = OK)" Description-fr="Etat sortie digitale 06 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="5" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput07" Position="46" FromVersion="A2.83" Description-de="Status digitaler Ausgang 07 (0 = OK)" Description-en="Status digital output 07 (0 = OK)" Description-fr="Etat sortie digitale 07 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="6" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput07" Position="30" FromVersion="A2.83" Description-de="Status digitaler Ausgang 07 (0 = OK)" Description-en="Status digital output 07 (0 = OK)" Description-fr="Etat sortie digitale 07 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="6" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput08" Position="47" FromVersion="A2.83" Description-de="Status digitaler Ausgang 08 (0 = OK)" Description-en="Status digital output 08 (0 = OK)" Description-fr="Etat sortie digitale 08 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="7" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput08" Position="32" FromVersion="A2.83" Description-de="Status digitaler Ausgang 08 (0 = OK)" Description-en="Status digital output 08 (0 = OK)" Description-fr="Etat sortie digitale 08 (0 = OK)" Ext="/FIXED" Address="1" BitOffset="7" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput09" Position="48" FromVersion="A2.83" Description-de="Status digitaler Ausgang 09 (0 = OK)" Description-en="Status digital output 09 (0 = OK)" Description-fr="Etat sortie digitale 09 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="0" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput09" Position="34" FromVersion="A2.83" Description-de="Status digitaler Ausgang 09 (0 = OK)" Description-en="Status digital output 09 (0 = OK)" Description-fr="Etat sortie digitale 09 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="0" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput10" Position="49" FromVersion="A2.83" Description-de="Status digitaler Ausgang 10 (0 = OK)" Description-en="Status digital output 10 (0 = OK)" Description-fr="Etat sortie digitale 10 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="1" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput10" Position="36" FromVersion="A2.83" Description-de="Status digitaler Ausgang 10 (0 = OK)" Description-en="Status digital output 10 (0 = OK)" Description-fr="Etat sortie digitale 10 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="1" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput11" Position="50" FromVersion="A2.83" Description-de="Status digitaler Ausgang 11 (0 = OK)" Description-en="Status digital output 11 (0 = OK)" Description-fr="Etat sortie digitale 11 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="2" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput11" Position="38" FromVersion="A2.83" Description-de="Status digitaler Ausgang 11 (0 = OK)" Description-en="Status digital output 11 (0 = OK)" Description-fr="Etat sortie digitale 11 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="2" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="StatusDigitalOutput12" Position="51" FromVersion="A2.83" Description-de="Status digitaler Ausgang 12 (0 = OK)" Description-en="Status digital output 12 (0 = OK)" Description-fr="Etat sortie digitale 12 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="3" Direction="IN" Type="BOOL">
+		<Channel ID="StatusDigitalOutput12" Position="40" FromVersion="A2.83" Description-de="Status digitaler Ausgang 12 (0 = OK)" Description-en="Status digital output 12 (0 = OK)" Description-fr="Etat sortie digitale 12 (0 = OK)" Ext="/FIXED" Address="2" BitOffset="3" Direction="IN" Type="BOOL">
 		</Channel>
 	</Module><Module ID="SL1.SS1.IF1.ST4" Hardware="X20DI9371"><LegacyAddressInfo><Parameter ID="PLCFamily" Value="10" Type="UDINT"/><Parameter ID="ModuleAddress" Value="0" Type="UDINT"/><Parameter ID="BusType" Value="X2X"/></LegacyAddressInfo><Channel ID="ModuleOk" Position="1" Description-de="Modul Status (1 = Modul gesteckt)" Description-en="Module status (1 = module present)" Description-fr="Etat module (1 = module présent)" Ext="/OK" Address="0" Direction="IN" Type="BOOL">
 		</Channel>
@@ -238,18 +236,18 @@
 		</Channel>
 	</Module><Module ID="SL1.SS1.IF1.ST7" Hardware="X20AO2622"><LegacyAddressInfo><Parameter ID="PLCFamily" Value="10" Type="UDINT"/><Parameter ID="ModuleAddress" Value="0" Type="UDINT"/><Parameter ID="BusType" Value="X2X"/></LegacyAddressInfo><Channel ID="ModuleOk" Position="1" Description-de="Modul Status (1 = Modul gesteckt)" Description-en="Module status (1 = module present)" Ext="/OK" Address="0" Direction="IN" Type="BOOL">
 		</Channel>
-		<Channel ID="AnalogOutput01" Position="8" Description-de="±10 V / 0 bis 20 mA, Auflösung 12 Bit" Description-en="±10 V / 0 to 20 mA, resolution 12 bit" Address="0" Direction="OUT" Type="INT">
+		<Channel ID="AnalogOutput01" Position="6" Description-de="±10 V / 0 bis 20 mA, Auflösung 12 Bit" Description-en="±10 V / 0 to 20 mA, resolution 12 bit" Address="0" Direction="OUT" Type="INT">
 		</Channel>
-		<Channel ID="AnalogOutput02" Position="9" Description-de="±10 V / 0 bis 20 mA, Auflösung 12 Bit" Description-en="±10 V / 0 to 20 mA, resolution 12 bit" Address="2" Direction="OUT" Type="INT">
+		<Channel ID="AnalogOutput02" Position="7" Description-de="±10 V / 0 bis 20 mA, Auflösung 12 Bit" Description-en="±10 V / 0 to 20 mA, resolution 12 bit" Address="2" Direction="OUT" Type="INT">
 		</Channel>
-	</Module><Module ID="$root" Hardware="4PP220.0571-65"><LegacyAddressInfo><Parameter ID="PLCFamily" Value="4" Type="UDINT"/><Parameter ID="ModuleAddress" Value="0" Type="UDINT"/></LegacyAddressInfo><Channel ID="BatteryStatusCPU" Position="1" FromVersion="B2.85" Description-de="Batterie Status CPU (0 = Batterie leer oder nicht vorhanden, 1 = Batterie OK)" Description-en="Battery status CPU (0 = battery low or missing, 1 = battery ok,)" Ext="/HW" Address="0" Direction="IN" Type="USINT" ChannelType="Battery" BatteryDetectionMethod="1" Ordinal="2">
+	</Module><Module ID="$root" Hardware="4PP220.0571-65"><LegacyAddressInfo><Parameter ID="PLCFamily" Value="4" Type="UDINT"/><Parameter ID="ModuleAddress" Value="0" Type="UDINT"/></LegacyAddressInfo><Channel ID="BatteryStatusCPU" Position="1" FromVersion="B2.85" Description-de="Batterie Status CPU (0 = Batterie leer oder nicht vorhanden, 1 = Batterie OK)" Description-en="Battery status CPU (0 = battery low or missing, 1 = battery ok,)" Ext="/HW" Address="0" Direction="IN" Type="USINT">
 		</Channel>
-		<Channel ID="TemperatureCPU" Position="2" FromVersion="B2.85" Description-de="Temperatur CPU [1/10°C]" Description-en="Temperature CPU [1/10°C]" Ext="/HW" Address="1" Direction="IN" Type="UINT" ChannelType="Temp" Ordinal="1">
+		<Channel ID="TemperatureCPU" Position="2" FromVersion="B2.85" Description-de="Temperatur CPU [1/10°C]" Description-en="Temperature CPU [1/10°C]" Ext="/HW" Address="1" Direction="IN" Type="UINT">
 		</Channel>
-		<Channel ID="TemperatureENV" Position="3" FromVersion="B2.85" Description-de="Temperatur Kühlblech [1/10°C]" Description-en="Temperature cooling plate [1/10°C]" Ext="/HW" Address="2" Direction="IN" Type="UINT" ChannelType="Temp" Ordinal="2">
+		<Channel ID="TemperatureENV" Position="3" FromVersion="B2.85" Description-de="Temperatur Kühlblech [1/10°C]" Description-en="Temperature cooling plate [1/10°C]" Ext="/HW" Address="2" Direction="IN" Type="UINT">
 		</Channel>
-		<Channel ID="SystemTime" Position="4" FromVersion="I2.90" Description-de="Systemzeit beim Start des aktuellen Taskklassenzyklus [µs]" Description-en="System time at the start of the current task cycle [µs]" Ext="/HW" Address="9" Direction="IN" Type="DINT" ChannelType="SystemTime">
+		<Channel ID="SystemTime" Position="4" FromVersion="I2.90" Description-de="Systemzeit beim Start des aktuellen Taskklassenzyklus [µs]" Description-en="System time at the start of the current task cycle [µs]" Ext="/HW" Address="9" Direction="IN" Type="DINT">
 		</Channel>
-		<Channel ID="IF5.NodeSwitch" Position="1" FromVersion="B2.85" Description-de="Node Schalter" Description-en="Node switch" Ext="/HW" Address="3" Direction="IN" Type="USINT" ChannelType="Node" Device="PCI.IF5">
+		<Channel ID="IF5.NodeSwitch" Position="1" FromVersion="B2.85" Description-de="Node Schalter" Description-en="Node switch" Ext="/HW" Address="3" Direction="IN" Type="USINT">
 		</Channel>
 	</Module></ChannelConfiguration>

@@ -26,8 +26,6 @@
   <Property Name="ScreenSaver_Activate" Value="False"/>
   <Property Name="TextLengthOverrunBackColor" Value="None"/>
   <Property Name="TextLengthOverrunForeColor" Value="None"/>
-  <Property Name="TouchPadCancel" Value="Default"/>
-  <Property Name="VCCVersion" Value="6"/>
   <SourceFiles>
     <Source File="TextGroups\BypassState_short.txtgrp"/>
     <Source File="TextGroups\AlarmState_long.txtgrp"/>

@@ -194,6 +194,7 @@
         <Control ClassId="0x00001002" Name="Button_1">
           <Property Name="BackColor" Value="53"/>
           <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSimulationValue" Value="0"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="45"/>
@@ -214,6 +215,7 @@
         <Control ClassId="0x00001002" Name="Button_2">
           <Property Name="BackColor" Value="167"/>
           <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSimulationValue" Value="0"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="45"/>
@@ -319,7 +321,20 @@
       </KeyMapping>
     </Layer>
   </Layers>
-  <MovementOrder/>
+  <MovementOrder>
+    <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_1]">
+      <Property Name="Down" Value="None"/>
+      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_2]"/>
+      <Property Name="Right" Value="None"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_2]"/>
+    </MovementEntry>
+    <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_2]">
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_1]"/>
+      <Property Name="Left" Value="None"/>
+      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Numeric_1]"/>
+      <Property Name="Up" Value="None"/>
+    </MovementEntry>
+  </MovementOrder>
   <TabSequence>
     <TabSeqItem Index="0" Value="Source[embedded].Layer[Default].Control[Numeric_1]"/>
     <TabSeqItem Index="1" Value="Source[embedded].Layer[Default].Control[Numeric_2]"/>

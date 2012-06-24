@@ -58,7 +58,6 @@
       <Property Name="Text_Abbreviation_TextIndex" Value="2"/>
       <Property Name="Text_Description_TextGroup" Value="Source[embedded].TextGroup"/>
       <Property Name="Text_Description_TextIndex" Value="1"/>
-      <Property Name="UnitFraction" Value="False"/>
       <Property Name="Unit_DefaultPrecision" Value="6"/>
     </Unit>
     <Unit ClassId="0x00000603" Name="PLCUnit">
@@ -69,7 +68,6 @@
       <Property Name="Text_Abbreviation_TextIndex" Value="4"/>
       <Property Name="Text_Description_TextGroup" Value="Source[embedded].TextGroup"/>
       <Property Name="Text_Description_TextIndex" Value="3"/>
-      <Property Name="UnitFraction" Value="False"/>
       <Property Name="Unit_DefaultPrecision" Value="2"/>
       <Property Name="Value[0].Internal" Value="0"/>
       <Property Name="Value[0].Scaled" Value="0"/>
@@ -86,7 +84,6 @@
       <Property Name="Text_Abbreviation_TextIndex" Value="6"/>
       <Property Name="Text_Description_TextGroup" Value="Source[embedded].TextGroup"/>
       <Property Name="Text_Description_TextIndex" Value="5"/>
-      <Property Name="UnitFraction" Value="False"/>
       <Property Name="Unit_DefaultPrecision" Value="4"/>
     </Unit>
     <Unit ClassId="0x00000602" Name="Microbar">
@@ -99,7 +96,6 @@
       <Property Name="Text_Abbreviation_TextIndex" Value="8"/>
       <Property Name="Text_Description_TextGroup" Value="Source[embedded].TextGroup"/>
       <Property Name="Text_Description_TextIndex" Value="7"/>
-      <Property Name="UnitFraction" Value="False"/>
       <Property Name="Unit_DefaultPrecision" Value="2"/>
     </Unit>
     <Unit ClassId="0x00000602" Name="Pascal">
@@ -112,7 +108,6 @@
       <Property Name="Text_Abbreviation_TextIndex" Value="10"/>
       <Property Name="Text_Description_TextGroup" Value="Source[embedded].TextGroup"/>
       <Property Name="Text_Description_TextIndex" Value="9"/>
-      <Property Name="UnitFraction" Value="False"/>
       <Property Name="Unit_DefaultPrecision" Value="2"/>
     </Unit>
     <Unit ClassId="0x00000602" Name="KiloPascal">
@@ -125,7 +120,6 @@
       <Property Name="Text_Abbreviation_TextIndex" Value="12"/>
       <Property Name="Text_Description_TextGroup" Value="Source[embedded].TextGroup"/>
       <Property Name="Text_Description_TextIndex" Value="11"/>
-      <Property Name="UnitFraction" Value="False"/>
       <Property Name="Unit_DefaultPrecision" Value="5"/>
     </Unit>
     <Unit ClassId="0x00000602" Name="MegaPascal">
@@ -138,7 +132,6 @@
       <Property Name="Text_Abbreviation_TextIndex" Value="14"/>
       <Property Name="Text_Description_TextGroup" Value="Source[embedded].TextGroup"/>
       <Property Name="Text_Description_TextIndex" Value="13"/>
-      <Property Name="UnitFraction" Value="False"/>
       <Property Name="Unit_DefaultPrecision" Value="7"/>
     </Unit>
   </Units>
