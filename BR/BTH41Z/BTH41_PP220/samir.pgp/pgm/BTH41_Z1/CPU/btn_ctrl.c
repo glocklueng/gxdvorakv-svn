@@ -55,7 +55,8 @@ _LOCAL DatObjDelete_typ    	DODelete;
 #define DAVKA_DIS	0x083B		/* davkovani btn disabled*/
 #define DAVKA_ON	0x009B		/* davkovani btn ON - zelena*/
 #define DAVKA_OFF	0x002c		/* davkovani btn OFF - cervena*/
-
+#define INFO_DEF	0xC858		/* standardni barva infotextu */
+#define INFO_WAIT	0xC829		/* barva infotextu pri cekani na davku */
 
 
 _LOCAL UINT davkovacZ_ZAP_Btn; /* button color */
@@ -104,6 +105,7 @@ _LOCAL UINT start_Btn_col;
 _LOCAL UINT stop_Btn_col;
 
 _LOCAL UINT davkovani_Btn_col;
+_LOCAL UINT infotext_col;
 
 
 /**
@@ -381,7 +383,7 @@ _INIT void InitGui(void) {
 	start_Btn_col = ZAP_OFF ;
 	stop_Btn_col = VYP_OFF;
 	infoTextPointer = 0;
-	
+	infotext_col = INFO_DEF;	
 }
 
 
@@ -482,6 +484,10 @@ _CYCLIC void RunBtnControl(void) {
 		case SM_START_PRESSED:
 		case SM_PRE_START:
 		case SM_PAUSE:
+			if (pause){
+				infoTextPointer = 7;
+				infotext_col = INFO_WAIT;	
+			}
 		case SM_RUN:
 			if (davkovaniBtnPressed && !davkovaniActive){
 				davkovaniActive = 1;	/* vypinani davkovani je v ovladani inkrementu*/
@@ -490,10 +496,16 @@ _CYCLIC void RunBtnControl(void) {
 			
 			if (!davkovaniActive){
 				davkovani_Btn_col=DAVKA_ON; 
-				infoTextPointer = 1;
+				if (!pause){
+					infoTextPointer = 1;
+					infotext_col = INFO_DEF;	
+				}
 			}else{
 				davkovani_Btn_col=DAVKA_OFF; 
-				infoTextPointer = 2;
+				if (!pause){
+					infoTextPointer = 2;
+					infotext_col = INFO_DEF;	
+				}
 			}
 			start_Btn_col = ZAP_OFF;
 			stop_Btn_col = VYP_ON;
@@ -504,6 +516,7 @@ _CYCLIC void RunBtnControl(void) {
 			start_Btn_col = ZAP_OFF;
 			stop_Btn_col = VYP_OFF;
 			infoTextPointer = 3 ;
+			infotext_col = INFO_DEF;	
 			break;
 		case SM_SOFT_ERR_NO_START:
 		case SM_SOFT_ERROR:
@@ -512,6 +525,7 @@ _CYCLIC void RunBtnControl(void) {
 			start_Btn_col = ZAP_OFF;
 			stop_Btn_col = VYP_OFF;
 			infoTextPointer = 4 ;
+			infotext_col = INFO_DEF;	
 			break;
 		case SM_CRITICAL_ERROR:
 		default:
@@ -520,6 +534,7 @@ _CYCLIC void RunBtnControl(void) {
 			start_Btn_col = ZAP_OFF;
 			stop_Btn_col = VYP_OFF;
 			infoTextPointer = 5 ;
+			infotext_col = INFO_DEF;	
 			break;
 				
 	}

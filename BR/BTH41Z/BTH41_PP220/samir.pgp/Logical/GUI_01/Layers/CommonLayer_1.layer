@@ -60,7 +60,7 @@
           <Property Name="Locking" Value="Never"/>
           <Property Name="Name" Value="Action_0"/>
           <Property Name="SetValue" Value="0"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.stateMachine]"/>
+          <Property Name="ValueDatapoint" Value="None"/>
         </KeyAction>
         <KeyAction ClassId="0x00000160">
           <Property Name="Description" Value=""/>

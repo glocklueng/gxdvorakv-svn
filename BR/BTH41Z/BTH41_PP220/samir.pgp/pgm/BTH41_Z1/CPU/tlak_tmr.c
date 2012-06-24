@@ -32,7 +32,7 @@ _CYCLIC void vzduchTimer(void){
 	
 	if (i_tlakuVzduchu){
 		i_tlakVzduchu_Filtered = 1;
-		counter = 25;			/* 20ms * 25 = 500ms*/
+		counter = 50;			/* 20ms * 25 = 500ms*/
 	} else{
 		if (counter <= 0 ){
 			i_tlakVzduchu_Filtered = 0;
