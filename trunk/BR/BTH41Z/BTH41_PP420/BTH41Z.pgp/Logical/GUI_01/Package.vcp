@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="2.4"?>
+<Project xmlns="http://br-automation.co.at/AS/VC/Project">
+  <Property Name="Backlight" Value="False"/>
+  <Property Name="BacklightIgnoreFirst" Value="False"/>
+  <Property Name="ColorMode" Value="8Bit"/>
+  <Property Name="ConnectionErrorPage" Value="None"/>
+  <Property Name="DefaultKeyLevelNumeric" Value="None"/>
+  <Property Name="DefaultKeyLevelString" Value="None"/>
+  <Property Name="DefaultLanguage" Value="cs-CZ"/>
+  <Property Name="DefaultPage" Value="Source[local].Page[Init_Page]"/>
+  <Property Name="DefaultStyleSheet" Value="Source[local].StyleSheet[Color]"/>
+  <Property Name="FontAntialiasing" Value="Off"/>
+  <Property Name="KeyLevelChangeDatapoint" Value="None"/>
+  <Property Name="KeyLevelCurrentDatapoint" Value="None"/>
+  <Property Name="KeyMatrix" Value="None"/>
+  <Property Name="KeyRepeatDelay" Value="300"/>
+  <Property Name="KeyRepeatRate" Value="50"/>
+  <Property Name="LEDMatrix" Value="None"/>
+  <Property Name="LanguageChangeDatapoint" Value="None"/>
+  <Property Name="LanguageCurrentDatapoint" Value="None"/>
+  <Property Name="LifeSignDatapoint" Value="None"/>
+  <Property Name="ManualStart" Value="False"/>
+  <Property Name="PageChangeDatapoint" Value="Source[global].Variable[Local.GLOBAL.setGUIPage]"/>
+  <Property Name="PageCurrentDatapoint" Value="Source[global].Variable[Local.GLOBAL.actualGUIPage]"/>
+  <Property Name="ScreenSaver_Activate" Value="False"/>
+  <Property Name="TextLengthOverrunBackColor" Value="None"/>
+  <Property Name="TextLengthOverrunForeColor" Value="None"/>
+  <Property Name="TouchPadCancel" Value="Default"/>
+  <Property Name="VCCVersion" Value="6"/>
+  <SourceFiles>
+    <Source File="TextGroups\BypassState_short.txtgrp"/>
+    <Source File="TextGroups\AlarmState_long.txtgrp"/>
+    <Source File="TextGroups\AlarmState_short.txtgrp"/>
+    <Source File="TextGroups\BypassState_long.txtgrp"/>
+    <Source File="TextGroups\AcknowledgeState_short.txtgrp"/>
+    <Source File="TextGroups\AlarmEvent_long.txtgrp"/>
+    <Source File="TextGroups\AlarmEvent_short.txtgrp"/>
+    <Source File="TextGroups\AcknowledgeState_long.txtgrp"/>
+    <Source File="TextGroups\DateTimeFormats.txtgrp"/>
+    <Source File="TextGroups\TextGroup_TotalStop.txtgrp"/>
+    <Source File="TextGroups\TextGroup_Kryty.txtgrp"/>
+    <Source File="TextGroups\TextGroup_DatovaciPaska.txtgrp"/>
+    <Source File="TextGroups\TextGroup_TlakVzduchu.txtgrp"/>
+    <Source File="TextGroups\TextGroup_Teplota.txtgrp"/>
+    <Source File="TextGroups\TextGroup_CO2.txtgrp"/>
+    <Source File="TextGroups\TextGroup_AdjLabels.txtgrp"/>
+    <Source File="TextGroups\TextGroup_InfoText.txtgrp"/>
+    <Source File="TextGroups\TextGroup_Davka.txtgrp"/>
+    <Source File="TextGroups\TextGroup_Menic.txtgrp"/>
+    <Source File="TextGroups\TextGroup_Folie.txtgrp"/>
+    <Source File="Fonts\DefaultFont.fninfo"/>
+    <Source File="Fonts\Font_1.fninfo"/>
+    <Source File="Fonts\Font_2.fninfo"/>
+    <Source File="Fonts\smallFont.fninfo"/>
+    <Source File="Fonts\DefaultFont1.fninfo"/>
+    <Source File="Bitmaps\AlphaPadQVGA1.bminfo"/>
+    <Source File="Bitmaps\AlphaPadQVGA2.bminfo"/>
+    <Source File="Bitmaps\AlphaPadQVGA3.bminfo"/>
+    <Source File="Bitmaps\AlphaPadVGA_pressed.bminfo"/>
+    <Source File="Bitmaps\AlphaPadQVGA2_pressed.bminfo"/>
+    <Source File="Bitmaps\AlphaPadQVGA3_pressed.bminfo"/>
+    <Source File="Bitmaps\AlphaPadQVGA1_pressed.bminfo"/>
+    <Source File="Bitmaps\AlphaPadVGA.bminfo"/>
+    <Source File="Bitmaps\NumPad_pressed.bminfo"/>
+    <Source File="Bitmaps\NumPad.bminfo"/>
+    <Source File="Bitmaps\AcknowledgeReset.bminfo"/>
+    <Source File="Bitmaps\AlarmActive.bminfo"/>
+    <Source File="Bitmaps\AlarmBypassOFF.bminfo"/>
+    <Source File="Bitmaps\AlarmBypassON.bminfo"/>
+    <Source File="Bitmaps\AlarmInactive.bminfo"/>
+    <Source File="Bitmaps\AlarmLatched.bminfo"/>
+    <Source File="Bitmaps\AlarmNotQuit.bminfo"/>
+    <Source File="Bitmaps\AlarmQuit.bminfo"/>
+    <Source File="Bitmaps\Reset.bminfo"/>
+    <Source File="Bitmaps\ResetAcknowledge.bminfo"/>
+    <Source File="Bitmaps\Triggered.bminfo"/>
+    <Source File="Bitmaps\ListPadHor.bminfo"/>
+    <Source File="Bitmaps\ListPadHor_pressed.bminfo"/>
+    <Source File="Bitmaps\ListPadVer.bminfo"/>
+    <Source File="Bitmaps\ListPadVer_pressed.bminfo"/>
+    <Source File="Bitmaps\INPUT_ON.bminfo"/>
+    <Source File="Bitmaps\On.bminfo"/>
+    <Source File="Bitmaps\ON1.bminfo"/>
+    <Source File="Bitmaps\On2.bminfo"/>
+    <Source File="BitmapGroups\AlphPadQVGA.bmgrp"/>
+    <Source File="BitmapGroups\NumPad.bmgrp"/>
+    <Source File="BitmapGroups\AlphaPad.bmgrp"/>
+    <Source File="BitmapGroups\AlarmEvent.bmgrp"/>
+    <Source File="BitmapGroups\AlarmState.bmgrp"/>
+    <Source File="BitmapGroups\BypassState.bmgrp"/>
+    <Source File="BitmapGroups\AcknowledgeState.bmgrp"/>
+    <Source File="BitmapGroups\NavigationPad.bmgrp"/>
+    <Source File="BitmapGroups\ErrorStatus.bmgrp"/>
+    <Source File="BitmapGroups\BitmapGroup_1.bmgrp"/>
+    <Source File="Pages\Init_Page.page"/>
+    <Source File="Pages\ErrorStatus_Page.page"/>
+    <Source File="Pages\OK_Page.page"/>
+    <Source File="Pages\Adjustment_Page.page"/>
+    <Source File="Pages\Adjustment_Page_1.page"/>
+    <Source File="Pages\Timing_Page.page"/>
+    <Source File="Pages\Adjustment_Page_Rev.page"/>
+    <Source File="Pages\Timing_Page2.page"/>
+    <Source File="Pages\Timing_Page1.page"/>
+    <Source File="Pages\Timing_Page3_Brzda.page"/>
+    <Source File="Pages\Page_Testing.page"/>
+    <Source File="Pages\Page_TestingIN.page"/>
+    <Source File="Pages\Page_TestingOUT.page"/>
+    <Source File="Layers\CommonLayer_1.layer"/>
+    <Source File="StyleSheets\Gray.vcs"/>
+    <Source File="StyleSheets\Color.vcs"/>
+    <Source File="Borders\Raised.bdr"/>
+    <Source File="Borders\Sunken.bdr"/>
+    <Source File="Borders\Etched.bdr"/>
+    <Source File="Borders\Bump.bdr"/>
+    <Source File="Borders\SunkenOuter.bdr"/>
+    <Source File="Borders\RaisedInner.bdr"/>
+    <Source File="Borders\Flat_black.bdr"/>
+    <Source File="Borders\Flat_grey.bdr"/>
+    <Source File="Trends\TrendData.tdc"/>
+    <Source File="VirtualKeys.vcvk"/>
+    <Source File="Palette.vcr"/>
+  </SourceFiles>
+</Project>
