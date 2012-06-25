@@ -86,17 +86,19 @@
           <Property Name="CompletionValue" Value="1"/>
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
-          <Property Name="Height" Value="25"/>
-          <Property Name="Left" Value="215"/>
+          <Property Name="Height" Value="26"/>
+          <Property Name="Left" Value="211"/>
           <Property Name="MaxDatapoint" Value="None"/>
-          <Property Name="MaxValue" Value="1000"/>
+          <Property Name="MaxValue" Value="3000"/>
           <Property Name="MinDatapoint" Value="None"/>
           <Property Name="MinValue" Value="1"/>
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
+          <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="60"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniOFF_Time]"/>
-          <Property Name="Width" Value="45"/>
+          <Property Name="ValueMode" Value="Standard"/>
+          <Property Name="Width" Value="50"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_2">
           <Property Name="AlignmentVertical" Value="Center"/>
@@ -112,11 +114,14 @@
           <Property Name="MinValue" Value="0"/>
           <Property Name="SimulationValue" Value="50"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
+          <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="60"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniON]"/>
+          <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="45"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_1">
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Font_2]"/>
@@ -128,12 +133,15 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndex" Value="37"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="60"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_NAST_ON_DOWN]"/>
           <Property Name="Width" Value="30"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_2">
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Font_2]"/>
@@ -145,12 +153,15 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndex" Value="39"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="60"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_NAST_ON_UP]"/>
           <Property Name="Width" Value="30"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_3">
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Font_2]"/>
@@ -162,12 +173,15 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndex" Value="41"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="60"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_NAST_OFF_DOWN]"/>
           <Property Name="Width" Value="30"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_4">
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Font_2]"/>
@@ -179,6 +193,8 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndex" Value="43"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="60"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_NAST_OFF_UP]"/>
@@ -240,8 +256,10 @@
           <Property Name="MinValue" Value="None"/>
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
+          <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="150"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.incrementAngle]"/>
+          <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="55"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_4">
@@ -280,6 +298,7 @@
         </Control>
         <Control ClassId="0x00001002" Name="Button_5">
           <Property Name="BackColor" Value="137"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="30"/>
@@ -292,6 +311,8 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndex" Value="50"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="200"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_ULOZ_CASOVANI]"/>
@@ -299,6 +320,7 @@
         </Control>
         <Control ClassId="0x00001002" Name="Button_6">
           <Property Name="BackColor" Value="54"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="30"/>
@@ -311,6 +333,8 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Button]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndex" Value="52"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="200"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[VD_STORNO_CASOVANI]"/>
@@ -376,57 +400,6 @@
         </Control>
       </Controls>
       <KeyMapping>
-        <VirtualKey Name="VD_ULOZ_CASOVANI">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000161">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="SetValue" Value="3"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.gui_ctr.ulozBtnPressed]"/>
-            </KeyAction>
-            <KeyAction ClassId="0x00000160">
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="Name" Value="Action_1"/>
-              <Property Name="Target" Value="Back"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
-        <VirtualKey Name="VD_STORNO_CASOVANI">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000160">
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="Target" Value="Back"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
-        <VirtualKey Name="VD_NAST_OFF_DOWN">
-          <Property Name="Description" Value=""/>
-          <Property Name="VirtualKey_LED" Value="False"/>
-          <KeyActions>
-            <KeyAction ClassId="0x00000162">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="1000"/>
-              <Property Name="MinValue" Value="-1"/>
-              <Property Name="Name" Value="Action_0"/>
-              <Property Name="Repeat" Value="True"/>
-              <Property Name="StepValue" Value="-2"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniOFF_Time]"/>
-            </KeyAction>
-          </KeyActions>
-        </VirtualKey>
         <VirtualKey Name="VD_NAST_OFF_UP">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
@@ -436,7 +409,7 @@
               <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
-              <Property Name="MaxValue" Value="1000"/>
+              <Property Name="MaxValue" Value="3000"/>
               <Property Name="MinValue" Value="0"/>
               <Property Name="Name" Value="Action_0"/>
               <Property Name="Repeat" Value="True"/>
@@ -502,6 +475,57 @@
               <Property Name="Repeat" Value="True"/>
               <Property Name="StepValue" Value="1"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.redraw2]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_STORNO_CASOVANI">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000160">
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="Target" Value="Back"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_NAST_OFF_DOWN">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000162">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="MaxValue" Value="3000"/>
+              <Property Name="MinValue" Value="-1"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="Repeat" Value="True"/>
+              <Property Name="StepValue" Value="-2"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.GLOBAL.nastaveniOFF_Time]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="VD_ULOZ_CASOVANI">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x00000161">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="SetValue" Value="3"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.gui_ctr.ulozBtnPressed]"/>
+            </KeyAction>
+            <KeyAction ClassId="0x00000160">
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_1"/>
+              <Property Name="Target" Value="Back"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

@@ -35,7 +35,7 @@
           <Text ID="87238" Value="Stroj není připraven k provozu !"/>
           <Text ID="87239" Value="Seřízení"/>
           <Text ID="87253" Value="Detailní Infomace"/>
-          <Text ID="90402" Value="sw  rev. 1.1 11 / 2007"/>
+          <Text ID="90402" Value="sw  rev. 1.2 10 / 2010"/>
           <Text ID="94327" Value="(c) Václav Dvořák"/>
         </TextLayer>
         <IndexMap>
@@ -194,6 +194,7 @@
         <Control ClassId="0x00001002" Name="Button_1">
           <Property Name="BackColor" Value="53"/>
           <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSimulationValue" Value="0"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="45"/>
@@ -214,6 +215,7 @@
         <Control ClassId="0x00001002" Name="Button_2">
           <Property Name="BackColor" Value="167"/>
           <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSimulationValue" Value="0"/>
           <Property Name="BitmapSource" Value="None"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="45"/>

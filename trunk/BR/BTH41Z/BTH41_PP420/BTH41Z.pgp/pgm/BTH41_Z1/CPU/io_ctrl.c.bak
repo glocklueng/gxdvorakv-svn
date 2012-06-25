@@ -51,19 +51,39 @@ _INIT void InitInputs(void) {
 }
 
 /**
- *
+ *		testuje vsechny chybove stavy potrebne pro rozbeh
  */
 BOOL checkReady(void){
 	
 	return ( i_totalStop && 
 			 i_kryty && 
 			 i_datovaniKoncak && 
-			 i_tlakuVzduchu && 
+			 /*i_tlakuVzduchu && */
+			 i_tlakVzduchu_Filtered &&
 			 (!topeni_St || i_teplotaDosazena || topeniImpuls_St) && 
 			 i_pritomnostCO2 &&
 			 !i_konecFolie
 			  );	
 }
+
+/**
+*	vraci 1 pokud je  SOFT ERROR, 0 = OK
+*/
+BOOL checkError(void){
+	return (!(i_datovaniKoncak && (!topeni_St || i_teplotaDosazena || topeniImpuls_St)&& !i_konecFolie ));
+}
+
+/**
+*	vraci 1 pokud je  CRITICAL ERROR, 0 = OK
+*/
+BOOL checkCriticalError(void){
+/*	return (!(i_tlakuVzduchu && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && i_pritomnostCO2  ));*/
+	return (!(i_tlakVzduchu_Filtered && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && i_pritomnostCO2  ));
+
+}
+
+
+
 
 
 /**
@@ -115,6 +135,7 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 		 	o_releKA4_davkovacVody = 0;
 		 	o_ventilCO2 = 0;
 			o_odvijeniFolie = 0;
+			o_impulsniTopeni = 0;
 								
 			if (checkReady()){		/* ready*/
 				if (actualGUIPage != 12) setGUIPage = 2; /* neprepinej pri testovani*/
@@ -167,9 +188,9 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 			}
 			
 			/* E R R O R    stavy */
-			if (!(i_datovaniKoncak && (!topeni_St || i_teplotaDosazena || topeniImpuls_St)&&!i_konecFolie )) 	stateMachine = SM_ON;							
+			if (checkError()) 	stateMachine = SM_ON;							
 			/* kriticke ERROR stavy */
-			if (!(i_tlakuVzduchu && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && i_pritomnostCO2 )){
+			if (checkCriticalError()){
 				stateMachine = SM_CRITICAL_ERROR;
 				ao_menic = 0;
 				localTimer = 1000;
@@ -184,10 +205,9 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 			}
 
 			/* E R R O R    stavy */
-			if (!(i_datovaniKoncak && (!topeni_St || i_teplotaDosazena || topeniImpuls_St)&& !i_konecFolie  )) 	stateMachine = SM_SOFT_ERR_NO_START;							
+			if (checkError()) stateMachine = SM_SOFT_ERR_NO_START;							
 			/* kriticke ERROR stavy */
-			if (!(i_tlakuVzduchu && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && i_pritomnostCO2  )){
-
+			if (checkCriticalError()){
 				stateMachine = SM_CRITICAL_ERROR;
 				ao_menic = 0;
 				localTimer = 1000;
@@ -196,27 +216,24 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 		break;
 		case SM_RUN :	/* beh stroje, vsechny funkce dle nastaveneho casovani*/
 			if (actualGUIPage ==0) setGUIPage = 2;
-			
 			if (stopActive){				
 				dopravnikTimer	= 1000;
 				stateMachine = SM_STOP_PRESSED;
 				stopActive = 0;				
-			}
-			
+			}			
 			/* E R R O R    stavy */
 			/* nema to vyznam v modu 5 a 9, protoze se stejne zastavi ve vychozi poloze 
 			   jako pri techto chybach*/
-			if (!(i_datovaniKoncak && (!topeni_St || i_teplotaDosazena || topeniImpuls_St)&& !i_konecFolie  )) {
+			if (checkError()) {
 				stateMachine = SM_SOFT_ERROR;
 				dopravnikTimer	= 1000;
 			}
 		
-
 		/* NO BREAK  pokracuje na case 5 */			
 		case SM_STOP_PRESSED: /* prepnuti do 0 po prichodu nuloveho impulsu - ovladano inkrementem*/
 		case SM_SOFT_ERROR :
 			/* kriticke ERROR stavy */
-			if (!(i_tlakuVzduchu && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && i_pritomnostCO2  )){
+			if (checkCriticalError()){
 				stateMachine = SM_CRITICAL_ERROR ;
 				ao_menic = 0;
 				localTimer = 1000;
@@ -276,8 +293,7 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 						case 2:
 						default:
 						break;
-					}
-					
+					}					
 				}else {
 					o_releKA4_davkovacVody = 0;					
 				}	
@@ -285,9 +301,7 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 				o_releKA3_davkovacStart = 0;
 				o_releKA4_davkovacVody = 0;
 			}	/* konec davkuj*/
-			
-			
-	
+				
 			/* posuv folie */
 			if (posuv_St){
 				if (fotonka_St){	/* podle fotonky*/
@@ -344,10 +358,7 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 				}
 			}else {
 					o_releKA2_posuvFolie = 0;					
-			}
-	
-
-			
+			}			
 			
 			/* podazeni sacku */
 			if (podrazeni_St){
@@ -468,7 +479,7 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 			}
 			
 			/* impulsni topeni*/	
-		/*	if (topeni_St && topeniImpuls_St){
+			if (topeni_St && topeniImpuls_St){
 				tmpOn = nastaveni[topeni].ON_angle; 
 				tmpOff = nastaveni[topeni].OFF_angle;
 	
@@ -487,15 +498,14 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 				}
 			}else {
 				o_impulsniTopeni = 0;					
-			}	
-			*/				
+			}								
 			
 		break;	
 		case SM_SOFT_ERR_NO_START:
 		/* tento stav ovlada inkrement- prepne  na 0 po 1. nulovacim impulsu*/		
 
 		/* kriticke ERROR stavy */
-			if (!(i_tlakuVzduchu && i_totalStop && i_kryty && i_poruchaMenice && i_pritomnostCO2  )){
+			if (checkCriticalError()){
 				stateMachine = SM_CRITICAL_ERROR ;
 				ao_menic = 0;
 				localTimer = 1000;
@@ -517,11 +527,12 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 		 	o_releKA4_davkovacVody = 0;
 		 	o_ventilCO2 = 0;
 			o_odvijeniFolie = 0;
+			o_impulsniTopeni = 0;
 
 			if (--localTimer < 1){
 				setGUIPage = 1;										
-			}	
-			if (actualGUIPage == 1){
+			}
+			if (checkReady() && actualGUIPage == 1){
 				stateMachine = SM_ON;	
 			}			
 
@@ -570,3 +581,4 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 		odvijeniStartOld = i_odvijeniFolieStart;
 		odvijeniStopOld = i_odvijeniFolieStop;		
 	}	
+}

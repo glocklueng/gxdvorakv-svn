@@ -311,9 +311,15 @@ unsigned int tmpOn,tmpOff, tmpFotOn,tmpFotOff;
 					tmpFotOff = nastaveni[fotonka].OFF_angle;
 					
 					/* zapnuti podle inkrementu*/
-					if (incrementAngle > tmpOn && incrementAngle < tmpOn+3 ){
-						o_releKA2_posuvFolie = 1;
-					}				
+					if (tmpOn < tmpFotOn){
+						if (incrementAngle > tmpOn && incrementAngle < tmpFotOn ){
+							o_releKA2_posuvFolie = 1;
+						}				
+					}else{  /*jedu pres nulu */
+						if (incrementAngle > tmpOn || incrementAngle < tmpFotOn ){
+							o_releKA2_posuvFolie = 1;
+						}				
+					}
 					/* vypnuti podle inkrementu  kdyz neprijde fotonka */		
 					if (tmpOn > tmpOff){
 						if (incrementAngle > tmpOff && incrementAngle < tmpOn){
