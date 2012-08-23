@@ -181,8 +181,8 @@ BOOL LoadTechnology(void){
        	DORead.enable       = 1;
        	DORead.ident        = dwIdent;
        	DORead.Offset       = 0;
-       	DORead.pDestination = (UDINT) technologies;
-       	DORead.len      = sizeof (technologies);
+       	DORead.pDestination = (UDINT) &technologies;
+      /* 	DORead.len      = sizeof (technologies)+4;*/
   
        	do {
 	       	/* Call FUB */
@@ -261,11 +261,11 @@ _CYCLIC void setTechnology (void){
 		technologies[technologieNumber-1].topeniImpuls_St			= topeniImpuls_St;
 		technologies[technologieNumber-1].davka1_St					= davka1_St;
 		technologies[technologieNumber-1].davka2_St					= davka2_St;
-		if (StoreTechnology()){
+	/*	if (StoreTechnology()){
 		
 		}else {
-		/** error **/
-		}
+		/** error **
+		}*/
 		storeActualTechnology = 0;
 	}
 	
@@ -273,7 +273,7 @@ _CYCLIC void setTechnology (void){
 	if (technologySelect){
 		if (technologyGUISelected >0 && technologyGUISelected <11){
 			
-			if (LoadTechnology()){	/* load from the FLASH*/			
+			if (1 /*LoadTechnology()*/){	/* load from the FLASH*/			
 				technologieNumber	= technologyGUISelected;			
 				nastaveni.davkovani_zeli.ON1_angle	=	technologies[technologieNumber-1].davkovani_zeli.ON1_angle;
 				nastaveni.davkovani_zeli.ON2_angle	=	technologies[technologieNumber-1].davkovani_zeli.ON2_angle;
@@ -321,7 +321,7 @@ _CYCLIC void setTechnology (void){
 	}
 	
 	if (loadActualTechnology){
-		if (LoadTechnology()){	/* load from the FLASH*/	
+		if (1/*LoadTechnology()*/){	/* load from the FLASH*/	
 			nastaveni.davkovani_zeli.ON1_angle	=	technologies[technologieNumber-1].davkovani_zeli.ON1_angle;
 			nastaveni.davkovani_zeli.ON2_angle	=	technologies[technologieNumber-1].davkovani_zeli.ON2_angle;
 			nastaveni.davkovani_zeli.OFF_angle	=	technologies[technologieNumber-1].davkovani_zeli.OFF_angle;
