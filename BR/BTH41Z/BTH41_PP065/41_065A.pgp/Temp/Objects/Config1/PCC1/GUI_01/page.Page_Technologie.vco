@@ -6,9 +6,9 @@
       <Folder Name="Controls">
         <Folder Name="POBJ">
           <Object Name="Button_1" ClsId="0x1002" Version="1" Type="CTRL" RefString="Source[local].Page[Page_Technologie].Layer[Default].Control[Button_1]">
-            <UInt32 Name="Left">21</UInt32>
+            <UInt32 Name="Left">24</UInt32>
             <UInt32 Name="Top">36</UInt32>
-            <UInt32 Name="Right">140</UInt32>
+            <UInt32 Name="Right">143</UInt32>
             <UInt32 Name="Bottom">65</UInt32>
             <UInt16 Name="KeyMatrixOffset">65535</UInt16>
             <UInt16 Name="Reserved">0</UInt16>
@@ -462,9 +462,9 @@
             </Group>
           </Object>
           <Object Name="Button_7" ClsId="0x1002" Version="1" Type="CTRL" RefString="Source[local].Page[Page_Technologie].Layer[Default].Control[Button_7]">
-            <UInt32 Name="Left">174</UInt32>
+            <UInt32 Name="Left">173</UInt32>
             <UInt32 Name="Top">110</UInt32>
-            <UInt32 Name="Right">293</UInt32>
+            <UInt32 Name="Right">292</UInt32>
             <UInt32 Name="Bottom">139</UInt32>
             <UInt16 Name="KeyMatrixOffset">65535</UInt16>
             <UInt16 Name="Reserved">0</UInt16>
@@ -985,7 +985,7 @@
               <UInt32 Name="LockingDatapoint">4294967295</UInt32>
               <UInt32 Name="LockingLevel">0</UInt32>
               <Double Name="SetValue">2</Double>
-              <Double Name="ResetValue">0</Double>
+              <Double Name="ResetValue">9</Double>
               <Double Name="CompletionValue">2</Double>
               <Reference Name="ValueDatapoint" Type="DP">Source[global].Variable[Local.technolg.technologyGUISelected]</Reference>
               <Reference Name="CompletionDatapoint" Type="DP">Source[global].Variable[Local.technolg.technologyGUISelected]</Reference>

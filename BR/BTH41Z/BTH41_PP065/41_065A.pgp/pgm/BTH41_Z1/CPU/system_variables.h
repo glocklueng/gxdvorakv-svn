@@ -107,6 +107,7 @@ typedef struct {
 	BOOL 					topeniImpuls_St;
 	BOOL 					davka1_St;
 	BOOL 					davka2_St;	
+	UINT 					otacky;
 } TECHNOLOGIE;
 
 _GLOBAL TECHNOLOGIE nastaveni; 	/* aktualni nastaveni*/

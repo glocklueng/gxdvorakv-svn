@@ -63,7 +63,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="30"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="21"/>
+          <Property Name="Left" Value="24"/>
           <Property Name="PressedBackColor" Value="149"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -189,7 +189,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="30"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="174"/>
+          <Property Name="Left" Value="173"/>
           <Property Name="PressedBackColor" Value="149"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -379,7 +379,7 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="ResetValue" Value="0"/>
+              <Property Name="ResetValue" Value="9"/>
               <Property Name="SetValue" Value="2"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[Local.technolg.technologyGUISelected]"/>
             </KeyAction>
