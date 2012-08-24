@@ -155,7 +155,7 @@ BOOL LoadTechnology(void){
         DOCreate.len        = sizeof (technologies);
         DOCreate.MemType    = doUSRROM;
         DOCreate.Option     = 0;
-        DOCreate.pCpyData   = technologies;
+        DOCreate.pCpyData   = &technologies[0];
   
        	do {
 	       	/* Call FUB */
@@ -182,7 +182,7 @@ BOOL LoadTechnology(void){
        	DORead.ident        = dwIdent;
        	DORead.Offset       = 0;
        	DORead.pDestination = (UDINT) &technologies;
-      /* 	DORead.len      = sizeof (technologies)+4;*/
+       	DORead.len      = sizeof (technologies);
   
        	do {
 	       	/* Call FUB */
@@ -220,7 +220,8 @@ _INIT void initTechnolgy(void){
 _CYCLIC void setTechnology (void){
 	
 	if (technologyGUIStorno){
-		technologyGUISelected = technologieNumber;	
+		technologyGUISelected = technologieNumber;
+		technologyGUIStorno = 0;	
 	}
 	if (storeActualTechnology){
 		technologies[technologieNumber-1].davkovani_zeli.ON1_angle 	= nastaveni.davkovani_zeli.ON1_angle;
@@ -261,6 +262,8 @@ _CYCLIC void setTechnology (void){
 		technologies[technologieNumber-1].topeniImpuls_St			= topeniImpuls_St;
 		technologies[technologieNumber-1].davka1_St					= davka1_St;
 		technologies[technologieNumber-1].davka2_St					= davka2_St;
+		technologies[technologieNumber-1].otacky					= otacky_nast;
+
 	/*	if (StoreTechnology()){
 		
 		}else {
@@ -273,7 +276,7 @@ _CYCLIC void setTechnology (void){
 	if (technologySelect){
 		if (technologyGUISelected >0 && technologyGUISelected <11){
 			
-			if (1 /*LoadTechnology()*/){	/* load from the FLASH*/			
+			if (1/*LoadTechnology()*/){	/* load from the FLASH*/			
 				technologieNumber	= technologyGUISelected;			
 				nastaveni.davkovani_zeli.ON1_angle	=	technologies[technologieNumber-1].davkovani_zeli.ON1_angle;
 				nastaveni.davkovani_zeli.ON2_angle	=	technologies[technologieNumber-1].davkovani_zeli.ON2_angle;
@@ -312,7 +315,9 @@ _CYCLIC void setTechnology (void){
 				brzda_St							=	technologies[technologieNumber-1].brzda_St;
 				topeniImpuls_St						=	technologies[technologieNumber-1].topeniImpuls_St;
 				davka1_St							=	technologies[technologieNumber-1].davka1_St;
-				davka2_St							=	technologies[technologieNumber-1].davka2_St;				
+				davka2_St							=	technologies[technologieNumber-1].davka2_St;
+				otacky_nast								=	technologies[technologieNumber-1].otacky;
+				
 			}else {
 			/** error **/					
 			}
@@ -360,6 +365,7 @@ _CYCLIC void setTechnology (void){
 			topeniImpuls_St						=	technologies[technologieNumber-1].topeniImpuls_St;
 			davka1_St							=	technologies[technologieNumber-1].davka1_St;
 			davka2_St							=	technologies[technologieNumber-1].davka2_St;
+			otacky_nast								=	technologies[technologieNumber-1].otacky;
 		}else {
 			/** error **/			
 		}

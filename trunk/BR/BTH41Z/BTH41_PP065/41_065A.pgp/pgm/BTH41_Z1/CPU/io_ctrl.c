@@ -66,7 +66,7 @@ BOOL checkReady_bezFolie(void){
 			 /*i_tlakuVzduchu && */
 			 i_tlakVzduchu_Filtered &&
 			 (!topeni_St || i_teplotaDosazena || topeniImpuls_St) && 
-			 i_pritomnostCO2
+			 (i_pritomnostCO2 || !CO2_St)
 			  );	
 }
 
@@ -78,7 +78,7 @@ BOOL checkReady(void){
 			 /*i_tlakuVzduchu && */
 			 i_tlakVzduchu_Filtered &&
 			 (!topeni_St || i_teplotaDosazena || topeniImpuls_St) && 
-			 i_pritomnostCO2
+			 (i_pritomnostCO2 || !CO2_St)
  		  	 && !i_konecFolie 
 		  
 			  );	
@@ -97,7 +97,7 @@ BOOL checkError(void){
 */
 BOOL checkCriticalError(void){
 /*	return (!(i_tlakuVzduchu && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && i_pritomnostCO2  ));*/
-	return (!(i_tlakVzduchu_Filtered && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && i_pritomnostCO2  ));
+	return (!(i_tlakVzduchu_Filtered && i_totalStop && i_kryty && i_poruchaMenice && i_zavzdusneni && (i_pritomnostCO2 || !CO2_St)));
 
 }
 
