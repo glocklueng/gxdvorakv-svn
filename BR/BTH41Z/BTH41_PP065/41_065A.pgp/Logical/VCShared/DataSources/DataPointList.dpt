@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?AutomationStudio Version="2.4"?>
-<DataPointTree xmlns="http://br-automation.co.at/AS/VC/Project">
-  <DataSourceRef Name="Local">
-    <Property Name="Description" Value=""/>
-    <Property Name="Reference" Value="Source[global].DataSource[Local].Item[]"/>
-  </DataSourceRef>
-</DataPointTree>

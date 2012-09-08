@@ -1,8 +1,0 @@
-WATCH Ver=2.00 PLCName=BTH41_Z1 CPUName=CPU TaskName=fasttmr2 
-Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 Index=4 ASCIIString=0
-                                    name                                     type force                                                            value level type len format place expand specs
-                         incrementLength                                      INT    0 "                                                             235"    0    3    1   10    0    0         
-                       incrementPosValue                                      INT    1 "                                                            1135"    0    3    1   10    1    0         
-                  o_resetInkrementPosuvu                                     BOOL    3 "                                                            TRUE"    0    1    1    2    0    0         
-                                 posuvSM                                     UINT    0 "                                                               0"    0    6    1   10    0    0         
-                            stateMachine                                     SINT    0 "                                                               2"    0    2    1   10    0    0         

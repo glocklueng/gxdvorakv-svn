@@ -1,6 +1,0 @@
-WATCH Ver=2.00 PLCName=BTH41_Z1 CPUName=CPU TaskName=io_ctrl 
-Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 Index=3 ASCIIString=0
-                                    name                                     type force                                                            value level type len format place expand specs
-                            stateMachine                                     SINT    0 "                                                               2"    0    2    1   10    0    0         
-                         davkovaniActive                                     BOOL    0 "                                                           FALSE"    0    1    1    2    0    0         
-                                testMode                                     UINT    0 "                                                               2"    0    6    1   10    0    0         
