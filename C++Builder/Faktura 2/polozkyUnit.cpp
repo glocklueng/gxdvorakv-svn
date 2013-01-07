@@ -22,7 +22,7 @@ __fastcall TPolozkyForm::TPolozkyForm(TComponent* Owner)
 
 void __fastcall TPolozkyForm::FormCreate(TObject *Sender)
 {
-    SAZBA_DPH = 20.0;
+    SAZBA_DPH = 21.0;
 }
 //---------------------------------------------------------------------------
 

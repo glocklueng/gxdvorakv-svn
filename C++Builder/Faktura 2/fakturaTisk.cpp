@@ -275,7 +275,7 @@ void __fastcall tisk(long aCisloFaktury)
    canvas->Font->Size=12;
    canvas->Font->Style=TFontStyles();
    canvas->TextOut(104*zoomx,227*zoomy,"Cena celkem bez DPH");
-   canvas->TextOut(104*zoomx,235*zoomy,"DPH 20 %");
+   canvas->TextOut(104*zoomx,235*zoomy,"DPH 21 %");
    canvas->TextOut(104*zoomx,243*zoomy,"Celkem k úhradì");
    canvas->Font->Style=TFontStyles();
    // vyplneni souhrnu

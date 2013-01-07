@@ -1,10 +1,10 @@
 object MainForm: TMainForm
-  Left = 311
-  Top = 216
+  Left = 297
+  Top = 139
   Width = 738
   Height = 488
   Anchors = []
-  Caption = 'Faktura 2010 (rev.2.0.3)'
+  Caption = 'Faktura 2013 (rev.2.0.4)'
   Color = clBtnFace
   Constraints.MinHeight = 400
   Constraints.MinWidth = 730
@@ -28,7 +28,7 @@ object MainForm: TMainForm
     Top = 4
     Width = 281
     Height = 162
-    Caption = 'Vyhledav'#225'n'#237' Odb'#283'ratel'#367
+    Caption = 'Vyhledav'#225'n'#237' Odberatelu'
     TabOrder = 4
     Visible = False
     object Firma: TLabel
@@ -65,9 +65,9 @@ object MainForm: TMainForm
     object Label1: TLabel
       Left = 8
       Top = 24
-      Width = 97
+      Width = 91
       Height = 20
-      Caption = #268#237'slo Faktury'
+      Caption = 'C'#237'slo Faktury'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -78,7 +78,7 @@ object MainForm: TMainForm
     object Label2: TLabel
       Left = 78
       Top = 92
-      Width = 80
+      Width = 81
       Height = 13
       Caption = 'Datum vystaven'#237
     end
@@ -92,16 +92,16 @@ object MainForm: TMainForm
     object Label4: TLabel
       Left = 9
       Top = 140
-      Width = 149
+      Width = 150
       Height = 13
-      Caption = 'Datum usk. zdaniteln'#233'ho pln'#283'n'#237
+      Caption = 'Datum usk. zdaniteln'#233'ho plnen'#237
     end
     object Label11: TLabel
       Left = 8
       Top = 68
-      Width = 81
+      Width = 82
       Height = 13
-      Caption = #268#237'slo objedn'#225'vky'
+      Caption = 'C'#237'slo objedn'#225'vky'
     end
     object CisloFakturyEdit: TEdit
       Left = 120
@@ -185,7 +185,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 437
     Height = 225
-    Caption = 'Odb'#283'ratel'
+    Caption = 'Odberatel'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -213,14 +213,14 @@ object MainForm: TMainForm
       Top = 108
       Width = 18
       Height = 13
-      Caption = 'I'#268'O'
+      Caption = 'ICO'
     end
     object Label7: TLabel
       Left = 31
       Top = 140
       Width = 18
       Height = 13
-      Caption = 'DI'#268
+      Caption = 'DIC'
     end
     object Label9: TLabel
       Left = 13
@@ -313,7 +313,7 @@ object MainForm: TMainForm
       Top = 104
       Width = 81
       Height = 49
-      Caption = 'ID Odb'#283'ratele'
+      Caption = 'ID Odberatele'
       TabOrder = 7
       object DBText1: TDBText
         Left = 2
@@ -346,7 +346,7 @@ object MainForm: TMainForm
       Top = 47
       Width = 75
       Height = 25
-      Caption = 'P'#345'idat'
+      Caption = 'Pridat'
       TabOrder = 9
       OnClick = PridatBtnClick
     end
@@ -382,7 +382,7 @@ object MainForm: TMainForm
       Top = 176
       Width = 75
       Height = 40
-      Caption = 'Pokra'#269'ovat ...'
+      Caption = 'Pokracovat ...'
       TabOrder = 13
       OnClick = PokracovatBtnClick
     end
@@ -431,7 +431,6 @@ object MainForm: TMainForm
         Alignment = taRightJustify
         Expanded = False
         FieldName = 'ICO'
-        Title.Caption = 'I'#268'O'
         Width = 59
         Visible = True
       end
@@ -439,7 +438,6 @@ object MainForm: TMainForm
         Alignment = taRightJustify
         Expanded = False
         FieldName = 'DIC'
-        Title.Caption = 'DI'#268
         Width = 77
         Visible = True
       end
@@ -483,7 +481,7 @@ object MainForm: TMainForm
         OnClick = menuEditaceUlozenychClick
       end
       object menuVyhleOdb: TMenuItem
-        Caption = '&Vyhled'#225'van'#237' podle odb'#283'ratele'
+        Caption = '&Vyhled'#225'van'#237' podle odberatele'
         OnClick = menuVyhleOdbClick
       end
       object N3: TMenuItem
@@ -514,7 +512,7 @@ object MainForm: TMainForm
         OnClick = menuDodavatelClick
       end
       object Odberetele: TMenuItem
-        Caption = '&Odb'#283'ratel'#233
+        Caption = '&Odberatel'#233
         GroupIndex = 1
         OnClick = OdbereteleClick
       end
