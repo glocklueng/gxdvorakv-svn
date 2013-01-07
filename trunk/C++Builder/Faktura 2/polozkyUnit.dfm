@@ -1,6 +1,6 @@
 object PolozkyForm: TPolozkyForm
-  Left = 327
-  Top = 209
+  Left = 232
+  Top = 41
   Width = 706
   Height = 636
   HorzScrollBar.Visible = False
@@ -48,7 +48,7 @@ object PolozkyForm: TPolozkyForm
         Expanded = False
         FieldName = 'CisloFaktury'
         ReadOnly = True
-        Title.Caption = #268#237's.Fakt.'
+        Title.Caption = 'C'#237's.Fakt.'
         Width = 48
         Visible = True
       end
@@ -56,7 +56,7 @@ object PolozkyForm: TPolozkyForm
         Expanded = False
         FieldName = 'CisloPolozky'
         ReadOnly = True
-        Title.Caption = #268#237'slo'
+        Title.Caption = 'C'#237'slo'
         Width = 29
         Visible = True
       end
@@ -64,7 +64,7 @@ object PolozkyForm: TPolozkyForm
         Expanded = False
         FieldName = 'SazbaDPH'
         PickList.Strings = (
-          '20')
+          '21')
         Title.Caption = 'Sazba DPH'
         Width = 61
         Visible = True
@@ -137,13 +137,13 @@ object PolozkyForm: TPolozkyForm
           Expanded = False
           FieldName = 'Cislo'
           ReadOnly = True
-          Title.Caption = #268#237'slo Faktury'
+          Title.Caption = 'C'#237'slo Faktury'
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'CisloObjednavky'
-          Title.Caption = #268'. Objedn'#225'vky'
+          Title.Caption = 'C. Objedn'#225'vky'
           Width = 77
           Visible = True
         end
@@ -151,14 +151,14 @@ object PolozkyForm: TPolozkyForm
           Expanded = False
           FieldName = 'IdOdberatele'
           ReadOnly = True
-          Title.Caption = #268'. Odb.'
+          Title.Caption = 'C. Odb.'
           Width = 42
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'OdbratelName'
-          Title.Caption = 'Odb'#283'ratel'
+          Title.Caption = 'Odberatel'
           Width = 270
           Visible = True
         end
@@ -182,7 +182,7 @@ object PolozkyForm: TPolozkyForm
           Alignment = taCenter
           Expanded = False
           FieldName = 'Zdaneni'
-          Title.Caption = 'D. Zdan'#283'n'#237
+          Title.Caption = 'D. Zdanen'#237
           Width = 61
           Visible = True
         end>
@@ -211,9 +211,9 @@ object PolozkyForm: TPolozkyForm
     object Label1: TLabel
       Left = 5
       Top = 16
-      Width = 101
+      Width = 94
       Height = 20
-      Caption = #268#237'slo faktury :'
+      Caption = 'C'#237'slo faktury :'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -224,9 +224,9 @@ object PolozkyForm: TPolozkyForm
     object Label2: TLabel
       Left = 32
       Top = 40
-      Width = 74
+      Width = 72
       Height = 13
-      Caption = 'Po'#269'et polo'#382'ek :'
+      Caption = 'Pocet polo'#382'ek :'
     end
     object pocetPolozek: TLabel
       Left = 120
