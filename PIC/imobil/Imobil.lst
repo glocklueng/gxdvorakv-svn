@@ -1,0 +1,1638 @@
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[215]: Processor superceded by command line.  Verify processor symbol.
+                      00001                 list    p=PIC16F84              F=inhx8m
+                      00002                                 
+                      00003 #define         SP1             PORTA,1         ;out
+                      00004 #define         SP2             PORTA,0         ;out
+                      00005 #define         SP3             PORTB,6         ;out
+                      00006 #define         TEST1   PORTB,7         ;in
+                      00007 #define         TEST2   PORTB,5         ;in
+                      00008 #define         TEST3   PORTB,2         ;in
+                      00009 #define         LED             PORTB,4         ;out
+                      00010 #define         BZUCAK  PORTB,0         ;out
+                      00011 #define         klicek  PORTB,1         ;in
+                      00012 #define         K_OUT   PORTA,3         ;out
+                      00013 #define         K_IN    PORTA,2         ;in
+                      00014 #define         TIMER   PORTB,3         ;in/out
+                      00015 
+  00000007            00016 LIMIT                   EQU             0x07                    ; linit
+                      00017 
+  0000000C            00018 key                             EQU             0x0c                    ;family
+  0000000D            00019 key1                    EQU             0x0d
+  0000000E            00020 key2                    EQU             0x0e
+  0000000F            00021 key3                    EQU             0x0f
+  00000010            00022 key4                    EQU             0x10
+  00000011            00023 key5                    EQU             0x11
+  00000012            00024 key6                    EQU             0x12
+  00000013            00025 key7                    EQU             0x13                    ;CRC
+  00000014            00026 regA                    EQU             0x14
+  00000015            00027 regB                    EQU             0x15
+  00000016            00028 count                   EQU             0x16                    ; pro vysilani povelu a vypocet CRC
+  00000017            00029 pushW                   EQU             0x17
+  00000018            00030 CRC                             EQU             0x18
+  00000019            00031 countx                  EQU             0x19
+  0000001A            00032 buffer                  EQU             0x1A
+  0000001B            00033 bliknuti                EQU             0x1b
+  0000001C            00034 bliknuti_hi             EQU             0x1c
+  0000001D            00035 STAV                    EQU             0x1d
+                      00036 
+  00000001            00037 napadeni                EQU             1
+  00000002            00038 odjisteno               EQU             2
+  00000003            00039 prilozeno               EQU             3
+                      00040 
+  0000001E            00041 regC                    EQU             0x1e
+  0000001F            00042 timeout_reg_lo  EQU             0x1f
+  00000020            00043 timeout_reg_hi  EQU             0x20
+  00000021            00044 pushStatus              EQU             0x21
+  00000022            00045 int_pushW               EQU             0x22
+                      00046 
+                      00047 ;*********************************************************************************************
+                      00048 ; MACRO definitions
+                      00049 ;
+                      00050 
+                      00051 cekejx                  macro   doba    ; min je 12, max 256                                            
+                                    
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00052                                 movlw   doba                    ;1      
+                      00053                                 andlw   0xFC                    ;1
+                      00054                                 sublw   0x07                    ;1
+                      00055                                 movwf   countx                  ;1
+                      00056                                 comf    countx,f                ;1      
+                      00057                                 rrf             countx,f                ;1
+                      00058                                 rrf             countx,f                ;1              vydeleno 4
+                      00059                                 ;(7)
+                      00060                                 nop                                             ;1
+                      00061                                 decfsz  countx,f                ;1
+                      00062                                 goto    $-2                             ;2                              
+                      00063                                 ENDM
+                      00064 
+                      00065 cekejy                  macro   doba    ; min je 1   time = doba*3+2
+                      00066                                 movlw   doba                    ;1
+                      00067                                 movwf   countx                  ;1
+                      00068                                 decfsz  countx,f                ;1
+                      00069                                 goto    $-1                             ;2              >> cykl 3us
+                      00070                                 ENDM
+                      00071 
+                      00072 movff                   macro   odkud,kam
+                      00073                                 movf    odkud,w
+                      00074                                 movwf   kam
+                      00075                                 ENDM
+                      00076 
+                      00077 BANK_1                  macro
+                      00078                                 bsf             STATUS,RP0                      ; nastavi banku 1
+                      00079                                 ENDM
+                      00080 
+                      00081 BANK_0                  macro
+                      00082                                 bcf             STATUS,RP0                      ; nastavi banku 0
+                      00083                                 ENDM
+                      00084 
+                      00085 ;********************************************************************************************
+                      00086         
+                      00087 ;       ORG                     2007h                                   ;                       CP WDR  
+                      00088 ;       data            0x0FF
+                      00089 
+                      00090 ;********************************************************************************************
+                      00091 ; EEPROM                
+                      00092 
+  00000000            00093 offset_kodu                     EQU             0
+  00000010            00094 offset_kodu_2           EQU             0x10
+  0000000A            00095 offset_deaktivace       EQU             0x0a
+  0000001A            00096 offset_napadeni         EQU             0x1a
+                      00097 
+                      00098 ;       ORG                     0x2000
+                      00099 ;       data            'v','1','.','0'
+2100                  00100         ORG                     0x2100+offset_kodu
+2100   0001 00B3 00EA 00101         data            0x01,0xb3,0xea,0x96,0x00,0x00,0x00,0xec,0,0,0,0,0,0,0,0
+       0096 0000 0000 
+       0000 00EC 0000 
+       0000 0000 0000 
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+       0000 0000 0000 
+       0000 
+2110                  00102         ORG                     0x2100+offset_kodu_2
+2110   0001 0037 0036 00103         data            0x01,0x37,0x36,0x90,0x01,0x00,0x00,0x07,0,0,0x67,0x01,0,0,0,0
+       0090 0001 0000 
+       0000 0007 0000 
+       0000 0067 0001 
+       0000 0000 0000 
+       0000 
+                      00104 
+                      00105 ;********************************************************************************************
+                      00106 
+                      00107 
+0000                  00108                         ORG             0x000           ; reset vector          
+0000   2805           00109                         goto    init
+                      00110 
+0004                  00111                         ORG             0x004           ; interrupt vector
+0004   2A15           00112                         goto    prerus
+                      00113 
+                      00114 ;********************************************************************************************
+                      00115 
+                      00116 
+                      00117 init            BANK_1
+0005   1683               M                                 bsf             STATUS,RP0                      ; nastavi banku 1
+0006   30F4           00118                         movlw   b'11110100'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0007   0805           00119                         movfw   TRISA                   ; 0= out        1=in
+0008   30AE           00120                         movlw   b'10101110'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0009   0086           00121                         movwf   TRISB
+                      00122 
+                      00123                         BANK_0
+000A   1283               M                                 bcf             STATUS,RP0                      ; nastavi banku 0
+000B   30F4           00124                         movlw   b'11110100'
+000C   0085           00125                         movwf   PORTA                   
+000D   30BE           00126                         movlw   b'10111110'
+000E   0086           00127                         movwf   PORTB
+                      00128 
+                      00129                         BANK_1                  
+000F   1683               M                                 bsf             STATUS,RP0                      ; nastavi banku 1
+0010   30DF           00130                         movlw   b'11011111'                     ; nastaveni OPTION
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0011   0081           00131                         movwf   OPTION_REG
+0012   3020           00132                         movlw   b'00100000'                     ; nastaveni     INTCON
+0013   008B           00133                         movwf   INTCON
+                      00134 
+                      00135                         BANK_0
+0014   1283               M                                 bcf             STATUS,RP0                      ; nastavi banku 0
+0015   019D           00136                         clrf    STAV
+0016   1A03           00137                         btfsc   STATUS,NOT_TO
+0017   281A           00138                         goto    neniWDT
+                      00139                         
+0018   20FE           00140                         call    pip
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0019   1206           00141                         bcf             LED                     
+                      00142 
+001A   1603           00143 neniWDT         bsf             STATUS,NOT_TO
+001B   1085           00144                         bcf     SP1
+001C   1F86           00145                         btfss   TEST1
+001D   281B           00146                         goto    $-2
+001E   1005           00147                         bcf             SP2
+001F   1E86           00148                         btfss   TEST2
+0020   281E           00149                         goto    $-2
+0021   1306           00150                         bcf             SP3
+0022   1D06           00151                         btfss   TEST3
+0023   2821           00152                         goto    $-2
+                      00153 
+0024   0064           00154                         CLRWDT
+                      00155 
+                      00156 ;       TEST na pripadnou stalou deaktivaci
+                      00157                         
+0025   300A           00158                         movlw   offset_deaktivace
+0026   231D           00159                         call    eecteni
+0027   0064           00160                         CLRWDT
+0028   3A76           00161                         xorlw   0x76
+0029   1903           00162                         btfsc   STATUS,Z
+002A   28CF           00163                         goto    stala_deaktivace_po_resetu
+                      00164 
+                      00165 ;       TEST na pripadne napadeni
+                      00166                         
+002B   301A           00167                         movlw   offset_napadeni
+002C   231D           00168                         call    eecteni
+002D   0064           00169                         CLRWDT
+002E   3A67           00170                         xorlw   0x67
+002F   1903           00171                         btfsc   STATUS,Z
+0030   149D           00172                         bsf             STAV,napadeni
+                      00173 
+                      00174 ;*************************************************************************************************
+                      00175 ;               S T A R T
+                      00176 ;*************************************************************************************************
+                      00177 
+                      00178 ; smycka zajisteneho rezimu
+                      00179 
+0031   0064           00180 start           CLRWDT                                  
+0032   178B           00181                         bsf             INTCON,GIE                              ; povoleni preruseni
+0033   191D           00182                         btfsc   STAV,odjisteno
+0034   2837           00183                         goto    start1
+                      00184 
+0035   1886           00185                         btfsc   klicek                                  ; zapnuty klicek
+0036   2116           00186                         call    poplach_klakson
+                      00187 
+0037   1D9D           00188 start1          btfss   STAV,prilozeno                  ; pritomna button memory
+0038   2846           00189                         goto    neprilozeno
+                      00190 
+0039   138B           00191                         bcf             INTCON,GIE                              ; zakaz peruseni
+003A   1B8B           00192                         btfsc   INTCON,GIE
+003B   2839           00193                         goto    $-2
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00194 
+003C   2244           00195                         call    pritomen                                ;       01 - uspesna, 08 - napad
+                            eni
+003D   0064           00196                         CLRWDT
+003E   0097           00197                         movwf   pushW
+003F   3A01           00198                         xorlw   0x01
+0040   1903           00199                         btfsc   STATUS,Z
+0041   2848           00200                         goto    odjisti_loop
+                      00201 
+0042   0817           00202                         movf    pushW,w                                 ; neautorizovany kod
+0043   3A08           00203                         xorlw   0x08                                    ; dalsi pokus po timeoutu
+0044   1903           00204                         btfsc   STATUS,Z
+0045   2323           00205                         call    long_cekej
+                      00206 
+0046   178B           00207 neprilozeno     bsf             INTCON,GIE                              ; povoleni preruseni
+0047   2831           00208                         goto    start
+                      00209 
+                      00210 ;*************************************************************************************************
+                      00211 ;       smycka programu pro odjisteny stav
+                      00212 
+0048                  00213 odjisti_loop    
+0048   138B           00214                         bcf             INTCON,GIE
+0049   1B8B           00215                         btfsc   INTCON,GIE
+004A   2848           00216                         goto    $-2
+                      00217 
+004B   1C9D           00218                         btfss   STAV,napadeni
+004C   2854           00219                         goto    OL02
+                      00220                         
+004D   0064           00221                         CLRWDT
+004E   3000           00222                         movlw   0                                               ; smazani zaznamu z eepr
+                            om      
+004F   0088           00223                         movwf   EEDATA
+0050   301A           00224                         movlw   offset_napadeni
+0051   0089           00225                         movwf   EEADR
+0052   230B           00226                         call    eezapis
+0053   109D           00227                         bcf             STAV,napadeni
+                      00228 
+0054   0064           00229 OL02            CLRWDT
+0055   217B           00230                         call    zahraj
+0056   1485           00231                         bsf             SP1
+0057   1B86           00232                         btfsc   TEST1
+0058   2856           00233                         goto    $-2
+0059   1405           00234                         bsf             SP2
+005A   1A86           00235                         btfsc   TEST2
+005B   2859           00236                         goto    $-2
+                      00237 
+005C   151D           00238                         bsf             STAV,odjisteno
+005D   1206           00239                         bcf             LED
+005E   178B           00240                         bsf             INTCON,GIE                              ;povoleni preruseni
+                      00241                 
+005F   30FF           00242                         movlw   0xff
+0060   0096           00243                         movwf   count
+                      00244 
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0061   019F           00245                         clrf    timeout_reg_lo
+0062   01A0           00246                         clrf    timeout_reg_hi
+                      00247 
+0063   0064           00248 OL01            CLRWDT
+0064   0820           00249                         movf    timeout_reg_hi,w
+0065   3C06           00250                         sublw   0x06
+0066   1C03           00251                         btfss   STATUS,C
+0067   2154           00252                         call    vypis                                   ; vypis poplachu, pokud je klic 
+                            prilozen 3s
+0068   199D           00253                         btfsc   STAV,prilozeno
+0069   2863           00254                         goto    OL01                                    ; cekam na oddaleni
+                      00255 
+006A   199D           00256 OL03            btfsc   STAV,prilozeno
+006B   2863           00257                         goto    OL01
+006C   0B96           00258                         decfsz  count,f
+006D   286A           00259                         goto    OL03
+                      00260                         
+006E   019F           00261                         clrf    timeout_reg_lo
+006F   01A0           00262                         clrf    timeout_reg_hi
+                      00263 
+0070   0064           00264 oddaleno        CLRWDT
+0071   178B           00265                         bsf             INTCON,GIE
+0072   0820           00266                         movf    timeout_reg_hi,w
+0073   3C32           00267                         sublw   0x32                                    ; doba akceptovani zadosti o sta
+                            lou deaktivaci
+0074   1C03           00268                         btfss   STATUS,C
+0075   2897           00269                         goto    klicek_nesepnuty                ; zahajeni postupne deaktivace
+                      00270                 
+0076   1886           00271                         btfsc   klicek
+0077   2886           00272                         goto    klicek_sepnuty
+                      00273 
+0078   1D9D           00274                         btfss   STAV,prilozeno
+0079   2870           00275                         goto    oddaleno
+                      00276 
+007A   138B           00277                         bcf             INTCON,GIE
+007B   1B8B           00278                         btfsc   INTCON,GIE
+007C   287A           00279                         goto    $-2
+                      00280 
+007D   0064           00281                         CLRWDT
+007E   2244           00282                         call    pritomen                                ; 01 autorize OK
+007F   0064           00283                         CLRWDT
+0080   3A01           00284                         xorlw   0x01
+0081   1903           00285                         btfsc   STATUS,Z
+0082   28BF           00286                         goto    stala_deaktivace
+                      00287 
+0083   178B           00288                         bsf             INTCON,GIE
+0084   2870           00289                         goto    oddaleno
+                      00290         
+0085   2885           00291                         goto    $
+                      00292 
+                      00293 ;*******
+0086                  00294 klicek_sepnuty
+0086   138B           00295                         bcf             INTCON,GIE
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0087   1B8B           00296                         btfsc   INTCON,GIE
+0088   2886           00297                         goto    $-2
+                      00298                         
+0089   1C86           00299 kst1            btfss   klicek
+008A   288D           00300                         goto    vypnuty_zde
+008B   0064           00301                         CLRWDT          
+008C   2889           00302                         goto    kst1
+                      00303 
+                      00304 ; zde se vypnul klicek
+008D                  00305 vypnuty_zde
+008D   019F           00306                         clrf    timeout_reg_lo
+008E   01A0           00307                         clrf    timeout_reg_hi
+                      00308 
+008F   0064           00309 ks01            CLRWDT
+0090   178B           00310                         bsf             INTCON,GIE
+0091   1886           00311                         btfsc   klicek
+0092   2886           00312                         goto    klicek_sepnuty                  ; test zda se opet nezapnul
+0093   0820           00313                         movf    timeout_reg_hi,w
+0094   3C37           00314                         sublw   0x37
+0095   1803           00315                         btfsc   STATUS,C
+0096   288F           00316                         goto    ks01                                    ; zpozdeni asi 10 s
+                      00317 
+                      00318 ;**********
+0097                  00319 klicek_nesepnuty
+0097   019F           00320                         clrf    timeout_reg_lo
+0098   01A0           00321                         clrf    timeout_reg_hi
+                      00322                         
+0099   3007           00323                         movlw   LIMIT
+009A   009E           00324                         movwf   regC
+                      00325 
+009B                  00326 klicek_ne_loop
+009B   0064           00327                         CLRWDT
+009C   1886           00328                         btfsc   klicek
+009D   2886           00329                         goto    klicek_sepnuty
+                      00330                         
+009E   1D9D           00331                         btfss   STAV,prilozeno
+009F   28A9           00332                         goto    knl2
+                      00333                         
+00A0   138B           00334                         bcf             INTCON,GIE
+00A1   1B8B           00335                         btfsc   INTCON,GIE
+00A2   28A0           00336                         goto    $-2
+                      00337                         
+00A3   0064           00338                         CLRWDT
+00A4   2244           00339                         call    pritomen                                ; 01 - autorizace OK
+00A5   0064           00340                         CLRWDT
+00A6   3A01           00341                         xorlw   0x01
+00A7   1903           00342                         btfsc   STATUS,Z                                ; neuspesna autorizace
+00A8   2848           00343                         goto    odjisti_loop
+                      00344 
+00A9   178B           00345 knl2            bsf             INTCON,GIE
+                      00346                         
+00AA   0820           00347                         movf    timeout_reg_hi,w
+00AB   021E           00348                         subwf   regC,w
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00AC   1803           00349                         btfsc   STATUS,C
+00AD   28B3           00350                         goto    knl01                                   ; zajisti 1 pipnuti pro kazde ci
+                            slo
+                      00351         
+00AE   0820           00352                         movf    timeout_reg_hi,w
+00AF   3C1E           00353                         sublw   regC
+00B0   0A9E           00354                         incf    regC,f
+00B1   0064           00355                         CLRWDT
+00B2   20FE           00356                         call    pip
+                      00357 
+00B3   0820           00358 knl01           movf    timeout_reg_hi,w
+00B4   3C25           00359                         sublw   LIMIT+0x1E   ;30 
+00B5   1803           00360                         btfsc   STATUS,C
+00B6   289B           00361                         goto    klicek_ne_loop
+                      00362         
+00B7   1085           00363                         bcf             SP1
+00B8   1F86           00364                         btfss   TEST1
+00B9   28B7           00365                         goto    $-2
+                      00366                         
+00BA   1005           00367                         bcf             SP2
+00BB   1E86           00368                         btfss   TEST2
+00BC   28BA           00369                         goto    $-2
+                      00370         
+00BD   111D           00371                         bcf             STAV,odjisteno                  
+00BE   2831           00372                         goto    start
+                      00373 
+                      00374 ;***************************************************************************************
+                      00375 ;       S T A L A   D E A K T I V A C E 
+                      00376 ;       zapisuje se do eeprom pro uchovani pri vypnuti napajeni
+                      00377 ;       testuje se prilozeni klice pri kazdem probuzeni od WDT
+                      00378 ;       po RESETU na zacatku programu otestuje, zda je navoleno deativovani a skoci sem
+                      00379 ;       pozor, skok musi byt pres GOTO
+                      00380 ;***************************************************************************************
+00BF                  00381 stala_deaktivace
+00BF   0064           00382                         CLRWDT
+00C0   3076           00383                         movlw   0x76
+00C1   0088           00384                         movwf   EEDATA
+00C2   300A           00385                         movlw   offset_deaktivace
+00C3   0089           00386                         movwf   EEADR
+00C4   230B           00387                         call    eezapis
+00C5   21C8           00388                         call    zahraj2
+                      00389                         
+00C6   3032           00390                         movlw   0x32
+00C7   0096           00391                         movwf   count
+                      00392                         
+00C8   0064           00393 sd01            CLRWDT
+00C9   22BB           00394                         call    test    
+00CA   3A02           00395                         xorlw   0x02
+00CB   1D03           00396                         btfss   STATUS,Z
+00CC   28C8           00397                         goto    sd01                            ;neni prilozeno
+00CD   0B96           00398                         decfsz  count,f
+00CE   28C8           00399                         goto    sd01                            ; test na oddaleni alespon 50 cyklu
+                      00400 
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00CF                  00401 stala_deaktivace_po_resetu
+00CF   1485           00402                         bsf             SP1
+00D0   1B86           00403                         btfsc   TEST1
+00D1   28CF           00404                         goto    $-2
+                      00405                         
+00D2   1405           00406                         bsf             SP2
+00D3   1A86           00407                         btfsc   TEST2
+00D4   28D2           00408                         goto    $-2
+                      00409                         
+00D5   1606           00410                         bsf             LED
+00D6   138B           00411                         bcf             INTCON,GIE
+00D7   1B8B           00412                         btfsc   INTCON,GIE
+00D8   28D6           00413                         goto    $-2
+                      00414 
+00D9   0064           00415 sd_loop         CLRWDT                                          ; frekvence cca 1Hz
+                      00416                         cekejx  200
+00DA   30C8               M                                 movlw   200                     ;1      
+00DB   39FC               M                                 andlw   0xFC                    ;1
+00DC   3C07               M                                 sublw   0x07                    ;1
+00DD   0099               M                                 movwf   countx                  ;1
+00DE   0999               M                                 comf    countx,f                ;1      
+00DF   0C99               M                                 rrf             countx,f                ;1
+00E0   0C99               M                                 rrf             countx,f                ;1              vydeleno 4
+                          M                                 ;(7)
+00E1   0000               M                                 nop                                             ;1
+00E2   0B99               M                                 decfsz  countx,f                ;1
+00E3   28E1               M                                 goto    $-2                             ;2                              
+00E4   22BB           00417                         call    test                            ;       0 = OK
+00E5   3A00           00418                         xorlw   0x00
+00E6   1D03           00419                         btfss   STATUS,Z
+00E7   28D9           00420                         goto    sd_loop                         ; neni prilozeno
+                      00421                         
+00E8   0064           00422                         CLRWDT
+00E9   2244           00423                         call    pritomen
+                      00424                         
+00EA   0064           00425                         CLRWDT
+00EB   0097           00426                         movwf   pushW
+00EC   3A01           00427                         xorlw   0x01
+00ED   1903           00428                         btfsc   STATUS,Z
+00EE   28F5           00429                         goto    zruseni_deaktivace
+                      00430                 
+00EF   0817           00431                         movf    pushW,w                         ; neautorizovany kod
+00F0   3A08           00432                         xorlw   0x08                            ; dalsi pokus po timeoutu
+00F1   1903           00433                         btfsc   STATUS,Z
+00F2   2323           00434                         call    long_cekej
+00F3   28D9           00435                         goto    sd_loop
+                      00436                         
+00F4   0064           00437                         CLRWDT
+                      00438 
+00F5                  00439 zruseni_deaktivace
+00F5   3000           00440                         movlw   0x00
+00F6   0088           00441                         movwf   EEDATA
+00F7   300A           00442                         movlw   offset_deaktivace
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00F8   0089           00443                         movwf   EEADR
+00F9   230B           00444                         call    eezapis
+00FA   1206           00445                         bcf             LED
+00FB   178B           00446                         bsf             INTCON,GIE
+00FC   2848           00447                         goto    odjisti_loop
+                      00448 
+00FD   28FD           00449                         goto    $
+                      00450 
+                      00451 ;*******************************************************************************************************
+                            *****
+                      00452 ; obsluzne procedury
+                      00453 
+                      00454 
+                      00455 ;*******************************************************************************************************
+                            *****
+                      00456 ; Generovani pipnuti na piezo
+                      00457 
+00FE   138B           00458 pip                     bcf             INTCON,GIE
+00FF   1B8B           00459                         btfsc   INTCON,GIE
+0100   28FE           00460                         goto    $-2
+                      00461 
+0101   3005           00462                         movlw   0x05
+0102   0097           00463                         movwf   pushW
+0103   30FF           00464                         movlw   0xff
+0104   0096           00465                         movwf   count
+0105   1406           00466 pipa            bsf             BZUCAK
+                      00467                         cekejy  0x17
+0106   3017               M                                 movlw   0x17                    ;1
+0107   0099               M                                 movwf   countx                  ;1
+0108   0B99               M                                 decfsz  countx,f                ;1
+0109   2908               M                                 goto    $-1                             ;2              >> cykl 3us
+010A   1006           00468                         bcf             BZUCAK
+                      00469                         cekejy  0x17
+010B   3017               M                                 movlw   0x17                    ;1
+010C   0099               M                                 movwf   countx                  ;1
+010D   0B99               M                                 decfsz  countx,f                ;1
+010E   290D               M                                 goto    $-1                             ;2              >> cykl 3us
+010F   0B96           00470                         decfsz  count,f
+0110   2905           00471                         goto    pipa
+0111   0B97           00472                         decfsz  pushW,f
+0112   2905           00473                         goto    pipa
+                      00474                 
+0113   0064           00475                         CLRWDT  
+0114   178B           00476                         bsf             INTCON,GIE
+0115   0008           00477                         return
+                      00478 
+                      00479 ;*******************************************************************************************************
+                            *****                   
+                      00480 ;       poplach klaksonem
+                      00481 
+0116                  00482 poplach_klakson
+0116   138B           00483                         bcf             INTCON,GIE
+0117   1B8B           00484                         btfsc   INTCON,GIE
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0118   2916           00485                         goto    $-2
+                      00486 
+0119   0064           00487                         CLRWDT
+011A   3067           00488                         movlw   0x67
+011B   0088           00489                         movwf   EEDATA
+011C   301A           00490                         movlw   offset_napadeni
+011D   0089           00491                         movwf   EEADR
+011E   230B           00492                         call    eezapis
+                      00493 
+011F   0064           00494                         CLRWDT
+0120   301B           00495                         movlw   offset_napadeni+1                                       ; zapise pocet n
+                            apadeni
+0121   231D           00496                         call    eecteni
+0122   0064           00497                         CLRWDT
+0123   0088           00498                         movwf   EEDATA
+0124   0A88           00499                         incf    EEDATA,f
+0125   301B           00500                         movlw   offset_napadeni+1
+0126   0089           00501                         movwf   EEADR
+0127   230B           00502                         call    eezapis
+0128   0064           00503                         CLRWDT
+                      00504 
+0129   019F           00505                         clrf    timeout_reg_lo
+012A   01A0           00506                         clrf    timeout_reg_hi
+012B   151D           00507                         bsf             STAV,odjisteno
+012C   178B           00508                         bsf             INTCON,GIE
+                      00509 
+012D                  00510 poplach_klakson_loop
+012D   178B           00511                         bsf             INTCON,GIE
+012E   0064           00512                         CLRWDT
+012F   1706           00513                         bsf             SP3
+0130   1606           00514                         bsf             LED
+0131   232A           00515                         call    cekej
+0132   1206           00516                         bcf             LED
+0133   0064           00517                         CLRWDT
+0134   199D           00518                         btfsc   STAV,prilozeno
+0135   2942           00519                         goto    poplach01
+0136   232A           00520                         call    cekej
+0137   0064           00521                         CLRWDT  
+0138   1306           00522                         bcf             SP3
+0139   1206           00523                         bcf             LED
+013A   232A           00524                         call    cekej
+013B   0064           00525                         CLRWDT
+                      00526                                         
+                      00527         
+013C   3078           00528                         movlw   0x78
+013D   0220           00529                         subwf   timeout_reg_hi,w
+013E   1803           00530                         btfsc   STATUS,C
+013F   294D           00531                         goto    konec_poplachu
+0140   1D9D           00532                         btfss   STAV,prilozeno
+0141   292D           00533                         goto    poplach_klakson_loop
+                      00534 
+0142   138B           00535 poplach01       bcf             INTCON,GIE
+0143   1B8B           00536                         btfsc   INTCON,GIE
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0144   2942           00537                         goto    $-2
+0145   0064           00538                         CLRWDT
+0146   22BB           00539                         call    test                                                    ; pro oziveni kl
+                            ice
+0147   2244           00540                         call    pritomen                                                ; 01 = OK
+0148   0064           00541                         CLRWDT
+0149   3A01           00542                         xorlw   0x01
+014A   1D03           00543                         btfss   STATUS,Z                                                ; neuspesna auto
+                            rizace
+014B   292D           00544                         goto    poplach_klakson_loop
+014C   217B           00545                         call    zahraj
+                      00546 
+014D                  00547 konec_poplachu
+014D   149D           00548                         bsf             STAV,napadeni
+014E   111D           00549                         bcf             STAV,odjisteno
+014F   0064           00550                         CLRWDT
+0150   1306           00551                         bcf             SP3
+0151   1D06           00552                         btfss   TEST3
+0152   2950           00553                         goto    $-2
+                      00554 
+0153   0008           00555                         return
+                      00556 
+                      00557 ;*******************************************************************************************************
+                            *****                                           
+                      00558 ;       vypis poctu poplachu
+                      00559 ;       pocet bliknuti je pocet polachu od posledniho vymazani
+                      00560 
+0154   20FE           00561 vypis           call    pip     
+0155   1206           00562                         bcf             LED
+0156   138B           00563                         bcf             INTCON,GIE
+0157   1B8B           00564                         btfsc   INTCON,GIE
+0158   2956           00565                         goto    $-2
+0159   0064           00566                         CLRWDT
+015A   019A           00567                         clrf    buffer
+015B   301B           00568                         movlw   offset_napadeni+1
+015C   0088           00569                         movwf   EEDATA
+015D   231D           00570                         call    eecteni
+015E   009A           00571                         movwf   buffer
+015F   089A           00572                         movf    buffer,f
+0160   1903           00573                         btfsc   STATUS,Z
+0161   296C           00574                         goto    vypis02
+                      00575 
+0162   0064           00576 vypis01         CLRWDT
+0163   232A           00577                         call    cekej
+0164   1606           00578                         bsf             LED
+0165   0064           00579                         CLRWDT
+0166   232A           00580                         call    cekej
+0167   1206           00581                         bcf             LED
+0168   0064           00582                         CLRWDT
+0169   232A           00583                         call    cekej
+016A   0B9A           00584                         decfsz  buffer,f
+016B   2962           00585                         goto    vypis01
+016C   0064           00586 vypis02         CLRWDT
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+016D   232A           00587                         call    cekej
+016E   0064           00588                         CLRWDT
+016F   232A           00589                         call    cekej
+0170   0064           00590                         CLRWDT
+0171   232A           00591                         call    cekej
+0172   0064           00592                         CLRWDT
+0173   3000           00593                         movlw   0x00                                                            ; vymaza
+                            ni poctu napadeni
+0174   0088           00594                         movwf   EEDATA
+0175   301B           00595                         movlw   offset_napadeni+1
+0176   0089           00596                         movwf   EEADR
+0177   230B           00597                         call    eezapis
+0178   0064           00598                         CLRWDT
+0179   178B           00599                         bsf             INTCON,GIE
+017A   0008           00600                         return
+                      00601 
+                      00602 ;*******************************************************************************************************
+                            ********
+                      00603 ;       MACRO pro generovani tonu
+                      00604 
+                      00605 ton                     macro   delka, vyska            ;doba periodz v us, min 12 = 10 kHz , max 3072
+                      00606                         movlw   delka/0xff
+                      00607                         movwf   pushW
+                      00608                         movlw   delka-(delka/0xff)*0xff
+                      00609                         CLRWDT
+                      00610                         movwf   count
+                      00611                         
+                      00612                         bsf             BZUCAK
+                      00613                         cekejy  vyska/0x0c                      ; parametr*3 = cyklu >> *2 = us
+                      00614                         bcf             BZUCAK
+                      00615                         cekejy  vyska/0x0c                      ; 4 radky
+                      00616                         decfsz  count,f
+                      00617                         goto    $-0x0b
+                      00618                         decfsz  pushW,f
+                      00619                         goto    $-0x0f
+                      00620                         ENDM
+                      00621 ;*******************************************************************************************************
+                            *********
+                      00622 ;       generovani melodie
+                      00623 ;
+017B                  00624 zahraj
+                      00625                         ton             1000,468
+017B   3003               M                         movlw   1000/0xff
+017C   0097               M                         movwf   pushW
+017D   30EB               M                         movlw   1000-(1000/0xff)*0xff
+017E   0064               M                         CLRWDT
+017F   0096               M                         movwf   count
+                          M                         
+0180   1406               M                         bsf             BZUCAK
+                          M                         cekejy  468/0x0c                        ; parametr*3 = cyklu >> *2 = us
+0181   3027               M                                 movlw   468/0x0c                ;1
+0182   0099               M                                 movwf   countx                  ;1
+0183   0B99               M                                 decfsz  countx,f                ;1
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0184   2983               M                                 goto    $-1                             ;2              >> cykl 3us
+0185   1006               M                         bcf             BZUCAK
+                          M                         cekejy  468/0x0c                        ; 4 radky
+0186   3027               M                                 movlw   468/0x0c                ;1
+0187   0099               M                                 movwf   countx                  ;1
+0188   0B99               M                                 decfsz  countx,f                ;1
+0189   2988               M                                 goto    $-1                             ;2              >> cykl 3us
+018A   0B96               M                         decfsz  count,f
+018B   2980               M                         goto    $-0x0b
+018C   0B97               M                         decfsz  pushW,f
+018D   297E               M                         goto    $-0x0f
+                      00626                         ton             1000,425
+018E   3003               M                         movlw   1000/0xff
+018F   0097               M                         movwf   pushW
+0190   30EB               M                         movlw   1000-(1000/0xff)*0xff
+0191   0064               M                         CLRWDT
+0192   0096               M                         movwf   count
+                          M                         
+0193   1406               M                         bsf             BZUCAK
+                          M                         cekejy  425/0x0c                        ; parametr*3 = cyklu >> *2 = us
+0194   3023               M                                 movlw   425/0x0c                ;1
+0195   0099               M                                 movwf   countx                  ;1
+0196   0B99               M                                 decfsz  countx,f                ;1
+0197   2996               M                                 goto    $-1                             ;2              >> cykl 3us
+0198   1006               M                         bcf             BZUCAK
+                          M                         cekejy  425/0x0c                        ; 4 radky
+0199   3023               M                                 movlw   425/0x0c                ;1
+019A   0099               M                                 movwf   countx                  ;1
+019B   0B99               M                                 decfsz  countx,f                ;1
+019C   299B               M                                 goto    $-1                             ;2              >> cykl 3us
+019D   0B96               M                         decfsz  count,f
+019E   2993               M                         goto    $-0x0b
+019F   0B97               M                         decfsz  pushW,f
+01A0   2991               M                         goto    $-0x0f
+                      00627                         ton             1900,385
+01A1   3007               M                         movlw   1900/0xff
+01A2   0097               M                         movwf   pushW
+01A3   3073               M                         movlw   1900-(1900/0xff)*0xff
+01A4   0064               M                         CLRWDT
+01A5   0096               M                         movwf   count
+                          M                         
+01A6   1406               M                         bsf             BZUCAK
+                          M                         cekejy  385/0x0c                        ; parametr*3 = cyklu >> *2 = us
+01A7   3020               M                                 movlw   385/0x0c                ;1
+01A8   0099               M                                 movwf   countx                  ;1
+01A9   0B99               M                                 decfsz  countx,f                ;1
+01AA   29A9               M                                 goto    $-1                             ;2              >> cykl 3us
+01AB   1006               M                         bcf             BZUCAK
+                          M                         cekejy  385/0x0c                        ; 4 radky
+01AC   3020               M                                 movlw   385/0x0c                ;1
+01AD   0099               M                                 movwf   countx                  ;1
+01AE   0B99               M                                 decfsz  countx,f                ;1
+01AF   29AE               M                                 goto    $-1                             ;2              >> cykl 3us
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 15
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01B0   0B96               M                         decfsz  count,f
+01B1   29A6               M                         goto    $-0x0b
+01B2   0B97               M                         decfsz  pushW,f
+01B3   29A4               M                         goto    $-0x0f
+                      00628                         ton             4000,363
+01B4   300F               M                         movlw   4000/0xff
+01B5   0097               M                         movwf   pushW
+01B6   30AF               M                         movlw   4000-(4000/0xff)*0xff
+01B7   0064               M                         CLRWDT
+01B8   0096               M                         movwf   count
+                          M                         
+01B9   1406               M                         bsf             BZUCAK
+                          M                         cekejy  363/0x0c                        ; parametr*3 = cyklu >> *2 = us
+01BA   301E               M                                 movlw   363/0x0c                ;1
+01BB   0099               M                                 movwf   countx                  ;1
+01BC   0B99               M                                 decfsz  countx,f                ;1
+01BD   29BC               M                                 goto    $-1                             ;2              >> cykl 3us
+01BE   1006               M                         bcf             BZUCAK
+                          M                         cekejy  363/0x0c                        ; 4 radky
+01BF   301E               M                                 movlw   363/0x0c                ;1
+01C0   0099               M                                 movwf   countx                  ;1
+01C1   0B99               M                                 decfsz  countx,f                ;1
+01C2   29C1               M                                 goto    $-1                             ;2              >> cykl 3us
+01C3   0B96               M                         decfsz  count,f
+01C4   29B9               M                         goto    $-0x0b
+01C5   0B97               M                         decfsz  pushW,f
+01C6   29B7               M                         goto    $-0x0f
+01C7   0008           00629                         return
+                      00630 
+01C8                  00631 zahraj2
+                      00632                         ton             2000,363
+01C8   3007               M                         movlw   2000/0xff
+01C9   0097               M                         movwf   pushW
+01CA   30D7               M                         movlw   2000-(2000/0xff)*0xff
+01CB   0064               M                         CLRWDT
+01CC   0096               M                         movwf   count
+                          M                         
+01CD   1406               M                         bsf             BZUCAK
+                          M                         cekejy  363/0x0c                        ; parametr*3 = cyklu >> *2 = us
+01CE   301E               M                                 movlw   363/0x0c                ;1
+01CF   0099               M                                 movwf   countx                  ;1
+01D0   0B99               M                                 decfsz  countx,f                ;1
+01D1   29D0               M                                 goto    $-1                             ;2              >> cykl 3us
+01D2   1006               M                         bcf             BZUCAK
+                          M                         cekejy  363/0x0c                        ; 4 radky
+01D3   301E               M                                 movlw   363/0x0c                ;1
+01D4   0099               M                                 movwf   countx                  ;1
+01D5   0B99               M                                 decfsz  countx,f                ;1
+01D6   29D5               M                                 goto    $-1                             ;2              >> cykl 3us
+01D7   0B96               M                         decfsz  count,f
+01D8   29CD               M                         goto    $-0x0b
+01D9   0B97               M                         decfsz  pushW,f
+01DA   29CB               M                         goto    $-0x0f
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 16
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00633                         ton             1900,385
+01DB   3007               M                         movlw   1900/0xff
+01DC   0097               M                         movwf   pushW
+01DD   3073               M                         movlw   1900-(1900/0xff)*0xff
+01DE   0064               M                         CLRWDT
+01DF   0096               M                         movwf   count
+                          M                         
+01E0   1406               M                         bsf             BZUCAK
+                          M                         cekejy  385/0x0c                        ; parametr*3 = cyklu >> *2 = us
+01E1   3020               M                                 movlw   385/0x0c                ;1
+01E2   0099               M                                 movwf   countx                  ;1
+01E3   0B99               M                                 decfsz  countx,f                ;1
+01E4   29E3               M                                 goto    $-1                             ;2              >> cykl 3us
+01E5   1006               M                         bcf             BZUCAK
+                          M                         cekejy  385/0x0c                        ; 4 radky
+01E6   3020               M                                 movlw   385/0x0c                ;1
+01E7   0099               M                                 movwf   countx                  ;1
+01E8   0B99               M                                 decfsz  countx,f                ;1
+01E9   29E8               M                                 goto    $-1                             ;2              >> cykl 3us
+01EA   0B96               M                         decfsz  count,f
+01EB   29E0               M                         goto    $-0x0b
+01EC   0B97               M                         decfsz  pushW,f
+01ED   29DE               M                         goto    $-0x0f
+                      00634                         ton             1000,425
+01EE   3003               M                         movlw   1000/0xff
+01EF   0097               M                         movwf   pushW
+01F0   30EB               M                         movlw   1000-(1000/0xff)*0xff
+01F1   0064               M                         CLRWDT
+01F2   0096               M                         movwf   count
+                          M                         
+01F3   1406               M                         bsf             BZUCAK
+                          M                         cekejy  425/0x0c                        ; parametr*3 = cyklu >> *2 = us
+01F4   3023               M                                 movlw   425/0x0c                ;1
+01F5   0099               M                                 movwf   countx                  ;1
+01F6   0B99               M                                 decfsz  countx,f                ;1
+01F7   29F6               M                                 goto    $-1                             ;2              >> cykl 3us
+01F8   1006               M                         bcf             BZUCAK
+                          M                         cekejy  425/0x0c                        ; 4 radky
+01F9   3023               M                                 movlw   425/0x0c                ;1
+01FA   0099               M                                 movwf   countx                  ;1
+01FB   0B99               M                                 decfsz  countx,f                ;1
+01FC   29FB               M                                 goto    $-1                             ;2              >> cykl 3us
+01FD   0B96               M                         decfsz  count,f
+01FE   29F3               M                         goto    $-0x0b
+01FF   0B97               M                         decfsz  pushW,f
+0200   29F1               M                         goto    $-0x0f
+                      00635                         ton             1000,468
+0201   3003               M                         movlw   1000/0xff
+0202   0097               M                         movwf   pushW
+0203   30EB               M                         movlw   1000-(1000/0xff)*0xff
+0204   0064               M                         CLRWDT
+0205   0096               M                         movwf   count
+                          M                         
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 17
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0206   1406               M                         bsf             BZUCAK
+                          M                         cekejy  468/0x0c                        ; parametr*3 = cyklu >> *2 = us
+0207   3027               M                                 movlw   468/0x0c                ;1
+0208   0099               M                                 movwf   countx                  ;1
+0209   0B99               M                                 decfsz  countx,f                ;1
+020A   2A09               M                                 goto    $-1                             ;2              >> cykl 3us
+020B   1006               M                         bcf             BZUCAK
+                          M                         cekejy  468/0x0c                        ; 4 radky
+020C   3027               M                                 movlw   468/0x0c                ;1
+020D   0099               M                                 movwf   countx                  ;1
+020E   0B99               M                                 decfsz  countx,f                ;1
+020F   2A0E               M                                 goto    $-1                             ;2              >> cykl 3us
+0210   0B96               M                         decfsz  count,f
+0211   2A06               M                         goto    $-0x0b
+0212   0B97               M                         decfsz  pushW,f
+0213   2A04               M                         goto    $-0x0f
+0214   0008           00636                         return
+                      00637 
+                      00638 ;*******************************************************************************************************
+                            *********
+                      00639 ;       obsluha                 I N T E R R U P T U 
+                      00640 ;       neni potreba vetvit dle zdroju, pouziva se pouze jedno od T0
+                      00641 ;       meni obsah countx, w, STATUS
+                      00642 
+0215                  00643 prerus                          ; odjisteno >>> STAV, odjisteno=1
+0215   00A2           00644                         movwf   int_pushW
+0216   0EA2           00645                         swapf   int_pushW,f
+                      00646                         
+0217   0E03           00647                         swapf   STATUS,w
+0218   00A1           00648                         movwf   pushStatus
+                      00649 
+0219   22BB           00650                         call    test                                    ; 1 - zkrat     , 2 - neni , 0 -
+                             OK
+021A   3A00           00651                         xorlw   0x00
+021B   119D           00652                         bcf             STAV,prilozeno
+021C   1903           00653                         btfsc   STATUS,Z
+021D   159D           00654                         bsf             STAV,prilozeno
+                      00655         
+021E   191D           00656                         btfsc   STAV,odjisteno                  ;rozvetveni pro odjisteny stav
+021F   2A3B           00657                         goto    prerus_odjisteno
+                      00658 
+0220   0A9B           00659                         incf    bliknuti,f
+0221   1D03           00660                         btfss   STATUS,Z
+0222   2A3E           00661                         goto    prerus01                                ;nepretek
+0223   0A9C           00662                         incf    bliknuti_hi,f
+                      00663 
+0224   1C9D           00664                         btfss   STAV,napadeni                   ;rychle blikani pri poplachu
+0225   2A2B           00665                         goto    prer00
+                      00666 
+0226   1206           00667                         bcf             LED                                             ;zhasni
+0227   3001           00668                         movlw   0x01
+0228   061C           00669                         xorwf   bliknuti_hi,w
+0229   1903           00670                         btfsc   STATUS,Z
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 18
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+022A   1606           00671                         bsf             LED                                             ; rozsvit       
+                                    BLIK = 1
+                      00672 
+022B   3003           00673 prer00          movlw   0x03
+022C   021C           00674                         subwf   bliknuti_hi,w
+022D   1803           00675                         btfsc   STATUS,C
+022E   1606           00676                         bsf             LED                                             ; rozsvit       
+                                    BLIK > 3
+                      00677 
+022F   3005           00678                         movlw   0x05
+0230   021C           00679                         subwf   bliknuti_hi,w
+0231   1C03           00680                         btfss   STATUS,C
+0232   2A35           00681                         goto    prer01
+                      00682                         
+0233   1206           00683                         bcf             LED                                             ;zhasni         
+                            >5
+0234   019C           00684                         clrf    bliknuti_hi
+                      00685 
+0235   0181           00686 prer01          clrf    TMR0
+0236   0E21           00687                         swapf   pushStatus,w
+0237   0083           00688                         movwf   STATUS                                  ; obnoveni statusu
+0238   0E22           00689                         swapf   int_pushW,w                             ; obnoveni W
+0239   110B           00690                         bcf             INTCON,T0IF
+023A   0009           00691                         retfie
+                      00692 
+023B                  00693 prerus_odjisteno
+023B   0A9F           00694                         incf    timeout_reg_lo,f
+023C   1903           00695                         btfsc   STATUS,Z
+023D   0AA0           00696                         incf    timeout_reg_hi,f
+023E                  00697 prerus01
+                      00698 
+023E   0181           00699                         clrf    TMR0
+023F   0E21           00700                         swapf   pushStatus,W
+0240   0083           00701                         movwf   STATUS
+0241   0E22           00702                         swapf   int_pushW,w
+0242   110B           00703                         bcf             INTCON,T0IF
+0243   0009           00704                         retfie  
+                      00705 
+                      00706 ;*******************************************************************************************************
+                            ***********
+                      00707 ;       procedury pro cteni a overovani kodu
+                      00708 ;
+                      00709 
+0244                  00710 pritomen
+0244   138B           00711                         bcf             INTCON,GIE
+                      00712                         ; po testu je ve W  ...... 1 - zkrat, 2 - neni, 3 - OK
+0245   2287           00713                         call    send_command
+0246   2263           00714                         call    read_kod
+0247   22E8           00715                         call    vypocti_crc
+0248   0813           00716                         movf    key7,w
+0249   0698           00717                         xorwf   CRC,f
+024A   1D03           00718                         btfss   STATUS,Z
+024B   34FD           00719                         retlw   0xfd                                    ; spatne prijmuty kod, chyba v C
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 19
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                            RC
+024C   3000           00720                         movlw   offset_kodu
+024D   2254           00721                         call    autorizace
+024E   3A01           00722                         xorlw   0x01
+024F   1903           00723                         btfsc   STATUS,Z
+0250   3401           00724                         retlw   0x01                            ; prvni kod je OK
+0251   3010           00725                         movlw   offset_kodu_2
+0252   2254           00726                         call    autorizace      
+0253   0008           00727                         return
+                      00728 
+                      00729 ;---------------------------------------------------------------------------
+                      00730 
+0254                  00731 autorizace      
+0254   0094           00732                         movwf   regA
+0255   3008           00733                         movlw   0x08
+0256   0096           00734                         movwf   count
+0257   300C           00735                         movlw   key
+0258   0084           00736                         movwf   FSR                     
+0259   0814           00737 nacti_1         movf    regA,w
+025A   231D           00738                         call    eecteni
+025B   0600           00739                         xorwf   INDF,w
+025C   1D03           00740                         btfss   STATUS,Z        
+025D   3408           00741                         retlw   0x08                            ; neutorizovany klic
+025E   0A84           00742                         incf    FSR,f
+025F   0A94           00743                         incf    regA,f
+0260   0B96           00744                         decfsz  count,f
+0261   2A59           00745                         goto    nacti_1
+0262   3401           00746                         retlw   0x01                            ; spravny kod
+                      00747 ;-------------------------------------------------------------------------
+                      00748 
+0263                  00749 read_kod                                                                ; nacteni kodu 1+6+1 byte
+0263   3008           00750                         movlw   0x08
+0264   0095           00751                         movwf   regB
+0265   300C           00752                         movlw   key
+0266   0084           00753                         movwf   FSR
+0267                  00754 read_byte
+0267   019A           00755                         clrf    buffer
+0268   3008           00756                         movlw   0x08
+0269   0096           00757                         movwf   count
+026A   1585           00758 read_bit        bsf             K_OUT
+026B   2A6C           00759                         goto    $+1                                     ; 4 us
+026C   1185           00760                         bcf             K_OUT   
+                      00761                         cekejy  0x01                            ; 5 us
+026D   3001               M                                 movlw   0x01                    ;1
+026E   0099               M                                 movwf   countx                  ;1
+026F   0B99               M                                 decfsz  countx,f                ;1
+0270   2A6F               M                                 goto    $-1                             ;2              >> cykl 3us
+0271   1003           00762                         bcf             STATUS,C
+0272   1905           00763                         btfsc   K_IN
+0273   1403           00764                         bsf             STATUS,C
+0274   0C9A           00765                         rrf             buffer,f
+                      00766                         cekejx  0x50
+0275   3050               M                                 movlw   0x50                    ;1      
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 20
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0276   39FC               M                                 andlw   0xFC                    ;1
+0277   3C07               M                                 sublw   0x07                    ;1
+0278   0099               M                                 movwf   countx                  ;1
+0279   0999               M                                 comf    countx,f                ;1      
+027A   0C99               M                                 rrf             countx,f                ;1
+027B   0C99               M                                 rrf             countx,f                ;1              vydeleno 4
+                          M                                 ;(7)
+027C   0000               M                                 nop                                             ;1
+027D   0B99               M                                 decfsz  countx,f                ;1
+027E   2A7C               M                                 goto    $-2                             ;2                              
+027F   0B96           00767                         decfsz  count,f
+0280   2A6A           00768                         goto    read_bit
+0281   081A           00769                         movf    buffer,w
+0282   0080           00770                         movwf   INDF
+0283   0A84           00771                         incf    FSR,f
+0284   0B95           00772                         decfsz  regB,f
+0285   2A67           00773                         goto    read_byte
+0286   0008           00774                         return
+                      00775 
+                      00776 ; vyslani ridiciho prikazu
+                      00777 
+0287                  00778 send_command
+0287   3000           00779                         movlw   0x00
+0288   009A           00780                         movwf   buffer
+0289   3008           00781                         movlw   0x08
+028A   0096           00782                         movwf   count
+028B   1003           00783                         bcf             STATUS,C
+028C                  00784 send_command1
+028C   0C9A           00785                         rrf             buffer,f
+028D   1C03           00786                         btfss   STATUS,C
+028E   2A91           00787                         goto    $+3
+028F   2295           00788                         call    write1  
+0290   2A92           00789                         goto    $+2
+0291   22A4           00790                         call    write0
+0292   0B96           00791                         decfsz  count,f
+0293   2A8C           00792                         goto    send_command1
+0294   0008           00793                         return
+                      00794 
+                      00795 
+                      00796 ; zapis 0 a 1 na kout
+                      00797 
+0295   1585           00798 write1          bsf             K_OUT
+0296   2A97           00799                         goto    $+1
+0297   2A98           00800                         goto    $+1
+0298   1185           00801                         bcf             K_OUT
+                      00802                         cekejx  0x50                    ;160 us
+0299   3050               M                                 movlw   0x50                    ;1      
+029A   39FC               M                                 andlw   0xFC                    ;1
+029B   3C07               M                                 sublw   0x07                    ;1
+029C   0099               M                                 movwf   countx                  ;1
+029D   0999               M                                 comf    countx,f                ;1      
+029E   0C99               M                                 rrf             countx,f                ;1
+029F   0C99               M                                 rrf             countx,f                ;1              vydeleno 4
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 21
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M                                 ;(7)
+02A0   0000               M                                 nop                                             ;1
+02A1   0B99               M                                 decfsz  countx,f                ;1
+02A2   2AA0               M                                 goto    $-2                             ;2                              
+02A3   0008           00803                         return
+                      00804 
+02A4   1585           00805 write0          bsf             K_OUT
+                      00806                         cekejx  0x32
+02A5   3032               M                                 movlw   0x32                    ;1      
+02A6   39FC               M                                 andlw   0xFC                    ;1
+02A7   3C07               M                                 sublw   0x07                    ;1
+02A8   0099               M                                 movwf   countx                  ;1
+02A9   0999               M                                 comf    countx,f                ;1      
+02AA   0C99               M                                 rrf             countx,f                ;1
+02AB   0C99               M                                 rrf             countx,f                ;1              vydeleno 4
+                          M                                 ;(7)
+02AC   0000               M                                 nop                                             ;1
+02AD   0B99               M                                 decfsz  countx,f                ;1
+02AE   2AAC               M                                 goto    $-2                             ;2                              
+02AF   1185           00807                         bcf             K_OUT
+                      00808                         cekejx  0x0c
+02B0   300C               M                                 movlw   0x0c                    ;1      
+02B1   39FC               M                                 andlw   0xFC                    ;1
+02B2   3C07               M                                 sublw   0x07                    ;1
+02B3   0099               M                                 movwf   countx                  ;1
+02B4   0999               M                                 comf    countx,f                ;1      
+02B5   0C99               M                                 rrf             countx,f                ;1
+02B6   0C99               M                                 rrf             countx,f                ;1              vydeleno 4
+                          M                                 ;(7)
+02B7   0000               M                                 nop                                             ;1
+02B8   0B99               M                                 decfsz  countx,f                ;1
+02B9   2AB7               M                                 goto    $-2                             ;2                              
+02BA   0008           00809                         return
+                      00810 
+02BB                  00811 test                            ; je prilozeno ?
+02BB   1585           00812                         bsf             K_OUT
+                      00813                         cekejx  0xfa
+02BC   30FA               M                                 movlw   0xfa                    ;1      
+02BD   39FC               M                                 andlw   0xFC                    ;1
+02BE   3C07               M                                 sublw   0x07                    ;1
+02BF   0099               M                                 movwf   countx                  ;1
+02C0   0999               M                                 comf    countx,f                ;1      
+02C1   0C99               M                                 rrf             countx,f                ;1
+02C2   0C99               M                                 rrf             countx,f                ;1              vydeleno 4
+                          M                                 ;(7)
+02C3   0000               M                                 nop                                             ;1
+02C4   0B99               M                                 decfsz  countx,f                ;1
+02C5   2AC3               M                                 goto    $-2                             ;2                              
+                      00814                         cekejy  0x03                    ;       11us    
+02C6   3003               M                                 movlw   0x03                    ;1
+02C7   0099               M                                 movwf   countx                  ;1
+02C8   0B99               M                                 decfsz  countx,f                ;1
+02C9   2AC8               M                                 goto    $-1                             ;2              >> cykl 3us
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 22
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+02CA   1185           00815                         bcf             K_OUT
+                      00816                         cekejy  0x05                    ;       17 us
+02CB   3005               M                                 movlw   0x05                    ;1
+02CC   0099               M                                 movwf   countx                  ;1
+02CD   0B99               M                                 decfsz  countx,f                ;1
+02CE   2ACD               M                                 goto    $-1                             ;2              >> cykl 3us
+02CF   1D05           00817                         btfss   K_IN
+02D0   3401           00818                         retlw   0x01                    ; zkrat na snimaci
+                      00819                         cekejx  0x23
+02D1   3023               M                                 movlw   0x23                    ;1      
+02D2   39FC               M                                 andlw   0xFC                    ;1
+02D3   3C07               M                                 sublw   0x07                    ;1
+02D4   0099               M                                 movwf   countx                  ;1
+02D5   0999               M                                 comf    countx,f                ;1      
+02D6   0C99               M                                 rrf             countx,f                ;1
+02D7   0C99               M                                 rrf             countx,f                ;1              vydeleno 4
+                          M                                 ;(7)
+02D8   0000               M                                 nop                                             ;1
+02D9   0B99               M                                 decfsz  countx,f                ;1
+02DA   2AD8               M                                 goto    $-2                             ;2                              
+02DB   1905           00820                         btfsc   K_IN
+02DC   3402           00821                         retlw   0x02                    ; nic neni pritomno
+                      00822                         cekejx  0xfa                    ; konec presence pulse +  recovery time
+02DD   30FA               M                                 movlw   0xfa                    ;1      
+02DE   39FC               M                                 andlw   0xFC                    ;1
+02DF   3C07               M                                 sublw   0x07                    ;1
+02E0   0099               M                                 movwf   countx                  ;1
+02E1   0999               M                                 comf    countx,f                ;1      
+02E2   0C99               M                                 rrf             countx,f                ;1
+02E3   0C99               M                                 rrf             countx,f                ;1              vydeleno 4
+                          M                                 ;(7)
+02E4   0000               M                                 nop                                             ;1
+02E5   0B99               M                                 decfsz  countx,f                ;1
+02E6   2AE4               M                                 goto    $-2                             ;2                              
+02E7   3400           00823                         retlw   0x00                    ;l je pritomen a OK
+                      00824 
+                      00825 ;*******************************************************************************************************
+                            ************************
+                      00826 ; zacatek vypoctu CRC
+02E8                  00827 vypocti_crc
+02E8   0195           00828                         clrf    regB
+02E9   0198           00829                         clrf    CRC
+02EA   0197           00830                         clrf    pushW
+02EB   3007           00831                         movlw   0x07
+02EC   0096           00832                         movwf   count
+02ED   300C           00833                         movlw   key
+02EE   0084           00834                         movwf   FSR
+02EF   0800           00835 loop            movf    INDF,w
+02F0   0094           00836                         movwf   regA
+02F1   22F7           00837                         call    do_crc
+02F2   0818           00838                         movf    CRC,w
+02F3   0A84           00839                         incf    FSR,f
+02F4   0B96           00840                         decfsz  count,f
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 23
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+02F5   2AEF           00841                         goto    loop
+02F6   0008           00842                         return
+                      00843                 
+02F7   0097           00844 do_crc          movwf   pushW           ; zachova obsah W
+02F8   0094           00845                         movwf   regA            ; pom W
+02F9   3008           00846                         movlw   0x08
+02FA   0095           00847                         movwf   regB
+02FB   0818           00848 crc_loop        movf    CRC,w           ; ve w je CRC
+02FC   0694           00849                         xorwf   regA,f          ; crc xor vstup
+02FD   0C94           00850                         rrf             regA,f
+02FE   1803           00851                         btfsc   STATUS,C
+02FF   3A18           00852                         xorlw   0x18
+0300   0098           00853                         movwf   CRC                     ; nove CRC
+0301   0C98           00854                         rrf             CRC,f
+0302   1003           00855                         bcf             STATUS,C
+0303   0C97           00856                         rrf             pushW,f
+0304   1803           00857                         btfsc   STATUS,C        ; oprava na rotaci bez C
+0305   1797           00858                         bsf             pushW,7
+0306   0817           00859                         movf    pushW,w
+0307   0094           00860                         movwf   regA
+0308   0B95           00861                         decfsz  regB,f
+0309   2AFB           00862                         goto    crc_loop
+030A   0008           00863                         return
+                      00864 
+                      00865 ;*******************************************************************************************************
+                            ***********************
+                      00866 ; procedury pro zapis a cteni EEPROM
+                      00867 
+030B                  00868 eezapis                                 ;       eedata, eeadr
+                      00869                         BANK_1
+030B   1683               M                                 bsf             STATUS,RP0                      ; nastavi banku 1
+030C   138B           00870                         bcf             INTCON,GIE
+030D   1B8B           00871                         btfsc   INTCON,GIE      
+030E   2B0C           00872                         goto    $-2
+                      00873                         
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+030F   1508           00874                         bsf             EECON1,WREN
+0310   3055           00875                         movlw   0x55
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0311   0089           00876                         movwf   EECON2
+0312   30AA           00877                         movlw   0xAA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0313   0089           00878                         movwf   EECON2
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0314   1488           00879                         bsf             EECON1,WR
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0315   1888           00880                         btfsc   EECON1,WR
+0316   2B15           00881                         goto    $-1     
+                      00882         
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0317   1D88           00883                         btfss   EECON1,WRERR
+0318   2B1B           00884                         goto    eezapisOK
+                      00885                         BANK_0
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 24
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0319   1283               M                                 bcf             STATUS,RP0                      ; nastavi banku 0
+031A   3401           00886                         retlw   1       
+                      00887 eezapisOK       BANK_0
+031B   1283               M                                 bcf             STATUS,RP0                      ; nastavi banku 0
+031C   3400           00888                         retlw   0
+                      00889                 
+                      00890 ;--------------------------------------------------------
+                      00891 
+031D                  00892 eecteni                                 ; eeadr     ; data vraci do W
+031D   0089           00893                         movwf   EEADR
+                      00894                         BANK_1
+031E   1683               M                                 bsf             STATUS,RP0                      ; nastavi banku 1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+031F   1408           00895                         bsf             EECON1,RD
+                      00896                         BANK_0
+0320   1283               M                                 bcf             STATUS,RP0                      ; nastavi banku 0
+0321   0808           00897                         movf    EEDATA,w
+0322   0008           00898                         return
+                      00899 
+                      00900 ;*******************************************************************************************************
+                            ***********
+0323   3046           00901 long_cekej      movlw   0x46
+0324   0096           00902                         movwf   count
+                      00903 
+0325   232A           00904 long01          call    cekej
+0326   0064           00905                         CLRWDT
+0327   0B96           00906                         decfsz  count,f
+0328   2B25           00907                         goto    long01
+0329   0008           00908                         return
+                      00909 ;--------------------------------------------------------
+032A   0097           00910 cekej           movwf   pushW
+032B   3050           00911                         movlw   0x50
+032C   0094           00912                         movwf   regA
+032D   30FF           00913 cykl1           movlw   0xff
+032E   0095           00914                         movwf   regB
+032F   0000           00915 cykl            nop
+0330   0B95           00916                         decfsz  regB,f
+0331   2B2F           00917                         goto    cykl
+0332   0B94           00918                         decfsz  regA,f
+0333   2B2D           00919                         goto    cykl1
+0334   0817           00920                         movf    pushW,w
+0335   0008           00921                         return
+                      00922                         
+                      00923                                                         
+                      00924 ;*******************************************************************************************************
+                            ***************
+                      00925 #include        P16F84.inc      
+                      00001         LIST
+                      00002 ; P16F84.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+Message[301]: MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+                      00136         LIST
+                      00926                         END
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BANK_0                            
+BANK_1                            
+BZUCAK                            PORTB,0
+C                                 00000000
+CRC                               00000018
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+K_IN                              PORTA,2
+K_OUT                             PORTA,3
+LED                               PORTB,4
+LIMIT                             00000007
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OL01                              00000063
+OL02                              00000054
+OL03                              0000006A
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+SP1                               PORTA,1
+SP2                               PORTA,0
+SP3                               PORTB,6
+STATUS                            00000003
+STAV                              0000001D
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T0SE                              00000004
+TEST1                             PORTB,7
+TEST2                             PORTB,5
+TEST3                             PORTB,2
+TIMER                             PORTB,3
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+autorizace                        00000254
+bliknuti                          0000001B
+bliknuti_hi                       0000001C
+buffer                            0000001A
+cekej                             0000032A
+cekejx                            
+cekejy                            
+count                             00000016
+countx                            00000019
+crc_loop                          000002FB
+cykl                              0000032F
+cykl1                             0000032D
+do_crc                            000002F7
+eecteni                           0000031D
+eezapis                           0000030B
+eezapisOK                         0000031B
+init                              00000005
+int_pushW                         00000022
+key                               0000000C
+key1                              0000000D
+key2                              0000000E
+key3                              0000000F
+key4                              00000010
+key5                              00000011
+key6                              00000012
+key7                              00000013
+klicek                            PORTB,1
+klicek_ne_loop                    0000009B
+klicek_nesepnuty                  00000097
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 27
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+klicek_sepnuty                    00000086
+knl01                             000000B3
+knl2                              000000A9
+konec_poplachu                    0000014D
+ks01                              0000008F
+kst1                              00000089
+long01                            00000325
+long_cekej                        00000323
+loop                              000002EF
+movff                             
+nacti_1                           00000259
+napadeni                          00000001
+neniWDT                           0000001A
+neprilozeno                       00000046
+oddaleno                          00000070
+odjisteno                         00000002
+odjisti_loop                      00000048
+offset_deaktivace                 0000000A
+offset_kodu                       00000000
+offset_kodu_2                     00000010
+offset_napadeni                   0000001A
+pip                               000000FE
+pipa                              00000105
+poplach01                         00000142
+poplach_klakson                   00000116
+poplach_klakson_loop              0000012D
+prer00                            0000022B
+prer01                            00000235
+prerus                            00000215
+prerus01                          0000023E
+prerus_odjisteno                  0000023B
+prilozeno                         00000003
+pritomen                          00000244
+pushStatus                        00000021
+pushW                             00000017
+read_bit                          0000026A
+read_byte                         00000267
+read_kod                          00000263
+regA                              00000014
+regB                              00000015
+regC                              0000001E
+sd01                              000000C8
+sd_loop                           000000D9
+send_command                      00000287
+send_command1                     0000028C
+stala_deaktivace                  000000BF
+stala_deaktivace_po_resetu        000000CF
+start                             00000031
+start1                            00000037
+test                              000002BB
+timeout_reg_hi                    00000020
+timeout_reg_lo                    0000001F
+ton                               
+MPASM 03.60 Released                               IMOBIL.ASM   12-18-2004  19:51:38         PAGE 28
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+vypis                             00000154
+vypis01                           00000162
+vypis02                           0000016C
+vypnuty_zde                       0000008D
+vypocti_crc                       000002E8
+write0                            000002A4
+write1                            00000295
+zahraj                            0000017B
+zahraj2                           000001C8
+zruseni_deaktivace                000000F5
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X---XXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0180 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+01C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0200 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0240 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0280 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+02C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0300 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXX----------
+2100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   819
+Program Memory Words Free:   205
+
+
+Errors   :     0
+Warnings :     1 reported,     0 suppressed
+Messages :    11 reported,     0 suppressed
+
+
