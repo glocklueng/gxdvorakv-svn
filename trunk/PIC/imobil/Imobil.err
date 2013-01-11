@@ -1,0 +1,12 @@
+Warning[215] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 1 : Processor superceded by command line.  Verify processor symbol.
+Message[302] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 119 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 121 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 131 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 874 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 876 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 878 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 879 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 880 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 883 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PROJECTS\PIC-PROJECTS\IMOBIL\IMOBIL.ASM 895 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[301] C:\PROGRAM FILES\MPLAB IDE\MCHIP_TOOLS\P16F84.INC 37 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)

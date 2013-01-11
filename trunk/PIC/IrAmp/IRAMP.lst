@@ -1,0 +1,1729 @@
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001         list    F=inhx8m, p=pic12f629, r=dec        
+                      00002 #include <P12F629.inc>
+                      00001         LIST
+                      00002 ; P12F629.INC  Standard Header File, Version 1.04    Microchip Technology, Inc.
+                      00257         LIST
+2007   31C4           00003         __CONFIG 0x31c4
+                      00004 
+                      00005 ; vysilaci retezce   x je 1 byte
+                      00006 ;       SHARP                   SHP0xx 
+                      00007 ;       RC5                             RC50xx          
+                      00008 ;       SIRC                    SIRCxx
+                      00009 ;       PANASONIC               xxxxxx
+                      00010 ;       NEC                             NCxxxx
+                      00011 ;       Mitsubishi-nove MBxxxx
+                      00012 
+  00000048            00013 waitTime                        equ                             0x48
+                      00014 
+  00000020            00015 tmp                                     equ             0x20
+  00000022            00016 sbuf                    equ             0x22
+  00000023            00017 rbuf                    equ             0x23 
+                      00018 
+  00000025            00019 _delay                  equ             0x25
+  00000026            00020 _delay1                 equ             0x26
+                      00021 
+  00000028            00022 _A                  equ             0x28
+  00000029            00023 _B                  equ             0x29
+                      00024 
+  00000030            00025 tCountH                         equ             0x30
+  00000031            00026 tCountL                 equ             0x31
+  00000032            00027 kodIndex                equ             0x32
+  00000033            00028 kod                             equ             0x33  ;6 byte
+  00000034            00029 kod_1                   equ             0x34
+  00000035            00030 kod_2               equ             0x35
+  00000036            00031 kod_3                   equ             0x36
+  00000037            00032 kod_4                           equ             0x37
+  00000038            00033 kod_5               equ             0x38
+  00000039            00034 kod_pom                 equ             0x39
+  0000003A            00035 pomIndex                        equ                             0x3A
+  0000003B            00036 testIndex                       equ                             0x3b
+  0000003C            00037 testSample                      equ                             0x3c
+                      00038 
+                      00039 
+  00000040            00040 RSTimeout                       equ                             0x40
+  00000041            00041 RSTimeout_1                     equ                             0x41
+  00000042            00042 RSTimeout_2                     equ                             0x42
+                      00043 
+  0000005E            00044 MY_STATUS           equ             0x5E
+  00000000            00045 REC_RS              equ                     0                       ; bit signalizujici prijem znaku
+  00000001            00046 IR_ACT              equ             1                       ; prijimam IR kod
+  00000002            00047 IR_SHARP            equ             2                       ; stary SHARP   
+  00000003            00048 IR_RC5              equ             3                       ; RC5 
+  00000004            00049 IR_SIRC             equ             4                       ; SIRC
+  00000005            00050 IR_PANASONIC            equ             5                       ; PANASONIC, Blaupunkt VCR
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00000006            00051 IR_MITSUBISHI           equ             6                       ; MITSUBISHI 
+  00000007            00052 IR_NEC                  equ             7                       ; NEC, novy SHARP
+                      00053 
+  0000005F            00054 IR_STATUS                       equ             0x5F
+  00000000            00055 start2                          equ             0               ; pokud je startovaci posloupnost ze 2 c
+                            asti
+  00000001            00056 pulbit              equ             1           ; pozice: 1= pulka bitu RC5, 0 celej
+  00000002            00057 inverze                         equ             2           ; pokud se kod opakuje a je inverzni, tak ho
+                             muze testovat, ale posila se ven jen jeden format
+  00000003            00058 prijato                 equ             3           ; podrzi hodnotu posledniho prijateho bitu
+  00000008            00059 prijato_mask            equ                             0x08            ; jednicka na pozici prijato bit
+                            u
+  00000004            00060 cekani                          equ                             4                       ; cekani na neak
+                            tivitu po chybe, pro nalezeni praveho zacatku
+  00000005            00061 opak_povoleno           equ                             5                       ; po prijate sekvenci po
+                            voli opakovani s prijmem jen jednoho bitu
+  00000007            00062 start_kal                       equ                             7                       ; nastavi se, po
+                            kud merim citacem prvni cast start bitu
+                      00063 
+                      00064 
+  00000002            00065 s_out                           equ     GP2
+  00000000            00066 s_in                            equ             GP0
+  00000003            00067 ir_in                           equ             GP3
+                      00068 
+                      00069 
+0000                  00070                                 org     00h     ; tady zacina  PIC po resetu
+                      00071 ;***************************************************************************
+0000   2AE5           00072                                 goto    init    ; skok na zacatek programu
+                      00073 ;***************************************************************************
+0004                  00074                                 org     04h             ; tady skace interrupt
+                      00075 ;***************************************************************************
+0004                  00076 _interupt
+0004   138B           00077                                 bcf     INTCON,GIE              ;  1 globalni zakaz interruptu
+0005   1C0B           00078                         btfss   INTCON,GPIF             ;       1-2
+0006   2839           00079                     goto    _int_next               ;       2
+0007   1C05           00080                 btfss   GPIO,s_in               ;       1-2
+0008   2810           00081                                 goto    _int_IR                 ;       2
+0009   2344           00082 _int_RS                 call    receive_RS              ;       2
+000A   105E           00083                 bcf     MY_STATUS,REC_RS
+000B   39FF           00084                 andlw   0xff                    ; test na spravny prijem
+000C   1903           00085                 btfsc   STATUS,Z        
+000D   145E           00086                 bsf     MY_STATUS,REC_RS
+000E   0885           00087                 movf    GPIO,F                  ; timhle zajistim dalsi interrupt az od 0-1 hrany
+000F   2839           00088                 goto    _int_next
+0010                  00089 _int_IR
+0010   1A5F           00090                 btfsc   IR_STATUS,cekani
+0011   281E           00091                                 goto    _int_ir_cekej
+0012   18DE           00092                                 btfsc   MY_STATUS,IR_ACT                
+0013   282A           00093                         goto    _int_prijimam                                                   
+0014   1BDF           00094                                 btfsc   IR_STATUS,start_kal                             ;T1CON,TMR1ON   
+                             ; test jestli uz citam
+0015   2824           00095                                 goto    citac_jede
+                      00096                                 ;    tady je prvni rozpoznani typu ir
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0016   1985           00097                                 btfsc   GPIO,ir_in              ; test na sestupnou hranu
+0017   2838           00098                                 goto    neni_IR                 ; NENI platne IR, vstup je v log 1
+0018   018E           00099                                 clrf    TMR1L
+0019   018F           00100                                 clrf    TMR1H
+001A   1410           00101                                 bsf     T1CON,TMR1ON                      ; start citace  
+001B   17DF           00102                                 bsf     IR_STATUS,start_kal             
+001C   1485           00103                                 bsf     GPIO,GP1
+001D   2839           00104                                 goto    _int_next
+001E   0885           00105 _int_ir_cekej   movf    GPIO,F                          ; zachyceni stavu IO
+001F   018E           00106                                 clrf    TMR1L                           ; prisel pulz v dobe kdy cekam n
+                            a klid, nuluj citac a cekej dal
+0020   3048           00107                                 movlw   waitTime
+0021   008F           00108                                 movwf   TMR1H                           ; prednastaveni na 10 ms
+0022   1410           00109                                 bsf     T1CON,TMR1ON            ; start citace - pro jistotu
+0023   2839           00110                                 goto    _int_next
+                      00111 
+0024                  00112 citac_jede
+0024   1D85           00113                                 btfss   GPIO,ir_in              ; test na nabeznou hranu
+0025   2839           00114                                 goto    neni_IR1                 ; NEPLATNY IR, Asi INT od jineho vstupu
+                             
+                      00115                                 ;       bcf             T1CON,TMR1ON    ; zastavim citac                
+0026   1085           00116                                 BCF     GPIO,GP1
+0027   2257           00117                                 call    vyhodnot_citac  
+0028   13DF           00118                                 bcf     IR_STATUS,start_kal     
+0029   2839           00119                                 goto    _int_next
+002A                  00120 _int_prijimam                           ; sem skoci, pokud je nastaven byt v MY_STSATUS ir_act
+002A   19DE           00121                                 btfsc   MY_STATUS,IR_RC5
+002B   21C2           00122                                 call    prijmi_RC5
+002C   1B5E           00123                                 btfsc   MY_STATUS,IR_MITSUBISHI
+002D   2175           00124                                 call    prijmi_MITSUBISHI
+002E   1ADE           00125                                 btfsc   MY_STATUS,IR_PANASONIC
+002F   2126           00126                                 call    prijmi_PANASONIC
+0030   195E           00127                                 btfsc   MY_STATUS,IR_SHARP
+0031   20A7           00128                                 call    prijmi_SHARP
+0032   1A5E           00129                                 btfsc   MY_STATUS,IR_SIRC
+0033   220B           00130                                 call    prijmi_SIRC
+0034   1BDE           00131                                 btfsc   MY_STATUS,IR_NEC
+0035   204B           00132                                 call    prijmi_NEC
+0036   1085           00133                                 bcf     GPIO,GP1        
+0037   2839           00134                                 goto    _int_next                                       
+0038                  00135 neni_IR
+                      00136                 ;               movlw   0xf0
+                      00137                 ;               movwf   sbuf
+                      00138                 ;               call    send_RS
+0038   2839           00139                                 goto    _int_next                                       
+0039                  00140 neni_IR1
+                      00141                 ;               movlw   0xf1
+                      00142                 ;               movwf   sbuf
+                      00143                 ;               call    send_RS
+0039                  00144 _int_next
+0039   1C0C           00145                                 btfss   PIR1,TMR1IF
+003A   2847           00146                                 goto    _int_end
+003B                  00147 _int_timer1_overflow
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+003B   1485           00148                                 bsf     GPIO,GP1
+003C   1A5F           00149                                 btfsc   IR_STATUS,cekani
+003D   2843           00150                                 goto    _int_konec_cekani
+                      00151 
+003E   10DE           00152                                 BCF     MY_STATUS,IR_ACT
+003F   12DF           00153                                 bcf             IR_STATUS,opak_povoleno
+0040   1010           00154                                 BCF     T1CON,TMR1ON
+0041   100C           00155                                 bcf     PIR1,TMR1IF
+0042   2847           00156                                 goto    _int_end
+                      00157                 ;               movlw   'T'
+                      00158                 ;               movwf   sbuf
+                      00159                 ;               call    send_RS
+                      00160 
+0043                  00161 _int_konec_cekani
+0043   12DF           00162                                 bcf             IR_STATUS,opak_povoleno
+0044   10DE           00163                                 bcf     MY_STATUS,IR_ACT
+0045   1010           00164                                 bcf     T1CON,TMR1ON
+0046   125F           00165                                 bcf             IR_STATUS,cekani                                
+                      00166 
+0047                  00167 _int_end                
+0047   30F8           00168                                 movlw   b'11111000'             ; delete all flags
+0048   058B           00169                                 andwf   INTCON,F
+0049   178B           00170                                 bsf     INTCON,GIE              ; povoli vsechny interrupty
+004A   0009           00171                                 retfie
+                      00172 ;-------------------------------
+004B                  00173 prijmi_NEC
+004B   1010           00174                                 bcf             T1CON,TMR1ON    ; zastavim citac                
+004C   080E           00175                                 movf    TMR1L,W
+004D   00B1           00176                                 movwf   tCountL
+004E   080F           00177                                 movf    TMR1H,W
+004F   00B0           00178                                 movwf   tCountH
+0050   018E           00179                                 clrf    TMR1L           ; reset citace
+0051   018F           00180                                 clrf    TMR1H   
+0052   1410           00181                                 bsf     T1CON,TMR1ON    ; start citac   - chyba 8 us
+0053   1003           00182                                 bcf     STATUS,C        
+0054   0DB1           00183                                 rlf     tCountL,F
+0055   0DB0           00184                                 rlf     tCountH,F       
+0056   0DB1           00185                                 rlf     tCountL,F
+0057   0DB0           00186                                 rlf     tCountH,F       
+                      00187                         
+0058   185F           00188                                 btfsc   IR_STATUS,start2
+0059   2869           00189                                 goto    _NEC_start2
+                      00190 
+005A   1985           00191                                 btfsc   GPIO,ir_in
+005B   28A6           00192                                 goto    _NEC_end              ; ted je nabezna hrana, tak zacnu merit ca
+                            s     
+                      00193                                                                                         
+                      00194                                 ; pocitam dobu pulsu    
+005C   3008           00195                                 movlw   d'8'
+005D   02B0           00196                                 subwf   tCountH,F
+005E   1C03           00197                                 btfss   STATUS,C                ; <> 0
+005F   28A0           00198                                 goto    _NEC_error
+0060   3006           00199                                 movlw   d'6'                    ;
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0061   02B0           00200                                 subwf   tCountH,F
+                      00201                                                                                         
+0062   0DB3           00202                                 rlf     kod,F           
+0063   0DB4           00203                                 rlf     kod_1,F
+0064   0DB5           00204                                 rlf     kod_2,F
+0065   0DB6           00205                                 rlf     kod_3,F
+                      00206 
+0066   0BB2           00207                                 decfsz  kodIndex,F
+0067   28A6           00208                                 goto    _NEC_end
+0068   2884           00209                                 goto    _NEC_prijato
+                      00210 
+0069                  00211 _NEC_start2
+0069   1985           00212                                 btfsc   GPIO,ir_in
+006A   28A0           00213                                 goto    _NEC_error   
+006B   3020           00214                                 movlw   d'32'
+006C   02B0           00215                                 subwf   tCountH,F
+006D   1C03           00216                                 btfss   STATUS,C                ; <> 0
+006E   28A0           00217                                 goto    _NEC_error
+006F   3007           00218                                 movlw   d'7'                    ;
+0070   02B0           00219                                 subwf   tCountH,F
+0071   1C03           00220                                 btfss   STATUS,C                ; <> 0
+0072   287E           00221                                 goto    _NEC_startOpak             
+0073   301A           00222                                 movlw   d'26'
+0074   02B0           00223                                 subwf   tCountH,F
+0075   1C03           00224                                 btfss   STATUS,C                ; <> 0
+0076   28A0           00225                                 goto    _NEC_error
+0077   300E           00226                                 movlw   d'14'                    ;
+0078   02B0           00227                                 subwf   tCountH,F
+0079   1803           00228                                 btfsc   STATUS,C
+007A   28A0           00229                                 goto    _NEC_error
+                      00230                                 ; start OK
+007B   105F           00231                                 bcf     IR_STATUS,start2
+007C   115F           00232                                 bcf             IR_STATUS,inverze
+007D   28A6           00233                                 goto    _NEC_end  
+007E                  00234 _NEC_startOpak
+007E   105F           00235                                 bcf     IR_STATUS,start2
+007F   1ADF           00236                                 btfsc   IR_STATUS,opak_povoleno
+0080   2884           00237                                 goto    _NEC_prijato  
+0081   1010           00238                                 bcf     T1CON,TMR1ON    ; stop citac
+0082   10DE           00239                                 bcf     MY_STATUS,IR_ACT
+0083   28A6           00240                                 goto    _NEC_end
+                      00241 
+0084   1010           00242 _NEC_prijato    bcf     T1CON,TMR1ON    ; stop citac
+0085   16DF           00243                                 bsf             IR_STATUS,opak_povoleno
+0086   10DE           00244                                 bcf     MY_STATUS,IR_ACT
+0087   304E           00245                                 movlw   'N'
+0088   00A2           00246                                 movwf   sbuf
+0089   2329           00247                                 call    send_RS
+008A   236D           00248                                 call    cekejS
+008B   3043           00249                                 movlw   'C'             
+008C   00A2           00250                                 movwf   sbuf
+008D   2329           00251                                 call    send_RS
+008E   236D           00252                                 call    cekejS
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00253 
+008F   0836           00254                                 movf    kod_3,W
+0090   00A2           00255                                 movwf   sbuf
+0091   2329           00256                                 call    send_RS
+0092   236D           00257                                 call    cekejS
+                      00258 
+0093   0835           00259                                 movf    kod_2,W
+0094   00A2           00260                                 movwf   sbuf
+0095   2329           00261                                 call    send_RS
+0096   236D           00262                                 call    cekejS
+                      00263 
+0097   0834           00264                                 movf    kod_1,W
+0098   00A2           00265                                 movwf   sbuf
+0099   2329           00266                                 call    send_RS
+009A   236D           00267                                 call    cekejS
+                      00268 
+009B   0833           00269                                 movf    kod,W
+009C   00A2           00270                                 movwf   sbuf    
+009D   2329           00271                                 call    send_RS
+009E   236D           00272                                 call    cekejS
+009F   0008           00273                                 return
+                      00274 
+00A0                  00275 _NEC_error
+00A0   12DF           00276                                 bcf             IR_STATUS,opak_povoleno
+                      00277                         ;       movlw   'n'
+                      00278                         ;       movwf   sbuf
+                      00279                         ;;      call    send_RS
+                      00280                         ;       call    cekejS          
+00A1   018E           00281                                 clrf    TMR1L                   
+00A2   3048           00282                                 movlw   waitTime
+00A3   008F           00283                                 movwf   TMR1H                           ; prednastaveni na 10 ms
+00A4   1410           00284                                 bsf     T1CON,TMR1ON    
+00A5   165F           00285                                 bsf             IR_STATUS,cekani
+                      00286                                 
+00A6                  00287 _NEC_end      
+00A6   0008           00288                                 return
+                      00289 
+                      00290 
+                      00291 ;-------------------------------
+00A7                  00292 prijmi_SHARP
+00A7   1010           00293                                 bcf             T1CON,TMR1ON    ; zastavim citac                
+00A8   080E           00294                                 movf    TMR1L,W
+00A9   00B1           00295                                 movwf   tCountL
+00AA   080F           00296                                 movf    TMR1H,W
+00AB   00B0           00297                                 movwf   tCountH
+00AC   018E           00298                                 clrf    TMR1L                   ; reset citace
+00AD   018F           00299                                 clrf    TMR1H   
+00AE   1410           00300                                 bsf     T1CON,TMR1ON    ; start citac   - chyba 8 us
+00AF   1003           00301                                 bcf     STATUS,C        
+00B0   0DB1           00302                                 rlf     tCountL,F
+00B1   0DB0           00303                                 rlf     tCountH,F       
+00B2   0DB1           00304                                 rlf     tCountL,F
+00B3   0DB0           00305                                 rlf     tCountH,F       
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00306                         
+00B4   185F           00307                                 btfsc   IR_STATUS,start2
+00B5   28DA           00308                                 goto    _SHARP_start2
+                      00309 
+00B6   1985           00310                                 btfsc   GPIO,ir_in
+00B7   2925           00311                                 goto    _SHARP_end              ; ted je nabezna hrana, tak zacnu merit 
+                            cas     
+                      00312                                                         
+                      00313                                 
+                      00314                                 ; pocitam dobu pulsu    
+00B8   3008           00315                                 movlw   d'8'
+00B9   02B0           00316                                 subwf   tCountH,F
+00BA   1C03           00317                                 btfss   STATUS,C                ; <> 0
+00BB   2920           00318                                 goto    _SHARP_error
+00BC   3006           00319                                 movlw   d'6'                    ;
+00BD   02B0           00320                                 subwf   tCountH,F
+                      00321                                 
+00BE   11DF           00322                                 bcf             IR_STATUS,prijato               ; zapamatuju si prijatou
+                             hodnotu
+00BF   1803           00323                                 btfsc   STATUS,C
+00C0   15DF           00324                                 bsf             IR_STATUS,prijato
+                      00325 
+00C1                  00326 _SHARP_inverzetest                              
+00C1   0BBA           00327                                 decfsz  pomIndex,F
+                      00328                                 ;movlw  0x04
+                      00329                                 ;subwf  pomIndex,W
+                      00330                                 ;btfss  STATUS,Z
+00C2   28C6           00331                                 goto    _SHARP_notest
+00C3   115F           00332                                 bcf             IR_STATUS,inverze
+00C4   1DDF           00333                                 btfss   IR_STATUS,prijato
+00C5   155F           00334                                 bsf             IR_STATUS,inverze
+                      00335                         ;       goto    _SHARP_noInvert                                                 
+                                    
+00C6                  00336 _SHARP_notest
+                      00337 ;                               incf    pomIndex,F
+00C6   1D5F           00338                                 btfss   IR_STATUS,inverze
+00C7   28CA           00339                                 goto    _SHARP_noInvert
+00C8   3008           00340                                 movlw   prijato_mask
+00C9   06DF           00341                                 xorwf   IR_STATUS,F
+                      00342                                         
+00CA   1003           00343 _SHARP_noInvert bcf             STATUS,C
+00CB   19DF           00344                                 btfsc   IR_STATUS,prijato
+00CC   1403           00345                                 bsf             STATUS,C                                
+                      00346                                                         
+00CD   0DB3           00347                                 rlf     kod,F           
+00CE   0DB4           00348                                 rlf     kod_1,F
+                      00349 
+                      00350                                 ; filtrace sekvence
+00CF   083B           00351                                 movf    testIndex,W
+00D0   0632           00352                                 xorwf   kodIndex,W
+00D1   1D03           00353                                 btfss   STATUS,Z
+00D2   28D7           00354                                 goto    _SHARP_nefiltrovat
+00D3   0833           00355                                 movf    kod,W
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00D4   063C           00356                                 xorwf   testSample,W
+00D5   1D03           00357                                 btfss   STATUS,Z
+00D6   2920           00358                                 goto    _SHARP_error
+                      00359 
+00D7                  00360 _SHARP_nefiltrovat
+00D7   0BB2           00361                                 decfsz  kodIndex,F
+00D8   2925           00362                                 goto    _SHARP_end
+00D9   2905           00363                                 goto    _SHARP_prijato
+                      00364 
+00DA                  00365 _SHARP_start2
+00DA   1985           00366                                 btfsc   GPIO,ir_in
+00DB   2920           00367                                 goto    _SHARP_error   
+00DC   3008           00368                                 movlw   d'8'
+00DD   02B0           00369                                 subwf   tCountH,F
+00DE   1C03           00370                                 btfss   STATUS,C                ; <> 0
+00DF   2920           00371                                 goto    _SHARP_error
+00E0   3006           00372                                 movlw   d'6'                    ;
+00E1   02B0           00373                                 subwf   tCountH,F
+00E2   1C03           00374                                 btfss   STATUS,C                ; <> 0
+00E3   28FA           00375                                 goto    _SHARP_startVCR             
+00E4   300A           00376                                 movlw   d'10'
+00E5   02B0           00377                                 subwf   tCountH,F
+00E6   1C03           00378                                 btfss   STATUS,C                ; <> 0
+00E7   2920           00379                                 goto    _SHARP_error
+00E8   3007           00380                                 movlw   d'7'                    ;
+00E9   02B0           00381                                 subwf   tCountH,F
+00EA   1803           00382                                 btfsc   STATUS,C
+00EB   2920           00383                                 goto    _SHARP_error
+                      00384                                 ; start OK
+00EC   3005           00385                                 movlw   5
+00ED   00BA           00386                                 movwf   pomIndex
+00EE   300E           00387                                 movlw   d'14'
+00EF   00B2           00388                                 movwf   kodIndex
+00F0   1403           00389                                 bsf             STATUS,C
+00F1   0DB3           00390                                 rlf     kod,F           
+00F2   0DB4           00391                                 rlf     kod_1,F
+00F3   300B           00392                                 movlw   11
+00F4   00BB           00393                                 movwf   testIndex
+00F5   3010           00394                                 movlw   b'010000'
+00F6   00BC           00395                                 movwf   testSample
+00F7   105F           00396                                 bcf     IR_STATUS,start2
+00F8   115F           00397                                 bcf             IR_STATUS,inverze
+00F9   2925           00398                                 goto    _SHARP_end  
+00FA                  00399 _SHARP_startVCR
+00FA   3003           00400                                 movlw   3
+00FB   00BA           00401                                 movwf   pomIndex
+00FC   105F           00402                                 bcf     IR_STATUS,start2
+00FD   115F           00403                                 bcf             IR_STATUS,inverze
+00FE   300B           00404                                 movlw   d'11'
+00FF   00B2           00405                                 movwf   kodIndex
+0100   300A           00406                                 movlw   10
+0101   00BB           00407                                 movwf   testIndex
+0102   3002           00408                                 movlw   b'010'
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0103   00BC           00409                                 movwf   testSample
+0104   2925           00410                                 goto    _SHARP_end  
+                      00411 
+0105   1010           00412 _SHARP_prijato  bcf     T1CON,TMR1ON    ; stop citac
+0106   10DE           00413                                 bcf     MY_STATUS,IR_ACT
+0107   3053           00414                                 movlw   'S'
+0108   00A2           00415                                 movwf   sbuf
+0109   2329           00416                                 call    send_RS
+010A   236D           00417                                 call    cekejS
+010B   3048           00418                                 movlw   'H'             
+010C   00A2           00419                                 movwf   sbuf
+010D   2329           00420                                 call    send_RS
+010E   236D           00421                                 call    cekejS
+010F   3050           00422                                 movlw   'P'
+0110   00A2           00423                                 movwf   sbuf
+0111   2329           00424                                 call    send_RS
+0112   236D           00425                                 call    cekejS
+0113   3030           00426                                 movlw   '0'
+0114   00A2           00427                                 movwf   sbuf
+0115   2329           00428                                 call    send_RS
+0116   236D           00429                                 call    cekejS  
+                      00430 
+0117   0834           00431                                 movf    kod_1,W
+0118   00A2           00432                                 movwf   sbuf
+0119   2329           00433                                 call    send_RS
+011A   236D           00434                                 call    cekejS
+                      00435 
+011B   0833           00436                                 movf    kod,W
+011C   00A2           00437                                 movwf   sbuf    
+011D   2329           00438                                 call    send_RS
+011E   236D           00439                                 call    cekejS
+011F   0008           00440                                 return
+                      00441 
+0120                  00442 _SHARP_error
+0120   018E           00443                                 clrf    TMR1L                   
+0121   3048           00444                                 movlw   waitTime
+0122   008F           00445                                 movwf   TMR1H                           ; prednastaveni na 10 ms
+0123   1410           00446                                 bsf     T1CON,TMR1ON    
+0124   165F           00447                                 bsf             IR_STATUS,cekani
+                      00448                         ;       movlw   'H'
+                      00449                         ;       movwf   sbuf
+                      00450                         ;       call    send_RS
+                      00451                         ;       call    cekejS          
+0125                  00452 _SHARP_end      
+0125   0008           00453                                 return
+                      00454 ;--------------------------------------------------------------------
+0126                  00455 prijmi_PANASONIC
+0126   1010           00456                                 bcf     T1CON,TMR1ON    ; zastavim citac                
+0127   080E           00457                                 movf    TMR1L,W
+0128   00B1           00458                                 movwf   tCountL
+0129   080F           00459                                 movf    TMR1H,W
+012A   00B0           00460                                 movwf   tCountH
+012B   018E           00461                                 clrf    TMR1L                   ; reset citace
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+012C   018F           00462                                 clrf    TMR1H   
+012D   1410           00463                                 bsf             T1CON,TMR1ON    ; start citac   - chyba 8 us
+                      00464 
+012E   1003           00465                                 bcf     STATUS,C
+012F   0DB1           00466                                 rlf     tCountL,F
+0130   0DB0           00467                                 rlf     tCountH,F       
+0131   0DB1           00468                                 rlf     tCountL,F
+0132   0DB0           00469                                 rlf     tCountH,F       
+                      00470 
+0133   185F           00471                                 btfsc   IR_STATUS,start2
+0134   2946           00472                                 goto    _PANASONIC_start2
+                      00473 
+0135   1985           00474                                 btfsc   GPIO,ir_in
+0136   2974           00475                                 goto    _PANASONIC_end          ; ted je nabezna hrana, tak zacnu merit 
+                            cas     
+                      00476                                 ; pocitam dobu pulsu    
+0137   3005           00477                                 movlw   d'5'
+0138   02B0           00478                                 subwf   tCountH,F
+0139   1C03           00479                                 btfss   STATUS,C                ; <> 0
+013A   296D           00480                                 goto    _PANASONIC_error
+013B   300A           00481                                 movlw   d'10'                   ;
+013C   02B0           00482                                 subwf   tCountH,F
+                      00483 
+013D   0DB3           00484                                 rlf     kod,F           ; sestupna hrana = 1
+013E   0DB4           00485                                 rlf     kod_1,F
+013F   0DB5           00486                                 rlf     kod_2,F
+0140   0DB6           00487                                 rlf     kod_3,F
+0141   0DB7           00488                                 rlf     kod_4,F
+0142   0DB8           00489                                 rlf     kod_5,F
+                      00490 
+0143   0BB2           00491                                 decfsz  kodIndex,F
+0144   2974           00492                                 goto    _PANASONIC_end
+0145   2952           00493                                 goto    _PANASONIC_prijato
+                      00494 
+0146                  00495 _PANASONIC_start2
+0146   1985           00496                                 btfsc   GPIO,ir_in
+0147   296D           00497                                 goto    _PANASONIC_error                
+0148   3018           00498                                 movlw   d'24'
+0149   02B0           00499                                 subwf   tCountH,        F
+014A   1C03           00500                                 btfss   STATUS,C                ; <> 0
+014B   296D           00501                                 goto    _PANASONIC_error
+014C   3007           00502                                 movlw   d'7'                    ;
+014D   02B0           00503                                 subwf   tCountH,F
+014E   1803           00504                                 btfsc   STATUS,C
+014F   296D           00505                                 goto    _PANASONIC_error
+                      00506                                 ; start OK
+0150   105F           00507                                 bcf             IR_STATUS,start2
+0151   2974           00508                                 goto    _PANASONIC_end  
+                      00509 
+0152                  00510 _PANASONIC_prijato 
+0152   1010           00511                                 bcf     T1CON,TMR1ON    ; stop citac
+0153   10DE           00512                                 bcf     MY_STATUS,IR_ACT
+0154   0838           00513                                 movf    kod_5,W
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0155   00A2           00514                                 movwf   sbuf
+0156   2329           00515                                 call    send_RS
+0157   236D           00516                                 call    cekejS
+0158   0837           00517                                 movf    kod_4,W
+0159   00A2           00518                                 movwf   sbuf
+015A   2329           00519                                 call    send_RS
+015B   236D           00520                                 call    cekejS
+015C   0836           00521                                 movf    kod_3,W
+015D   00A2           00522                                 movwf   sbuf
+015E   2329           00523                                 call    send_RS
+015F   236D           00524                                 call    cekejS
+0160   0835           00525                                 movf    kod_2,W
+0161   00A2           00526                                 movwf   sbuf
+0162   2329           00527                                 call    send_RS
+0163   236D           00528                                 call    cekejS
+0164   0834           00529                                 movf    kod_1,W
+0165   00A2           00530                                 movwf   sbuf
+0166   2329           00531                                 call    send_RS
+0167   236D           00532                                 call    cekejS
+0168   0833           00533                                 movf    kod,W
+0169   00A2           00534                                 movwf   sbuf    
+016A   2329           00535                                 call    send_RS
+016B   236D           00536                                 call    cekejS
+016C   0008           00537                                 return
+                      00538 
+016D                  00539 _PANASONIC_error 
+016D   10DE           00540                                 bcf    MY_STATUS,IR_ACT
+016E   105F           00541                                 bcf    IR_STATUS,start2
+016F   018E           00542                                 clrf    TMR1L                   
+0170   3048           00543                                 movlw   waitTime
+0171   008F           00544                                 movwf   TMR1H                           ; prednastaveni na 10 ms
+0172   1410           00545                                 bsf     T1CON,TMR1ON    
+0173   165F           00546                                 bsf             IR_STATUS,cekani
+                      00547 ;                               movlw   'p'
+                      00548 ;                               movwf   sbuf
+                      00549 ;                               call    send_RS
+                      00550 ;                               call    cekejS
+0174                  00551 _PANASONIC_end  
+0174   0008           00552                                 return
+                      00553 ;----------------------------------------------------------
+0175                  00554 prijmi_MITSUBISHI
+0175   1010           00555                                 bcf     T1CON,TMR1ON    ; zastavim citac                
+0176   080E           00556                                 movf    TMR1L,W
+0177   00B1           00557                                 movwf   tCountL
+0178   080F           00558                                 movf    TMR1H,W
+0179   00B0           00559                                 movwf   tCountH
+017A   018E           00560                                 clrf    TMR1L                   ; reset citace
+017B   018F           00561                                 clrf    TMR1H                   
+017C   1410           00562                                 bsf             T1CON,TMR1ON    ; start citac   - chyba 8 us
+                      00563 
+017D   1003           00564                                 bcf     STATUS,C
+017E   0DB1           00565                                 rlf     tCountL,F
+017F   0DB0           00566                                 rlf     tCountH,F       
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0180   0DB1           00567                                 rlf     tCountL,F
+0181   0DB0           00568                                 rlf     tCountH,F       
+                      00569 
+0182   185F           00570                                 btfsc   IR_STATUS,start2
+0183   2993           00571                                 goto    _MITS_start2
+                      00572 
+0184   1985           00573                                 btfsc   GPIO,ir_in
+0185   29C1           00574                                 goto    _MITS_end               ; ted je nabezna hrana, tak zacnu merit 
+                            cas     
+                      00575                                 ; pocitam dobu pulsu    
+0186   3005           00576                                 movlw   d'5'
+0187   02B0           00577                                 subwf   tCountH,F
+0188   1C03           00578                                 btfss   STATUS,C                ; <> 0
+0189   29BA           00579                                 goto    _MITS_error
+018A   300A           00580                                 movlw   d'10'                   ;
+018B   02B0           00581                                 subwf   tCountH,F
+                      00582 
+018C   0DB3           00583                                 rlf     kod,F           ; sestupna hrana = 1
+018D   0DB4           00584                                 rlf     kod_1,F
+018E   0DB5           00585                                 rlf     kod_2,F
+018F   0DB6           00586                                 rlf     kod_3,F
+                      00587 
+0190   0BB2           00588                                 decfsz  kodIndex,F
+0191   29C1           00589                                 goto    _MITS_end
+0192   299F           00590                                 goto    _MITS_prijato
+                      00591 
+0193   1985           00592 _MITS_start2    btfsc   GPIO,ir_in
+0194   29BA           00593                                 goto    _MITS_error             
+0195   3041           00594                                 movlw   d'65'
+0196   02B0           00595                                 subwf   tCountH,F
+0197   1C03           00596                                 btfss   STATUS,C                ; <> 0
+0198   29BA           00597                                 goto    _MITS_error
+0199   300E           00598                                 movlw   d'14'                   ;
+019A   02B0           00599                                 subwf   tCountH,F
+019B   1803           00600                                 btfsc   STATUS,C
+019C   29BA           00601                                 goto    _MITS_error
+                      00602                                 ; start OK
+019D   105F           00603                                 bcf     IR_STATUS,start2
+019E   29C1           00604                                 goto    _MITS_end       
+                      00605 
+019F   1010           00606 _MITS_prijato   bcf     T1CON,TMR1ON    ; stop citac
+01A0   10DE           00607                                 bcf     MY_STATUS,IR_ACT
+01A1   304D           00608                                 movlw   'M'
+01A2   00A2           00609                                 movwf   sbuf
+01A3   2329           00610                                 call    send_RS
+01A4   236D           00611                                 call    cekejS
+01A5   3042           00612                                 movlw   'B'
+01A6   00A2           00613                                 movwf   sbuf
+01A7   2329           00614                                 call    send_RS
+01A8   236D           00615                                 call    cekejS
+01A9   0836           00616                 movf    kod_3,W
+01AA   00A2           00617                 movwf   sbuf
+01AB   2329           00618                 call    send_RS
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01AC   236D           00619                 call    cekejS
+01AD   0835           00620                 movf    kod_2,W
+01AE   00A2           00621                 movwf   sbuf
+01AF   2329           00622                 call    send_RS
+01B0   236D           00623                 call    cekejS
+01B1   0834           00624                 movf    kod_1,W
+01B2   00A2           00625                 movwf   sbuf
+01B3   2329           00626                 call    send_RS
+01B4   236D           00627                 call    cekejS
+01B5   0833           00628                                 movf    kod,W
+01B6   00A2           00629                                 movwf   sbuf    
+01B7   2329           00630                                 call    send_RS
+01B8   236D           00631                                 call    cekejS
+01B9   0008           00632                                 return
+                      00633 
+01BA   10DE           00634 _MITS_error     bcf     MY_STATUS,IR_ACT
+01BB   105F           00635                                 bcf     IR_STATUS,start2
+01BC   018E           00636                                 clrf    TMR1L                   
+01BD   3048           00637                                 movlw   waitTime
+01BE   008F           00638                                 movwf   TMR1H                           ; prednastaveni na 10 ms
+01BF   1410           00639                                 bsf     T1CON,TMR1ON    
+01C0   165F           00640                                 bsf             IR_STATUS,cekani
+                      00641 ;                               movlw   'M'
+                      00642 ;                               movwf   sbuf
+                      00643 ;                               call    send_RS
+                      00644 ;                               call    cekejS
+                      00645 
+01C1                  00646 _MITS_end       
+01C1   0008           00647                                 return
+                      00648 ;--------------------------------------------------------
+01C2                  00649 prijmi_RC5
+01C2   1010           00650                                 bcf     T1CON,TMR1ON    ; zastavim citac                
+01C3   080E           00651                                 movf    TMR1L,W
+01C4   00B1           00652                                 movwf   tCountL
+01C5   080F           00653                                 movf    TMR1H,W
+01C6   00B0           00654                                 movwf   tCountH
+01C7   018E           00655                                 clrf    TMR1L                   ; reset citace
+01C8   018F           00656                                 clrf    TMR1H   
+01C9   1410           00657                                 bsf     T1CON,TMR1ON    ; start citac   - chyba 8 us
+                      00658 
+01CA   1003           00659                                 bcf     STATUS,C
+01CB   0DB1           00660                                 rlf     tCountL,F
+01CC   0DB0           00661                                 rlf     tCountH,F       
+01CD   0DB1           00662                                 rlf     tCountL,F
+01CE   0DB0           00663                                 rlf     tCountH,F       
+                      00664 
+01CF   300B           00665                                 movlw   d'11'
+01D0   02B0           00666                                 subwf   tCountH,F
+01D1   1C03           00667                                 btfss   STATUS,C                ; <> 0
+01D2   2A04           00668                                 goto    _RC5_error
+01D3   3006           00669                                 movlw   d'6'                    ;
+01D4   02B0           00670                                 subwf   tCountH,F
+01D5   1C03           00671                                 btfss   STATUS,C                ; <> 0
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01D6   29D8           00672                                 goto    _RC5_0.5
+01D7   29DB           00673                                 goto    _RC5_1
+                      00674 
+01D8   18DF           00675 _RC5_0.5        btfsc   IR_STATUS,pulbit
+01D9   29DE           00676                                 goto    _RC5_CELA                       ; predchozi byl v pulce bitu, te
+                            d jsem na celym 
+01DA   29E0           00677                                 goto    _RC5_PULKA
+01DB   18DF           00678 _RC5_1          btfsc   IR_STATUS,pulbit
+01DC   29E0           00679                                 goto    _RC5_PULKA                      ;predchozi byl v pulce bitu, ted
+                             jsem zase na pulce
+01DD   2A04           00680                                 goto    _RC5_error                      ; z celeho na celej je blbost
+                      00681 
+01DE   10DF           00682 _RC5_CELA       bcf     IR_STATUS,pulbit
+01DF   2A0A           00683                                 goto    _RC5_end                        ; cela me nezajima
+                      00684 
+                      00685 
+01E0   1403           00686 _RC5_PULKA              bsf             STATUS,C
+01E1   14DF           00687                                 bsf     IR_STATUS,pulbit
+01E2   1D85           00688                                 btfss   GPIO,ir_in
+01E3   29E5           00689                                 goto    _RC5_L
+01E4   1003           00690 _RC5_H                  bcf     STATUS,C        ; nabezna hrana = 0
+01E5   0DB3           00691 _RC5_L          rlf     kod,F           ; sestupna hrana = 1
+01E6   0DB4           00692                                 rlf             kod_1,F         
+                      00693 
+01E7   0BB2           00694                                 decfsz  kodIndex,F      
+01E8   2A0A           00695                                 goto    _RC5_end
+01E9                  00696 _RC5_prijato                                            
+01E9   1010           00697                                 bcf     T1CON,TMR1ON    ; stop citac
+01EA   10DE           00698                                 bcf     MY_STATUS,IR_ACT
+01EB   3052           00699                                 movlw   'R'
+01EC   00A2           00700                                 movwf   sbuf
+01ED   2329           00701                                 call    send_RS
+01EE   236D           00702                                 call    cekejS
+01EF   3043           00703                                 movlw   'C'
+01F0   00A2           00704                                 movwf   sbuf
+01F1   2329           00705                                 call    send_RS
+01F2   236D           00706                                 call    cekejS
+01F3   3035           00707                                 movlw   '5'
+01F4   00A2           00708                                 movwf   sbuf
+01F5   2329           00709                                 call    send_RS
+01F6   236D           00710                                 call    cekejS
+01F7   3030           00711                                 movlw   '0'
+01F8   00A2           00712                                 movwf   sbuf
+01F9   2329           00713                                 call    send_RS
+01FA   236D           00714                                 call    cekejS
+                      00715 
+01FB   0834           00716                                 movf    kod_1,W
+01FC   00A2           00717                                 movwf   sbuf
+01FD   2329           00718                                 call    send_RS
+01FE   236D           00719                                 call    cekejS
+01FF   0833           00720                                 movf    kod,W
+0200   00A2           00721                                 movwf   sbuf    
+0201   2329           00722                                 call    send_RS
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 15
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0202   236D           00723                                 call    cekejS
+0203   0008           00724                                 return
+                      00725 
+0204   10DE           00726 _RC5_error      bcf    MY_STATUS,IR_ACT
+0205   018E           00727                                 clrf    TMR1L                   
+0206   3048           00728                                 movlw   waitTime
+0207   008F           00729                                 movwf   TMR1H                           ; prednastaveni na 10 ms
+0208   1410           00730                                 bsf     T1CON,TMR1ON    
+0209   165F           00731                                 bsf             IR_STATUS,cekani
+                      00732 
+020A   0008           00733 _RC5_end            return
+                      00734 
+                      00735 
+                      00736 ;--------------------------------------------------------------------------
+020B                  00737 prijmi_SIRC
+020B   1D85           00738                                 btfss   GPIO,ir_in
+020C   2A56           00739                                 goto    _SIRC_end
+                      00740                                 ; tady je nabezna hrana, urcit jestli jsem prijmul 1 nebo 0
+020D   1010           00741                                 bcf     T1CON,TMR1ON    ; zastavim citac                
+020E   080E           00742                                 movf    TMR1L,W
+020F   00B1           00743                                 movwf   tCountL
+0210   080F           00744                                 movf    TMR1H,W
+0211   00B0           00745                                 movwf   tCountH
+0212   018E           00746                                 clrf    TMR1L                   ; reset citace
+0213   018F           00747                                 clrf    TMR1H   
+0214   1410           00748                                 bsf     T1CON,TMR1ON    ; start citac   - chyba 8 us
+                      00749 
+0215   1003           00750                                 bcf     STATUS,C
+0216   0DB1           00751                                 rlf     tCountL,F
+0217   0DB0           00752                                 rlf     tCountH,F       
+                      00753 
+0218   3007           00754                                 movlw   d'7'
+0219   02B0           00755                                 subwf   tCountH,F
+021A   1C03           00756                                 btfss   STATUS,C                ; <> 0
+021B   2A50           00757                                 goto    _SIRC_error
+021C   3006           00758                                 movlw   d'6'                    ;12 jeste akceptuju
+021D   02B0           00759                                 subwf   tCountH,F
+021E   1C03           00760                                 btfss   STATUS,C                ; <> 0
+021F   2A26           00761                                 goto    _SIRC_0
+0220   3005           00762                                 movlw   d'5'                    ;17 jeste akceptuju
+0221   02B0           00763                                 subwf   tCountH,F
+0222   1C03           00764                                 btfss   STATUS,C                ; <> 0
+0223   2A25           00765                                 goto    _SIRC_1
+0224   2A50           00766                                 goto    _SIRC_error
+                      00767 
+0225   1403           00768 _SIRC_1         bsf     STATUS,C
+0226   0CB3           00769 _SIRC_0         rrf     kod,F
+0227   0CB4           00770                                 rrf     kod_1,F
+                      00771 
+0228   0BB2           00772                                 decfsz  kodIndex,F
+0229   2A56           00773                                 goto    _SIRC_end
+                      00774 
+022A   10DE           00775 _SIRC_prijato   bcf     MY_STATUS,IR_ACT
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 16
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+022B   1010           00776                                 bcf     T1CON,TMR1ON    ; zastavim citac                
+022C   1003           00777                                 bcf     STATUS,C
+022D   0CB3           00778                                 rrf     kod,F
+022E   0CB4           00779                                 rrf     kod_1,F 
+022F   1003           00780                                 bcf     STATUS,C        
+0230   0CB3           00781                                 rrf     kod,F
+0231   0CB4           00782                                 rrf     kod_1,F         
+0232   1003           00783                                 bcf     STATUS,C        
+0233   0CB3           00784                                 rrf     kod,F
+0234   0CB4           00785                                 rrf     kod_1,F         
+0235   1003           00786                                 bcf     STATUS,C        ; ted uz posunu jen jeden byte - prikaz
+0236   0CB4           00787                                 rrf     kod_1,F                 
+                      00788 
+0237   3053           00789                                 movlw   'S'
+0238   00A2           00790                                 movwf   sbuf
+0239   2329           00791                                 call    send_RS
+023A   236D           00792                                 call    cekejS                          
+023B   3049           00793                                 movlw   'I'
+023C   00A2           00794                                 movwf   sbuf
+023D   2329           00795                                 call    send_RS
+023E   236D           00796                                 call    cekejS
+023F   3052           00797                                 movlw   'R'
+0240   00A2           00798                                 movwf   sbuf
+0241   2329           00799                                 call    send_RS
+0242   236D           00800                                 call    cekejS
+0243   3043           00801                                 movlw   'C'
+0244   00A2           00802                                 movwf   sbuf
+0245   2329           00803                                 call    send_RS
+0246   236D           00804                                 call    cekejS
+0247   0833           00805                                 movf    kod,W           ; zarizeni
+0248   00A2           00806                                 movwf   sbuf
+0249   2329           00807                                 call    send_RS
+024A   236D           00808                                 call    cekejS
+024B   0834           00809                                 movf    kod_1,W         ; prikaz
+024C   00A2           00810                                 movwf   sbuf
+024D   2329           00811                                 call    send_RS
+024E   236D           00812                                 call    cekejS
+024F   2A56           00813                                 goto    _SIRC_end
+                      00814 
+0250                  00815 _SIRC_error
+0250   10DE           00816                                 bcf     MY_STATUS,IR_ACT
+0251   018E           00817                                 clrf    TMR1L                   
+0252   3048           00818                                 movlw   waitTime
+0253   008F           00819                                 movwf   TMR1H                           ; prednastaveni na 10 ms
+0254   1410           00820                                 bsf     T1CON,TMR1ON    
+0255   165F           00821                                 bsf             IR_STATUS,cekani
+                      00822 ;                               movlw   's'
+                      00823 ;                               movwf   sbuf
+                      00824 ;                               call    send_RS
+0256                  00825 _SIRC_end       
+0256   0008           00826                                 return
+                      00827           
+                      00828 ;-------------------------------------
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 17
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0257                  00829 vyhodnot_citac
+0257   1010           00830                                 bcf     T1CON,TMR1ON    ; zastavim citac                
+0258   080E           00831                                 movf    TMR1L,W
+0259   00B1           00832                                 movwf   tCountL
+025A   080F           00833                                 movf    TMR1H,W
+025B   00B0           00834                                 movwf   tCountH
+025C   018E           00835                                 clrf    TMR1L
+025D   018F           00836                                 clrf    TMR1H
+025E   1410           00837                                 bsf             T1CON,TMR1ON    ; start citac   - chyba 8 us
+                      00838 
+                      00839 
+025F   1003           00840                                 bcf     STATUS,C
+0260   0DB1           00841                                 rlf     tCountL,F
+0261   0DB0           00842                                 rlf     tCountH,F                       ; deleno 128
+0262   1003           00843                                 bcf     STATUS,C
+0263   0DB1           00844                                 rlf             tCountL,F
+0264   0DB0           00845                                 rlf     tCountH,F                       ; deleno 64             
+                      00846                         ;----------
+                      00847                         ;       movf    tCountH,W
+                      00848                         ;       movwf   sbuf
+                      00849                         ;       call    send_RS
+                      00850                         ;       call    cekejS
+                      00851                         ;----------
+0265   3004           00852                                 movlw   d'4'
+0266   02B0           00853                                 subwf   tCountH,F
+0267   1C03           00854                                 btfss   STATUS,C                ; <> 0
+0268   2ADC           00855                                 goto    _int_ir_error
+0269   3004           00856                                 movlw   d'4'                    ;8   
+026A   02B0           00857                                 subwf   tCountH,F
+026B   1C03           00858                                 btfss   STATUS,C                ; <> 0
+026C   2A96           00859                                 goto    _int_ir_SHARP   ; 0,3ms
+                      00860 
+026D   3004           00861                                 movlw   d'4'                    ;12
+026E   02B0           00862                                 subwf   tCountH,F
+026F   1C03           00863                                 btfss   STATUS,C                ; <> 0
+0270   2ADC           00864                                 goto    _int_ir_error   
+0271   3005           00865                                 movlw   d'5'                    ;17
+0272   02B0           00866                                 subwf   tCountH,F
+0273   1C03           00867                                 btfss   STATUS,C                ; <> 0
+0274   2AA0           00868                                 goto    _int_ir_RC5             ;0.89
+                      00869 
+0275   300F           00870                                 movlw   d'15'                   ;32
+0276   02B0           00871                                 subwf   tCountH,F
+0277   1C03           00872                                 btfss   STATUS,C                ; <> 0
+0278   2ADC           00873                                 goto    _int_ir_error
+0279   300C           00874                                 movlw   d'12'                   ;44
+027A   02B0           00875                                 subwf   tCountH,F
+027B   1C03           00876                                 btfss   STATUS,C                ; <> 0
+027C   2AAC           00877                                 goto    _int_ir_SIRC    ; 2.4
+                      00878 
+027D   3004           00879                                 movlw   d'4'                    ;48
+027E   02B0           00880                                 subwf   tCountH,F
+027F   1C03           00881                                 btfss   STATUS,C                ; <> 0
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 18
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0280   2ADC           00882                                 goto    _int_ir_error
+0281   300E           00883                                 movlw   d'14'                   ;62
+0282   02B0           00884                                 subwf   tCountH,F
+0283   1C03           00885                                 btfss   STATUS,C                ; <> 0
+0284   2AB5           00886                                 goto    _int_ir_PANASONIC       ; 3.5
+                      00887 
+0285   3004           00888                                 movlw   d'4'                    ;66 
+0286   02B0           00889                                 subwf   tCountH,F
+0287   1C03           00890                                 btfss   STATUS,C                ; <> 0
+0288   2ADC           00891                                 goto    _int_ir_error
+0289   300C           00892                                 movlw   d'12'                   ;78
+028A   02B0           00893                                 subwf   tCountH,F
+028B   1C03           00894                                 btfss   STATUS,C                ; <> 0
+028C   2AC5           00895                                 goto    _int_ir_MITSUBISHI      ;4.5    
+                      00896 
+028D   302F           00897                                 movlw   d'47'                   ;125 
+028E   02B0           00898                                 subwf   tCountH,F
+028F   1C03           00899                                 btfss   STATUS,C                ; <> 0
+0290   2ADC           00900                                 goto    _int_ir_error
+0291   3020           00901                                 movlw   d'32'                   ;157
+0292   02B0           00902                                 subwf   tCountH,F
+0293   1C03           00903                                 btfss   STATUS,C                ; <> 0
+0294   2AD3           00904                                 goto    _int_ir_NEC             ;9      
+0295   2ADC           00905                                 goto    _int_ir_error
+                      00906 
+0296                  00907 _int_ir_SHARP          
+0296   12DF           00908                                 bcf             IR_STATUS,opak_povoleno
+0297   145F           00909                                 bsf             IR_STATUS,start2                           
+                      00910 ;                               movlw   d'14'
+                      00911 ;                               movwf   kodIndex
+0298   14DE           00912                                 bsf     MY_STATUS,IR_ACT
+0299   3003           00913                                 movlw   0x03
+029A   05DE           00914                                 andwf   MY_STATUS,F
+029B   155E           00915                                 bsf             MY_STATUS,IR_SHARP
+029C   01B3           00916                                 clrf    kod
+029D   01B4           00917                                 clrf    kod_1
+029E   13DF           00918                                 bcf     IR_STATUS,start_kal     
+029F   0008           00919                                 return
+02A0                  00920 _int_ir_RC5                     
+02A0   12DF           00921                                 bcf             IR_STATUS,opak_povoleno
+02A1   10DF           00922                                 bcf     IR_STATUS,pulbit                        
+02A2   300D           00923                                 movlw   d'13'
+02A3   00B2           00924                                 movwf   kodIndex
+02A4   14DE           00925                                 bsf     MY_STATUS,IR_ACT
+02A5   3003           00926                                 movlw   0x03
+02A6   05DE           00927                                 andwf   MY_STATUS,F
+02A7   15DE           00928                                 bsf     MY_STATUS,IR_RC5
+02A8   01B3           00929                                 clrf    kod
+02A9   01B4           00930                                 clrf    kod_1
+02AA   13DF           00931                                 bcf     IR_STATUS,start_kal     
+02AB   0008           00932                                 return
+02AC                  00933 _int_ir_SIRC
+02AC   12DF           00934                                 bcf             IR_STATUS,opak_povoleno
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 19
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+02AD   300C           00935                                 movlw   d'12'
+02AE   00B2           00936                                 movwf   kodIndex
+02AF   14DE           00937                                 bsf     MY_STATUS,IR_ACT
+02B0   3003           00938                                 movlw   0x03
+02B1   05DE           00939                                 andwf   MY_STATUS,F
+02B2   165E           00940                                 bsf     MY_STATUS,IR_SIRC
+02B3   13DF           00941                                 bcf     IR_STATUS,start_kal     
+02B4   0008           00942                                 return
+02B5                  00943 _int_ir_PANASONIC
+02B5   12DF           00944                                 bcf             IR_STATUS,opak_povoleno
+02B6   145F           00945                                 bsf             IR_STATUS,start2                        
+02B7   3030           00946                                 movlw   d'48'
+02B8   00B2           00947                                 movwf   kodIndex
+02B9   14DE           00948                                 bsf             MY_STATUS,IR_ACT
+02BA   3003           00949                                 movlw   0x03
+02BB   05DE           00950                                 andwf   MY_STATUS,F
+02BC   16DE           00951                                 bsf     MY_STATUS,IR_PANASONIC
+02BD   01B3           00952                                 clrf    kod
+02BE   01B4           00953                                 clrf    kod_1
+02BF   01B5           00954                                 clrf    kod_2
+02C0   01B6           00955                                 clrf    kod_3
+02C1   01B7           00956                                 clrf    kod_4
+02C2   01B8           00957                                 clrf    kod_5
+02C3   13DF           00958                                 bcf     IR_STATUS,start_kal     
+02C4   0008           00959                                 return
+02C5                  00960 _int_ir_MITSUBISHI
+02C5   12DF           00961                                 bcf             IR_STATUS,opak_povoleno    ; zatim neumozneno
+02C6   145F           00962                                 bsf             IR_STATUS,start2                        
+02C7   3020           00963                                 movlw   d'32'
+02C8   00B2           00964                                 movwf   kodIndex
+02C9   14DE           00965                                 bsf             MY_STATUS,IR_ACT
+02CA   3003           00966                                 movlw   0x03
+02CB   05DE           00967                                 andwf   MY_STATUS,F
+02CC   175E           00968                                 bsf     MY_STATUS,IR_MITSUBISHI
+02CD   01B3           00969                                 clrf    kod
+02CE   01B4           00970                                 clrf    kod_1
+02CF   01B5           00971                                 clrf    kod_2
+02D0   01B6           00972                                 clrf    kod_3
+02D1   13DF           00973                                 bcf     IR_STATUS,start_kal     
+02D2   0008           00974                                 return
+02D3                  00975 _int_ir_NEC             
+                      00976                         ;       bcf             IR_STATUS,opak_povoleno  tady se nesmi zakazat, jinak to
+                             nebude brat opakovani s jednim bitem
+02D3   145F           00977                                 bsf             IR_STATUS,start2                        
+02D4   3020           00978                                 movlw   d'32'
+02D5   00B2           00979                                 movwf   kodIndex
+02D6   14DE           00980                                 bsf     MY_STATUS,IR_ACT
+02D7   3003           00981                                 movlw   0x03
+02D8   05DE           00982                                 andwf   MY_STATUS,F
+02D9   17DE           00983                                 bsf     MY_STATUS,IR_NEC
+02DA   13DF           00984                                 bcf     IR_STATUS,start_kal     
+02DB   0008           00985                                 return
+02DC                  00986 _int_ir_error
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 20
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+02DC   10DE           00987                                 bcf     MY_STATUS,IR_ACT
+02DD   12DF           00988                                 bcf             IR_STATUS,opak_povoleno
+02DE   018E           00989                                 clrf    TMR1L                   
+02DF   3048           00990                                 movlw   waitTime
+02E0   008F           00991                                 movwf   TMR1H                           ; prednastaveni na 10 ms
+02E1   1410           00992                                 bsf     T1CON,TMR1ON    
+02E2   165F           00993                                 bsf             IR_STATUS,cekani
+02E3   13DF           00994                                 bcf             IR_STATUS,start_kal     
+                      00995                 
+                      00996                 ;               bcf             T1CON,TMR1ON    ; zastavim citac                
+                      00997                 ;               movlw   'E'
+                      00998                 ;               movwf   sbuf
+                      00999                 ;               call    send_RS
+                      01000                 ;               call    cekejS
+                      01001                 ;               movf    tCountH,W
+                      01002                 ;               movwf   sbuf
+                      01003                 ;               call    send_RS
+                      01004                 ;               call    cekejS
+                      01005 
+02E4   0008           01006                                 return
+                      01007 ;-------------------------------------
+                      01008 
+                      01009 ;***************************************************************************
+02E5                  01010 init            
+02E5   0185           01011                                 clrf    GPIO
+02E6   3007           01012                                 movlw   0x07
+02E7   0099           01013                                 movwf   CMCON                   ; vypne komparator
+02E8   1683           01014                                 bsf     STATUS,RP0              ; prepne na banku 1     
+02E9   3039           01015                                 movlw   b'111001'               
+                      01016         
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02EA   0085           01017                                 movwf   TRISIO                  ; nastaveni I/O   O= out
+02EB   303B           01018                                 movlw   b'111011'               
+                      01019 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02EC   0095           01020                                 movwf   WPU                     ; nastaveni pull-up
+                      01021 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02ED   1381           01022                                 bcf     OPTION_REG,NOT_GPPU     ; enable pull-up        
+02EE   3009           01023                                 movlw   b'001001'               
+                      01024 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02EF   0096           01025                                 movwf   IOC                                     ; interrupt on GP0 a GP3
+                             change
+02F0   158B           01026                                 bsf     INTCON,GPIE                     ; enable interrupt on GP0-GP4 ch
+                            ange    
+02F1   170B           01027                                 bsf             INTCON,PEIE                     ; povoli interrupt perif
+                            erii (timer 1)
+                      01028 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02F2   140C           01029                                 bsf     PIE1,TMR1IE                     ; povoli int od timer1
+                      01030 
+02F3   23FF           01031                                 call    3ffh                    
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 21
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      01032                 ;           movlw   0xBf    ;!!!! natvrdo kal konstanta
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+02F4   0090           01033                                 movwf   OSCCAL                          ; zapsani kalibracni konstanty
+                      01034 
+02F5   1283           01035                                 bcf     STATUS,RP0              ; prepne na banku 0
+02F6   0190           01036                                 clrf    T1CON                   ; nataveni konfigurace citace1
+02F7   01DE           01037                                 clrf    MY_STATUS               ; mazani pomocneho status registru      
+02F8   0185           01038                                 clrf    GPIO
+02F9   1D85           01039 _xi0                    btfss   GPIO,ir_in              ; ceka na log 1 z cidla
+02FA   2AF9           01040                                 goto    _xi0
+02FB   0885           01041                                 movf    GPIO,F  
+02FC   1805           01042 _xi1                    btfsc   GPIO,s_in               ; ceka na RS v log 1 -- uroven -12V
+02FD   2AFC           01043                                 goto    _xi1
+02FE   0885           01044                                 movf    GPIO,F                  ; cteni portu pro zajisteni spravne zmen
+                            y
+02FF   30F8           01045                                 movlw   b'11111000'             
+0300   058B           01046                                 andwf   INTCON,F                ; delete all flags
+0301   178B           01047                                 bsf     INTCON,GIE              ;xxxxxxxxxxxxx povoleni vsech interruptu
+                                 
+                      01048 
+0302   105E           01049                                 bcf     MY_STATUS,REC_RS
+0303   10DE           01050                                 bcf     MY_STATUS,IR_ACT
+0304   13DF           01051                                 bcf     IR_STATUS,start_kal     
+                      01052 
+                      01053 ;--------------------------------------------
+0305   2B20           01054                                 goto    prisloIR
+                      01055 
+0306                  01056 start                   
+0306   01C0           01057                                 clrf    RSTimeout
+0307   01C1           01058                                 clrf    RSTimeout_1
+0308   01C2           01059                                 clrf    RSTimeout_2
+0309   0AC2           01060                                 incf    RSTimeout_2,F
+                      01061                                 
+030A   1C5E           01062 cekamI                  btfss   MY_STATUS,REC_RS
+030B   2B28           01063                                 goto    next1
+030C   105E           01064                                 bcf             MY_STATUS,REC_RS
+030D   3049           01065                                 movlw   'I'
+030E   0623           01066                                 XORWF   rbuf,w
+030F   1D03           01067                                 btfss   STATUS,Z        
+0310   2B06           01068                                 goto    start
+                      01069                                 
+0311   1C5E           01070 cekamR                  btfss   MY_STATUS,REC_RS
+0312   2B19           01071                                 goto    cekamR1                                                 
+0313   105E           01072                                 bcf             MY_STATUS,REC_RS
+0314   3052           01073                                 movlw   'R'
+0315   0623           01074                                 XORWF   rbuf,w
+0316   1903           01075                                 btfsc   STATUS,Z        
+0317   2B20           01076                                 goto    prisloIR
+0318   2B11           01077                                 goto    cekamR
+0319   0BC0           01078 cekamR1                 decfsz  RSTimeout,F
+031A   2B1E           01079                                 goto    cekamR3
+031B   0BC1           01080                                 decfsz  RSTimeout_1,F
+031C   2B1E           01081                                 goto    cekamR3
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 22
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+031D   0BC2           01082                                 decfsz  RSTimeout_2,F
+031E   2B11           01083 cekamR3                 goto    cekamR
+031F   2B06           01084                                 goto    start
+                      01085 
+0320   304F           01086 prisloIR                movlw   'O'
+0321   00A2           01087                                 movwf   sbuf
+0322   2329           01088                                 call    send_RS
+0323   236D           01089                                 call    cekejS
+0324   304B           01090                                 movlw   'K'
+0325   00A2           01091                                 movwf   sbuf
+0326   2329           01092                                 call    send_RS
+0327   236D           01093                                 call    cekejS
+0328                  01094 next1                   
+                      01095 
+0328   2B06           01096                                 goto    start
+                      01097         
+                      01098 ;*****************************************************
+                      01099 ; sending to RS 232     9600 Bd, 8 Bit, bez parity, 1 stopBit
+                      01100 ;*****************************************************
+0329                  01101 send_RS
+0329   1505           01102                                 bsf             GPIO,s_out                      ;startbit               
+032A   3020           01103                                 movlw   32                              ;       1    << t >>
+032B   00A5           01104                                 movwf   _delay                  ;       1       
+032C                  01105 sendrs0                                                 ; 104 ==9+ 3*t-1  ->> t=(104-9+1)/3
+032C   0BA5           01106                                 decfsz  _delay,F                ;       1-2
+032D   2B2C           01107                                 goto    sendrs0                 ;       2    
+032E   3008           01108                                 movlw   0x08                    ;       1
+032F   00A0           01109                                 movwf   tmp                             ;       1
+0330                  01110 sendrs1                                                 ; 104 = 11+3*t -> t=(104-11)/3=31               
+                                                                                
+0330   1003           01111                                 bcf             STATUS,C                ;       1
+0331   0CA2           01112                                 rrf             sbuf,F                  ;       1
+0332   1C03           01113                                 BTFSS   STATUS,C                ;       1-2
+0333   1505           01114                                 bsf             GPIO,s_out              ;       1               tohle se
+                             preskoci, pokud je C=1         
+0334   1803           01115                                 BTFSC   STATUS,C                ;***    1-2             tady uz to bude 
+                            oboje   
+0335   1105           01116                                 bcf     GPIO,s_out              ;       1               tohle se preskoc
+                            i, pokud je C=0         
+0336   301F           01117                                 movlw   31                      ;       1   << t >>
+0337   00A5           01118                                 movwf   _delay                  ;       1
+0338                  01119 sendrs2
+0338   0BA5           01120                                 decfsz  _delay,F                ;       1-2 \
+0339   2B38           01121                                 goto    sendrs2                 ;       2        >  3*_delay
+033A   0000           01122                                 nop                             ;   1   /
+                      01123 
+033B   0BA0           01124                                 decfsz  tmp,F                           ;       1-2
+033C   2B30           01125                                 goto    sendrs1                 ;       2
+                      01126 
+033D   0000           01127                                 nop                     
+033E   0000           01128                                 nop
+033F   0000           01129                                 nop             
+0340   0000           01130                                 nop
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 23
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0341   0000           01131                                 nop
+0342   1105           01132                                 bcf             GPIO,s_out              ;  1    stopbit 104 = 6+3*t +5*n
+                            op
+0343   0008           01133                                 return
+                      01134 
+                      01135 
+                      01136 ;**********************************************************************
+                      01137 ;*              Receiving from RS-232
+                      01138 ;**********************************************************************
+0344                  01139 receive_RS              ; + cca 3 + 8= 11  od interruptu
+                      01140 ;               bcf             STATUS,RP0              ; prepne na banku 0     
+0344   300D           01141                                 movlw   13                              ;       1    << t >>
+0345   00A6           01142                                 movwf   _delay1                 ;       1       
+0346                  01143 receivers0                                                      ; 52 ==10+ 3*t-1  ->> t=(52-14+1)/3
+0346   0BA6           01144                                 decfsz  _delay1,F               ;       1-2      testuju to uz pri 51, p
+                            rotoze pak mam
+0347   2B46           01145                                 goto    receivers0              ;       2        2 us navic pri zadavani
+                             0x08   
+                      01146 
+0348   1C05           01147                                 btfss   GPIO,s_in               ;       1-2 - test startbitu
+0349   2B62           01148                                 goto    receiversE              ;       2       - neni platny znak
+                      01149 
+034A   3008           01150                                 movlw   0x08                    ;       1
+034B   00A0           01151                                 movwf   tmp                             ;       1       
+034C   0000           01152                                 nop                                             ;       1
+034D   0000           01153                                 nop                                             ;       1
+034E                  01154 receivers1
+034E   3020           01155                                 movlw   32                              ;       1    << t >>
+034F   00A6           01156                                 movwf   _delay1                 ;       1                       
+0350                  01157 receivers2                                              ; 104 ==9+ 3*t-1  ->> t=(104-9+1)/3
+0350   0BA6           01158                                 decfsz  _delay1,F               ;       1-2
+0351   2B50           01159                                 goto    receivers2              ;       2   
+0352   1003           01160                                 bcf     STATUS,C                ;       1
+0353   1485           01161                                 bsf     GPIO,GP1
+                      01162         ;               movf    GPIO,F
+0354   1C05           01163                                 btfss   GPIO,s_in               ;       1-2
+0355   1403           01164                                 bsf     STATUS,C                ;       1       - nezapomenu na inverzi 
+                            RS      
+0356   0CA3           01165                                 rrf     rbuf,F                  ;       1               
+0357   1085           01166                                 BCF     GPIO,GP1
+                      01167                 ;       movf    GPIO
+0358   0BA0           01168                                 decfsz  tmp,F                           ;       1-2     
+0359   2B4E           01169                                 goto    receivers1              ;       2
+035A                  01170 receivers3                                              ; test stop bitu
+035A   3020           01171                                 movlw   32                              ;       1    << t >>
+035B   00A6           01172                                 movwf   _delay1                 ;       1                       
+035C   0000           01173                                 nop
+035D                  01174 receivers4                                              ; 104 ==7+ 3*t-1  ->> t=(104-7+1)/3
+035D   0BA6           01175                                 decfsz  _delay1,F               ;       1-2
+035E   2B5D           01176                                 goto    receivers4              ;       2   
+035F   1805           01177                                 btfsc   GPIO,s_in               ;       1-2
+0360   2B62           01178                                 goto    receiversE              ;       2
+0361   3400           01179                                 retlw   0                               ; OK    
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 24
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0362                  01180 receiversE
+0362   34FF           01181                                 retlw   0xff                    ;error
+                      01182 
+                      01183 ;**********************************************************************
+                      01184 ;*              cekaci smycka
+                      01185 ;**********************************************************************      
+0363   30FF           01186 cekej                   movlw   0xff
+0364   00A8           01187                                 movwf   _A
+0365   30FF           01188 cykl1                   movlw   0xff
+0366   00A9           01189                                 movwf   _B
+0367   0000           01190 cykl                    nop
+0368   0BA9           01191                                 decfsz  _B,F
+0369   2B67           01192                                 goto    cykl
+036A   0BA8           01193                                 decfsz  _A,F
+036B   2B65           01194                                 goto    cykl1
+036C   0008           01195                                 return
+                      01196 
+                      01197 ; zpozdeni na odeslani 1 bitu po rs, pouziva se po odeslani znaku, je-li potreba, na pockani 
+                      01198 ; alespon dobu 1 stop bitu pred poslanim dalsiho...
+036D                  01199 cekejS
+036D   3028           01200                                 movlw   40
+036E   00A9           01201                                 movwf   _B
+036F   0BA9           01202 _cekS                   decfsz  _B,F
+0370   2B6F           01203                                 goto    _cekS
+0371   0008           01204                                 return
+                      01205 
+                      01206 
+                      01207                 end
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADIE                              00000006
+ADIF                              00000006
+C                                 00000000
+CAL0                              00000002
+CAL1                              00000003
+CAL2                              00000004
+CAL3                              00000005
+CAL4                              00000006
+CAL5                              00000007
+CINV                              00000004
+CIS                               00000003
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             00000019
+CMIE                              00000003
+CMIF                              00000003
+COUT                              00000006
+DC                                00000001
+EEADR                             0000009B
+EECON1                            0000009C
+EECON2                            0000009D
+EEDATA                            0000009A
+EEIE                              00000007
+EEIF                              00000007
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+GP0                               00000000
+GP1                               00000001
+GP2                               00000002
+GP3                               00000003
+GP4                               00000004
+GP5                               00000005
+GPIE                              00000003
+GPIF                              00000000
+GPIO                              00000005
+GPIO0                             00000000
+GPIO1                             00000001
+GPIO2                             00000002
+GPIO3                             00000003
+GPIO4                             00000004
+GPIO5                             00000005
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IOC                               00000096
+IOC0                              00000000
+IOC1                              00000001
+IOC2                              00000002
+IOC3                              00000003
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+IOC4                              00000004
+IOC5                              00000005
+IOCB                              00000096
+IOCB0                             00000000
+IOCB1                             00000001
+IOCB2                             00000002
+IOCB3                             00000003
+IOCB4                             00000004
+IOCB5                             00000005
+IRP                               00000007
+IR_ACT                            00000001
+IR_MITSUBISHI                     00000006
+IR_NEC                            00000007
+IR_PANASONIC                      00000005
+IR_RC5                            00000003
+IR_SHARP                          00000002
+IR_SIRC                           00000004
+IR_STATUS                         0000005F
+MY_STATUS                         0000005E
+NOT_BOD                           00000000
+NOT_GPPU                          00000007
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+OPTION_REG                        00000081
+OSCCAL                            00000090
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PIE1                              0000008C
+PIR1                              0000000C
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RD                                00000000
+REC_RS                            00000000
+RP0                               00000005
+RP1                               00000006
+RSTimeout                         00000040
+RSTimeout_1                       00000041
+RSTimeout_2                       00000042
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1IE                              00000000
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 27
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T1IF                              00000000
+T1OSCEN                           00000003
+TMR0                              00000001
+TMR1CS                            00000001
+TMR1GE                            00000006
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TRISIO                            00000085
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             00000099
+VREN                              00000007
+VRR                               00000005
+W                                 00000000
+WPU                               00000095
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_A                                00000028
+_B                                00000029
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_OFF                           00003FFF
+_CP_ON                            00003F7F
+_EC_OSC                           00003FFB
+_EXTRC_OSC_CLKOUT                 00003FFF
+_EXTRC_OSC_NOCLKOUT               00003FFE
+_HS_OSC                           00003FFA
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FF8
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_MITS_end                         000001C1
+_MITS_error                       000001BA
+_MITS_prijato                     0000019F
+_MITS_start2                      00000193
+_NEC_end                          000000A6
+_NEC_error                        000000A0
+_NEC_prijato                      00000084
+_NEC_start2                       00000069
+_NEC_startOpak                    0000007E
+_PANASONIC_end                    00000174
+_PANASONIC_error                  0000016D
+_PANASONIC_prijato                00000152
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 28
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_PANASONIC_start2                 00000146
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FEF
+_RC5_0.5                          000001D8
+_RC5_1                            000001DB
+_RC5_CELA                         000001DE
+_RC5_H                            000001E4
+_RC5_L                            000001E5
+_RC5_PULKA                        000001E0
+_RC5_end                          0000020A
+_RC5_error                        00000204
+_RC5_prijato                      000001E9
+_SHARP_end                        00000125
+_SHARP_error                      00000120
+_SHARP_inverzetest                000000C1
+_SHARP_nefiltrovat                000000D7
+_SHARP_noInvert                   000000CA
+_SHARP_notest                     000000C6
+_SHARP_prijato                    00000105
+_SHARP_start2                     000000DA
+_SHARP_startVCR                   000000FA
+_SIRC_0                           00000226
+_SIRC_1                           00000225
+_SIRC_end                         00000256
+_SIRC_error                       00000250
+_SIRC_prijato                     0000022A
+_WDT_OFF                          00003FF7
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FF9
+__12F629                          00000001
+_cekS                             0000036F
+_delay                            00000025
+_delay1                           00000026
+_int_IR                           00000010
+_int_RS                           00000009
+_int_end                          00000047
+_int_ir_MITSUBISHI                000002C5
+_int_ir_NEC                       000002D3
+_int_ir_PANASONIC                 000002B5
+_int_ir_RC5                       000002A0
+_int_ir_SHARP                     00000296
+_int_ir_SIRC                      000002AC
+_int_ir_cekej                     0000001E
+_int_ir_error                     000002DC
+_int_konec_cekani                 00000043
+_int_next                         00000039
+_int_prijimam                     0000002A
+_int_timer1_overflow              0000003B
+_interupt                         00000004
+_xi0                              000002F9
+_xi1                              000002FC
+cekamI                            0000030A
+cekamR                            00000311
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 29
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+cekamR1                           00000319
+cekamR3                           0000031E
+cekani                            00000004
+cekej                             00000363
+cekejS                            0000036D
+citac_jede                        00000024
+cykl                              00000367
+cykl1                             00000365
+init                              000002E5
+inverze                           00000002
+ir_in                             00000003
+kod                               00000033
+kodIndex                          00000032
+kod_1                             00000034
+kod_2                             00000035
+kod_3                             00000036
+kod_4                             00000037
+kod_5                             00000038
+kod_pom                           00000039
+neni_IR                           00000038
+neni_IR1                          00000039
+next1                             00000328
+opak_povoleno                     00000005
+pomIndex                          0000003A
+prijato                           00000003
+prijato_mask                      00000008
+prijmi_MITSUBISHI                 00000175
+prijmi_NEC                        0000004B
+prijmi_PANASONIC                  00000126
+prijmi_RC5                        000001C2
+prijmi_SHARP                      000000A7
+prijmi_SIRC                       0000020B
+prisloIR                          00000320
+pulbit                            00000001
+rbuf                              00000023
+receive_RS                        00000344
+receivers0                        00000346
+receivers1                        0000034E
+receivers2                        00000350
+receivers3                        0000035A
+receivers4                        0000035D
+receiversE                        00000362
+s_in                              00000000
+s_out                             00000002
+sbuf                              00000022
+send_RS                           00000329
+sendrs0                           0000032C
+sendrs1                           00000330
+sendrs2                           00000338
+start                             00000306
+start2                            00000000
+start_kal                         00000007
+tCountH                           00000030
+MPASM 03.60 Released                                IRAMP.ASM   2-24-2004  20:48:24         PAGE 30
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+tCountL                           00000031
+testIndex                         0000003B
+testSample                        0000003C
+tmp                               00000020
+vyhodnot_citac                    00000257
+waitTime                          00000048
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X---XXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0180 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+01C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0200 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0240 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0280 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+02C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0300 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0340 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XX--------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   879
+Program Memory Words Free:   145
+
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     6 reported,     0 suppressed
+
+
