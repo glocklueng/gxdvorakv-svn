@@ -9,35 +9,20 @@ File_6=SourceModule,'c:\program files\borland\cbuilder6\include\vcl\sysvari.h',0
 File_7=SourceModule,'C:\Program Files\Borland\CBuilder6\Projects\Faktura2\polozkyUnit.dfm',0,1,1,1,1,0,0
 
 [Modules]
-Module0=C:\Projects\..priv_proj\C++Builder\Faktura 2\fakturaTisk.cpp
-Module1=C:\Projects\..priv_proj\C++Builder\Faktura 2\mainUnit.cpp
-Module2=C:\Projects\..priv_proj\C++Builder\Faktura 2\polozkyUnit.cpp
-Module3=C:\Projects\..priv_proj\C++Builder\Faktura 2\VyhledavaniUnit.cpp
-Module4=C:\Projects\..priv_proj\C++Builder\Faktura 2\data.cpp
-Module5=C:\Projects\..priv_proj\C++Builder\Faktura 2\poznamkaUnit.cpp
-Module6=C:\Projects\..priv_proj\C++Builder\Faktura 2\Faktura2.bpr
-Module7=C:\Projects\..priv_proj\C++Builder\Faktura 2\tiskDialogUnit.cpp
+Module0=C:\Projects\..priv_proj\C++Builder\Faktura 2\polozkyUnit.cpp
+Module1=C:\Projects\..priv_proj\C++Builder\Faktura 2\data.cpp
+Module2=C:\Projects\..priv_proj\C++Builder\Faktura 2\mainUnit.cpp
+Module3=C:\Projects\..priv_proj\C++Builder\Faktura 2\poznamkaUnit.cpp
+Module4=C:\Projects\..priv_proj\C++Builder\Faktura 2\fakturaTisk.cpp
+Module5=C:\Projects\..priv_proj\C++Builder\Faktura 2\Faktura2.bpr
+Module6=C:\Projects\..priv_proj\C++Builder\Faktura 2\tiskDialogUnit.cpp
+Module7=C:\Projects\..priv_proj\C++Builder\Faktura 2\VyhledavaniUnit.cpp
 Count=8
 EditWindowCount=1
 
-[C:\Projects\..priv_proj\C++Builder\Faktura 2\fakturaTisk.cpp]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\Projects\..priv_proj\C++Builder\Faktura 2\mainUnit.cpp]
-ModuleType=SourceModule
-FormState=1
-FormOnTop=1
-
 [C:\Projects\..priv_proj\C++Builder\Faktura 2\polozkyUnit.cpp]
 ModuleType=SourceModule
-FormState=0
-FormOnTop=1
-
-[C:\Projects\..priv_proj\C++Builder\Faktura 2\VyhledavaniUnit.cpp]
-ModuleType=SourceModule
-FormState=0
+FormState=1
 FormOnTop=0
 
 [C:\Projects\..priv_proj\C++Builder\Faktura 2\data.cpp]
@@ -45,10 +30,20 @@ ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
+[C:\Projects\..priv_proj\C++Builder\Faktura 2\mainUnit.cpp]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=1
+
 [C:\Projects\..priv_proj\C++Builder\Faktura 2\poznamkaUnit.cpp]
 ModuleType=SourceModule
-FormState=1
+FormState=0
 FormOnTop=1
+
+[C:\Projects\..priv_proj\C++Builder\Faktura 2\fakturaTisk.cpp]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
 
 [C:\Projects\..priv_proj\C++Builder\Faktura 2\Faktura2.bpr]
 ModuleType=SourceModule
@@ -60,13 +55,18 @@ ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
+[C:\Projects\..priv_proj\C++Builder\Faktura 2\VyhledavaniUnit.cpp]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
 [C:\Program Files\Borland\CBuilder6\Projects\ProjectGroup1.bpg]
 FormState=0
 FormOnTop=0
 
 [EditWindow0]
 ViewCount=8
-CurrentView=6
+CurrentView=2
 View0=0
 View1=1
 View2=2
@@ -81,21 +81,21 @@ ClassHierarchy=ClassHierarchy@EditWindow0
 Create=1
 Visible=1
 State=0
-Left=373
-Top=466
+Left=317
+Top=131
 Width=870
 Height=642
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=862
 ClientHeight=608
-LeftPanelSize=0
+LeftPanelSize=170
 LeftPanelClients=CodeExplorer@EditWindow0
-LeftPanelData=00000400010000000C000000436F64654578706C6F726572000000000000000000000000000000000001000000000000000000000000FFFFFFFF
+LeftPanelData=000004000000000000000000000000000000000000000000000100000000000000000C000000436F64654578706C6F726572FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=85
+BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400000000005E030000000000000255000000000000000100000000000000000000000001000000005E0300000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D65737361676556696577000000000000000000000000000000000001000000000000000000000000FFFFFFFF
 
 [View0]
 Module=C:\Projects\..priv_proj\C++Builder\Faktura 2\mainUnit.cpp
@@ -248,16 +248,16 @@ Dockable=0
 Create=1
 Visible=0
 State=0
-Left=199
-Top=153
-Width=413
-Height=212
+Left=321
+Top=161
+Width=303
+Height=399
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=405
-ClientHeight=186
+ClientWidth=295
+ClientHeight=373
 TBDockHeight=191
-LRDockWidth=405
+LRDockWidth=295
 Dockable=1
 
 [ToDo List]
@@ -303,31 +303,31 @@ FlagPane=59
 Create=1
 Visible=0
 State=0
-Left=199
-Top=153
-Width=413
-Height=218
+Left=321
+Top=769
+Width=1042
+Height=175
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=405
-ClientHeight=192
-TBDockHeight=192
-LRDockWidth=405
+ClientWidth=1034
+ClientHeight=149
+TBDockHeight=149
+LRDockWidth=286
 Dockable=1
 
 [CallStackWindow]
 Create=1
 Visible=0
 State=0
-Left=191
-Top=136
+Left=321
+Top=161
 Width=303
-Height=782
+Height=297
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=295
-ClientHeight=756
-TBDockHeight=756
+ClientHeight=271
+TBDockHeight=562
 LRDockWidth=295
 Dockable=1
 
@@ -348,20 +348,20 @@ ClientHeight=60
 Create=1
 Visible=1
 State=0
-Left=6
-Top=127
-Width=217
-Height=639
+Left=0
+Top=466
+Width=190
+Height=527
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=209
-ClientHeight=613
+ClientWidth=182
+ClientHeight=501
 TBDockHeight=527
 LRDockWidth=190
 Dockable=1
 SplitPos=85
 ArrangeBy=Name
-SelectedItem=Caption
+SelectedItem=Name
 ExpandedItems=
 HiddenCategories=
 
@@ -387,7 +387,7 @@ Column3Width=250
 
 [ObjectTree]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=0
 Top=112
@@ -438,7 +438,7 @@ Col2Width=120
 
 [CodeExplorer@EditWindow0]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=0
 Top=12
@@ -455,7 +455,7 @@ ClassViewDisplayMode=0
 
 [MessageView@EditWindow0]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=12
 Top=0
