@@ -53,7 +53,7 @@ object PolozkyForm: TPolozkyForm
         FieldName = 'CisloPolozky'
         ReadOnly = True
         Title.Caption = 'C'#237'slo'
-        Width = 41
+        Width = 38
         Visible = True
       end
       item
@@ -62,14 +62,14 @@ object PolozkyForm: TPolozkyForm
         PickList.Strings = (
           '21')
         Title.Caption = 'Sazba DPH'
-        Width = 61
+        Width = 60
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'Nazev'
         Title.Caption = 'N'#225'zev'
-        Width = 306
+        Width = 304
         Visible = True
       end
       item
@@ -103,7 +103,7 @@ object PolozkyForm: TPolozkyForm
         Expanded = False
         FieldName = 'DPHCelkem'
         Title.Caption = 'DPH Celkem'
-        Width = 68
+        Width = 70
         Visible = True
       end>
   end
@@ -155,7 +155,7 @@ object PolozkyForm: TPolozkyForm
           Expanded = False
           FieldName = 'OdbratelName'
           Title.Caption = 'Odberatel'
-          Width = 312
+          Width = 308
           Visible = True
         end
         item
