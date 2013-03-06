@@ -51,7 +51,7 @@ void __fastcall TDatabaze::TablePolNewRecord(TDataSet *DataSet)
 
 void __fastcall TDatabaze::TablePolTypJednotkyChange(TField *Sender)
 {
-    String typ;
+       String typ;
 
     typ=(TablePol->FieldByName("TypJednotky")->AsString).c_str();
     const char *a = typ.c_str();
@@ -123,5 +123,14 @@ void __fastcall TDatabaze::TableFaktAfterScroll(TDataSet *DataSet)
 
   }
 //---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 

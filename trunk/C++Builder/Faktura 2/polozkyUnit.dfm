@@ -1,8 +1,8 @@
 object PolozkyForm: TPolozkyForm
-  Left = 232
-  Top = 41
-  Width = 706
-  Height = 636
+  Left = 394
+  Top = 158
+  Width = 747
+  Height = 518
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
   Caption = 'Polo'#382'ky faktury'
@@ -19,17 +19,14 @@ object PolozkyForm: TPolozkyForm
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
-  DesignSize = (
-    698
-    602)
   PixelsPerInch = 96
   TextHeight = 13
   object DBGridPolozky: TDBGrid
     Left = 0
-    Top = 204
-    Width = 697
-    Height = 397
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Top = 286
+    Width = 739
+    Height = 198
+    Align = alClient
     DataSource = Databaze.DataSourcePol
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
@@ -49,15 +46,14 @@ object PolozkyForm: TPolozkyForm
         FieldName = 'CisloFaktury'
         ReadOnly = True
         Title.Caption = 'C'#237's.Fakt.'
-        Width = 48
-        Visible = True
+        Visible = False
       end
       item
         Expanded = False
         FieldName = 'CisloPolozky'
         ReadOnly = True
         Title.Caption = 'C'#237'slo'
-        Width = 29
+        Width = 41
         Visible = True
       end
       item
@@ -73,7 +69,7 @@ object PolozkyForm: TPolozkyForm
         Expanded = False
         FieldName = 'Nazev'
         Title.Caption = 'N'#225'zev'
-        Width = 234
+        Width = 306
         Visible = True
       end
       item
@@ -88,7 +84,7 @@ object PolozkyForm: TPolozkyForm
         FieldName = 'TypJednotky'
         PopupMenu = PopupMenu1
         Title.Caption = 'Typ'
-        Width = 23
+        Width = 31
         Visible = True
       end
       item
@@ -114,16 +110,16 @@ object PolozkyForm: TPolozkyForm
   object GroupBoxFaktury: TGroupBox
     Left = 0
     Top = 76
-    Width = 698
-    Height = 128
-    Anchors = [akLeft, akTop, akRight]
+    Width = 739
+    Height = 130
+    Align = alTop
     Caption = 'Faktury'
     TabOrder = 2
     object DBGridFaktury: TDBGrid
       Left = 2
       Top = 15
-      Width = 694
-      Height = 111
+      Width = 735
+      Height = 113
       Align = alClient
       DataSource = Databaze.DataSourceFakt
       TabOrder = 0
@@ -159,7 +155,7 @@ object PolozkyForm: TPolozkyForm
           Expanded = False
           FieldName = 'OdbratelName'
           Title.Caption = 'Odberatel'
-          Width = 270
+          Width = 312
           Visible = True
         end
         item
@@ -191,7 +187,7 @@ object PolozkyForm: TPolozkyForm
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 698
+    Width = 739
     Height = 76
     Align = alTop
     TabOrder = 1
@@ -211,7 +207,7 @@ object PolozkyForm: TPolozkyForm
     object Label1: TLabel
       Left = 5
       Top = 16
-      Width = 94
+      Width = 101
       Height = 20
       Caption = 'C'#237'slo faktury :'
       Font.Charset = DEFAULT_CHARSET
@@ -224,7 +220,7 @@ object PolozkyForm: TPolozkyForm
     object Label2: TLabel
       Left = 32
       Top = 40
-      Width = 72
+      Width = 74
       Height = 13
       Caption = 'Pocet polo'#382'ek :'
     end
@@ -250,7 +246,7 @@ object PolozkyForm: TPolozkyForm
       Caption = 'cenaCelkem'
     end
     object KonecBtn: TButton
-      Left = 610
+      Left = 640
       Top = 11
       Width = 81
       Height = 60
@@ -268,13 +264,37 @@ object PolozkyForm: TPolozkyForm
       TabOrder = 1
     end
     object EditBtn: TButton
-      Left = 525
+      Left = 535
       Top = 11
       Width = 75
       Height = 60
-      Caption = 'Edit'
+      Caption = 'Edit. Polo'#382'ek'
       TabOrder = 2
       OnClick = EditBtnClick
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 0
+    Top = 206
+    Width = 739
+    Height = 80
+    Align = alTop
+    Caption = 'Dol'#328'uj'#237' Informace na faktu'#345'e -  (4 '#345#225'dky)'
+    TabOrder = 3
+    object DBMemoInfo: TDBMemo
+      Left = 2
+      Top = 15
+      Width = 735
+      Height = 63
+      Align = alClient
+      DataField = 'Informace'
+      DataSource = Databaze.DataSourceFakt
+      MaxLength = 400
+      ReadOnly = True
+      ScrollBars = ssVertical
+      TabOrder = 0
+      OnDblClick = DBMemoInfoDblClick
+      OnExit = DBMemoInfoExit
     end
   end
   object PopupMenu1: TPopupMenu

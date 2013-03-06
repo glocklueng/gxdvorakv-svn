@@ -1,11 +1,13 @@
 object MainForm: TMainForm
-  Left = 297
-  Top = 139
+  Left = 376
+  Top = 285
   Width = 738
-  Height = 488
+  Height = 485
   Anchors = []
-  Caption = 'Faktura 2013 (rev.2.0.4)'
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Faktura 2013 (rev.2.1)'
   Color = clBtnFace
+  Constraints.MaxWidth = 738
   Constraints.MinHeight = 400
   Constraints.MinWidth = 730
   Font.Charset = DEFAULT_CHARSET
@@ -15,12 +17,10 @@ object MainForm: TMainForm
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
+  Position = poDesktopCenter
   Visible = True
   OnActivate = FormActivate
   OnCreate = FormCreate
-  DesignSize = (
-    730
-    434)
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBoxOdberatelHledani: TGroupBox
@@ -65,7 +65,7 @@ object MainForm: TMainForm
     object Label1: TLabel
       Left = 8
       Top = 24
-      Width = 91
+      Width = 97
       Height = 20
       Caption = 'C'#237'slo Faktury'
       Font.Charset = DEFAULT_CHARSET
@@ -78,7 +78,7 @@ object MainForm: TMainForm
     object Label2: TLabel
       Left = 78
       Top = 92
-      Width = 81
+      Width = 80
       Height = 13
       Caption = 'Datum vystaven'#237
     end
@@ -92,14 +92,14 @@ object MainForm: TMainForm
     object Label4: TLabel
       Left = 9
       Top = 140
-      Width = 150
+      Width = 149
       Height = 13
       Caption = 'Datum usk. zdaniteln'#233'ho plnen'#237
     end
     object Label11: TLabel
       Left = 8
       Top = 68
-      Width = 82
+      Width = 81
       Height = 13
       Caption = 'C'#237'slo objedn'#225'vky'
     end
@@ -178,6 +178,15 @@ object MainForm: TMainForm
       Width = 161
       Height = 21
       TabOrder = 5
+    end
+    object CheckBoxCash: TCheckBox
+      Left = 8
+      Top = 116
+      Width = 65
+      Height = 17
+      Caption = 'Hotov'#283
+      TabOrder = 6
+      OnClick = CheckBoxCashClick
     end
   end
   object GroupBoxOdb: TGroupBox
@@ -389,10 +398,11 @@ object MainForm: TMainForm
   end
   object DBGridOdb: TDBGrid
     Left = 0
-    Top = 232
+    Top = 230
     Width = 730
-    Height = 202
-    Anchors = [akLeft]
+    Height = 201
+    Align = alBottom
+    Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = Databaze.DataSourceOdb
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     ReadOnly = True
@@ -407,7 +417,7 @@ object MainForm: TMainForm
       item
         Expanded = False
         FieldName = 'Id'
-        Width = 29
+        Width = 24
         Visible = True
       end
       item
@@ -424,14 +434,14 @@ object MainForm: TMainForm
       item
         Expanded = False
         FieldName = 'Adresa'
-        Width = 177
+        Width = 179
         Visible = True
       end
       item
         Alignment = taRightJustify
         Expanded = False
         FieldName = 'ICO'
-        Width = 59
+        Width = 61
         Visible = True
       end
       item
@@ -445,7 +455,7 @@ object MainForm: TMainForm
         Alignment = taRightJustify
         Expanded = False
         FieldName = 'Telefon'
-        Width = 100
+        Width = 97
         Visible = True
       end
       item

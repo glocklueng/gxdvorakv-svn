@@ -1,6 +1,6 @@
 object VyhledavaniForm: TVyhledavaniForm
-  Left = 232
-  Top = 265
+  Left = 408
+  Top = 102
   Width = 721
   Height = 450
   Caption = 'Vyhled'#225'v'#225'n'#237

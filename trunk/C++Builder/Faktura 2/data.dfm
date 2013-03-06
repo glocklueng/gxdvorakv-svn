@@ -1,7 +1,7 @@
 object Databaze: TDatabaze
   OldCreateOrder = False
-  Left = 144
-  Top = 788
+  Left = 30
+  Top = 583
   Height = 187
   Width = 453
   object TableDod: TTable
@@ -66,7 +66,7 @@ object Databaze: TDatabaze
       item
         Name = 'Adresa'
         DataType = ftString
-        Size = 30
+        Size = 60
       end
       item
         Name = 'ICO'
@@ -76,7 +76,7 @@ object Databaze: TDatabaze
       item
         Name = 'DIC'
         DataType = ftString
-        Size = 11
+        Size = 15
       end
       item
         Name = 'Telefon'
@@ -125,7 +125,7 @@ object Databaze: TDatabaze
     end
     object TableOdbDIC: TStringField
       FieldName = 'DIC'
-      Size = 11
+      Size = 15
     end
     object TableOdbTelefon: TStringField
       FieldName = 'Telefon'
@@ -165,12 +165,22 @@ object Databaze: TDatabaze
       item
         Name = 'Zdaneni'
         DataType = ftDate
+      end
+      item
+        Name = 'Informace'
+        DataType = ftMemo
+        Size = 240
       end>
     IndexDefs = <
       item
         Name = 'TableFaktIndex1'
         Fields = 'Cislo'
         Options = [ixPrimary, ixUnique]
+      end
+      item
+        Name = 'ByOdberatel'
+        Fields = 'IdOdberatele'
+        Options = [ixCaseInsensitive]
       end>
     StoreDefs = True
     TableName = 'faktury.DB'
@@ -205,6 +215,12 @@ object Databaze: TDatabaze
       LookupResultField = 'Firma'
       KeyFields = 'IdOdberatele'
       Lookup = True
+    end
+    object TableFaktInformace: TMemoField
+      DisplayWidth = 240
+      FieldName = 'Informace'
+      BlobType = ftMemo
+      Size = 240
     end
   end
   object TablePol: TTable

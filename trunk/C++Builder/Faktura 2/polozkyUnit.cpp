@@ -40,16 +40,17 @@ void __fastcall TPolozkyForm::FormShow(TObject *Sender)
    Databaze->TablePol->MasterSource = NULL;
    Databaze->TablePol->Last();
    lastIdPolozky = Databaze->TablePol->FieldByName("IdPolozky")->AsInteger;
+
    Databaze->TablePol->MasterSource = Databaze->DataSourceFakt;
    Databaze->TablePol->IndexName ="FakturaCislo" ;
    Databaze->TableFakt->Active=true;
    Databaze->TableFakt->Locate("Cislo", LocalCisloFaktury,Opts);
    CisloFakturyLabel->Caption=Databaze->TableFakt->FieldByName("Cislo")->Value;
-
+ //  DBMemoInfo->Enabled = true;
    cisloPolozky=1;
   // Databaze->TablePol->Edit();
 
-  // DBGridPolozky->Fields[0]->AsInteger=++lastIdPolozky;
+  // DBGridPolozky->Fields[0]->AsInteger=++lastIdPolozky;     */
 }
 //---------------------------------------------------------------------------
 
@@ -150,6 +151,7 @@ void __fastcall TPolozkyForm::EditBtnClick(TObject *Sender)
 
    DBGridPolozky->Enabled=true;
    DBGridFaktury->Enabled=false;
+   DBMemoInfo->Enabled = false;
    DBGridFaktury->Repaint();
    PolozkyForm->DBNavigator1->DataSource=Databaze->DataSourcePol;
    PolozkyForm->DBGridPolozky->Columns->Items[3]->ReadOnly =false;
@@ -165,6 +167,19 @@ void __fastcall TPolozkyForm::EditBtnClick(TObject *Sender)
    PolozkyForm->lastIdPolozky = Databaze->TablePol->FieldByName("IdPolozky")->AsInteger;
    Databaze->TablePol->MasterSource = Databaze->DataSourceFakt;*/
 
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TPolozkyForm::DBMemoInfoDblClick(TObject *Sender)
+{
+   DBMemoInfo->ReadOnly = false;   
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TPolozkyForm::DBMemoInfoExit(TObject *Sender)
+{
+   DBMemoInfo->ReadOnly = true;   
 }
 //---------------------------------------------------------------------------
 

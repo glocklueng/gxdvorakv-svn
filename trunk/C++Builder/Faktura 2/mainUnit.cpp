@@ -231,7 +231,7 @@ void __fastcall TMainForm::PokracovatBtnClick(TObject *Sender)
    } else {
    idOdb=Databaze->TableOdb->FieldByName("Id")->Value;
    }
-
+   
    // id faktury, cislo faktury,id odberatele,datum splatnosti, vystaveni, zdaneni
    Databaze->TableFakt->Active=true;
    Databaze->TableFakt->Edit();
@@ -239,28 +239,31 @@ void __fastcall TMainForm::PokracovatBtnClick(TObject *Sender)
                 CisloFakturyEdit->Text,
                 idOdb,
                 CisloObjednavkyEdit->Text,
-                DateToStr(DateSplatnosti->Date),
+                (CheckBoxCash->Checked)?(AnsiString)"":DateToStr(DateSplatnosti->Date),
                 DateToStr( DateVystaveni->Date),
                 DateToStr( DateZdaneni->Date)
                 )));
 
    Databaze->TableFakt->Edit();
    Databaze->TableFakt->Post();
-   PolozkyForm->EditBtn->Visible=false;
+ //  PolozkyForm->EditBtn->Visible=false;
    PolozkyForm->Position=poScreenCenter;
    PolozkyForm->Visible=true;
    Databaze->TableFakt->Last();
 
+
    PolozkyForm->CisloFaktury=StrToInt(CisloFakturyEdit->Text);
    PolozkyForm->GroupBoxFaktury->Visible=false;
    PolozkyForm->DBGridPolozky->Align=alClient;
-   PolozkyForm->DBGridPolozky->Enabled=true;
+   //PolozkyForm->DBGridPolozky->Enabled=true;
+   PolozkyForm->DBGridPolozky->Enabled=false;
    //PolozkyForm->DBGridPolozky->Columns->Items[3]->ReadOnly =true;
-
+   PolozkyForm->DBNavigator1->DataSource=NULL;//Databaze->DataSourceFakt;
    PolozkyForm->cisloPolozky = 0;
-
+   PolozkyForm->DBMemoInfo->ReadOnly = false;
+ /*
    Databaze->TablePol->Active=true;
-   Databaze->TablePol->Edit();
+   Databaze->TablePol->Edit();     */
 
 
    MainForm->Visible=false;
@@ -299,13 +302,16 @@ void __fastcall TMainForm::menuEditaceUlozenychClick(TObject *Sender)
    PolozkyForm->GroupBoxFaktury->Visible=true;
 //   PolozkyForm->DBGridPolozky->Align=alBottom;
   // PolozkyForm->Invalidate();
-   PolozkyForm->DBGridPolozky->Align=alNone;
-   PolozkyForm->DBGridPolozky->Top=205;
-   PolozkyForm->DBGridPolozky->Height= ((PolozkyForm->Height)-235);
+
+
+//VD   PolozkyForm->DBGridPolozky->Align=alNone;
+//VD  PolozkyForm->DBGridPolozky->Top=205;
+//VD   PolozkyForm->DBGridPolozky->Height= ((PolozkyForm->Height)-235);
    PolozkyForm->DBGridPolozky->Anchors << akTop << akBottom << akLeft << akRight;
 
    PolozkyForm->DBGridPolozky->Enabled=false;
    PolozkyForm->DBGridFaktury->Enabled=true;
+   PolozkyForm->DBMemoInfo->Enabled = true;
    PolozkyForm->Position=poScreenCenter;
    PolozkyForm->Visible=true;
    PolozkyForm->DBGridFaktury->SetFocus();
@@ -313,7 +319,7 @@ void __fastcall TMainForm::menuEditaceUlozenychClick(TObject *Sender)
    PolozkyForm->EditBtn->Visible=true;
    MainForm->Visible=false;
 
- 
+
 }
 //---------------------------------------------------------------------------
 
@@ -344,7 +350,7 @@ void __fastcall TMainForm::menuNastTiskClick(TObject *Sender)
 
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
-      MainForm->Position=poDesktopCenter;
+      MainForm->Position=poScreenCenter;
 }
 //---------------------------------------------------------------------------
 
@@ -455,5 +461,13 @@ void __fastcall TMainForm::DateVystaveniChange(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
+void __fastcall TMainForm::CheckBoxCashClick(TObject *Sender)
+{
+   if (CheckBoxCash->Checked){
+        DateSplatnosti->Enabled = false;
+   }else{
+        DateSplatnosti->Enabled = true;
+   }
+}
+//---------------------------------------------------------------------------
 
