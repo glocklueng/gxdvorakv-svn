@@ -18,7 +18,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
         try
         {
                  Application->Initialize();
-                 Application->Title = "Faktura2.0";
+                 Application->Title = "Faktura2.1";
        Application->CreateForm(__classid(TMainForm), &MainForm);
        Application->CreateForm(__classid(TPolozkyForm), &PolozkyForm);
        Application->CreateForm(__classid(TDatabaze), &Databaze);

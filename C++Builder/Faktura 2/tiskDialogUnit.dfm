@@ -1,6 +1,6 @@
 object TiskDialogForm: TTiskDialogForm
-  Left = 632
-  Top = 356
+  Left = 422
+  Top = 138
   BorderStyle = bsDialog
   Caption = 'Tisk'
   ClientHeight = 151
@@ -18,7 +18,7 @@ object TiskDialogForm: TTiskDialogForm
   object Label1: TLabel
     Left = 20
     Top = 10
-    Width = 146
+    Width = 154
     Height = 20
     Caption = 'C'#237'slo tisknut'#233' faktury'
     Font.Charset = DEFAULT_CHARSET

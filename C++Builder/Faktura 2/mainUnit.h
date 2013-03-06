@@ -76,6 +76,7 @@ __published:	// IDE-managed Components
    TButton *KonecBtn;
    TLabel *Label11;
    TEdit *CisloObjednavkyEdit;
+   TCheckBox *CheckBoxCash;
         void __fastcall menuKonecClick(TObject *Sender);
         void __fastcall FormActivate(TObject *Sender);
         void __fastcall menuNovaClick(TObject *Sender);
@@ -97,6 +98,7 @@ __published:	// IDE-managed Components
    void __fastcall KonecBtnClick(TObject *Sender);
    void __fastcall menuVyhleOdbClick(TObject *Sender);
    void __fastcall DateVystaveniChange(TObject *Sender);
+   void __fastcall CheckBoxCashClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

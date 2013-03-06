@@ -34,6 +34,8 @@ __published:	// IDE-managed Components
         TGroupBox *GroupBoxFaktury;
         TDBGrid *DBGridFaktury;
         TButton *EditBtn;
+   TGroupBox *GroupBox2;
+   TDBMemo *DBMemoInfo;
         void __fastcall FormShow(TObject *Sender);
         void __fastcall kg1Click(TObject *Sender);
         void __fastcall mClick(TObject *Sender);
@@ -43,6 +45,8 @@ __published:	// IDE-managed Components
         void __fastcall FormResize(TObject *Sender);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall EditBtnClick(TObject *Sender);
+   void __fastcall DBMemoInfoDblClick(TObject *Sender);
+   void __fastcall DBMemoInfoExit(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         int CisloFaktury;

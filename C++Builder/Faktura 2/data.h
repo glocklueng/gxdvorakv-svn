@@ -56,6 +56,7 @@ __published:	// IDE-managed Components
    TStringField *TableDodPoznamka;
    TStringField *TableFaktOdbratelName;
    TStringField *TableFaktCisloObjednavky;
+   TMemoField *TableFaktInformace;
         void __fastcall TablePolCalcFields(TDataSet *DataSet);
         void __fastcall TablePolNewRecord(TDataSet *DataSet);
         void __fastcall TablePolTypJednotkyChange(TField *Sender);

@@ -8,10 +8,10 @@
 #define offsetY_x  26
 #define distance  4.1
 
-#define pol_1_min  35
+#define pol_1_min  33
 #define pol_1_max  45
 
-#define pol_x_min  50
+#define pol_x_min  47
 #define pol_x_max  60
 
 //namespace prn= Prntr->Canvas;
@@ -37,7 +37,12 @@ void __fastcall tisk(long aCisloFaktury)
    Databaze->TableFakt->Locate("Cislo", aCisloFaktury,Opts);
 
    int faktura_cislo=aCisloFaktury;
-   String faktura_dat_splt=Databaze->TableFakt->FieldByName("Splatnost")->AsString;
+   String faktura_dat_splt;
+   if (Databaze->TableFakt->FieldByName("Splatnost")->AsDateTime == (TDate) 0){
+      faktura_dat_splt = "v hotovosti";
+   }else{
+      faktura_dat_splt = Databaze->TableFakt->FieldByName("Splatnost")->AsString;
+   }
    String faktura_dat_vyst=Databaze->TableFakt->FieldByName("Vystaveni")->AsString;
    String faktura_dat_zdan=Databaze->TableFakt->FieldByName("Zdaneni")->AsString;
    String objednavkaCislo = Databaze->TableFakt->FieldByName("CisloObjednavky")->AsString;
@@ -65,14 +70,12 @@ void __fastcall tisk(long aCisloFaktury)
 
    TPrinter* Prntr = Printer();
    TCanvas* canvas = Prntr->Canvas;
-
+   int textWidth;
   // Prntr->Abort();
    Prntr->BeginDoc();
 
    double zoomx = GetDeviceCaps(canvas->Handle,LOGPIXELSX)/25.4;
    double zoomy =GetDeviceCaps(canvas->Handle,LOGPIXELSY)/25.4;
-
-
 
    canvas->Pen->Width=3;
    // dodavatel
@@ -94,30 +97,35 @@ void __fastcall tisk(long aCisloFaktury)
    canvas->Font->Name=("Arial");
    canvas->TextOut(10*zoomx,7*zoomy,"FAKTURA - DAÒOVÝ DOKLAD");
    canvas->TextOut(180*zoomx,7*zoomy,IntToStr(faktura_cislo));
-   canvas->TextOut(39*zoomx,20*zoomy,dodavatel);
+   textWidth = canvas->TextWidth(dodavatel);
+   canvas->TextOut(57*zoomx-(textWidth/2),20*zoomy,dodavatel);
 
    canvas->Font->Style =TFontStyles();
-   canvas->TextOut(125*zoomx,19*zoomy,odberatel);
+   textWidth = canvas->TextWidth(odberatel);
+   canvas->TextOut(153*zoomx-(textWidth/2),19*zoomy,odberatel);
 
    canvas->Font->Size=10;
    canvas->Font->Style =TFontStyles();
    canvas->TextOut(96*zoomx,8*zoomy,"Obj. èíslo: "+objednavkaCislo);
    canvas->TextOut(157*zoomx,8*zoomy,"Faktura èíslo:");
-   canvas->TextOut(25*zoomx,29*zoomy,dodavatel_adresa);
+   textWidth = canvas->TextWidth(dodavatel_adresa);
+   canvas->TextOut(57*zoomx-(textWidth/2),29*zoomy,dodavatel_adresa);
    canvas->TextOut(25*zoomx,38*zoomy,dodavatel_telefon);
    canvas->TextOut(25*zoomx,43*zoomy,dodavatel_mobil);
    canvas->TextOut(25*zoomx,48*zoomy,dodavatel_ICO);
    canvas->TextOut(65*zoomx,48*zoomy,dodavatel_DIC);
    canvas->TextOut(32*zoomx,57*zoomy,dodavatel_ucet);
 
-   canvas->TextOut(125*zoomx,26*zoomy,odberatel_2);
-   canvas->TextOut(125*zoomx,32*zoomy,odberatel_adresa);
+   textWidth = canvas->TextWidth(odberatel_2);
+   canvas->TextOut(153*zoomx-(textWidth/2),26*zoomy,odberatel_2);
+   textWidth = canvas->TextWidth(odberatel_adresa);
+   canvas->TextOut(153*zoomx-(textWidth/2),32*zoomy,odberatel_adresa);
    canvas->TextOut(118*zoomx,39*zoomy,odberatel_ICO);
    canvas->TextOut(156*zoomx,39*zoomy,odberatel_DIC);
 
-   canvas->TextOut(175*zoomx,48*zoomy,faktura_dat_splt);
-   canvas->TextOut(175*zoomx,53*zoomy,faktura_dat_vyst);
-   canvas->TextOut(175*zoomx,58*zoomy,faktura_dat_zdan);
+   canvas->TextOut(175*zoomx,47*zoomy,faktura_dat_splt);
+   canvas->TextOut(175*zoomx,52*zoomy,faktura_dat_vyst);
+   canvas->TextOut(175*zoomx,57*zoomy,faktura_dat_zdan);
 
    canvas->Font->Style =TFontStyles();
    canvas->Font->Size=9;
@@ -165,21 +173,24 @@ void __fastcall tisk(long aCisloFaktury)
    double sumaCeny = 0;
    double sumaDPH = 0;
 
+   bool souhrn_at_next = false;
    bool eot;
    do {
       zbytekPol = pocetPolozek-i;
       if (pageNumber==1){
          switch (i){
             case pol_1_min:
-               if (zbytekPol <= 10){
+               if (zbytekPol <= (pol_1_max- pol_1_min)){
                   // rovnou skocit na dalsi stranu
-                  i=0;
+                 /* i=0;
                   pageNumber++;
                   printFooter(canvas,zoomx,zoomy);
                   Prntr->NewPage();
-                  makeNewPage(canvas,zoomx,zoomy,pageNumber,faktura_cislo);
+                  makeNewPage(canvas,zoomx,zoomy,pageNumber,faktura_cislo);  */
+                  //razitko na nove strance
+                  souhrn_at_next = true;
                }else {
-                  // pokracovat az na 45 a pak dalsi strana
+                  // pokracovat az na pol_1_max a pak dalsi strana
                }
                break;
             case pol_1_max:
@@ -193,13 +204,15 @@ void __fastcall tisk(long aCisloFaktury)
       }else {
             switch (i){
             case pol_x_min:
-               if (zbytekPol <= 10){
+               if (zbytekPol <= (pol_x_max- pol_x_min)){
                   // rovnou skocit na dalsi stranu
-                  i=0;
+                /*  i=0;
                   pageNumber++;
                   printFooter(canvas,zoomx,zoomy);
                   Prntr->NewPage();
-                  makeNewPage(canvas,zoomx,zoomy,pageNumber,faktura_cislo);
+                  makeNewPage(canvas,zoomx,zoomy,pageNumber,faktura_cislo);  */
+                  //razitko na nove strance
+                  souhrn_at_next = true;
                }else {
                 // pokracovat az na 60 a pak dalsi strana
                }
@@ -254,12 +267,41 @@ void __fastcall tisk(long aCisloFaktury)
       i++;
    } while (eot);
 
+   if (souhrn_at_next){
+      pageNumber++;
+      printFooter(canvas,zoomx,zoomy);
+      Prntr->NewPage();
+      makeNewPage(canvas,zoomx,zoomy,pageNumber,faktura_cislo);  
+   }
    // razitko
    canvas->Pen->Style=psDot;
    canvas->Pen->Width=1;
    canvas->MoveTo(122*zoomx,268*zoomy);
    canvas->LineTo(185*zoomx,268*zoomy);
+
+   // doplnujici info
+
+   canvas->Font->Style=TFontStyles();
+   canvas->Font->Size=8;
+   String info = Databaze->TableFakt->FieldByName("Informace")->AsString;
+   String tmpInfo;
+   int posInf;
+   tmpInfo = info.SubString(0,(posInf=info.AnsiPos("\n"))-2);
+   info=info.SubString(posInf+1,info.Length()-posInf);
+   canvas->TextOut(12*zoomx,212*zoomy,tmpInfo);
+
+   tmpInfo = info.SubString(0,(posInf=info.AnsiPos("\n"))-2);
+   info=info.SubString(posInf+1,info.Length()-posInf);
+   canvas->TextOut(12*zoomx,215*zoomy,tmpInfo);
+
+   tmpInfo = info.SubString(0,(posInf=info.AnsiPos("\n"))-2);
+   info=info.SubString(posInf+1,info.Length()-posInf);
+   canvas->TextOut(12*zoomx,218*zoomy,tmpInfo);
+
+   canvas->TextOut(12*zoomx,221*zoomy,info);
+
   // souhrn
+
    canvas->Pen->Width=3;
    canvas->Rectangle(100*zoomx,225*zoomy,185*zoomx,249*zoomy);
    canvas->MoveTo(100*zoomx,233*zoomy);
@@ -275,7 +317,7 @@ void __fastcall tisk(long aCisloFaktury)
    canvas->Font->Size=12;
    canvas->Font->Style=TFontStyles();
    canvas->TextOut(104*zoomx,227*zoomy,"Cena celkem bez DPH");
-   canvas->TextOut(104*zoomx,235*zoomy,"DPH 21 %");
+   canvas->TextOut(104*zoomx,235*zoomy,"DPH");
    canvas->TextOut(104*zoomx,243*zoomy,"Celkem k úhradì");
    canvas->Font->Style=TFontStyles();
    // vyplneni souhrnu
@@ -322,7 +364,7 @@ void __fastcall tisk(long aCisloFaktury)
 
 void __fastcall printFooter(TCanvas* canvas,double zoomx, double zoomy )
 {
-   canvas->TextOut(70*zoomx,274*zoomy,"Pokraèování na následující stranì");
+   canvas->TextOut(60*zoomx,274*zoomy,"--- Pokraèování na následující stranì ---");
 }
 
 //------------------------------------------------------------------------------
@@ -341,8 +383,8 @@ void __fastcall makeNewPage(TCanvas* canvas, double zoomx, double zoomy ,int pag
 
    // cara pod hlavickou
    canvas->Pen->Width=3;
-   canvas->MoveTo(10*zoomx,24*zoomy);
-   canvas->LineTo(200*zoomx,24*zoomy);
+   canvas->MoveTo(10*zoomx,25*zoomy);
+   canvas->LineTo(200*zoomx,25*zoomy);
 
 
    //
