@@ -365,8 +365,10 @@ double difAngle;
 			if (posuv_St){
 				tmpOn = nastaveni.posuv_folie.ON_angle;	
 				timer_folie = 0;
-				/* zapnuti podle inkrementu*/
-				if (incrementAngle >= tmpOn && incrementAngle < tmpOn+3 ){
+				/* zapnuti podle inkrementu*/			
+				
+				if (((incrementAngle >= tmpOn) && (incrementAngle < tmpOn+6) && (tmpOn + 6 <360)) ||
+					((tmpOn + 6 >360) && ((incrementAngle >= tmpOn) ||(incrementAngle < tmpOn+6-360))))  {
 					if	(posuvSM == PSM_FINISHED || posuvSM == PSM_READY ){
 						posuvSM = PSM_START;
 						posuvNotFinished = 0;
@@ -379,6 +381,20 @@ double difAngle;
 					/*	posuvSM = PSM_READY;*/
 					}
 				}
+				/*  puvodni verze, do 20.9.2014
+					if (incrementAngle >= tmpOn && incrementAngle < tmpOn+3 ){
+					if	(posuvSM == PSM_FINISHED || posuvSM == PSM_READY ){
+						posuvSM = PSM_START;
+						posuvNotFinished = 0;
+					}else if(posuvSM == PSM_RUN){
+						posuvNotFinished = 1;
+					}
+					
+				}else{
+					if (posuvSM == PSM_FINISHED){	
+					/*	posuvSM = PSM_READY;*
+					}
+				}*/
 			}					
 								
 			/* podazeni sacku */

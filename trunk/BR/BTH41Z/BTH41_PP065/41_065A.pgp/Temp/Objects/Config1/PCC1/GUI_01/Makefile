@@ -1,5 +1,5 @@
 export ASBINARY=C:\Program Files\BrAutomation\As27000en\Bin
-export VCCBuildAll=1
+export VCCBuildAll=0
 export VCCASPROJECTPATH='c:\projects\google~1\trunk\br\bth41z\bth41_~1\41_065a.pgp'
 export CPUNAME=BTH41_Z1
 export VCINI=C:\Projects\GOOGLE~1\trunk\BR\BTH41Z\BTH41_~1\41_065a.pgp\pgm\BTH41_Z1\CPU\VISUAL~1\VC.ini

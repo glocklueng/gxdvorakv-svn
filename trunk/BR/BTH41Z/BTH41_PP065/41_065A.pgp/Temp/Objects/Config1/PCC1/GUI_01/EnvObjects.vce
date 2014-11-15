@@ -2,20 +2,57 @@
 <?AutomationStudio Version="2.4"?>
 <EnvironmentSettings xmlns="http://br-automation.co.at/AS/VC/Project">
   <Visual_Components_Frames>
-    <Property Name="ActiveFrame" Value="0"/>
+    <Property Name="ActiveFrame" Value="1"/>
     <Property Name="SaveFrameLimit" Value="4"/>
     <Property Name="ShowCmd" Value="1"/>
     <Frame>
       <Property Name="ActiveView" Value="0"/>
       <Property Name="FrameMinPtX" Value="-1"/>
       <Property Name="FrameMinPtY" Value="-1"/>
-      <Property Name="ParentObjectName" Value="Adjustment_Page_Rev"/>
+      <Property Name="ParentObjectName" Value="Init_Page"/>
       <Property Name="ParentObjectType" Value="Page"/>
       <Property Name="ShowCmd" Value="1"/>
-      <Property Name="WndPosBottom" Value="389"/>
+      <Property Name="WndPosBottom" Value="318"/>
       <Property Name="WndPosLeft" Value="22"/>
-      <Property Name="WndPosRight" Value="353"/>
+      <Property Name="WndPosRight" Value="380"/>
       <Property Name="WndPosTop" Value="29"/>
+      <Views>
+        <View>
+          <Property Name="ID" Value="32"/>
+          <Property Name="Scalecx" Value="4"/>
+          <Property Name="Scalecy" Value="4"/>
+          <Property Name="ScrollPositionX" Value="0"/>
+          <Property Name="ScrollPositionY" Value="0"/>
+        </View>
+        <View>
+          <Property Name="ID" Value="536870912"/>
+        </View>
+        <View>
+          <Property Name="ID" Value="16384"/>
+        </View>
+        <View>
+          <Property Name="ID" Value="262144"/>
+        </View>
+        <View>
+          <Property Name="ID" Value="64"/>
+          <Property Name="Scalecx" Value="1"/>
+          <Property Name="Scalecy" Value="1"/>
+          <Property Name="ScrollPositionX" Value="0"/>
+          <Property Name="ScrollPositionY" Value="0"/>
+        </View>
+      </Views>
+    </Frame>
+    <Frame>
+      <Property Name="ActiveView" Value="0"/>
+      <Property Name="FrameMinPtX" Value="-1"/>
+      <Property Name="FrameMinPtY" Value="-1"/>
+      <Property Name="ParentObjectName" Value="OK_Page"/>
+      <Property Name="ParentObjectType" Value="Page"/>
+      <Property Name="ShowCmd" Value="1"/>
+      <Property Name="WndPosBottom" Value="355"/>
+      <Property Name="WndPosLeft" Value="0"/>
+      <Property Name="WndPosRight" Value="361"/>
+      <Property Name="WndPosTop" Value="0"/>
       <Views>
         <View>
           <Property Name="ID" Value="32"/>
