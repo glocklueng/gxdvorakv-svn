@@ -1,0 +1,138 @@
+
+Map of Debug\X_lights.st7 from link file Debug\X_lights.lkf - Wed Dec 10 21:59:19 2008
+
+
+                               --------
+                               Segments
+                               --------
+
+start 0000f800 end 0000fae3 length   739 segment .text
+start 0000fae6 end 0000fae6 length     0 segment .const
+start 00000088 end 00000088 length     0 segment .bsct
+start 00000088 end 0000008f length     7 segment .ubsct
+start 0000008f end 00000096 length     7 segment .share
+start 00000096 end 00000096 length     0 segment .data
+start 00000096 end 00000096 length     0 segment .bss
+start 00000000 end 0000080d length  2061 segment .debug
+start 0000ffe0 end 00010000 length    32 segment .const
+start 0000fae3 end 0000fae6 length     3 segment .init
+
+
+                               -------
+                               Modules
+                               -------
+
+C:\COSMIC\CXST7\LIB\crtsi.st7:
+start 0000f800 end 0000f849 length    73 section .text
+start 00000088 end 00000088 length     0 section .ubsct
+
+Debug\main.o:
+start 0000f849 end 0000fae2 length   665 section .text
+start 00000088 end 0000008b length     3 section .ubsct
+start 00000000 end 00000717 length  1815 section .debug
+start ******** end ******** length     0 section .const *** removed ***
+
+(C:\COSMIC\CXST7\LIB\libm.st7)xreg.o:
+start 0000008b end 0000008d length     2 section .ubsct
+
+(C:\COSMIC\CXST7\LIB\libm.st7)yreg.o:
+start 0000008d end 0000008f length     2 section .ubsct
+
+Debug\interrupt_vector.o:
+start 0000fae2 end 0000fae3 length     1 section .text
+start 00000717 end 0000080d length   246 section .debug
+start 0000ffe0 end 00010000 length    32 section .const
+
+
+                             ------------
+                             Shared areas
+                             ------------
+
+Debug\interrupt_vector.o:
+_NonHandledInterrupt     on stack (5)
+
+Debug\main.o:
+_AT_CMP_Interrupt        on stack (5)
+_AT_OF_Interrupt         on stack (5)
+_AWU_Interrupt           on stack (6)
+_LT_OF_Interrupt         on stack (5)
+_main                    0000008f-00000095 (7,0)
+
+Stack size: 8
+
+
+                               -------
+                               Symbols
+                               -------
+
+_ADCCSR                00000034   defined in Debug\main.o
+_ADCDRH                00000035   defined in Debug\main.o
+_ADCDRL                00000036   defined in Debug\main.o
+_ATCSR                 0000000d   defined in Debug\main.o
+_ATR                   00000010   defined in Debug\main.o
+_ATRH                  00000010   defined in Debug\main.o
+_ATRL                  00000011   defined in Debug\main.o
+_AT_CMP_Interrupt      0000f853   defined in Debug\main.o section .text
+                                  used in Debug\interrupt_vector.o
+_AT_OF_Interrupt       0000f852   defined in Debug\main.o section .text
+                                  used in Debug\interrupt_vector.o
+_AVDTHCR               0000003e   defined in Debug\main.o
+_AWUCSR                0000004a   defined in Debug\main.o
+_AWUPR                 00000049   defined in Debug\main.o
+_AWU_Interrupt         0000f862   defined in Debug\main.o section .text
+                                  used in Debug\interrupt_vector.o
+_CKCNTCSR              0000003f   defined in Debug\main.o
+_CNTR                  0000000e   defined in Debug\main.o
+_CNTRH                 0000000e   defined in Debug\main.o
+_CNTRL                 0000000f   defined in Debug\main.o
+_DCR0                  00000017   defined in Debug\main.o
+_DCR0H                 00000017   defined in Debug\main.o
+_DCR0L                 00000018   defined in Debug\main.o
+_DELAY                 ********   *** removed from Debug\main.o ***
+_EECSR                 00000030   defined in Debug\main.o
+_EE_Bright             00001010   defined in Debug\main.o
+_EICR1                 00000037   defined in Debug\main.o
+_EICR2                 0000003d   defined in Debug\main.o
+_FCSR                  0000002f   defined in Debug\main.o
+_LTCSR                 0000000b   defined in Debug\main.o
+_LTICR                 0000000c   defined in Debug\main.o
+_LT_OF_Interrupt       0000f849   defined in Debug\main.o section .text
+                                  used in Debug\interrupt_vector.o
+_MCCSR                 00000038   defined in Debug\main.o
+_MUXCR0                00000047   defined in Debug\main.o
+_MUXCR1                00000048   defined in Debug\main.o
+_NonHandledInterrupt   0000fae2   defined in Debug\interrupt_vector.o section .text
+_PADDR                 00000001   defined in Debug\main.o
+_PADR                  00000000   defined in Debug\main.o
+_PAOR                  00000002   defined in Debug\main.o
+_PWM0CSR               00000013   defined in Debug\main.o
+_PWMCR                 00000012   defined in Debug\main.o
+_PWM_L1                ********   *** removed from Debug\main.o ***
+_PWM_L2                ********   *** removed from Debug\main.o ***
+_PWM_L3                ********   *** removed from Debug\main.o ***
+_PWM_L4                ********   *** removed from Debug\main.o ***
+_PWM_MAX               ********   *** removed from Debug\main.o ***
+_PWM_MIN               ********   *** removed from Debug\main.o ***
+_RCCR                  00000039   defined in Debug\main.o
+_SICSR                 0000003a   defined in Debug\main.o
+__endzp                0000008f   defined in command file section .ubsct
+                                  used in C:\COSMIC\CXST7\LIB\crtsi.st7
+__idesc__              0000fae3   defined in linker section .init
+                                  used in C:\COSMIC\CXST7\LIB\crtsi.st7
+__memory               00000096   defined in command file section .bss
+                                  *** not used ***
+__stack                000000ff   defined in command file
+                                  *** not used ***
+__stext                0000f800   defined in C:\COSMIC\CXST7\LIB\crtsi.st7 section .text
+                                  used in Debug\interrupt_vector.o
+__vectab               0000ffe0   defined in Debug\interrupt_vector.o section .const
+_exit                  0000f847   defined in C:\COSMIC\CXST7\LIB\crtsi.st7 section .text
+_main                  0000f886   defined in Debug\main.o section .text
+                                  used in C:\COSMIC\CXST7\LIB\crtsi.st7
+_main$L                00000096   defined in linker section .share
+                                  used in Debug\main.o
+_pwm                   00000089   defined in Debug\main.o section .ubsct
+c_x                    0000008b   defined in (C:\COSMIC\CXST7\LIB\libm.st7)xreg.o section .ubsct
+                                  used in C:\COSMIC\CXST7\LIB\crtsi.st7
+c_y                    0000008d   defined in (C:\COSMIC\CXST7\LIB\libm.st7)yreg.o section .ubsct
+                                  used in C:\COSMIC\CXST7\LIB\crtsi.st7
