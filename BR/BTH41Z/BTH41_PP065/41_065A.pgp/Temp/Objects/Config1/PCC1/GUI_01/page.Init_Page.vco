@@ -616,7 +616,7 @@
       </Folder>
       <Folder Name="VKeys">
         <Folder Name="Common" TargetIndex="4294967294">
-          <Object Name="VD_DETAIL_INFO" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_DETAIL_INFO]">
+          <Object Name="VD_MENU" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_MENU]">
             <Group Name="LedMapping">
               <UInt32 Name="Datapoint">4294967295</UInt32>
               <Byte Name="Mode">0</Byte>
@@ -632,7 +632,7 @@
               <UInt16 Name="Reserved">0</UInt16>
               <UInt32 Name="LockingDatapoint">4294967295</UInt32>
               <UInt32 Name="LockingLevel">0</UInt32>
-              <Reference Name="Page" Type="PAGE">Source[local].Page[ErrorStatus_Page]</Reference>
+              <Reference Name="Page" Type="PAGE">Source[local].Page[Page_Menu]</Reference>
               <UInt16 Name="Target">2</UInt16>
               <UInt16 Name="Reserved">0</UInt16>
             </Group>
@@ -658,7 +658,7 @@
               <UInt16 Name="Reserved">0</UInt16>
             </Group>
           </Object>
-          <Object Name="VD_MENU" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_MENU]">
+          <Object Name="VD_DETAIL_INFO" ClsId="0x0" Version="1" Type="VKEY" RefString="Source[local].VirtualKey[VD_DETAIL_INFO]">
             <Group Name="LedMapping">
               <UInt32 Name="Datapoint">4294967295</UInt32>
               <Byte Name="Mode">0</Byte>
@@ -674,7 +674,7 @@
               <UInt16 Name="Reserved">0</UInt16>
               <UInt32 Name="LockingDatapoint">4294967295</UInt32>
               <UInt32 Name="LockingLevel">0</UInt32>
-              <Reference Name="Page" Type="PAGE">Source[local].Page[Page_Menu]</Reference>
+              <Reference Name="Page" Type="PAGE">Source[local].Page[ErrorStatus_Page]</Reference>
               <UInt16 Name="Target">2</UInt16>
               <UInt16 Name="Reserved">0</UInt16>
             </Group>
@@ -876,7 +876,7 @@
               <String Name="Text" Encoding="Unicode">"Stroj není připraven k provozu !"</String>
               <String Name="Text" Encoding="Unicode">"Servisní menu"</String>
               <String Name="Text" Encoding="Unicode">"Detailní Infomace"</String>
-              <String Name="Text" Encoding="Unicode">"sw  rev. 3.1 8 / 2012"</String>
+              <String Name="Text" Encoding="Unicode">"sw  rev. 3.2 9 / 2014"</String>
               <String Name="Text" Encoding="Unicode">"(c) Václav Dvořák"</String>
             </Group>
           </Object>

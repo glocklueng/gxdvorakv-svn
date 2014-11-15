@@ -29,7 +29,7 @@ _LOCAL BOOL 	incrementRefOld;	/* polarity of reference bit*/
 */
 _LOCAL INT 		oldValue;   		/* predchozi pozice inkrementu*/
 unsigned int 	cycleCounter;
-unsigned char 	roundCounter;
+unsigned int 	roundCounter;
 unsigned char 	oldRoundCounter;
 unsigned char 	roundCount;
 
@@ -169,7 +169,7 @@ _CYCLIC void checkIncrement(void) {
 	
 		
 	/* mereni otacek*/
-	if (++cycleCounter >100){
+	if (++cycleCounter >200){
 	
 		roundCounter = (incrementStatus & 0xE0 )>> 5 ;
 		if (oldRoundCounter > roundCounter){
@@ -180,7 +180,9 @@ _CYCLIC void checkIncrement(void) {
 
 		/*   pocet impulsu za 1s * 60 = imp. za minutu
 			 a pak /1440 protoze je 1440 ipulsu na otacku  ==   60/1440=  1/24*/
-			otacky_mer =(incrementValue-oldValue+1440*roundCount)/24;
+		/*	otacky_mer =(incrementValue-oldValue+1440*roundCount)/24;
+		otacky_mer =(incrementValue-oldValue)/24+*/
+		otacky_mer = 0; /*(incrementValue-oldValue)/28+ 30*roundCount;*/
 		oldValue = incrementValue;
 		oldRoundCounter = roundCounter;
 		cycleCounter = 0;

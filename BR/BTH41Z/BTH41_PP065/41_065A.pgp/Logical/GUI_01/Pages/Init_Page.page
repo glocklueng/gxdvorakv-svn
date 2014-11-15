@@ -35,7 +35,7 @@
           <Text ID="87238" Value="Stroj není připraven k provozu !"/>
           <Text ID="87239" Value="Servisní menu"/>
           <Text ID="87253" Value="Detailní Infomace"/>
-          <Text ID="90402" Value="sw  rev. 3.1 8 / 2012"/>
+          <Text ID="90402" Value="sw  rev. 3.2 9 / 2014"/>
           <Text ID="94327" Value="(c) Václav Dvořák"/>
         </TextLayer>
         <IndexMap>
@@ -290,7 +290,7 @@
         </Control>
       </Controls>
       <KeyMapping>
-        <VirtualKey Name="VD_DETAIL_INFO">
+        <VirtualKey Name="VD_MENU">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
@@ -298,7 +298,7 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="Source[local].Page[ErrorStatus_Page]"/>
+              <Property Name="Page" Value="Source[local].Page[Page_Menu]"/>
               <Property Name="Target" Value="Page"/>
             </KeyAction>
           </KeyActions>
@@ -316,7 +316,7 @@
             </KeyAction>
           </KeyActions>
         </VirtualKey>
-        <VirtualKey Name="VD_MENU">
+        <VirtualKey Name="VD_DETAIL_INFO">
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
@@ -324,7 +324,7 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="Source[local].Page[Page_Menu]"/>
+              <Property Name="Page" Value="Source[local].Page[ErrorStatus_Page]"/>
               <Property Name="Target" Value="Page"/>
             </KeyAction>
           </KeyActions>
