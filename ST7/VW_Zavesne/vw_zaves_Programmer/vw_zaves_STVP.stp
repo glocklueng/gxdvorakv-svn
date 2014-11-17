@@ -1,0 +1,21 @@
+[Last Settings]
+Hardware=RLINK
+PROTOCOL=ICP
+Port=USB
+DEVICE=ST7FLIT19B1
+Protect RC Calibration values on Program Memory=0
+Protect RC Calibration values on Data Memory=0
+Verify after programming=1
+Blank check before programming (when available)=1
+Erase device memory before programming (when available)=0
+Unlock protection before a programming cycle=0
+[DATA MEMORY]
+Count=0
+ProgramEvenIfBlank=0
+[PROGRAM MEMORY]
+Count=0
+ProgramEvenIfBlank=0
+[OPTION BYTE]
+Count=1
+File0=C:\Projects\ googleSVN\trunk\ST7\VW_Zavesne\vw_zaves_Programmer\vw_zaves_STVP_OPTION BYTE.hex
+ProgramEvenIfBlank=0
