@@ -42,30 +42,30 @@ MODIFICATIONS :
 typedef union {
 		struct REG_0_WR_52{                   
 	       	// byte 0	
-					_Bool  rel2;		
+					unsigned char  rel2:1;		
           unsigned char onV2:2;		          
-         	_Bool	 trig;		
-					_Bool  goVbat;		                           
-	        _Bool  goV1;		
+         	unsigned char	 trig:1;		
+					unsigned char  goVbat:1;		                           
+	        unsigned char  goV1:1;		
 					unsigned char adr:2;
 					// byte 1		
-					_Bool HS32;
-					_Bool HS40;	
-			 		_Bool HS41;		
-          _Bool HS42;		
-          _Bool outHS0;		                           
-          _Bool outHS1;		
-          _Bool outHS2;		
-          _Bool rel1;
+					unsigned char HS32:1;
+					unsigned char HS40:1;	
+			 		unsigned char HS41:1;		
+          unsigned char HS42:1;		
+          unsigned char outHS0:1;		                           
+          unsigned char outHS1:1;		
+          unsigned char outHS2:1;		
+          unsigned char rel1:1;
 					// byte 2 
-					_Bool HS10;
-					_Bool HS11;          
-		   		_Bool HS12;
-					_Bool HS20;
-					_Bool HS21;
-          _Bool HS22;
-					_Bool HS30;
-			    _Bool HS31;		
+					unsigned char HS10:1;
+					unsigned char HS11:1;          
+		   		unsigned char HS12:1;
+					unsigned char HS20:1;
+					unsigned char HS21:1;
+          unsigned char HS22:1;
+					unsigned char HS30:1;
+			    unsigned char HS31:1;		
 		}bit; 
 		unsigned char byte[3];  
 	} L9952_CR0_TYPE;
@@ -74,29 +74,29 @@ typedef union {
 typedef union {	
 	struct REG_1_WR_52{                   
 	       	// byte 0	
-          _Bool T11;		                           
-         	_Bool T12;		
-          _Bool T13;		                           
-	        _Bool T20;		
-          _Bool Int_en;		
-					_Bool clr;	
+          unsigned char T11:1;		                           
+         	unsigned char T12:1;		
+          unsigned char T13:1;		                           
+	        unsigned char T20:1;		
+          unsigned char Int_en:1;		
+					unsigned char clr:1;	
 	        unsigned char adr:2;
 					// byte 1		
-					_Bool U0;
-					_Bool U1;	
-			 		_Bool U2;		
-          _Bool U3;		
+					unsigned char U0:1;
+					unsigned char U1:1;	
+			 		unsigned char U2:1;		
+          unsigned char U3:1;		
 					unsigned char Looping:3;		                                     
-          _Bool T10;
+          unsigned char T10:1;
 					// byte 2
-					_Bool W0;          
-		   		_Bool W1;
-					_Bool W2;
-					_Bool W3;
-					_Bool W4;
-					_Bool W5;					
-					_Bool W6;
-			    _Bool W7;		
+					unsigned char W0:1;          
+		   		unsigned char W1:1;
+					unsigned char W2:1;
+					unsigned char W3:1;
+					unsigned char W4:1;
+					unsigned char W5:1;					
+					unsigned char W6:1;
+			    unsigned char W7:1;		
 		}bit; 
 		unsigned char byte[3];  
 	} L9952_CR1_TYPE;
@@ -105,8 +105,8 @@ typedef union {
 		struct REG_2_WR_52{                   
 	       	// byte 0	               
          	unsigned char IC4:2;		          
-	        _Bool LINslope;		
-          _Bool LSOVUV;		
+	        unsigned char LINslope:1;		
+          unsigned char LSOVUV:1;		
           unsigned char _res:2;
 	        unsigned char adr:2;				
 					// byte 1		
@@ -115,14 +115,14 @@ typedef union {
           unsigned char IC2:2;		
           unsigned char IC3:2;          
 					// byte 2
-					_Bool OLT_HS1;          
-		   		_Bool OLT_HS2;
-					_Bool OLT_HS3;
-					_Bool OLT_HS4;
-					_Bool Vlock;
-					_Bool O_HSrec;
-					_Bool LinPU;		
-					_Bool TXDTOut;
+					unsigned char OLT_HS1:1;          
+		   		unsigned char OLT_HS2:1;
+					unsigned char OLT_HS3:1;
+					unsigned char OLT_HS4:1;
+					unsigned char Vlock:1;
+					unsigned char O_HSrec:1;
+					unsigned char LinPU:1;		
+					unsigned char TXDTOut:1;
 		}bit; 
 		unsigned char byte[3];  
 	} L9952_CR2_TYPE;
@@ -133,30 +133,30 @@ typedef union {
 typedef union {
 		struct REG_0_RD_52{                   
 	       	// byte 0	
-           _Bool I3;		
-           _Bool INH;		                           
-         	 _Bool LIN;		
-          _Bool coldStart;		                           
+           unsigned char WU4:1;		
+           unsigned char INH:1;		                           
+         	 unsigned char LIN:1;		
+          unsigned char coldStart:1;		                           
 	        unsigned char _res:2;		
 	        unsigned char glob_err:2;
 					// byte 1		
-					_Bool HS4OC;
-					_Bool O_HSOC;
-			 		_Bool rel1;
-					_Bool rel2;
-          _Bool V2;
-          _Bool I0;
-          _Bool I1;
-          _Bool I2;
+					unsigned char HS4OC:1;
+					unsigned char O_HSOC:1;
+			 		unsigned char rel1:1;
+					unsigned char rel2:1;
+          unsigned char V2:1;
+          unsigned char WU1:1;
+          unsigned char WU2:1;
+          unsigned char WU3:1;
 					// byte 2
-					_Bool O_HS1OL;          
-		   		_Bool O_HS2OL;
-					_Bool O_HS3OL;
-					_Bool O_HS4OL;
-					_Bool O_HSOL;
-					_Bool HS1OC;
-					_Bool HS2OC;
-			    _Bool HS3OC;
+					unsigned char O_HS1OL:1;          
+		   		unsigned char O_HS2OL:1;
+					unsigned char O_HS3OL:1;
+					unsigned char O_HS4OL:1;
+					unsigned char O_HSOL:1;
+					unsigned char HS1OC:1;
+					unsigned char HS2OC:1;
+			    unsigned char HS3OC:1;
 		}bit; 
 		unsigned char byte[3];  
 	} L9952_SR0_TYPE;
@@ -165,25 +165,25 @@ typedef union {
 typedef union {
 		struct REG_1_RD_52{                   
 	       		// byte 0	
-          _Bool trig;		
-          _Bool SHTgnd;		                           
-         	_Bool SHTbat;		
-          _Bool domTXD;		                           
+          unsigned char trig:1;		
+          unsigned char SHTgnd:1;		                           
+         	unsigned char SHTbat:1;		
+          unsigned char domTXD:1;		                           
 	        unsigned char _res:2;		
 	        unsigned char glob_err:2;
 					// byte 1		
-					_Bool ST1;
+					unsigned char ST1:1;
 					unsigned char Restarts5V:3;			 		
           unsigned char	WD_reset:4;          
 					// byte 2
-					_Bool OV;
-		   		_Bool UV;
-					_Bool TW;
-					_Bool TSD1;
-					_Bool TSD2;
-					_Bool Vcc1Fail;
-					_Bool Vcc2Fail;
-					_Bool ST0;
+					unsigned char OV:1;
+		   		unsigned char UV:1;
+					unsigned char TW:1;
+					unsigned char TSD1:1;
+					unsigned char TSD2:1;
+					unsigned char Vcc1Fail:1;
+					unsigned char Vcc2Fail:1;
+					unsigned char ST0:1;
 		}bit; 
 		unsigned char byte[3];  
 	} L9952_SR1_TYPE;
