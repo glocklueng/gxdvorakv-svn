@@ -37,12 +37,13 @@ MODIFICATIONS :
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
 #define WDC_TIME 10U
-#define MOTOR_TOUT  3000U
-#define MOTOR_TOUT_LOCK  5000U
+#define MOTOR_TOUT  2500U
+#define MOTOR_TOUT_LOCK  4000U
 //#define KONTAKT_TOUT 1000U
-#define MOTOR_CCPT   5000U			// 1000ms
+#define MOTOR_CCPT   1000U			// 1000ms
 #define SLEEP_TIMEOUT		5000U
 #define FS_INDICATION_TOUT 10000U
+#define SAFETY_LOCK_TOUT	6000U
 
 ///   variables
 
@@ -71,6 +72,9 @@ const uint16 TIME_BASE_TIME = 10;
 uint8 timeExpired;
 volatile uint8 wdcTimeBase;
 volatile uint8 WDCExpired;
+uint8 coldStart;
+uint8 safetyLock;
+uint8 safetyLockCounter;
 
 uint8 RC_CAL @ 0xDEE0;
 uint8 RC_CAL_lo @ 0xDEE1;
@@ -151,13 +155,16 @@ void main(void)
 { 
 	uint16 i;
 
-	RCCR = 0xE3;	//RC_CAL;	 RC calibration
+	RCCR = 0xE7;	//RC_CAL;	 RC calibration
 	//SICSR &= ~0x60;
 	//SICSR |= RC_CAL_lo & 0x60;
 	Port_Init();
 	SPI_Init();
 	L9952_RegInit();
-	
+	coldStart = false;
+	safetyLock = false;
+	safetyLockCounter = 0;
+		
 	//  LITE2 timer set
 	LTCSR2 = 0;
 	LTCSR1 = 0x10;		// 0001 0010  1ms time base
@@ -170,6 +177,9 @@ void main(void)
 	//L9952_cr2.bit.IC1 = 1;	// cyclic with T2
 	L9952_cr2.bit.LSOVUV = 1;	// LS ON during OV/UV
 	L9952_RefreshRegister(SPI_CR2);		// read out SR0
+	if ( L9952_sr0.bit.coldStart){
+		coldStart = true;
+	}
 	
 	L9952_cr1.bit.W0 = 1;		// WU1 disabled as a wakeup source
 	L9952_cr1.bit.W1 = 1;		// WU2 disabled as a wakeup source
@@ -226,12 +236,18 @@ void main(void)
 		
 		switch (SM_State){
 			case PON:
+				safetyLock= false;
 				L9952_cr0.bit.rel1 = 0;
 				L9952_cr0.bit.rel2 = 0;			
 				L9952_cr0.bit.HS42 = 0;L9952_cr0.bit.HS41 = 0;L9952_cr0.bit.HS40 = 1; // out 4 ON
 				L9952_cr0.bit.HS22 = 0;L9952_cr0.bit.HS21 = 0;L9952_cr0.bit.HS20 = 0; // out2-LED-OFF 
-	//			L9952_RefreshRegister(SPI_CR0);	// read out SR0				
-				SM_State = WAIT_TO_SLEEP;	
+				L9952_RefreshRegister(SPI_CR0);	// read out SR0				
+				if (( L9952_sr0.bit.WU3 == 0) && coldStart){  // neni zajisteno
+					timeout = MOTOR_TOUT_LOCK;
+					SM_State = LOCK;	
+				}else{
+					SM_State = WAIT_TO_SLEEP;	
+				}
 			break;
 			case RELEASE:		// motor bezi doku kontak nebo timeout			
 				L9952_cr0.bit.rel1 = 1;
@@ -332,9 +348,17 @@ void main(void)
 				Delay(10);
 				
 				if ((L9952_sr0.bit.WU1 == 1) && (L9952_sr0.bit.WU2 == 0)){
-					//if (timeout < 1){ 
-							L9952_cr1.bit.W0 = 0;		// WU1 disabled as a wakeup source
-							L9952_cr1.bit.W1 = 0;		// WU2 disabled as a wakeup source
+					if (timeout ==0){
+							L9952_cr0.bit.HS12 = 0;L9952_cr0.bit.HS11 = 0;L9952_cr0.bit.HS10 = 0; // out 1 off
+							L9952_cr0.bit.HS22 = 0;L9952_cr0.bit.HS21 = 0;L9952_cr0.bit.HS20 = 0; // out 2 off
+							L9952_cr0.bit.HS32 = 0;L9952_cr0.bit.HS31 = 0;L9952_cr0.bit.HS30 = 0; // out 3 off 
+							L9952_cr0.bit.HS42 = 0;L9952_cr0.bit.HS41 = 0;L9952_cr0.bit.HS40 = 0; // out 4 off
+							L9952_cr0.bit.rel1 = 0;
+							L9952_cr0.bit.rel2 = 0;
+							L9952_RefreshRegister(SPI_CR0);		// read out SR0
+																					
+							L9952_cr1.bit.W0 = 1;		// WU1 disabled as a wakeup source
+							L9952_cr1.bit.W1 = 0;		// WU2 enabled as a wakeup source
 							L9952_cr1.bit.W2 = 1;		// WU3 disabled as a wakeup source
 							L9952_cr1.bit.W3 = 1;		// WU4 disabled as a wakeup source
 							L9952_cr1.bit.W4 = 1;		// Out1 OLWU disabled as a wakeup source
@@ -350,18 +374,11 @@ void main(void)
 							L9952_cr1.bit.clr = 1;	// !!! CLEAR STATUS FLAGS	
 							L9952_RefreshRegister(SPI_CR1);		// read out SR1
 											
-							Delay(100);
-							L9952_cr0.bit.HS12 = 0;L9952_cr0.bit.HS11 = 0;L9952_cr0.bit.HS10 = 1; // out 1 ON
-							L9952_cr0.bit.HS22 = 0;L9952_cr0.bit.HS21 = 0;L9952_cr0.bit.HS20 = 0; // out 2 
-							L9952_cr0.bit.HS32 = 0;L9952_cr0.bit.HS31 = 0;L9952_cr0.bit.HS30 = 0; // out 3 
-							L9952_cr0.bit.HS42 = 0;L9952_cr0.bit.HS41 = 0;L9952_cr0.bit.HS40 = 1; // out 4 ON
-							L9952_cr0.bit.rel1 = 0;
-							L9952_cr0.bit.rel2 = 0;
-							
+							Delay(100);							
 							L9952_cr0.bit.goVbat = 1;
 							L9952_RefreshRegister(SPI_CR0);		// read out SR0
 							while(1);
-					//}
+					}
 				}else{
 					SM_State = WAIT_TO_SLEEP;	
 				}			
@@ -380,15 +397,62 @@ void main(void)
 					SM_State = PON;								
 									
 				}
-				if ((L9952_sr0.bit.WU1 == 0)&&(L9952_sr0.bit.WU2 == 1)){
-					L9952_cr0.bit.rel2 = 1;			
+				if ((L9952_sr0.bit.WU2 == 1)&& (L9952_sr0.bit.WU1 == 0 )){  // tlacitko stisknute
+						if ( safetyLock){
+							if ( timeout == 0){								
+								if ( safetyLockCounter < 2){
+									SM_State = LOCK;
+									timeout = MOTOR_TOUT_LOCK;
+									safetyLock= false;
+									++safetyLockCounter;								
+								}
+							}
+						}else{// prvni beh po stisku tlacitka
+							safetyLock= true;
+							timeout = SAFETY_LOCK_TOUT;
+						}								
 				}else{
-					L9952_cr0.bit.rel2 = 0;			
+					timeout = 0;
+					safetyLock= false;				
 				}
 				L9952_cr0.bit.rel1 = 0;				
+				L9952_cr0.bit.rel2 = 0;						
 				L9952_cr0.bit.HS22 = 0;L9952_cr0.bit.HS21 = 1;L9952_cr0.bit.HS20 = 0; // out2-LED-ON_TMR1
 				L9952_cr0.bit.HS42 = L9952_cr0.bit.HS41 = 0;L9952_cr0.bit.HS40 = 1; // out 4 ON
 				L9952_RefreshRegister(SPI_CR0);		// read out SR0
+				
+				if (L9952_sr0.bit.WU2 == 0){
+					// forced sleep
+							L9952_cr0.bit.HS12 = 0;L9952_cr0.bit.HS11 = 0;L9952_cr0.bit.HS10 = 0; // out 1 off
+							L9952_cr0.bit.HS22 = 0;L9952_cr0.bit.HS21 = 0;L9952_cr0.bit.HS20 = 0; // out 2 off
+							L9952_cr0.bit.HS32 = 0;L9952_cr0.bit.HS31 = 0;L9952_cr0.bit.HS30 = 0; // out 3 off 
+							L9952_cr0.bit.HS42 = 0;L9952_cr0.bit.HS41 = 0;L9952_cr0.bit.HS40 = 0; // out 4 off
+							L9952_cr0.bit.rel1 = 0;
+							L9952_cr0.bit.rel2 = 0;
+							L9952_RefreshRegister(SPI_CR0);		// read out SR0
+																					
+							L9952_cr1.bit.W0 = 1;		// WU1 disabled as a wakeup source
+							L9952_cr1.bit.W1 = 0;		// WU2 enabled as a wakeup source
+							L9952_cr1.bit.W2 = 1;		// WU3 disabled as a wakeup source
+							L9952_cr1.bit.W3 = 1;		// WU4 disabled as a wakeup source
+							L9952_cr1.bit.W4 = 1;		// Out1 OLWU disabled as a wakeup source
+							L9952_cr1.bit.W5 = 1;		// Out2 OLWU disabled as a wakeup source
+							L9952_cr1.bit.W6 = 1;		// Out3 OLWU disabled as a wakeup source
+							L9952_cr1.bit.W7 = 1;		// Out1 OLWU disabled as a wakeup source	
+							L9952_cr1.bit.U0 = 1;		// PU at WU1
+							L9952_cr1.bit.U1 = 0;		// PD at WU2
+							L9952_cr1.bit.U2 = 0;		// PD at WU3
+							L9952_cr1.bit.U3 = 0;		// PD at WU4	
+							L9952_cr1.bit.Looping	= 0;		// DO3,4 = WU3,4
+							L9952_cr1.bit.T20 = 0;	// timer 2  50ms/0.1 ms
+							L9952_cr1.bit.clr = 1;	// !!! CLEAR STATUS FLAGS	
+							L9952_RefreshRegister(SPI_CR1);		// read out SR1
+											
+							Delay(100);							
+							L9952_cr0.bit.goVbat = 1;
+							L9952_RefreshRegister(SPI_CR0);		// read out SR0
+							while(1);					
+				}
 			break;
 			case ERROR_FS:
 				L9952_cr0.bit.rel1 = 0;				
