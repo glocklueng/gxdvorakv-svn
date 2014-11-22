@@ -7,11 +7,23 @@ Number=1.3
 [Root.Source Files.source\main.c.Config.0]
 ExternDep= source\main.c C:\COSMIC\CXST7\Hst7\modm.h source\lib.h  source\std_types.h source\Platform_Types.h source\ST7FLIT19BY1.h  source\ST7LITE19B.h source\L9952.h source\spi.h
 
+[Root.Source Files.source\main.c.Config.1]
+ExternDep= source\main.c C:\COSMIC\CXST7\Hst7\modm.h source\lib.h  source\std_types.h source\Platform_Types.h source\ST7FLIT19BY1.h  source\ST7LITE19B.h source\L9952.h source\spi.h
+
 [Root.Source Files.source\spi.c.Config.0]
+ExternDep= source\spi.c C:\COSMIC\CXST7\Hst7\modm.h source\std_types.h  source\Platform_Types.h source\ST7FLIT19BY1.h source\ST7LITE19B.h  source\spi.h source\lib.h
+
+[Root.Source Files.source\spi.c.Config.1]
 ExternDep= source\spi.c C:\COSMIC\CXST7\Hst7\modm.h source\std_types.h  source\Platform_Types.h source\ST7FLIT19BY1.h source\ST7LITE19B.h  source\spi.h source\lib.h
 
 [Root.Source Files.source\l9952.c.Config.0]
 ExternDep= source\l9952.c C:\COSMIC\CXST7\Hst7\modm.h source\std_types.h  source\Platform_Types.h source\ST7FLIT19BY1.h source\ST7LITE19B.h  source\lib.h source\L9952.h source\spi.h
 
+[Root.Source Files.source\l9952.c.Config.1]
+ExternDep= source\l9952.c C:\COSMIC\CXST7\Hst7\modm.h  source\std_types.h source\Platform_Types.h source\ST7FLIT19BY1.h  source\ST7LITE19B.h source\lib.h source\L9952.h source\spi.h
+
 [Root.Source Files.source\interrupt_vector.c.Config.0]
+ExternDep= source\interrupt_vector.c  C:\COSMIC\CXST7\Hst7\modm.h
+
+[Root.Source Files.source\interrupt_vector.c.Config.1]
 ExternDep= source\interrupt_vector.c  C:\COSMIC\CXST7\Hst7\modm.h
