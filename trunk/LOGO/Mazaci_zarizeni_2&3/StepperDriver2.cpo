@@ -1,0 +1,93 @@
+%%ASCII%%
+[
+%%CR%%
+%%DELAY 2000%%
+C7
+%%CR%%
+%%DELAY 500%%
+
+
+@1
+%%CR%%
+%%DELAY 500%%
+
+I14L2
+%%CR%%
+%%DELAY 500%%
+
+I15L3
+%%CR%%
+%%DELAY 500%%
+
+J1
+%%CR%%
+%%DELAY 500%%
+
+
+@2
+%%CR%%
+%%DELAY 500%%
+S200
+%%CR%%
+%%DELAY 500%%
+V300
+%%CR%%
+%%DELAY 500%%
+A1000
+%%CR%%
+%%DELAY 500%%
+F56800
+%%CR%%
+%%DELAY 500%%
+R
+%%CR%%
+%%DELAY 500%%
+C1
+%%CR%%
+%%DELAY 500%%
+W100
+%%CR%%
+%%DELAY 500%%
+T1
+%%CR%%
+%%DELAY 500%%
+J1
+%%CR%%
+%%DELAY 500%%
+
+
+@3
+%%CR%%
+%%DELAY 500%%
+S200
+%%CR%%
+%%DELAY 500%%
+V300
+%%CR%%
+%%DELAY 500%%
+A1000
+%%CR%%
+%%DELAY 500%%
+B56800
+%%CR%%
+%%DELAY 500%%
+R
+%%CR%%
+%%DELAY 500%%
+C2
+%%CR%%
+%%DELAY 500%%
+W100
+%%CR%%
+%%DELAY 500%%
+T2
+%%CR%%
+%%DELAY 500%%
+J1
+%%CR%%
+%%DELAY 500%%
+
+
+]
+%%CR%%
+%%DELAY 500%%

@@ -1,0 +1,30 @@
+nastaveni kontroleru:
+- nastavit adresu na hodnotu > 0, hodnota 8 ( SWA = on ) nefunguje
+  ale SW1+2 ON  je OK
+- pouzivame paralelni mod
+
+vstupy
+> S1      ...  GND
+> B10-17  ... +24V
+
+vystupy
+>CC  24V ?
+>B1-4 na zatez proti GND
+
+
+povely:
+"C7" - zapina vystupni budic !!!
+"\"  - sw reset
+
+parametry motoru:
+51200 mikrokroku na otacku pro povel "F" a "B", kde se hodnota zadava v min. mikrokroku
+pro motor 1.8st ( 200 kroku na otacku)
+200 * 64 * 4 ?????
+
+v1000  >>> 1ot/s
+
+OVLADANI:
+CPmonter.exe
+-4800Bd,N,8,1
+terminated : enter
+Send       : CR  (0x0d)
