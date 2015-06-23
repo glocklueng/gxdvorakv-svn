@@ -1,0 +1,433 @@
+
+Map of Debug\golf_sim.sm8 from link file Debug\golf_sim.lkf - Mon Feb 24 21:30:34 2014
+
+
+                               --------
+                               Segments
+                               --------
+
+start 00008080 end 00008080 length     0 segment .const
+start 00008089 end 00008d90 length  3335 segment .text
+start 00004000 end 00004000 length     0 segment .eeprom
+start 00000000 end 00000000 length     0 segment .bsct
+start 00000000 end 0000007d length   125 segment .ubsct
+start 00007d:0 end 00007d:4 length     4 segment .bit, initialized
+start 00008088 end 00008089 length     1 segment .bit, from
+start 0000007e end 0000007e length     0 segment .share
+start 00000100 end 00000100 length     0 segment .data
+start 00000100 end 00000100 length     0 segment .bss
+start 00000000 end 0000069d length  1693 segment .info.
+start 00000000 end 00001b0c length  6924 segment .debug
+start 00008000 end 00008080 length   128 segment .const
+start 00008080 end 00008088 length     8 segment .init
+
+
+                               -------
+                               Modules
+                               -------
+
+C:\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8:
+start 00008089 end 000080d4 length    75 section .text
+start 00000100 end 00000100 length     0 section .bss
+start 00000000 end 00000000 length     0 section .ubsct
+start 00000000 end 00000030 length    48 section .info.
+
+Debug\adc.o:
+start 000080d4 end 00008158 length   132 section .text
+start 00000000 end 000001a7 length   423 section .debug
+start 00000030 end 0000009c length   108 section .info.
+
+Debug\gpio.o:
+start 00008158 end 000081a5 length    77 section .text
+start 000001a7 end 0000025a length   179 section .debug
+start 0000009c end 00000109 length   109 section .info.
+
+Debug\main.o:
+start 000081a5 end 00008274 length   207 section .text
+start 00000000 end 0000001f length    31 section .ubsct
+start 0000025a end 0000089e length  1604 section .debug
+start 00000109 end 00000176 length   109 section .info.
+
+Debug\stm8_can.o:
+start 00008274 end 000089ac length  1848 section .text
+start 0000001f end 0000006b length    76 section .ubsct
+start 0000089e end 00001310 length  2674 section .debug
+start 00000176 end 000001e7 length   113 section .info.
+
+Debug\timer1.o:
+start 000089ac end 00008af6 length   330 section .text
+start ******** end ******** length     0 section .bsct *** removed ***
+start 00001310 end 00001577 length   615 section .debug
+start 000001e7 end 00000256 length   111 section .info.
+start ******** end ******** length     0 section .const *** removed ***
+
+Debug\timer4.o:
+start 00008af6 end 00008bb5 length   191 section .text
+start 0000006b end 00000073 length     8 section .ubsct
+start 00001577 end 000019a1 length  1066 section .debug
+start 00000256 end 000002c5 length   111 section .info.
+start ******** end ******** length     0 section .const *** removed ***
+start 00007d:0 end 00007d:4 length     4 section .bit
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)imul.o:
+start 00008bb5 end 00008bd6 length    33 section .text
+start 000002c5 end 000002f4 length    47 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)itol.o:
+start 00008bd6 end 00008be2 length    12 section .text
+start 000002f4 end 00000323 length    47 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)itolx.o:
+start 00008be2 end 00008bf0 length    14 section .text
+start 00000323 end 00000353 length    48 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lgor.o:
+start 00008bf0 end 00008c07 length    23 section .text
+start 00000353 end 00000382 length    47 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)llsh.o:
+start 00008c07 end 00008c16 length    15 section .text
+start 00000382 end 000003b1 length    47 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lor.o:
+start 00008c16 end 00008c2e length    24 section .text
+start 000003b1 end 000003df length    46 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lreg.o:
+start 00000073 end 00000077 length     4 section .ubsct
+start 000003df end 0000040e length    47 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ltor.o:
+start 00008c2e end 00008c40 length    18 section .text
+start 0000040e end 0000043d length    47 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ludiv.o:
+start 00008c40 end 00008c54 length    20 section .text
+start 0000043d end 0000046d length    48 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o:
+start 00008c54 end 00008d3f length   235 section .text
+start 0000046d end 0000049c length    47 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lgneg.o:
+start 00008d3f end 00008d52 length    19 section .text
+start 0000049c end 000004cc length    48 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lneg.o:
+start 00008d52 end 00008d67 length    21 section .text
+start 000004cc end 000004fb length    47 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lursh.o:
+start 00008d67 end 00008d76 length    15 section .text
+start 000004fb end 0000052b length    48 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)rtol.o:
+start 00008d76 end 00008d88 length    18 section .text
+start 0000052b end 0000055a length    47 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)utolx.o:
+start 00008d88 end 00008d8f length     7 section .text
+start 0000055a end 0000058a length    48 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)xreg.o:
+start 00000077 end 0000007a length     3 section .ubsct
+start 0000058a end 000005b9 length    47 section .info.
+
+(C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)yreg.o:
+start 0000007a end 0000007d length     3 section .ubsct
+start 000005b9 end 000005e8 length    47 section .info.
+
+Debug\stm8_interrupt_vector.o:
+start 00008d8f end 00008d90 length     1 section .text
+start 000019a1 end 00001b0c length   363 section .debug
+start 000005e8 end 00000666 length   126 section .info.
+start 00008000 end 00008080 length   128 section .const
+
+
+                             -----------
+                             Stack usage
+                             -----------
+
+Debug\adc.o:
+_ADC_GetValue                  5   (5)
+_ADC_GetValue8b           >    4   (4)
+_ADC_Init                      2   (2)
+
+Debug\gpio.o:
+_GPIO_Init                     2   (2)
+
+Debug\main.o:
+_CLK_Init                      4   (4)
+_main                     >   37   (4)
+
+Debug\stm8_can.o:
+L11_CAN_Read                   9   (6)
+L3_GetFirstEmptyTxMBoxNr       4   (4)
+L5_GetRxFifoStatus             2   (2)
+L7_CAN_Error                   2   (2)
+_CAN_EnableRetrasnmit     >    3   (3)
+_CAN_FillFilterPageReg         6   (6)
+_CAN_GetMsg               >    5   (5)
+_CAN_Init                      2   (2)
+_CAN_LoopbackMode         >    3   (3)
+_CAN_SetBaudRate          >    6   (6)
+_CAN_SetFilters           >   10   (4)
+_CAN_SilentMode           >    3   (3)
+_CAN_Start                     2   (2)
+_CAN_Stop                 >    2   (2)
+_CAN_Write                    15   (11)
+f_CAN_RX_ISR              >   21   (12)
+f_CAN_TX_ISR              >    6   (6)
+
+Debug\stm8_interrupt_vector.o:
+f_NonHandledInterrupt     >    6   (6)
+
+Debug\timer1.o:
+_PWM_GetFrequency         >   28   (14)
+_PWM_SetFrequency             31   (17)
+_TIM1_Init                    33   (2)
+
+Debug\timer4.o:
+_GetLedState                   2   (2)
+_IsCAN_MSG1_Send               2   (2)
+_IsSpeedAdjustTime             2   (2)
+_IsTimeoutExpired         >    2   (2)
+_SetTimeoutTime           >    2   (2)
+_TIM4_Init                     2   (2)
+f_TIM4_UPD_OVF_Interrupt  >    6   (6)
+
+Stack size: 58
+
+
+                              ---------
+                              Call tree
+                              ---------
+   1 > _ADC_GetValue8b: (4)
+
+   2 > _CAN_EnableRetrasnmit: (3)
+
+   3 > _CAN_GetMsg: (5)
+
+   4 > _CAN_LoopbackMode: (3)
+
+   5 > _CAN_SetBaudRate: (6)
+
+   6 > _CAN_SetFilters: (4)
+   7      + _CAN_FillFilterPageReg: (6)
+       
+   8 > _CAN_SilentMode: (3)
+
+   9 > _CAN_Stop: (2)
+
+  10 > _IsTimeoutExpired: (2)
+
+  11 > _PWM_GetFrequency: (14)
+
+  12 > _SetTimeoutTime: (2)
+
+  13 > __stext: (0)
+
+  14 > _main: (4)
+  15      + _ADC_GetValue: (5)
+  16      + _ADC_Init: (2)
+  17      + _CAN_Init: (2)
+  18      + _CAN_Start: (2)
+  19      + _CAN_Write: (11)
+  20      |    + L3_GetFirstEmptyTxMBoxNr: (4)
+          | 
+  21      + _CLK_Init: (4)
+  22      + _GPIO_Init: (2)
+  23      + _GetLedState: (2)
+  24      + _IsCAN_MSG1_Send: (2)
+  25      + _IsSpeedAdjustTime: (2)
+  26      + _PWM_SetFrequency: (17)
+  27      + _TIM1_Init: (2)
+  28      |    + _PWM_SetFrequency --> 26
+          | 
+  29      + _TIM4_Init: (2)
+       
+  30 > f_CAN_RX_ISR: (12)
+  31      + L11_CAN_Read: (6)
+  32      + L5_GetRxFifoStatus: (2)
+  33      + L7_CAN_Error: (2)
+       
+  34 > f_CAN_TX_ISR: (6)
+
+  35 > f_NonHandledInterrupt: (6)
+
+  36 > f_TIM4_UPD_OVF_Interrupt: (6)
+
+  37   L11_CAN_Read --> 31
+
+  38   L3_GetFirstEmptyTxMBoxNr --> 20
+
+  39   L5_GetRxFifoStatus --> 32
+
+  40   L7_CAN_Error --> 33
+
+  41   _ADC_GetValue --> 15
+
+  42   _ADC_Init --> 16
+
+  43   _CAN_FillFilterPageReg --> 7
+
+  44   _CAN_Init --> 17
+
+  45   _CAN_Start --> 18
+
+  46   _CAN_Write --> 19
+
+  47   _CLK_Init --> 21
+
+  48   _GPIO_Init --> 22
+
+  49   _GetLedState --> 23
+
+  50   _IsCAN_MSG1_Send --> 24
+
+  51   _IsSpeedAdjustTime --> 25
+
+  52   _PWM_SetFrequency --> 26
+
+  53   _TIM1_Init --> 27
+
+  54   _TIM4_Init --> 29
+
+
+
+                               -------
+                               Symbols
+                               -------
+
+_ADC_GetValue              000080e5   defined in Debug\adc.o section .text
+                                      used in Debug\main.o
+_ADC_GetValue8b            00008128   defined in Debug\adc.o section .text
+_ADC_Init                  000080d4   defined in Debug\adc.o section .text
+                                      used in Debug\main.o
+_BoardStatus               00000000   defined in Debug\main.o section .ubsct
+_CAN_EnableRetrasnmit      0000869c   defined in Debug\stm8_can.o section .text
+_CAN_FillFilterPageReg     000086be   defined in Debug\stm8_can.o section .text
+_CAN_FilterRecStatus       00000002   defined in Debug\main.o section .ubsct
+_CAN_GetMsg                000085bb   defined in Debug\stm8_can.o section .text
+_CAN_Init                  000082bc   defined in Debug\stm8_can.o section .text
+                                      used in Debug\main.o
+_CAN_LoopbackMode          0000898a   defined in Debug\stm8_can.o section .text
+_CAN_MSG1_TIME             ********   *** removed from Debug\timer4.o ***
+_CAN_MSG1_counter          0000006f   defined in Debug\timer4.o section .ubsct
+_CAN_MSG1_state            00007d:2   defined in Debug\timer4.o section .bit, initialized
+_CAN_MsgRecStatus          0000000c   defined in Debug\main.o section .ubsct
+_CAN_SetBaudRate           00008660   defined in Debug\stm8_can.o section .text
+_CAN_SetFilters            00008732   defined in Debug\stm8_can.o section .text
+_CAN_SilentMode            00008968   defined in Debug\stm8_can.o section .text
+_CAN_Start                 00008332   defined in Debug\stm8_can.o section .text
+                                      used in Debug\main.o
+_CAN_Stop                  0000834c   defined in Debug\stm8_can.o section .text
+_CAN_TxMsg1                0000000d   defined in Debug\main.o section .ubsct
+_CAN_Write                 00008362   defined in Debug\stm8_can.o section .text
+                                      used in Debug\main.o
+_CLK_Init                  000081a5   defined in Debug\main.o section .text
+_FOSC                      ********   *** removed from Debug\timer1.o ***
+_Flags                     0000001f   defined in Debug\stm8_can.o section .ubsct
+_GPIO_Init                 00008158   defined in Debug\gpio.o section .text
+                                      used in Debug\main.o
+_GetLedState               00008b74   defined in Debug\timer4.o section .text
+                                      used in Debug\main.o
+_IsCAN_MSG1_Send           00008b81   defined in Debug\timer4.o section .text
+                                      used in Debug\main.o
+_IsSpeedAdjustTime         00008b91   defined in Debug\timer4.o section .text
+                                      used in Debug\main.o
+_IsTimeoutExpired          00008ba8   defined in Debug\timer4.o section .text
+_LED_OFF_TIME              ********   *** removed from Debug\timer4.o ***
+_LED_ON_TIME               ********   *** removed from Debug\timer4.o ***
+_PWM1_DC                   ********   *** removed from Debug\timer1.o ***
+_PWM_GetFrequency          00008a88   defined in Debug\timer1.o section .text
+_PWM_SetFrequency          000089d8   defined in Debug\timer1.o section .text
+                                      used in Debug\main.o
+_SPEED_ADJ_TIME            ********   *** removed from Debug\timer4.o ***
+_SetTimeoutTime            00008ba1   defined in Debug\timer4.o section .text
+_SpeedAdjust_counter       0000006d   defined in Debug\timer4.o section .ubsct
+_SpeedAdjust_state         00007d:1   defined in Debug\timer4.o section .bit, initialized
+_TIM1_Init                 000089ac   defined in Debug\timer1.o section .text
+                                      used in Debug\main.o
+_TIM4_Init                 00008af6   defined in Debug\timer4.o section .text
+                                      used in Debug\main.o
+__endmem                   000013ff   defined in command file
+                                      *** not used ***
+__endzp                    0000007d   defined in command file section .ubsct
+                                      used in C:\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__idesc__                  00008080   defined in linker section .init
+                                      used in C:\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__memory                   00000100   defined in command file section .bss
+                                      used in C:\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__stack                    000017ff   defined in command file
+                                      used in C:\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__startmem                 00000100   defined in command file section .bss
+                                      *** not used ***
+__stext                    00008089   defined in C:\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8 section .text
+                                      used in Debug\stm8_interrupt_vector.o
+__vectab                   00008000   defined in Debug\stm8_interrupt_vector.o section .const
+_exit                      000080d2   defined in C:\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8 section .text
+_ledCounter                00000071   defined in Debug\timer4.o section .ubsct
+_ledState                  00007d:3   defined in Debug\timer4.o section .bit, initialized
+_main                      000081d4   defined in Debug\main.o section .text
+                                      used in C:\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+_timeoutCounter            0000006b   defined in Debug\timer4.o section .ubsct
+_timeoutState              00007d:0   defined in Debug\timer4.o section .bit, initialized
+c_divsl                    00008c54   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o section .text
+                                      *** not used ***
+c_divul                    00008c6b   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o section .text
+                                      used in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ludiv.o
+c_imul                     00008bb5   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)imul.o section .text
+                                      used in Debug\main.o
+c_itol                     00008bd6   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)itol.o section .text
+                                      used in Debug\stm8_can.o
+c_itolx                    00008be2   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)itolx.o section .text
+                                      used in Debug\stm8_can.o
+c_lgneg                    00008d3f   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lgneg.o section .text
+                                      used in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o
+c_lgor                     00008bf0   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lgor.o section .text
+                                      used in Debug\stm8_can.o
+c_llsh                     00008c07   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)llsh.o section .text
+                                      used in Debug\stm8_can.o
+c_lneg                     00008d52   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lneg.o section .text
+                                      used in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o
+c_lor                      00008c16   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lor.o section .text
+                                      used in Debug\stm8_can.o
+c_lreg                     00000073   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lreg.o section .ubsct
+                                      used in Debug\stm8_can.o Debug\timer1.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)itol.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)itolx.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lgor.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)llsh.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lor.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ltor.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lneg.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lursh.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)rtol.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)utolx.o
+c_ltor                     00008c2e   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ltor.o section .text
+                                      used in Debug\stm8_can.o Debug\timer1.o
+c_ludv                     00008c40   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ludiv.o section .text
+                                      used in Debug\timer1.o
+c_lursh                    00008d67   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lursh.o section .text
+                                      used in Debug\stm8_can.o
+c_rtol                     00008d76   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)rtol.o section .text
+                                      used in Debug\stm8_can.o Debug\timer1.o
+c_uitolx                   00008d88   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)utolx.o section .text
+                                      used in Debug\timer1.o
+c_x                        00000077   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)xreg.o section .ubsct
+                                      used in C:\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+                                              Debug\stm8_can.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)imul.o
+                                              (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o
+c_y                        0000007a   defined in (C:\COSMIC\CXSTM8_32K\Lib\libm0.sm8)yreg.o section .ubsct
+                                      used in C:\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+                                              Debug\stm8_can.o
+f_CAN_RX_ISR               00008275   defined in Debug\stm8_can.o section .text
+                                      used in Debug\stm8_interrupt_vector.o
+f_CAN_TX_ISR               00008274   defined in Debug\stm8_can.o section .text
+                                      used in Debug\stm8_interrupt_vector.o
+f_NonHandledInterrupt      00008d8f   defined in Debug\stm8_interrupt_vector.o section .text
+f_TIM4_UPD_OVF_Interrupt   00008b16   defined in Debug\timer4.o section .text
+                                      used in Debug\stm8_interrupt_vector.o
