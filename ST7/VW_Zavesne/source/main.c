@@ -37,13 +37,14 @@ MODIFICATIONS :
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
 #define WDC_TIME 10U
-#define MOTOR_TOUT  2500U
-#define MOTOR_TOUT_LOCK  4000U
+#define MOTOR_TOUT  1800U  // unlock
+#define MOTOR_TOUT_LOCK  4000U // lock
 //#define KONTAKT_TOUT 1000U
-#define MOTOR_CCPT   1000U			// 1000ms
+#define MOTOR_CCPT   30U			// 1000ms
 #define SLEEP_TIMEOUT		5000U
 #define FS_INDICATION_TOUT 10000U
-#define SAFETY_LOCK_TOUT	6000U
+#define SAFETY_LOCK_TOUT	3000U
+#define UNSAFE_TOUT       25000U;
 
 ///   variables
 
@@ -242,21 +243,21 @@ void main(void)
 				L9952_cr0.bit.HS42 = 0;L9952_cr0.bit.HS41 = 0;L9952_cr0.bit.HS40 = 1; // out 4 ON
 				L9952_cr0.bit.HS22 = 0;L9952_cr0.bit.HS21 = 0;L9952_cr0.bit.HS20 = 0; // out2-LED-OFF 
 				L9952_RefreshRegister(SPI_CR0);	// read out SR0				
-				if (( L9952_sr0.bit.WU3 == 0) && coldStart){  // neni zajisteno
+		/*		if (( L9952_sr0.bit.WU4 == 1) && coldStart){  // neni zajisteno
 					timeout = MOTOR_TOUT_LOCK;
 					SM_State = LOCK;	
-				}else{
+				}else{*/
 					SM_State = WAIT_TO_SLEEP;	
-				}
+		//		}
 			break;
 			case RELEASE:		// motor bezi doku kontak nebo timeout			
-				L9952_cr0.bit.rel1 = 1;
-				L9952_cr0.bit.rel2 = 0;			
+				L9952_cr0.bit.rel1 = 0;
+				L9952_cr0.bit.rel2 = 1;			
 				L9952_cr0.bit.HS22 = 0;L9952_cr0.bit.HS21 = 0;L9952_cr0.bit.HS20 = 1; // out2-LED-ON 
 				L9952_cr0.bit.HS42 = 0;L9952_cr0.bit.HS41 = 0;L9952_cr0.bit.HS40 = 1; // out 4 ON
 				L9952_RefreshRegister(SPI_CR0);		// read out SR0
 												
-				if ( L9952_sr0.bit.WU4 == 1){
+				if (( L9952_sr0.bit.WU4 == 1)&&(timeout == 0)){
 						if ( L9952_sr0.bit.WU3 == 0){
 							// released - OK
 							L9952_cr0.bit.rel1 = 0;
@@ -282,11 +283,12 @@ void main(void)
 			case WAIT://////////////////////////////////////////////////////////////
 					if ( timeout == 0){
 							L9952_cr0.bit.HS42 = 0;L9952_cr0.bit.HS41 = 0;L9952_cr0.bit.HS40 = 1; // out 4 ON
-							L9952_cr0.bit.rel1 = 0;
-							L9952_cr0.bit.rel2 = 1;
+							L9952_cr0.bit.rel1 = 1;
+							L9952_cr0.bit.rel2 = 0;
 							L9952_RefreshRegister(SPI_CR0);		// motor bezi - zamyka
 					
-							timeout = MOTOR_TOUT_LOCK;					
+							timeout = MOTOR_TOUT_LOCK;		
+							timeout2 = UNSAFE_TOUT;
 							SM_State = LOCK;										
 					}else{
 							L9952_cr0.bit.rel1 = 0;
@@ -295,24 +297,31 @@ void main(void)
 					}
 			break;
 			case LOCK://////////////////////////////////////////////////////////////
-				L9952_cr0.bit.rel1 = 0;
-				L9952_cr0.bit.rel2 = 1;			
+				L9952_cr0.bit.rel1 = 1;
+				L9952_cr0.bit.rel2 = 0;			
 				L9952_cr0.bit.HS22 = 0;L9952_cr0.bit.HS21 = 0;L9952_cr0.bit.HS20 = 1; // out2-LED-ON 
 				L9952_cr0.bit.HS42 = L9952_cr0.bit.HS41 = 0;L9952_cr0.bit.HS40 = 1; // out 4 ON
 				L9952_RefreshRegister(SPI_CR0);		// read out SR0
 							
-				if (( L9952_sr0.bit.WU3 == 1)&& ( L9952_sr0.bit.WU4 == 0)){
+				if ( L9952_sr0.bit.WU3 == 1){
 							// lockes - OK
 							L9952_cr0.bit.rel1 = 0;
 							L9952_cr0.bit.rel2 = 0;
 							L9952_RefreshRegister(SPI_CR0);		// motor stop														
 							SM_State = WAIT_TO_SLEEP;								
+				}else if( timeout2 == 0){
+							L9952_cr0.bit.rel1 = 0;
+							L9952_cr0.bit.rel2 = 0;
+							L9952_RefreshRegister(SPI_CR0);		// motor stop														
+							SM_State = ERROR_UNSAFE;
 				}else	if ( timeout == 0){	// motor timeout expired
-						SM_State = ERROR_UNSAFE;								
+							L9952_cr0.bit.rel1 = 0;
+							L9952_cr0.bit.rel2 = 0;
+							L9952_RefreshRegister(SPI_CR0);		// motor stop														
 						// WU3 = 0, WU4 = 0 - neznama poloha 
 						// WU3 = 0, WU4 = 1 - motor nebezi, odemceno
 						// WU3 = 1, WU4 = 1 - neznama poloha
-				}							
+				}	
 			break;
 			case WAIT_TO_SLEEP:
 				L9952_cr0.bit.rel1 = 0;
@@ -328,16 +337,10 @@ void main(void)
 						timeout = SLEEP_TIMEOUT;
 						SM_State = GO_TO_SLEEP;						
 					}
-				}else{
-					SM_State = LOCK;
-				}
+				}else{ // nazajistena koule
+					SM_State = ERROR_UNSAFE;
+				}	
 				if ((L9952_sr0.bit.WU1 == 0) && (L9952_sr0.bit.WU2== 1)){
-					
-					L9952_cr0.bit.HS42 = 0;L9952_cr0.bit.HS41 = 0;L9952_cr0.bit.HS40 = 1; // out 4 ON
-					L9952_cr0.bit.rel1 = 1;
-					L9952_cr0.bit.rel2 = 0;
-					L9952_RefreshRegister(SPI_CR0);		// motor bezi
-					
 					timeout = MOTOR_TOUT;					
 					SM_State = RELEASE;					
 				}
@@ -402,7 +405,8 @@ void main(void)
 							if ( timeout == 0){								
 								if ( safetyLockCounter < 2){
 									SM_State = LOCK;
-									timeout = MOTOR_TOUT_LOCK;
+									timeout = MOTOR_TOUT_LOCK;		
+									timeout2 = UNSAFE_TOUT;
 									safetyLock= false;
 									++safetyLockCounter;								
 								}
